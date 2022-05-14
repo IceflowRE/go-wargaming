@@ -5,34 +5,21 @@ import (
 	"strings"
 )
 
-type WgnAccountInfo struct {
-	// Player ID
+type WotbClanmessagesLikes struct {
+	// Liker Account ID
 	AccountId int `json:"account_id,omitempty"`
-	// Date when player's account was created
-	CreatedAt UnixTime `json:"created_at,omitempty"`
-	// List of games player has played
-	Games []string `json:"games,omitempty"`
-	// Player name
-	Nickname string `json:"nickname,omitempty"`
-	// Player's private data
-	Private struct {
-		// Amount of Free Experience
-		FreeXp int `json:"free_xp,omitempty"`
-		// Current gold balance
-		Gold int `json:"gold,omitempty"`
-		// Premium Account expiration date
-		PremiumExpiresAt UnixTime `json:"premium_expires_at,omitempty"`
-	} `json:"private,omitempty"`
+	// Date when message was liked
+	LikedAt UnixTime `json:"liked_at,omitempty"`
 }
 
-// WgnAccountInfo Method returns Wargaming account details.
+// WotbClanmessagesLikes Method returns message likes on clan message board.
 //
-// https://developers.wargaming.net/reference/all/wgn/account/info
+// https://developers.wargaming.net/reference/all/wotb/clanmessages/likes
 //
-// account_id:
-//     Player ID. Maximum limit: 100.
 // access_token:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
+// message_id:
+//     Message ID. Maximum limit: 10.
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 // language:
@@ -51,19 +38,19 @@ type WgnAccountInfo struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WgnAccountInfo(realm Realm, accountId []int, accessToken string, fields []string, language string) (*WgnAccountInfo, error) {
-	if err := ValidateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
+func (client *Client) WotbClanmessagesLikes(realm Realm, accessToken string, messageId []int, fields []string, language string) (*WotbClanmessagesLikes, error) {
+	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 
 	reqParam := map[string]string{
-		"account_id": utils.SliceIntToString(accountId, ","),
 		"access_token": accessToken,
+		"message_id": utils.SliceIntToString(messageId, ","),
 		"fields": strings.Join(fields, ","),
 		"language": language,
 	}
 
-	var result *WgnAccountInfo
-	err := client.doGetDataRequest(realm, "/wgn/account/info/", reqParam, &result)
+	var result *WotbClanmessagesLikes
+	err := client.doGetDataRequest(realm, "/wotb/clanmessages/likes/", reqParam, &result)
 	return result, err
 }

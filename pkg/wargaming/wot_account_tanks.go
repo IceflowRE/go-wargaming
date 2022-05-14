@@ -5,32 +5,32 @@ import (
 	"strings"
 )
 
-type WgnAccountInfo struct {
-	// Player ID
-	AccountId int `json:"account_id,omitempty"`
-	// Date when player's account was created
-	CreatedAt UnixTime `json:"created_at,omitempty"`
-	// List of games player has played
-	Games []string `json:"games,omitempty"`
-	// Player name
-	Nickname string `json:"nickname,omitempty"`
-	// Player's private data
-	Private struct {
-		// Amount of Free Experience
-		FreeXp int `json:"free_xp,omitempty"`
-		// Current gold balance
-		Gold int `json:"gold,omitempty"`
-		// Premium Account expiration date
-		PremiumExpiresAt UnixTime `json:"premium_expires_at,omitempty"`
-	} `json:"private,omitempty"`
+type WotAccountTanks struct {
+	// Mastery Badges:
+	// 
+	// 0 — None
+	// 1 — 3rd Class 
+	// 2 — 2nd Class
+	// 3 — 1st Class
+	// 4 — Ace Tanker
+	MarkOfMastery int `json:"mark_of_mastery,omitempty"`
+	// Vehicle ID
+	TankId int `json:"tank_id,omitempty"`
+	// Vehicle statistics
+	Statistics struct {
+		// Battles fought
+		Battles int `json:"battles,omitempty"`
+		// Victories
+		Wins int `json:"wins,omitempty"`
+	} `json:"statistics,omitempty"`
 }
 
-// WgnAccountInfo Method returns Wargaming account details.
+// WotAccountTanks Method returns details on player's vehicles.
 //
-// https://developers.wargaming.net/reference/all/wgn/account/info
+// https://developers.wargaming.net/reference/all/wot/account/tanks
 //
 // account_id:
-//     Player ID. Maximum limit: 100.
+//     Player account ID. Maximum limit: 100.
 // access_token:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 // fields:
@@ -51,8 +51,10 @@ type WgnAccountInfo struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WgnAccountInfo(realm Realm, accountId []int, accessToken string, fields []string, language string) (*WgnAccountInfo, error) {
-	if err := ValidateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
+// tank_id:
+//     Player's vehicle ID. Maximum limit: 100.
+func (client *Client) WotAccountTanks(realm Realm, accountId []int, accessToken string, fields []string, language string, tankId []int) (*WotAccountTanks, error) {
+	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 
@@ -61,9 +63,10 @@ func (client *Client) WgnAccountInfo(realm Realm, accountId []int, accessToken s
 		"access_token": accessToken,
 		"fields": strings.Join(fields, ","),
 		"language": language,
+		"tank_id": utils.SliceIntToString(tankId, ","),
 	}
 
-	var result *WgnAccountInfo
-	err := client.doGetDataRequest(realm, "/wgn/account/info/", reqParam, &result)
+	var result *WotAccountTanks
+	err := client.doGetDataRequest(realm, "/wot/account/tanks/", reqParam, &result)
 	return result, err
 }

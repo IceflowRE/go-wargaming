@@ -1,0 +1,54 @@
+package wargaming
+
+import (
+	"strings"
+)
+
+type WotEncyclopediaCrewroles struct {
+	// Сrew qualification name
+	Name string `json:"name,omitempty"`
+	// Сrew qualification ID
+	Role string `json:"role,omitempty"`
+	// List of crew member qualifications
+	Skills []string `json:"skills,omitempty"`
+}
+
+// WotEncyclopediaCrewroles Method returns full description of all crew qualifications.
+//
+// https://developers.wargaming.net/reference/all/wot/encyclopedia/crewroles
+//
+// fields:
+//     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+// language:
+//     Localization language. Default is "ru". Valid values:
+//     
+//     "en" &mdash; English 
+//     "ru" &mdash; Русский (by default)
+//     "pl" &mdash; Polski 
+//     "de" &mdash; Deutsch 
+//     "fr" &mdash; Français 
+//     "es" &mdash; Español 
+//     "zh-cn" &mdash; 简体中文 
+//     "zh-tw" &mdash; 繁體中文 
+//     "tr" &mdash; Türkçe 
+//     "cs" &mdash; Čeština 
+//     "th" &mdash; ไทย 
+//     "vi" &mdash; Tiếng Việt 
+//     "ko" &mdash; 한국어
+// role:
+//     Сrew qualification ID. Maximum limit: 100.
+func (client *Client) WotEncyclopediaCrewroles(realm Realm, fields []string, language string, role []string) (*WotEncyclopediaCrewroles, error) {
+	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+		return nil, err
+	}
+
+	reqParam := map[string]string{
+		"fields": strings.Join(fields, ","),
+		"language": language,
+		"role": strings.Join(role, ","),
+	}
+
+	var result *WotEncyclopediaCrewroles
+	err := client.doGetDataRequest(realm, "/wot/encyclopedia/crewroles/", reqParam, &result)
+	return result, err
+}

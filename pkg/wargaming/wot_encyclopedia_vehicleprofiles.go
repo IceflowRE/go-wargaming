@@ -1,0 +1,63 @@
+package wargaming
+
+import (
+	"strings"
+	"strconv"
+)
+
+type WotEncyclopediaVehicleprofiles struct {
+	// Standard configuration
+	IsDefault bool `json:"is_default,omitempty"`
+	// Cost in credits
+	PriceCredit int `json:"price_credit,omitempty"`
+	// Vehicle Configuration ID
+	ProfileId string `json:"profile_id,omitempty"`
+	// Vehicle ID
+	TankId int `json:"tank_id,omitempty"`
+}
+
+// WotEncyclopediaVehicleprofiles Method returns vehicle configuration characteristics.
+//
+// https://developers.wargaming.net/reference/all/wot/encyclopedia/vehicleprofiles
+//
+// tank_id:
+//     Vehicle ID
+// fields:
+//     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+// language:
+//     Localization language. Default is "ru". Valid values:
+//     
+//     "en" &mdash; English 
+//     "ru" &mdash; Русский (by default)
+//     "pl" &mdash; Polski 
+//     "de" &mdash; Deutsch 
+//     "fr" &mdash; Français 
+//     "es" &mdash; Español 
+//     "zh-cn" &mdash; 简体中文 
+//     "zh-tw" &mdash; 繁體中文 
+//     "tr" &mdash; Türkçe 
+//     "cs" &mdash; Čeština 
+//     "th" &mdash; ไทย 
+//     "vi" &mdash; Tiếng Việt 
+//     "ko" &mdash; 한국어
+// order_by:
+//     Sorting. Valid values:
+//     
+//     "price_credit" &mdash; by cost in credits 
+//     "-price_credit" &mdash; by cost in credits, in reverse order
+func (client *Client) WotEncyclopediaVehicleprofiles(realm Realm, tankId int, fields []string, language string, orderBy string) (*WotEncyclopediaVehicleprofiles, error) {
+	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+		return nil, err
+	}
+
+	reqParam := map[string]string{
+		"tank_id": strconv.Itoa(tankId),
+		"fields": strings.Join(fields, ","),
+		"language": language,
+		"order_by": orderBy,
+	}
+
+	var result *WotEncyclopediaVehicleprofiles
+	err := client.doGetDataRequest(realm, "/wot/encyclopedia/vehicleprofiles/", reqParam, &result)
+	return result, err
+}

@@ -5,32 +5,21 @@ import (
 	"strings"
 )
 
-type WgnAccountList struct {
+type WotbAccountList struct {
 	// Player ID
 	AccountId int `json:"account_id,omitempty"`
-	// Date when player's account was created
-	CreatedAt UnixTime `json:"created_at,omitempty"`
-	// List of games player has played
-	Games []string `json:"games,omitempty"`
 	// Player name
 	Nickname string `json:"nickname,omitempty"`
 }
 
-// WgnAccountList Method returns partial list of players who have ever accessed in any Wargaming game. The list is filtered by name or by initial characters of user name and sorted alphabetically.
+// WotbAccountList Method returns partial list of players. The list is filtered by initial characters of user name and sorted alphabetically.
 //
-// https://developers.wargaming.net/reference/all/wgn/account/list
+// https://developers.wargaming.net/reference/all/wotb/account/list
 //
 // search:
 //     Player name search string. Parameter "type" defines minimum length and type of search. Using the exact search type, you can enter several names, separated with commas. Maximum length: 24.
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-// game:
-//     Name of the game to player search. If the parameter is not specified, search will be executed across known games. Maximum limit: 10. Valid values:
-//     
-//     "wotb" &mdash; World of Tanks Blitz 
-//     "wot" &mdash; World of Tanks 
-//     "wows" &mdash; World of Warships 
-//     "wowp" &mdash; World of Warplanes
 // language:
 //     Localization language. Default is "ru". Valid values:
 //     
@@ -54,7 +43,7 @@ type WgnAccountList struct {
 //     
 //     "startswith" &mdash; Search by initial characters of player name. Minimum length: 3 characters. Maximum length: 24 characters. (by default)
 //     "exact" &mdash; Search by exact match of player name. Case insensitive. You can enter several names, separated with commas (up to 100).
-func (client *Client) WgnAccountList(realm Realm, search string, fields []string, game []string, language string, limit int, type_ string) ([]*WgnAccountList, error) {
+func (client *Client) WotbAccountList(realm Realm, search string, fields []string, language string, limit int, type_ string) ([]*WotbAccountList, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -62,13 +51,12 @@ func (client *Client) WgnAccountList(realm Realm, search string, fields []string
 	reqParam := map[string]string{
 		"search": search,
 		"fields": strings.Join(fields, ","),
-		"game": strings.Join(game, ","),
 		"language": language,
 		"limit": strconv.Itoa(limit),
 		"type": type_,
 	}
 
-	var result []*WgnAccountList
-	err := client.doGetDataRequest(realm, "/wgn/account/list/", reqParam, &result)
+	var result []*WotbAccountList
+	err := client.doGetDataRequest(realm, "/wotb/account/list/", reqParam, &result)
 	return result, err
 }

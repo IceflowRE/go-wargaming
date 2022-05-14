@@ -5,16 +5,16 @@ import (
 	"strings"
 )
 
-type WotAccountList struct {
+type WowsAccountList struct {
 	// Player ID
 	AccountId int `json:"account_id,omitempty"`
 	// Player name
 	Nickname string `json:"nickname,omitempty"`
 }
 
-// WotAccountList Method returns partial list of players. The list is filtered by initial characters of user name and sorted alphabetically.
+// WowsAccountList Method returns partial list of players. The list is filtered by initial characters of user name and sorted alphabetically.
 //
-// https://developers.wargaming.net/reference/all/wot/account/list
+// https://developers.wargaming.net/reference/all/wows/account/list
 //
 // search:
 //     Player name search string. Parameter "type" defines minimum length and type of search. Using the exact search type, you can enter several names, separated with commas. Maximum length: 24.
@@ -23,27 +23,28 @@ type WotAccountList struct {
 // language:
 //     Localization language. Default is "ru". Valid values:
 //     
-//     "en" &mdash; English 
-//     "ru" &mdash; Русский (by default)
-//     "pl" &mdash; Polski 
+//     "cs" &mdash; Čeština 
 //     "de" &mdash; Deutsch 
-//     "fr" &mdash; Français 
+//     "en" &mdash; English 
 //     "es" &mdash; Español 
-//     "zh-cn" &mdash; 简体中文 
+//     "fr" &mdash; Français 
+//     "ja" &mdash; 日本語 
+//     "pl" &mdash; Polski 
+//     "ru" &mdash; Русский (by default)
+//     "th" &mdash; ไทย 
 //     "zh-tw" &mdash; 繁體中文 
 //     "tr" &mdash; Türkçe 
-//     "cs" &mdash; Čeština 
-//     "th" &mdash; ไทย 
-//     "vi" &mdash; Tiếng Việt 
-//     "ko" &mdash; 한국어
+//     "zh-cn" &mdash; 中文 
+//     "pt-br" &mdash; Português do Brasil 
+//     "es-mx" &mdash; Español (México)
 // limit:
-//     Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of None is applied (by default).
+//     Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
 // type:
 //     Search type. Default is "startswith". Valid values:
 //     
 //     "startswith" &mdash; Search by initial characters of player name. Minimum length: 3 characters. Maximum length: 24 characters. (by default)
 //     "exact" &mdash; Search by exact match of player name. Case insensitive. You can enter several names, separated with commas (up to 100).
-func (client *Client) WotAccountList(realm Realm, search string, fields []string, language string, limit int, type_ string) ([]*WotAccountList, error) {
+func (client *Client) WowsAccountList(realm Realm, search string, fields []string, language string, limit int, type_ string) ([]*WowsAccountList, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -56,7 +57,7 @@ func (client *Client) WotAccountList(realm Realm, search string, fields []string
 		"type": type_,
 	}
 
-	var result []*WotAccountList
-	err := client.doGetDataRequest(realm, "/wot/account/list/", reqParam, &result)
+	var result []*WowsAccountList
+	err := client.doGetDataRequest(realm, "/wows/account/list/", reqParam, &result)
 	return result, err
 }
