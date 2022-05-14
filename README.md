@@ -14,7 +14,7 @@ WARNING: Method interfaces may change in the future based on feedback.
 Go (golang) implementation of the [Wargaming.net Public API](https://developers.wargaming.net/documentation/guide/getting-started/). Providing structs and functions.
 
 This api client is fully automated generated based on the provided documentation of Wargaming.
-This documentation is of a quite worse quality, so manually fixes afterwards are required. If something was not corrected, please open an issue.
+This documentation is often inaccurate, so manual fixes afterwards are required. If something was not corrected, please open an issue.
 
 ```go
 package main
