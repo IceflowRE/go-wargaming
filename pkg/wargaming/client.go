@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-type Response struct {
+type response struct {
 	Status string         `json:"status"`
 	Error  *ResponseError `json:"error,omitempty"`
 	Data   any            `json:"data,omitempty"`
@@ -16,9 +16,6 @@ type Response struct {
 type Client struct {
 	httpClient    *http.Client
 	applicationId string
-	// Do a local parameter check before actually sending the request.
-	// Disable if the library might be outdated and has not all current available parameters.
-	localCheck bool
 }
 
 func NewClient(applicationId string) *Client {
@@ -33,11 +30,6 @@ func NewClient(applicationId string) *Client {
 	}
 }
 
-func (client *Client) WithLocalCheck() *Client {
-	client.localCheck = true
-	return client
-}
-
 func (client *Client) WithHttpClient(httpClient *http.Client) *Client {
 	client.httpClient = httpClient
 	return client
@@ -45,7 +37,7 @@ func (client *Client) WithHttpClient(httpClient *http.Client) *Client {
 
 // returnData must be a pointer
 func (client *Client) sendGetRequest(realm Realm, path string, data map[string]string, returnData any) error {
-	req, _ := http.NewRequest("GET", realm.ApiUrl()+"/"+path, nil)
+	req, _ := http.NewRequest("GET", realm.ApiUrl()+path, nil)
 	query := req.URL.Query()
 	query.Add("application_id", client.applicationId)
 	for key, value := range data {
@@ -67,7 +59,7 @@ func (client *Client) sendGetRequest(realm Realm, path string, data map[string]s
 	if err != nil {
 		return err
 	}
-	wgResp := &Response{
+	wgResp := &response{
 		Status: "",
 		Error:  nil,
 		Data:   returnData,

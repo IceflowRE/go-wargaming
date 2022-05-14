@@ -2,7 +2,6 @@ package wargaming
 
 import (
 	"errors"
-	"fmt"
 	"strconv"
 )
 
@@ -41,30 +40,6 @@ var ApiErrorMessage = map[string]string{
 var (
 	InvalidResponse = errors.New("invalid response, 'status' was not ok but missing 'error'")
 )
-
-type InvalidParameter struct {
-	Field string
-	Value any
-	Info  string
-}
-
-func NewInvalidParameter(field string, value any, info string) *InvalidParameter {
-	return &InvalidParameter{
-		Field: field,
-		Value: value,
-		Info:  info,
-	}
-}
-
-func (err InvalidParameter) Error() string {
-	suffix := ""
-	if err.Info != "" {
-		suffix = " (" + err.Info + ")."
-	} else {
-		suffix = "."
-	}
-	return fmt.Sprintf("Specified field (%s) value (%v) is not valid%s", err.Field, err.Value, suffix)
-}
 
 type BadStatusCode int
 
