@@ -1,9 +1,11 @@
 package wargaming
 
 import (
+	"bytes"
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"net/url"
 	"time"
 )
 
@@ -35,16 +37,22 @@ func (client *Client) WithHttpClient(httpClient *http.Client) *Client {
 	return client
 }
 
-// returnData must be a pointer
-func (client *Client) sendGetRequest(realm Realm, path string, data map[string]string, returnData any) error {
-	req, _ := http.NewRequest("GET", realm.ApiUrl()+path, nil)
-	query := req.URL.Query()
+func (client *Client) buildRequest(realm Realm, path string, data map[string]string, method string) (req *http.Request) {
+	query := url.Values{}
 	query.Add("application_id", client.applicationId)
 	for key, value := range data {
 		query.Add(key, value)
 	}
-	req.URL.RawQuery = query.Encode()
+	if method == "POST" {
+		req, _ = http.NewRequest(method, realm.ApiUrl()+path, bytes.NewBuffer([]byte(query.Encode())))
+	} else {
+		req, _ = http.NewRequest(method, realm.ApiUrl()+path, nil)
+		req.URL.RawQuery = query.Encode()
+	}
+	return req
+}
 
+func (client *Client) doRequest(req *http.Request, returnData any) error {
 	resp, err := client.httpClient.Do(req)
 	if err != nil {
 		return err
@@ -54,7 +62,6 @@ func (client *Client) sendGetRequest(realm Realm, path string, data map[string]s
 		return BadStatusCode(resp.StatusCode)
 	}
 
-	// read into json-RawMessage map
 	respBytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return err
@@ -76,4 +83,26 @@ func (client *Client) sendGetRequest(realm Realm, path string, data map[string]s
 		return InvalidResponse
 	}
 	return nil
+}
+
+func (client *Client) doPostRequest(realm Realm, path string, data map[string]string) error {
+	req := client.buildRequest(realm, path, data, "POST")
+	return client.doRequest(req, struct{}{})
+}
+
+func (client *Client) doGetRequest(realm Realm, path string, data map[string]string) error {
+	req := client.buildRequest(realm, path, data, "GET")
+	return client.doRequest(req, struct{}{})
+}
+
+// returnData must be a pointer
+func (client *Client) doPostDataRequest(realm Realm, path string, data map[string]string, returnData any) error {
+	req := client.buildRequest(realm, path, data, "POST")
+	return client.doRequest(req, returnData)
+}
+
+// returnData must be a pointer
+func (client *Client) doGetDataRequest(realm Realm, path string, data map[string]string, returnData any) error {
+	req := client.buildRequest(realm, path, data, "GET")
+	return client.doRequest(req, returnData)
 }
