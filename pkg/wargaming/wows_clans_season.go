@@ -1,34 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wows"
 	"strings"
 )
-
-type WowsClansSeason struct {
-	// Number of the Rating points required for progression to the next league
-	DivisionPoints int `json:"division_points,omitempty"`
-	// Season end time
-	FinishTime int `json:"finish_time,omitempty"`
-	// Season name
-	Name string `json:"name,omitempty"`
-	// Season ID
-	SeasonId int `json:"season_id,omitempty"`
-	// Maximum ship Tier in a season
-	ShipTierMax int `json:"ship_tier_max,omitempty"`
-	// Minimal ship Tier in a season
-	ShipTierMin int `json:"ship_tier_min,omitempty"`
-	// Season start time
-	StartTime int `json:"start_time,omitempty"`
-	// Leagues in the season Rating
-	Leagues struct {
-		// Color of the league icon
-		Color string `json:"color,omitempty"`
-		// League icon
-		Icon string `json:"icon,omitempty"`
-		// League name
-		Name string `json:"name,omitempty"`
-	} `json:"leagues,omitempty"`
-}
 
 // WowsClansSeason Method returns information about Clan Battles season.
 //
@@ -53,7 +28,7 @@ type WowsClansSeason struct {
 //     "zh-cn" &mdash; 中文 
 //     "pt-br" &mdash; Português do Brasil 
 //     "es-mx" &mdash; Español (México)
-func (client *Client) WowsClansSeason(realm Realm, fields []string, language string) (*WowsClansSeason, error) {
+func (client *Client) WowsClansSeason(realm Realm, fields []string, language string) (*wows.ClansSeason, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -63,7 +38,7 @@ func (client *Client) WowsClansSeason(realm Realm, fields []string, language str
 		"language": language,
 	}
 
-	var result *WowsClansSeason
+	var result *wows.ClansSeason
 	err := client.doGetDataRequest(realm, "/wows/clans/season/", reqParam, &result)
 	return result, err
 }

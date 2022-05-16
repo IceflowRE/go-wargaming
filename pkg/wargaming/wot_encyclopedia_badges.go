@@ -1,26 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strings"
 )
-
-type WotEncyclopediaBadges struct {
-	// Badge ID
-	BadgeId int `json:"badge_id,omitempty"`
-	// Badge description
-	Description string `json:"description,omitempty"`
-	// Badge name
-	Name string `json:"name,omitempty"`
-	// Image links
-	Images struct {
-		// URL to 80x80 px badge image
-		BigIcon string `json:"big_icon,omitempty"`
-		// URL to 48x48 px badge image
-		MediumIcon string `json:"medium_icon,omitempty"`
-		// URL to 24x24 px badge image
-		SmallIcon string `json:"small_icon,omitempty"`
-	} `json:"images,omitempty"`
-}
 
 // WotEncyclopediaBadges Method returns list of available badges a player can gain in Ranked Battles.
 //
@@ -44,7 +27,7 @@ type WotEncyclopediaBadges struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WotEncyclopediaBadges(realm Realm, fields []string, language string) (*WotEncyclopediaBadges, error) {
+func (client *Client) WotEncyclopediaBadges(realm Realm, fields []string, language string) (*wot.EncyclopediaBadges, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -54,7 +37,7 @@ func (client *Client) WotEncyclopediaBadges(realm Realm, fields []string, langua
 		"language": language,
 	}
 
-	var result *WotEncyclopediaBadges
+	var result *wot.EncyclopediaBadges
 	err := client.doGetDataRequest(realm, "/wot/encyclopedia/badges/", reqParam, &result)
 	return result, err
 }

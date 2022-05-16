@@ -2,15 +2,9 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wows"
 	"strings"
 )
-
-type WowsAccountAchievements struct {
-	// Battle achievements earned
-	Battle map[string]string `json:"battle,omitempty"`
-	// Achievement progress
-	Progress map[string]string `json:"progress,omitempty"`
-}
 
 // WowsAccountAchievements Method returns information about players' achievements. Accounts with hidden game profiles are excluded from response. Hidden profiles are listed in the field meta.hidden.
 //
@@ -39,7 +33,7 @@ type WowsAccountAchievements struct {
 //     "zh-cn" &mdash; 中文 
 //     "pt-br" &mdash; Português do Brasil 
 //     "es-mx" &mdash; Español (México)
-func (client *Client) WowsAccountAchievements(realm Realm, accountId []int, accessToken string, fields []string, language string) (*WowsAccountAchievements, error) {
+func (client *Client) WowsAccountAchievements(realm Realm, accountId []int, accessToken string, fields []string, language string) (*wows.AccountAchievements, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -51,7 +45,7 @@ func (client *Client) WowsAccountAchievements(realm Realm, accountId []int, acce
 		"language": language,
 	}
 
-	var result *WowsAccountAchievements
+	var result *wows.AccountAchievements
 	err := client.doGetDataRequest(realm, "/wows/account/achievements/", reqParam, &result)
 	return result, err
 }

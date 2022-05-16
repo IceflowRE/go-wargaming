@@ -1,13 +1,10 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotb"
 	"strconv"
 )
-
-type WotbClanmessagesCreate struct {
-	// Message ID
-	MessageId int `json:"message_id,omitempty"`
-}
 
 // WotbClanmessagesCreate Method creates a message on clan message board.
 //
@@ -33,7 +30,7 @@ type WotbClanmessagesCreate struct {
 //     "training" &mdash; Training messages 
 //     "meeting" &mdash; Meeting messages 
 //     "battle" &mdash; Battle messages
-func (client *Client) WotbClanmessagesCreate(realm Realm, accessToken string, expiresAt UnixTime, importance string, text string, title string, type_ string) (*WotbClanmessagesCreate, error) {
+func (client *Client) WotbClanmessagesCreate(realm Realm, accessToken string, expiresAt wgnTime.UnixTime, importance string, text string, title string, type_ string) (*wotb.ClanmessagesCreate, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -47,7 +44,7 @@ func (client *Client) WotbClanmessagesCreate(realm Realm, accessToken string, ex
 		"type": type_,
 	}
 
-	var result *WotbClanmessagesCreate
+	var result *wotb.ClanmessagesCreate
 	err := client.doPostDataRequest(realm, "/wotb/clanmessages/create/", reqParam, &result)
 	return result, err
 }

@@ -1,4 +1,4 @@
-package wargaming
+package wgnTime
 
 import (
 	"encoding/json"

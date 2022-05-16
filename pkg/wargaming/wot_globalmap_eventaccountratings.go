@@ -1,40 +1,10 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strconv"
 	"strings"
 )
-
-type WotGlobalmapEventaccountratings struct {
-	// Player account ID
-	AccountId int `json:"account_id,omitempty"`
-	// Award level
-	AwardLevel string `json:"award_level,omitempty"`
-	// Battles fought for current clan
-	Battles int `json:"battles,omitempty"`
-	// Battles to fight in a current clan to get clan award for the season
-	BattlesToAward int `json:"battles_to_award,omitempty"`
-	// Clan ID
-	ClanId int `json:"clan_id,omitempty"`
-	// Clan rating
-	ClanRank int `json:"clan_rank,omitempty"`
-	// Event ID
-	EventId string `json:"event_id,omitempty"`
-	// Total Fame Points
-	FamePoints int `json:"fame_points,omitempty"`
-	// Amount of Fame Points needed to improve personal award
-	FamePointsToImproveAward int `json:"fame_points_to_improve_award,omitempty"`
-	// Front ID
-	FrontId string `json:"front_id,omitempty"`
-	// Current rating
-	Rank int `json:"rank,omitempty"`
-	// Rating changes during previous turn
-	RankDelta int `json:"rank_delta,omitempty"`
-	// Date when account data were updated
-	UpdatedAt UnixTime `json:"updated_at,omitempty"`
-	// Link to Front
-	Url string `json:"url,omitempty"`
-}
 
 // WotGlobalmapEventaccountratings Method returns account event rating.
 //
@@ -55,7 +25,7 @@ type WotGlobalmapEventaccountratings struct {
 //     Accounts limit. Default is 20. Min value is 10. Maximum value: 100.
 // page_no:
 //     Page number. Default is 1. Min value is 1.
-func (client *Client) WotGlobalmapEventaccountratings(realm Realm, eventId string, frontId string, fields []string, inRating int, limit int, pageNo int) (*WotGlobalmapEventaccountratings, error) {
+func (client *Client) WotGlobalmapEventaccountratings(realm Realm, eventId string, frontId string, fields []string, inRating int, limit int, pageNo int) (*wot.GlobalmapEventaccountratings, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -69,7 +39,7 @@ func (client *Client) WotGlobalmapEventaccountratings(realm Realm, eventId strin
 		"page_no": strconv.Itoa(pageNo),
 	}
 
-	var result *WotGlobalmapEventaccountratings
+	var result *wot.GlobalmapEventaccountratings
 	err := client.doGetDataRequest(realm, "/wot/globalmap/eventaccountratings/", reqParam, &result)
 	return result, err
 }

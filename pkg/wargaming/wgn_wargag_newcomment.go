@@ -1,32 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgn"
 	"strconv"
 )
-
-type WgnWargagNewcomment struct {
-	// Comment author ID
-	AccountId int `json:"account_id,omitempty"`
-	// Comment text
-	Comment string `json:"comment,omitempty"`
-	// Comment ID
-	CommentId int `json:"comment_id,omitempty"`
-	// Publication ID
-	ContentId int `json:"content_id,omitempty"`
-	// Comment date
-	CreatedAt UnixTime `json:"created_at,omitempty"`
-	// Player name
-	Nickname string `json:"nickname,omitempty"`
-	// Comment Author
-	Author struct {
-		// Author's reputation
-		Reputation int `json:"reputation,omitempty"`
-		// Author's title
-		Status string `json:"status,omitempty"`
-		// Title icon
-		StatusImage string `json:"status_image,omitempty"`
-	} `json:"author,omitempty"`
-}
 
 // WgnWargagNewcomment Method allows to add comments. A valid access_token for the specified account is required. Comments allowed for picture and video content only.
 //
@@ -38,7 +15,7 @@ type WgnWargagNewcomment struct {
 //     Publication ID
 // text:
 //     Comment text. Maximum length: 1000 symbols. Maximum length: 1000.
-func (client *Client) WgnWargagNewcomment(realm Realm, accessToken string, contentId int, text string) (*WgnWargagNewcomment, error) {
+func (client *Client) WgnWargagNewcomment(realm Realm, accessToken string, contentId int, text string) (*wgn.WargagNewcomment, error) {
 	if err := ValidateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil, err
 	}
@@ -49,7 +26,7 @@ func (client *Client) WgnWargagNewcomment(realm Realm, accessToken string, conte
 		"text": text,
 	}
 
-	var result *WgnWargagNewcomment
+	var result *wgn.WargagNewcomment
 	err := client.doPostDataRequest(realm, "/wgn/wargag/newcomment/", reqParam, &result)
 	return result, err
 }

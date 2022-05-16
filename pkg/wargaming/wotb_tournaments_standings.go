@@ -2,30 +2,10 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
-	"strings"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotb"
 	"strconv"
+	"strings"
 )
-
-type WotbTournamentsStandings struct {
-	// Number of battles played by a team
-	BattlePlayed int `json:"battle_played,omitempty"`
-	// Number of battles drawn by a team
-	Draws int `json:"draws,omitempty"`
-	// ID of a team's group
-	GroupId int `json:"group_id,omitempty"`
-	// Number of battles lost by a team
-	Losses int `json:"losses,omitempty"`
-	// Number of points earned by a team
-	Points int `json:"points,omitempty"`
-	// Team's place
-	Position int `json:"position,omitempty"`
-	// Stage ID
-	StageId int `json:"stage_id,omitempty"`
-	// Team ID
-	TeamId int `json:"team_id,omitempty"`
-	// Number of battles won by a team
-	Wins int `json:"wins,omitempty"`
-}
 
 // WotbTournamentsStandings Method returns tournament results of each team.
 //
@@ -49,7 +29,7 @@ type WotbTournamentsStandings struct {
 //     Team ID. Maximum limit: 10.
 // to_position:
 //     Allows to get all team standings up to a specific place, including this place
-func (client *Client) WotbTournamentsStandings(realm Realm, tournamentId int, fields []string, fromPosition int, language string, limit int, pageNo int, teamId []int, toPosition int) (*WotbTournamentsStandings, error) {
+func (client *Client) WotbTournamentsStandings(realm Realm, tournamentId int, fields []string, fromPosition int, language string, limit int, pageNo int, teamId []int, toPosition int) (*wotb.TournamentsStandings, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -65,7 +45,7 @@ func (client *Client) WotbTournamentsStandings(realm Realm, tournamentId int, fi
 		"to_position": strconv.Itoa(toPosition),
 	}
 
-	var result *WotbTournamentsStandings
+	var result *wotb.TournamentsStandings
 	err := client.doGetDataRequest(realm, "/wotb/tournaments/standings/", reqParam, &result)
 	return result, err
 }

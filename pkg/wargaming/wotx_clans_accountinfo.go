@@ -2,41 +2,9 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotx"
 	"strings"
 )
-
-type WotxClansAccountinfo struct {
-	// User ID
-	AccountId int `json:"account_id,omitempty"`
-	// Player name
-	AccountName string `json:"account_name,omitempty"`
-	// Clan ID
-	ClanId int `json:"clan_id,omitempty"`
-	// Cooldown for leaving the clan
-	InClanCooldownTill UnixTime `json:"in_clan_cooldown_till,omitempty"`
-	// Date when player joined clan
-	JoinedAt UnixTime `json:"joined_at,omitempty"`
-	// Technical position name
-	Role string `json:"role,omitempty"`
-	// Brief clan details.
-	// An extra field.
-	Clan struct {
-		// Clan ID
-		ClanId int `json:"clan_id,omitempty"`
-		// Clan color in HEX #RRGGBB
-		Color string `json:"color,omitempty"`
-		// Clan creation date
-		CreatedAt UnixTime `json:"created_at,omitempty"`
-		// Emblems set ID
-		EmblemSetId int `json:"emblem_set_id,omitempty"`
-		// Number of clan members
-		MembersCount int `json:"members_count,omitempty"`
-		// Clan name
-		Name string `json:"name,omitempty"`
-		// Clan tag
-		Tag string `json:"tag,omitempty"`
-	} `json:"clan,omitempty"`
-}
 
 // WotxClansAccountinfo Method returns player clan data. Player clan data exist only for accounts, that were clan members at least once.
 //
@@ -60,7 +28,7 @@ type WotxClansAccountinfo struct {
 //     "fr" &mdash; Français 
 //     "es" &mdash; Español 
 //     "tr" &mdash; Türkçe
-func (client *Client) WotxClansAccountinfo(realm Realm, accountId []int, extra []string, fields []string, language string) (*WotxClansAccountinfo, error) {
+func (client *Client) WotxClansAccountinfo(realm Realm, accountId []int, extra []string, fields []string, language string) (*wotx.ClansAccountinfo, error) {
 	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
@@ -72,7 +40,7 @@ func (client *Client) WotxClansAccountinfo(realm Realm, accountId []int, extra [
 		"language": language,
 	}
 
-	var result *WotxClansAccountinfo
+	var result *wotx.ClansAccountinfo
 	err := client.doGetDataRequest(realm, "/wotx/clans/accountinfo/", reqParam, &result)
 	return result, err
 }

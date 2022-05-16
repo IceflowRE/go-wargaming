@@ -1,13 +1,10 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotb"
 	"strconv"
 )
-
-type WotbClanmessagesUpdate struct {
-	// Message ID
-	MessageId int `json:"message_id,omitempty"`
-}
 
 // WotbClanmessagesUpdate Method updates a message on clan message board. At least one changed parameter should be specified.
 //
@@ -35,7 +32,7 @@ type WotbClanmessagesUpdate struct {
 //     "training" &mdash; Training messages 
 //     "meeting" &mdash; Meeting messages 
 //     "battle" &mdash; Battle messages
-func (client *Client) WotbClanmessagesUpdate(realm Realm, accessToken string, expiresAt UnixTime, importance string, messageId int, text string, title string, type_ string) (*WotbClanmessagesUpdate, error) {
+func (client *Client) WotbClanmessagesUpdate(realm Realm, accessToken string, expiresAt wgnTime.UnixTime, importance string, messageId int, text string, title string, type_ string) (*wotb.ClanmessagesUpdate, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -50,7 +47,7 @@ func (client *Client) WotbClanmessagesUpdate(realm Realm, accessToken string, ex
 		"type": type_,
 	}
 
-	var result *WotbClanmessagesUpdate
+	var result *wotb.ClanmessagesUpdate
 	err := client.doPostDataRequest(realm, "/wotb/clanmessages/update/", reqParam, &result)
 	return result, err
 }

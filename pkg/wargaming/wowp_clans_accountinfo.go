@@ -2,35 +2,9 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wowp"
 	"strings"
 )
-
-type WowpClansAccountinfo struct {
-	// User ID
-	AccountId int `json:"account_id,omitempty"`
-	// Player name
-	AccountName string `json:"account_name,omitempty"`
-	// Clan ID
-	ClanId int `json:"clan_id,omitempty"`
-	// Date when player joined clan
-	JoinedAt UnixTime `json:"joined_at,omitempty"`
-	// Technical position name
-	Role string `json:"role,omitempty"`
-	// Short info about clan.
-	// An extra field.
-	Clan struct {
-		// Clan ID
-		ClanId int `json:"clan_id,omitempty"`
-		// Clan creation date
-		CreatedAt UnixTime `json:"created_at,omitempty"`
-		// Number of clan members
-		MembersCount int `json:"members_count,omitempty"`
-		// Clan Name
-		Name string `json:"name,omitempty"`
-		// Clan Tag
-		Tag string `json:"tag,omitempty"`
-	} `json:"clan,omitempty"`
-}
 
 // WowpClansAccountinfo Method returns player clan data. Player clan data exist only for accounts, that were participating in clan activities: sent join requests, were clan members etc.
 //
@@ -59,7 +33,7 @@ type WowpClansAccountinfo struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WowpClansAccountinfo(realm Realm, accountId []int, extra []string, fields []string, language string) (*WowpClansAccountinfo, error) {
+func (client *Client) WowpClansAccountinfo(realm Realm, accountId []int, extra []string, fields []string, language string) (*wowp.ClansAccountinfo, error) {
 	if err := ValidateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -71,7 +45,7 @@ func (client *Client) WowpClansAccountinfo(realm Realm, accountId []int, extra [
 		"language": language,
 	}
 
-	var result *WowpClansAccountinfo
+	var result *wowp.ClansAccountinfo
 	err := client.doGetDataRequest(realm, "/wowp/clans/accountinfo/", reqParam, &result)
 	return result, err
 }

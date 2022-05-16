@@ -2,20 +2,10 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
-	"strings"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotb"
 	"strconv"
+	"strings"
 )
-
-type WotbTanksAchievements struct {
-	// Player account ID
-	AccountId int `json:"account_id,omitempty"`
-	// Achievements earned
-	Achievements map[string]string `json:"achievements,omitempty"`
-	// Maximum values of achievement series
-	MaxSeries map[string]string `json:"max_series,omitempty"`
-	// Vehicle ID
-	TankId int `json:"tank_id,omitempty"`
-}
 
 // WotbTanksAchievements Method returns list of player's achievements on all vehicles.
 //
@@ -50,7 +40,7 @@ type WotbTanksAchievements struct {
 //     "ko" &mdash; 한국어
 // tank_id:
 //     Player's vehicle ID. Maximum limit: 100.
-func (client *Client) WotbTanksAchievements(realm Realm, accountId int, accessToken string, fields []string, inGarage string, language string, tankId []int) (*WotbTanksAchievements, error) {
+func (client *Client) WotbTanksAchievements(realm Realm, accountId int, accessToken string, fields []string, inGarage string, language string, tankId []int) (*wotb.TanksAchievements, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -64,7 +54,7 @@ func (client *Client) WotbTanksAchievements(realm Realm, accountId int, accessTo
 		"tank_id": utils.SliceIntToString(tankId, ","),
 	}
 
-	var result *WotbTanksAchievements
+	var result *wotb.TanksAchievements
 	err := client.doGetDataRequest(realm, "/wotb/tanks/achievements/", reqParam, &result)
 	return result, err
 }

@@ -1,17 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wowp"
 	"strings"
 )
-
-type WowpRatingsTypes struct {
-	// Rating categories
-	RankFields []string `json:"rank_fields,omitempty"`
-	// Rating threshold
-	Threshold int `json:"threshold,omitempty"`
-	// Rating period
-	Type_ string `json:"type,omitempty"`
-}
 
 // WowpRatingsTypes Method returns dictionary of rating periods and ratings details.
 //
@@ -34,7 +26,7 @@ type WowpRatingsTypes struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WowpRatingsTypes(realm Realm, fields []string, language string) (*WowpRatingsTypes, error) {
+func (client *Client) WowpRatingsTypes(realm Realm, fields []string, language string) (*wowp.RatingsTypes, error) {
 	if err := ValidateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -44,7 +36,7 @@ func (client *Client) WowpRatingsTypes(realm Realm, fields []string, language st
 		"language": language,
 	}
 
-	var result *WowpRatingsTypes
+	var result *wowp.RatingsTypes
 	err := client.doGetDataRequest(realm, "/wowp/ratings/types/", reqParam, &result)
 	return result, err
 }

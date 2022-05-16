@@ -1,30 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wows"
 	"strings"
 )
-
-type WowsEncyclopediaCollectioncards struct {
-	// Item ID
-	CardId int `json:"card_id,omitempty"`
-	// Collection ID
-	CollectionId int `json:"collection_id,omitempty"`
-	// Item description
-	Description string `json:"description,omitempty"`
-	// Item name
-	Name string `json:"name,omitempty"`
-	// Item tag
-	Tag string `json:"tag,omitempty"`
-	// Item card icons
-	Images struct {
-		// URL to the large card icon
-		Large string `json:"large,omitempty"`
-		// URL to the medium card icon
-		Medium string `json:"medium,omitempty"`
-		// URL to the small card icon
-		Small string `json:"small,omitempty"`
-	} `json:"images,omitempty"`
-}
 
 // WowsEncyclopediaCollectioncards Method returns information about items that are included in the collection.
 //
@@ -49,7 +28,7 @@ type WowsEncyclopediaCollectioncards struct {
 //     "zh-cn" &mdash; 中文 
 //     "pt-br" &mdash; Português do Brasil 
 //     "es-mx" &mdash; Español (México)
-func (client *Client) WowsEncyclopediaCollectioncards(realm Realm, fields []string, language string) (*WowsEncyclopediaCollectioncards, error) {
+func (client *Client) WowsEncyclopediaCollectioncards(realm Realm, fields []string, language string) (*wows.EncyclopediaCollectioncards, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -59,7 +38,7 @@ func (client *Client) WowsEncyclopediaCollectioncards(realm Realm, fields []stri
 		"language": language,
 	}
 
-	var result *WowsEncyclopediaCollectioncards
+	var result *wows.EncyclopediaCollectioncards
 	err := client.doGetDataRequest(realm, "/wows/encyclopedia/collectioncards/", reqParam, &result)
 	return result, err
 }

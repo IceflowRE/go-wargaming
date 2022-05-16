@@ -1,18 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wowp"
 	"strings"
 )
-
-type WowpClansGlossary struct {
-	// Available clan positions
-	ClansRoles map[string]string `json:"clans_roles,omitempty"`
-	// Clan settings
-	Settings struct {
-		// Maximum clan members
-		MaxMembersCount int `json:"max_members_count,omitempty"`
-	} `json:"settings,omitempty"`
-}
 
 // WowpClansGlossary Method returns information on clan entities.
 //
@@ -35,7 +26,7 @@ type WowpClansGlossary struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WowpClansGlossary(realm Realm, fields []string, language string) (*WowpClansGlossary, error) {
+func (client *Client) WowpClansGlossary(realm Realm, fields []string, language string) (*wowp.ClansGlossary, error) {
 	if err := ValidateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -45,7 +36,7 @@ func (client *Client) WowpClansGlossary(realm Realm, fields []string, language s
 		"language": language,
 	}
 
-	var result *WowpClansGlossary
+	var result *wowp.ClansGlossary
 	err := client.doGetDataRequest(realm, "/wowp/clans/glossary/", reqParam, &result)
 	return result, err
 }

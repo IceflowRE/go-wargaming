@@ -1,34 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wows"
 	"strings"
 )
-
-type WowsEncyclopediaInfo struct {
-	// Game client version
-	GameVersion string `json:"game_version,omitempty"`
-	// List of languages supported by encyclopedia methods
-	Languages map[string]string `json:"languages,omitempty"`
-	// Types of Modifications available
-	ShipModifications map[string]string `json:"ship_modifications,omitempty"`
-	// Types of modules available
-	ShipModules map[string]string `json:"ship_modules,omitempty"`
-	// Nations available
-	ShipNations map[string]string `json:"ship_nations,omitempty"`
-	// Types of ships available
-	ShipTypes map[string]string `json:"ship_types,omitempty"`
-	// Time when details on ships were updated
-	ShipsUpdatedAt UnixTime `json:"ships_updated_at,omitempty"`
-	// Images of ship types
-	ShipTypeImages struct {
-		// Ship type image
-		Image string `json:"image,omitempty"`
-		// Elite ships icon
-		ImageElite string `json:"image_elite,omitempty"`
-		// Premium ships icon
-		ImagePremium string `json:"image_premium,omitempty"`
-	} `json:"ship_type_images,omitempty"`
-}
 
 // WowsEncyclopediaInfo Method returns information about encyclopedia.
 //
@@ -53,7 +28,7 @@ type WowsEncyclopediaInfo struct {
 //     "zh-cn" &mdash; 中文 
 //     "pt-br" &mdash; Português do Brasil 
 //     "es-mx" &mdash; Español (México)
-func (client *Client) WowsEncyclopediaInfo(realm Realm, fields []string, language string) (*WowsEncyclopediaInfo, error) {
+func (client *Client) WowsEncyclopediaInfo(realm Realm, fields []string, language string) (*wows.EncyclopediaInfo, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -63,7 +38,7 @@ func (client *Client) WowsEncyclopediaInfo(realm Realm, fields []string, languag
 		"language": language,
 	}
 
-	var result *WowsEncyclopediaInfo
+	var result *wows.EncyclopediaInfo
 	err := client.doGetDataRequest(realm, "/wows/encyclopedia/info/", reqParam, &result)
 	return result, err
 }

@@ -1,19 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wows"
 	"strings"
 )
-
-type WowsEncyclopediaBattletypes struct {
-	// Battle type description
-	Description string `json:"description,omitempty"`
-	// URL to image
-	Image string `json:"image,omitempty"`
-	// Battle type name
-	Name string `json:"name,omitempty"`
-	// Battle type tag
-	Tag string `json:"tag,omitempty"`
-}
 
 // WowsEncyclopediaBattletypes Method returns information about battle types.
 //
@@ -38,7 +28,7 @@ type WowsEncyclopediaBattletypes struct {
 //     "zh-cn" &mdash; 中文 
 //     "pt-br" &mdash; Português do Brasil 
 //     "es-mx" &mdash; Español (México)
-func (client *Client) WowsEncyclopediaBattletypes(realm Realm, fields []string, language string) (*WowsEncyclopediaBattletypes, error) {
+func (client *Client) WowsEncyclopediaBattletypes(realm Realm, fields []string, language string) (*wows.EncyclopediaBattletypes, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -48,7 +38,7 @@ func (client *Client) WowsEncyclopediaBattletypes(realm Realm, fields []string, 
 		"language": language,
 	}
 
-	var result *WowsEncyclopediaBattletypes
+	var result *wows.EncyclopediaBattletypes
 	err := client.doGetDataRequest(realm, "/wows/encyclopedia/battletypes/", reqParam, &result)
 	return result, err
 }

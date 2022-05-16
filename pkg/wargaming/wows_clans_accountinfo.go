@@ -2,35 +2,9 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wows"
 	"strings"
 )
-
-type WowsClansAccountinfo struct {
-	// User ID
-	AccountId int `json:"account_id,omitempty"`
-	// Player name
-	AccountName string `json:"account_name,omitempty"`
-	// Clan ID
-	ClanId int `json:"clan_id,omitempty"`
-	// Date when player joined clan
-	JoinedAt UnixTime `json:"joined_at,omitempty"`
-	// Technical position name
-	Role string `json:"role,omitempty"`
-	// Short info about clan.
-	// An extra field.
-	Clan struct {
-		// Clan ID
-		ClanId int `json:"clan_id,omitempty"`
-		// Clan creation date
-		CreatedAt UnixTime `json:"created_at,omitempty"`
-		// Number of clan members
-		MembersCount int `json:"members_count,omitempty"`
-		// Clan name
-		Name string `json:"name,omitempty"`
-		// Clan tag
-		Tag string `json:"tag,omitempty"`
-	} `json:"clan,omitempty"`
-}
 
 // WowsClansAccountinfo Method returns player clan data. Player clan data exist only for accounts, that were participating in clan activities: sent join requests, were clan members etc.
 //
@@ -61,7 +35,7 @@ type WowsClansAccountinfo struct {
 //     "zh-cn" &mdash; 中文 
 //     "pt-br" &mdash; Português do Brasil 
 //     "es-mx" &mdash; Español (México)
-func (client *Client) WowsClansAccountinfo(realm Realm, accountId []int, extra []string, fields []string, language string) (*WowsClansAccountinfo, error) {
+func (client *Client) WowsClansAccountinfo(realm Realm, accountId []int, extra []string, fields []string, language string) (*wows.ClansAccountinfo, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -73,7 +47,7 @@ func (client *Client) WowsClansAccountinfo(realm Realm, accountId []int, extra [
 		"language": language,
 	}
 
-	var result *WowsClansAccountinfo
+	var result *wows.ClansAccountinfo
 	err := client.doGetDataRequest(realm, "/wows/clans/accountinfo/", reqParam, &result)
 	return result, err
 }

@@ -1,19 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wows"
 	"strings"
 )
-
-type WowsEncyclopediaBattlearenas struct {
-	// Map ID
-	BattleArenaId int `json:"battle_arena_id,omitempty"`
-	// Map description
-	Description string `json:"description,omitempty"`
-	// URL to the map icon
-	Icon string `json:"icon,omitempty"`
-	// Map name
-	Name string `json:"name,omitempty"`
-}
 
 // WowsEncyclopediaBattlearenas Method returns the information about maps.
 //
@@ -38,7 +28,7 @@ type WowsEncyclopediaBattlearenas struct {
 //     "zh-cn" &mdash; 中文 
 //     "pt-br" &mdash; Português do Brasil 
 //     "es-mx" &mdash; Español (México)
-func (client *Client) WowsEncyclopediaBattlearenas(realm Realm, fields []string, language string) (*WowsEncyclopediaBattlearenas, error) {
+func (client *Client) WowsEncyclopediaBattlearenas(realm Realm, fields []string, language string) (*wows.EncyclopediaBattlearenas, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -48,7 +38,7 @@ func (client *Client) WowsEncyclopediaBattlearenas(realm Realm, fields []string,
 		"language": language,
 	}
 
-	var result *WowsEncyclopediaBattlearenas
+	var result *wows.EncyclopediaBattlearenas
 	err := client.doGetDataRequest(realm, "/wows/encyclopedia/battlearenas/", reqParam, &result)
 	return result, err
 }

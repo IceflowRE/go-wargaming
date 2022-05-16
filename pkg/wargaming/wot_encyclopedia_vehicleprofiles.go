@@ -1,20 +1,10 @@
 package wargaming
 
 import (
-	"strings"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strconv"
+	"strings"
 )
-
-type WotEncyclopediaVehicleprofiles struct {
-	// Standard configuration
-	IsDefault bool `json:"is_default,omitempty"`
-	// Cost in credits
-	PriceCredit int `json:"price_credit,omitempty"`
-	// Vehicle Configuration ID
-	ProfileId string `json:"profile_id,omitempty"`
-	// Vehicle ID
-	TankId int `json:"tank_id,omitempty"`
-}
 
 // WotEncyclopediaVehicleprofiles Method returns vehicle configuration characteristics.
 //
@@ -45,7 +35,7 @@ type WotEncyclopediaVehicleprofiles struct {
 //     
 //     "price_credit" &mdash; by cost in credits 
 //     "-price_credit" &mdash; by cost in credits, in reverse order
-func (client *Client) WotEncyclopediaVehicleprofiles(realm Realm, tankId int, fields []string, language string, orderBy string) (*WotEncyclopediaVehicleprofiles, error) {
+func (client *Client) WotEncyclopediaVehicleprofiles(realm Realm, tankId int, fields []string, language string, orderBy string) (*wot.EncyclopediaVehicleprofiles, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -57,7 +47,7 @@ func (client *Client) WotEncyclopediaVehicleprofiles(realm Realm, tankId int, fi
 		"order_by": orderBy,
 	}
 
-	var result *WotEncyclopediaVehicleprofiles
+	var result *wot.EncyclopediaVehicleprofiles
 	err := client.doGetDataRequest(realm, "/wot/encyclopedia/vehicleprofiles/", reqParam, &result)
 	return result, err
 }

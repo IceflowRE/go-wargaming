@@ -1,15 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgn"
 	"strings"
 )
-
-type WgnServersInfo struct {
-	// Number of online players
-	PlayersOnline int `json:"players_online,omitempty"`
-	// Server ID
-	Server string `json:"server,omitempty"`
-}
 
 // WgnServersInfo Method returns the number of online players on the servers.
 //
@@ -39,7 +33,7 @@ type WgnServersInfo struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WgnServersInfo(realm Realm, fields []string, game []string, language string) (*WgnServersInfo, error) {
+func (client *Client) WgnServersInfo(realm Realm, fields []string, game []string, language string) (*wgn.ServersInfo, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -50,7 +44,7 @@ func (client *Client) WgnServersInfo(realm Realm, fields []string, game []string
 		"language": language,
 	}
 
-	var result *WgnServersInfo
+	var result *wgn.ServersInfo
 	err := client.doGetDataRequest(realm, "/wgn/servers/info/", reqParam, &result)
 	return result, err
 }

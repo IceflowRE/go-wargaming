@@ -2,41 +2,9 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotx"
 	"strings"
 )
-
-type WotxEncyclopediaVehicleupgrades struct {
-	// List of compatible consumables
-	Consumables struct {
-		// Consumable ID
-		ConsumableId int `json:"consumable_id,omitempty"`
-		// Achievement description
-		Description string `json:"description,omitempty"`
-		// URL to image
-		Image string `json:"image,omitempty"`
-		// Vehicle name
-		Name string `json:"name,omitempty"`
-		// Cost in credits
-		PriceCredit int `json:"price_credit,omitempty"`
-		// Cost in gold
-		PriceGold int `json:"price_gold,omitempty"`
-	} `json:"consumables,omitempty"`
-	// List of compatible equipment
-	Equipment struct {
-		// Achievement description
-		Description string `json:"description,omitempty"`
-		// Equipment ID
-		EquipmentId int `json:"equipment_id,omitempty"`
-		// URL to image
-		Image string `json:"image,omitempty"`
-		// Vehicle name
-		Name string `json:"name,omitempty"`
-		// Cost in credits
-		PriceCredit int `json:"price_credit,omitempty"`
-		// Cost in gold
-		PriceGold int `json:"price_gold,omitempty"`
-	} `json:"equipment,omitempty"`
-}
 
 // WotxEncyclopediaVehicleupgrades Method returns list of vehicle equipment and consumables.
 //
@@ -56,7 +24,7 @@ type WotxEncyclopediaVehicleupgrades struct {
 //     "fr" &mdash; Français 
 //     "es" &mdash; Español 
 //     "tr" &mdash; Türkçe
-func (client *Client) WotxEncyclopediaVehicleupgrades(realm Realm, tankId []int, fields []string, language string) (*WotxEncyclopediaVehicleupgrades, error) {
+func (client *Client) WotxEncyclopediaVehicleupgrades(realm Realm, tankId []int, fields []string, language string) (*wotx.EncyclopediaVehicleupgrades, error) {
 	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
@@ -67,7 +35,7 @@ func (client *Client) WotxEncyclopediaVehicleupgrades(realm Realm, tankId []int,
 		"language": language,
 	}
 
-	var result *WotxEncyclopediaVehicleupgrades
+	var result *wotx.EncyclopediaVehicleupgrades
 	err := client.doGetDataRequest(realm, "/wotx/encyclopedia/vehicleupgrades/", reqParam, &result)
 	return result, err
 }

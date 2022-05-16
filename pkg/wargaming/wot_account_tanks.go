@@ -2,28 +2,9 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strings"
 )
-
-type WotAccountTanks struct {
-	// Mastery Badges:
-	// 
-	// 0 — None
-	// 1 — 3rd Class 
-	// 2 — 2nd Class
-	// 3 — 1st Class
-	// 4 — Ace Tanker
-	MarkOfMastery int `json:"mark_of_mastery,omitempty"`
-	// Vehicle ID
-	TankId int `json:"tank_id,omitempty"`
-	// Vehicle statistics
-	Statistics struct {
-		// Battles fought
-		Battles int `json:"battles,omitempty"`
-		// Victories
-		Wins int `json:"wins,omitempty"`
-	} `json:"statistics,omitempty"`
-}
 
 // WotAccountTanks Method returns details on player's vehicles.
 //
@@ -53,7 +34,7 @@ type WotAccountTanks struct {
 //     "ko" &mdash; 한국어
 // tank_id:
 //     Player's vehicle ID. Maximum limit: 100.
-func (client *Client) WotAccountTanks(realm Realm, accountId []int, accessToken string, fields []string, language string, tankId []int) (*WotAccountTanks, error) {
+func (client *Client) WotAccountTanks(realm Realm, accountId []int, accessToken string, fields []string, language string, tankId []int) (*wot.AccountTanks, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -66,7 +47,7 @@ func (client *Client) WotAccountTanks(realm Realm, accountId []int, accessToken 
 		"tank_id": utils.SliceIntToString(tankId, ","),
 	}
 
-	var result *WotAccountTanks
+	var result *wot.AccountTanks
 	err := client.doGetDataRequest(realm, "/wot/account/tanks/", reqParam, &result)
 	return result, err
 }

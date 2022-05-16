@@ -1,42 +1,12 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgn"
 	"strconv"
 	"strings"
 )
 
-type WgnClansList struct {
-	// Clan ID
-	ClanId int `json:"clan_id,omitempty"`
-	// Clan color in HEX #RRGGBB
-	Color string `json:"color,omitempty"`
-	// Clan creation date
-	CreatedAt UnixTime `json:"created_at,omitempty"`
-	// Game where clan was created
-	Game string `json:"game,omitempty"`
-	// Number of clan members
-	MembersCount int `json:"members_count,omitempty"`
-	// Clan name
-	Name string `json:"name,omitempty"`
-	// Clan tag
-	Tag string `json:"tag,omitempty"`
-	// Information on clan emblems in games and on clan portal
-	Emblems struct {
-		// List of links to 195x195 px emblems
-		X195 map[string]string `json:"x195,omitempty"`
-		// List of links to 24x24 px emblems
-		X24 map[string]string `json:"x24,omitempty"`
-		// List of links to 256x256 px emblems
-		X256 map[string]string `json:"x256,omitempty"`
-		// List of links to 32x32 px emblems
-		X32 map[string]string `json:"x32,omitempty"`
-		// List of links to 64x64 px emblems
-		X64 map[string]string `json:"x64,omitempty"`
-	} `json:"emblems,omitempty"`
-}
-
-// WgnClansList Deprecated: Attention! The method is deprecated.
-// Method searches and sorts clans by the following logic:
+// WgnClansList Method searches and sorts clans by the following logic:
 // 
 // exact match of clan tag placed first
 // exact match of clan name placed second
@@ -48,6 +18,8 @@ type WgnClansList struct {
 // Disbanded, NPC and technically frozen clans are excluded from response. Search is executed across World of Tanks and World of Warplanes.This method will be removed. Use method Clans (World of Tanks)
 //
 // https://developers.wargaming.net/reference/all/wgn/clans/list
+//
+// Deprecated: Attention! The method is deprecated.
 //
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
@@ -78,7 +50,7 @@ type WgnClansList struct {
 //     Page number. Default is 1. Min value is 1.
 // search:
 //     Part of name or tag for clan search. Minimum 2 characters
-func (client *Client) WgnClansList(realm Realm, fields []string, game []string, language string, limit int, pageNo int, search string) ([]*WgnClansList, error) {
+func (client *Client) WgnClansList(realm Realm, fields []string, game []string, language string, limit int, pageNo int, search string) ([]*wgn.ClansList, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -92,7 +64,7 @@ func (client *Client) WgnClansList(realm Realm, fields []string, game []string, 
 		"search": search,
 	}
 
-	var result []*WgnClansList
+	var result []*wgn.ClansList
 	err := client.doGetDataRequest(realm, "/wgn/clans/list/", reqParam, &result)
 	return result, err
 }

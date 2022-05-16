@@ -1,38 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotb"
 	"strings"
 )
-
-type WotbEncyclopediaAchievements struct {
-	// Achievement ID
-	AchievementId string `json:"achievement_id,omitempty"`
-	// Condition
-	Condition string `json:"condition,omitempty"`
-	// Achievement description
-	Description string `json:"description,omitempty"`
-	// Image link
-	Image string `json:"image,omitempty"`
-	// Link to large image
-	ImageBig string `json:"image_big,omitempty"`
-	// Achievement name
-	Name string `json:"name,omitempty"`
-	// Order of achievements
-	Order int `json:"order,omitempty"`
-	// Section
-	Section string `json:"section,omitempty"`
-	// Service Record
-	Options struct {
-		// Achievement description
-		Description string `json:"description,omitempty"`
-		// Image link
-		Image string `json:"image,omitempty"`
-		// Link to large image
-		ImageBig string `json:"image_big,omitempty"`
-		// Achievement name
-		Name string `json:"name,omitempty"`
-	} `json:"options,omitempty"`
-}
 
 // WotbEncyclopediaAchievements Method returns information about achievements.
 //
@@ -56,7 +27,7 @@ type WotbEncyclopediaAchievements struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WotbEncyclopediaAchievements(realm Realm, fields []string, language string) (*WotbEncyclopediaAchievements, error) {
+func (client *Client) WotbEncyclopediaAchievements(realm Realm, fields []string, language string) (*wotb.EncyclopediaAchievements, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -66,7 +37,7 @@ func (client *Client) WotbEncyclopediaAchievements(realm Realm, fields []string,
 		"language": language,
 	}
 
-	var result *WotbEncyclopediaAchievements
+	var result *wotb.EncyclopediaAchievements
 	err := client.doGetDataRequest(realm, "/wotb/encyclopedia/achievements/", reqParam, &result)
 	return result, err
 }

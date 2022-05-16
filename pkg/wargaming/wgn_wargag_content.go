@@ -1,49 +1,11 @@
 package wargaming
 
 import (
-	"strings"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgn"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgnTime"
 	"strconv"
+	"strings"
 )
-
-type WgnWargagContent struct {
-	// Publication author ID
-	AccountId int `json:"account_id,omitempty"`
-	// Content category ID
-	CategoryId int `json:"category_id,omitempty"`
-	// Publication ID
-	ContentId int `json:"content_id,omitempty"`
-	// Publication date in UNIX timestamp or ISO 8601
-	CreatedAt UnixTime `json:"created_at,omitempty"`
-	// Publication text
-	Description string `json:"description,omitempty"`
-	// Link to image preview. Available for picture content only.
-	MediaPreviewUrl string `json:"media_preview_url,omitempty"`
-	// Video/image link
-	MediaUrl string `json:"media_url,omitempty"`
-	// Player name
-	Nickname string `json:"nickname,omitempty"`
-	// Current rating
-	Rating int `json:"rating,omitempty"`
-	// Publication topic
-	Subject string `json:"subject,omitempty"`
-	// Tag ID
-	TagId int `json:"tag_id,omitempty"`
-	// Content type
-	Type_ string `json:"type,omitempty"`
-	// Link to original publication
-	WargagUrl string `json:"wargag_url,omitempty"`
-	// Indicates the possibility to vote for content. This data requires a valid access_token for the specified account.
-	AllowedToVote bool `json:"allowed_to_vote,omitempty"`
-	// Content author
-	Author struct {
-		// Author's reputation
-		Reputation int `json:"reputation,omitempty"`
-		// Author's title
-		Status string `json:"status,omitempty"`
-		// Title icon
-		StatusImage string `json:"status_image,omitempty"`
-	} `json:"author,omitempty"`
-}
 
 // WgnWargagContent Method returns information about content.
 //
@@ -80,7 +42,7 @@ type WgnWargagContent struct {
 //     "quote" &mdash; Quote content 
 //     "video" &mdash; Video content 
 //     "picture" &mdash; Image content type
-func (client *Client) WgnWargagContent(realm Realm, accessToken string, accountId int, categoryId int, contentId int, date UnixTime, fields []string, orderBy string, pageNo int, ratingThreshold int, tagId int, type_ string) (*WgnWargagContent, error) {
+func (client *Client) WgnWargagContent(realm Realm, accessToken string, accountId int, categoryId int, contentId int, date wgnTime.UnixTime, fields []string, orderBy string, pageNo int, ratingThreshold int, tagId int, type_ string) (*wgn.WargagContent, error) {
 	if err := ValidateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil, err
 	}
@@ -99,7 +61,7 @@ func (client *Client) WgnWargagContent(realm Realm, accessToken string, accountI
 		"type": type_,
 	}
 
-	var result *WgnWargagContent
+	var result *wgn.WargagContent
 	err := client.doGetDataRequest(realm, "/wgn/wargag/content/", reqParam, &result)
 	return result, err
 }

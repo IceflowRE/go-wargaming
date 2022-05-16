@@ -2,28 +2,9 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wows"
 	"strings"
 )
-
-type WowsEncyclopediaCrewskills struct {
-	// URL to skill icon
-	Icon string `json:"icon,omitempty"`
-	// Name
-	Name string `json:"name,omitempty"`
-	// Tier
-	Tier int `json:"tier,omitempty"`
-	// Skill type ID
-	TypeId int `json:"type_id,omitempty"`
-	// Skill type name
-	TypeName string `json:"type_name,omitempty"`
-	// Skills
-	Perks struct {
-		// Description
-		Description string `json:"description,omitempty"`
-		// Skill ID
-		PerkId int `json:"perk_id,omitempty"`
-	} `json:"perks,omitempty"`
-}
 
 // WowsEncyclopediaCrewskills Method returns information about Commanders' skills.
 //
@@ -50,7 +31,7 @@ type WowsEncyclopediaCrewskills struct {
 //     "es-mx" &mdash; Español (México)
 // skill_id:
 //     Skill ID. Maximum limit: 100.
-func (client *Client) WowsEncyclopediaCrewskills(realm Realm, fields []string, language string, skillId []int) (*WowsEncyclopediaCrewskills, error) {
+func (client *Client) WowsEncyclopediaCrewskills(realm Realm, fields []string, language string, skillId []int) (*wows.EncyclopediaCrewskills, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -61,7 +42,7 @@ func (client *Client) WowsEncyclopediaCrewskills(realm Realm, fields []string, l
 		"skill_id": utils.SliceIntToString(skillId, ","),
 	}
 
-	var result *WowsEncyclopediaCrewskills
+	var result *wows.EncyclopediaCrewskills
 	err := client.doGetDataRequest(realm, "/wows/encyclopedia/crewskills/", reqParam, &result)
 	return result, err
 }

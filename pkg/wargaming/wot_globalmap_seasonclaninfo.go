@@ -1,31 +1,10 @@
 package wargaming
 
 import (
-	"strings"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strconv"
+	"strings"
 )
-
-type WotGlobalmapSeasonclaninfo struct {
-	// Clan info by seasons and vehicle Tiers
-	Seasons struct {
-		// Battles fought
-		Battles int `json:"battles,omitempty"`
-		// Elo rating
-		Elo int `json:"elo,omitempty"`
-		// Current rating
-		Rank int `json:"rank,omitempty"`
-		// Rating changes during previous turn
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Vehicle Tier
-		VehicleLevel int `json:"vehicle_level,omitempty"`
-		// Victory Points
-		VictoryPoints int `json:"victory_points,omitempty"`
-		// Change of Victory Points since last turn calculation
-		VictoryPointsSinceTurn int `json:"victory_points_since_turn,omitempty"`
-		// Victories
-		Wins int `json:"wins,omitempty"`
-	} `json:"seasons,omitempty"`
-}
 
 // WotGlobalmapSeasonclaninfo Method returns clan's statistics for a specific season.
 //
@@ -43,7 +22,7 @@ type WotGlobalmapSeasonclaninfo struct {
 //     "10" &mdash; Vehicles of Tier 10
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-func (client *Client) WotGlobalmapSeasonclaninfo(realm Realm, clanId int, seasonId string, vehicleLevel []string, fields []string) (*WotGlobalmapSeasonclaninfo, error) {
+func (client *Client) WotGlobalmapSeasonclaninfo(realm Realm, clanId int, seasonId string, vehicleLevel []string, fields []string) (*wot.GlobalmapSeasonclaninfo, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -55,7 +34,7 @@ func (client *Client) WotGlobalmapSeasonclaninfo(realm Realm, clanId int, season
 		"fields": strings.Join(fields, ","),
 	}
 
-	var result *WotGlobalmapSeasonclaninfo
+	var result *wot.GlobalmapSeasonclaninfo
 	err := client.doGetDataRequest(realm, "/wot/globalmap/seasonclaninfo/", reqParam, &result)
 	return result, err
 }

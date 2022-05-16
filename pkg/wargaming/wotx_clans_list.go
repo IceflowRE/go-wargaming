@@ -1,26 +1,10 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotx"
 	"strconv"
 	"strings"
 )
-
-type WotxClansList struct {
-	// Clan ID
-	ClanId int `json:"clan_id,omitempty"`
-	// Clan color in HEX #RRGGBB
-	Color string `json:"color,omitempty"`
-	// Clan creation date
-	CreatedAt UnixTime `json:"created_at,omitempty"`
-	// Clan emblems set ID
-	EmblemSetId int `json:"emblem_set_id,omitempty"`
-	// Number of clan members
-	MembersCount int `json:"members_count,omitempty"`
-	// Clan name
-	Name string `json:"name,omitempty"`
-	// Clan tag
-	Tag string `json:"tag,omitempty"`
-}
 
 // WotxClansList Method returns partial list of clans in alphabetical order by clan name or tag.
 //
@@ -44,7 +28,7 @@ type WotxClansList struct {
 //     Page number. Default is 1. Min value is 1.
 // search:
 //     Part of name or tag for clan search. Minimum 2 characters
-func (client *Client) WotxClansList(realm Realm, fields []string, language string, limit int, pageNo int, search string) ([]*WotxClansList, error) {
+func (client *Client) WotxClansList(realm Realm, fields []string, language string, limit int, pageNo int, search string) ([]*wotx.ClansList, error) {
 	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
@@ -57,7 +41,7 @@ func (client *Client) WotxClansList(realm Realm, fields []string, language strin
 		"search": search,
 	}
 
-	var result []*WotxClansList
+	var result []*wotx.ClansList
 	err := client.doGetDataRequest(realm, "/wotx/clans/list/", reqParam, &result)
 	return result, err
 }

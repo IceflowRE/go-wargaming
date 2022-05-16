@@ -1,14 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strconv"
 )
-
-type WotAuthLogin struct {
-	// URL where user is redirected for authentication.
-	// This URL is returned only if parameter nofollow=1 is passed in.
-	Location string `json:"location,omitempty"`
-}
 
 // WotAuthLogin Method authenticates user based on Wargaming.net ID (OpenID) which is used in World of Tanks, World of Tanks Blitz, World of Warships, World of Warplanes, and WarGag.ru. To log in, player must enter email and password used for creating account, or use a social network profile.
 // Authentication is not available for iOS Game Center users in the following cases:
@@ -44,7 +39,7 @@ type WotAuthLogin struct {
 // redirect_uri:
 //     URL where user is redirected after authentication.
 //     By default: api.worldoftanks.ru/wot//blank/
-func (client *Client) WotAuthLogin(realm Realm, display string, expiresAt int, nofollow int, redirectUri string) (*WotAuthLogin, error) {
+func (client *Client) WotAuthLogin(realm Realm, display string, expiresAt int, nofollow int, redirectUri string) (*wot.AuthLogin, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -56,7 +51,7 @@ func (client *Client) WotAuthLogin(realm Realm, display string, expiresAt int, n
 		"redirect_uri": redirectUri,
 	}
 
-	var result *WotAuthLogin
+	var result *wot.AuthLogin
 	err := client.doGetDataRequest(realm, "/wot/auth/login/", reqParam, &result)
 	return result, err
 }

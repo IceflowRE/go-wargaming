@@ -1,20 +1,10 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgn"
 	"strconv"
 	"strings"
 )
-
-type WgnAccountList struct {
-	// Player ID
-	AccountId int `json:"account_id,omitempty"`
-	// Date when player's account was created
-	CreatedAt UnixTime `json:"created_at,omitempty"`
-	// List of games player has played
-	Games []string `json:"games,omitempty"`
-	// Player name
-	Nickname string `json:"nickname,omitempty"`
-}
 
 // WgnAccountList Method returns partial list of players who have ever accessed in any Wargaming game. The list is filtered by name or by initial characters of user name and sorted alphabetically.
 //
@@ -54,7 +44,7 @@ type WgnAccountList struct {
 //     
 //     "startswith" &mdash; Search by initial characters of player name. Minimum length: 3 characters. Maximum length: 24 characters. (by default)
 //     "exact" &mdash; Search by exact match of player name. Case insensitive. You can enter several names, separated with commas (up to 100).
-func (client *Client) WgnAccountList(realm Realm, search string, fields []string, game []string, language string, limit int, type_ string) ([]*WgnAccountList, error) {
+func (client *Client) WgnAccountList(realm Realm, search string, fields []string, game []string, language string, limit int, type_ string) ([]*wgn.AccountList, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -68,7 +58,7 @@ func (client *Client) WgnAccountList(realm Realm, search string, fields []string
 		"type": type_,
 	}
 
-	var result []*WgnAccountList
+	var result []*wgn.AccountList
 	err := client.doGetDataRequest(realm, "/wgn/account/list/", reqParam, &result)
 	return result, err
 }

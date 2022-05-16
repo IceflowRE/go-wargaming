@@ -1,28 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotb"
 	"strings"
 )
-
-type WotbEncyclopediaCrewskills struct {
-	// Skill effect
-	Effect string `json:"effect,omitempty"`
-	// Features
-	Features string `json:"features,omitempty"`
-	// Skill name
-	Name string `json:"name,omitempty"`
-	// Skill ID
-	SkillId string `json:"skill_id,omitempty"`
-	// Tip
-	Tip string `json:"tip,omitempty"`
-	// Vehicle type
-	VehicleType string `json:"vehicle_type,omitempty"`
-	// Skill images
-	Images struct {
-		// URL to large image
-		Large string `json:"large,omitempty"`
-	} `json:"images,omitempty"`
-}
 
 // WotbEncyclopediaCrewskills Method returns information about crew skills.
 //
@@ -50,7 +31,7 @@ type WotbEncyclopediaCrewskills struct {
 //     Skills IDs. Maximum limit: 100.
 // vehicle_type:
 //     Vehicle types. Maximum limit: 100.
-func (client *Client) WotbEncyclopediaCrewskills(realm Realm, fields []string, language string, skillId []string, vehicleType []string) (*WotbEncyclopediaCrewskills, error) {
+func (client *Client) WotbEncyclopediaCrewskills(realm Realm, fields []string, language string, skillId []string, vehicleType []string) (*wotb.EncyclopediaCrewskills, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -62,7 +43,7 @@ func (client *Client) WotbEncyclopediaCrewskills(realm Realm, fields []string, l
 		"vehicle_type": strings.Join(vehicleType, ","),
 	}
 
-	var result *WotbEncyclopediaCrewskills
+	var result *wotb.EncyclopediaCrewskills
 	err := client.doGetDataRequest(realm, "/wotb/encyclopedia/crewskills/", reqParam, &result)
 	return result, err
 }

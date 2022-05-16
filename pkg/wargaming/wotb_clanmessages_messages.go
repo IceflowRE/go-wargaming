@@ -1,36 +1,11 @@
 package wargaming
 
 import (
-	"strings"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotb"
 	"strconv"
+	"strings"
 )
-
-type WotbClanmessagesMessages struct {
-	// Message author ID
-	AuthorId int `json:"author_id,omitempty"`
-	// Clan ID
-	ClanId int `json:"clan_id,omitempty"`
-	// Message creation date
-	CreatedAt UnixTime `json:"created_at,omitempty"`
-	// ID of a player who has changed the message
-	EditorId int `json:"editor_id,omitempty"`
-	// Date when message will become irrelevant
-	ExpiresAt UnixTime `json:"expires_at,omitempty"`
-	// Message importance
-	Importance string `json:"importance,omitempty"`
-	// Number of likes
-	Likes int `json:"likes,omitempty"`
-	// Message text
-	Message string `json:"message,omitempty"`
-	// Message ID
-	MessageId int `json:"message_id,omitempty"`
-	// Message title
-	Title string `json:"title,omitempty"`
-	// Message type
-	Type_ string `json:"type,omitempty"`
-	// Date when message was updated
-	UpdatedAt UnixTime `json:"updated_at,omitempty"`
-}
 
 // WotbClanmessagesMessages Method returns messages of clan message board. If a single message requested by ID, all filters are ignored and total equals null.
 //
@@ -109,7 +84,7 @@ type WotbClanmessagesMessages struct {
 //     "training" &mdash; Training messages 
 //     "meeting" &mdash; Meeting messages 
 //     "battle" &mdash; Battle messages
-func (client *Client) WotbClanmessagesMessages(realm Realm, accessToken string, expiresAfter UnixTime, expiresBefore UnixTime, fields []string, importance string, language string, limit int, messageId int, orderBy []string, pageNo int, status string, type_ string) (*WotbClanmessagesMessages, error) {
+func (client *Client) WotbClanmessagesMessages(realm Realm, accessToken string, expiresAfter wgnTime.UnixTime, expiresBefore wgnTime.UnixTime, fields []string, importance string, language string, limit int, messageId int, orderBy []string, pageNo int, status string, type_ string) (*wotb.ClanmessagesMessages, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -129,7 +104,7 @@ func (client *Client) WotbClanmessagesMessages(realm Realm, accessToken string, 
 		"type": type_,
 	}
 
-	var result *WotbClanmessagesMessages
+	var result *wotb.ClanmessagesMessages
 	err := client.doGetDataRequest(realm, "/wotb/clanmessages/messages/", reqParam, &result)
 	return result, err
 }

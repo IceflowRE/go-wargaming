@@ -1,36 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotx"
 	"strings"
 )
-
-type WotxEncyclopediaAchievements struct {
-	// Award category
-	Category string `json:"category,omitempty"`
-	// Condition
-	Condition string `json:"condition,omitempty"`
-	// Award description
-	Description string `json:"description,omitempty"`
-	// Historical reference
-	HeroInfo string `json:"hero_info,omitempty"`
-	// Award image link
-	Image string `json:"image,omitempty"`
-	// Award name
-	Name string `json:"name,omitempty"`
-	// Award section
-	Section string `json:"section,omitempty"`
-	// Award type
-	Type_ string `json:"type,omitempty"`
-	// Award priority value (used to determine place of award in award list)
-	Weight int `json:"weight,omitempty"`
-	// Award classes (for mastery badges)
-	Options struct {
-		// Award image link
-		Image string `json:"image,omitempty"`
-		// Award name
-		Name string `json:"name,omitempty"`
-	} `json:"options,omitempty"`
-}
 
 // WotxEncyclopediaAchievements Method returns list of awards, medals, ribbons.
 //
@@ -53,7 +26,7 @@ type WotxEncyclopediaAchievements struct {
 //     "fr" &mdash; Français 
 //     "es" &mdash; Español 
 //     "tr" &mdash; Türkçe
-func (client *Client) WotxEncyclopediaAchievements(realm Realm, category []string, fields []string, language string) (*WotxEncyclopediaAchievements, error) {
+func (client *Client) WotxEncyclopediaAchievements(realm Realm, category []string, fields []string, language string) (*wotx.EncyclopediaAchievements, error) {
 	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
@@ -64,7 +37,7 @@ func (client *Client) WotxEncyclopediaAchievements(realm Realm, category []strin
 		"language": language,
 	}
 
-	var result *WotxEncyclopediaAchievements
+	var result *wotx.EncyclopediaAchievements
 	err := client.doGetDataRequest(realm, "/wotx/encyclopedia/achievements/", reqParam, &result)
 	return result, err
 }

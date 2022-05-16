@@ -1,27 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotx"
 	"strings"
 )
-
-type WotxEncyclopediaCrewroles struct {
-	// Crew member qualification
-	Name string `json:"name,omitempty"`
-	// Crew skills and perks
-	Skills struct {
-		// Description of skill or perk
-		Description string `json:"description,omitempty"`
-		// Indicates whether a skill or a perk is dealt with
-		IsPerk bool `json:"is_perk,omitempty"`
-		// Name of skill or perk
-		Name string `json:"name,omitempty"`
-		// Images of skills and perks
-		Images struct {
-			// Link to large image
-			Large string `json:"large,omitempty"`
-		} `json:"images,omitempty"`
-	} `json:"skills,omitempty"`
-}
 
 // WotxEncyclopediaCrewroles Method returns information about crews.
 //
@@ -39,7 +21,7 @@ type WotxEncyclopediaCrewroles struct {
 //     "fr" &mdash; Français 
 //     "es" &mdash; Español 
 //     "tr" &mdash; Türkçe
-func (client *Client) WotxEncyclopediaCrewroles(realm Realm, fields []string, language string) (*WotxEncyclopediaCrewroles, error) {
+func (client *Client) WotxEncyclopediaCrewroles(realm Realm, fields []string, language string) (*wotx.EncyclopediaCrewroles, error) {
 	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
@@ -49,7 +31,7 @@ func (client *Client) WotxEncyclopediaCrewroles(realm Realm, fields []string, la
 		"language": language,
 	}
 
-	var result *WotxEncyclopediaCrewroles
+	var result *wotx.EncyclopediaCrewroles
 	err := client.doGetDataRequest(realm, "/wotx/encyclopedia/crewroles/", reqParam, &result)
 	return result, err
 }

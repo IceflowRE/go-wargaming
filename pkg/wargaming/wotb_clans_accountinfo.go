@@ -2,37 +2,9 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotb"
 	"strings"
 )
-
-type WotbClansAccountinfo struct {
-	// User ID
-	AccountId int `json:"account_id,omitempty"`
-	// Player name
-	AccountName string `json:"account_name,omitempty"`
-	// Clan ID
-	ClanId int `json:"clan_id,omitempty"`
-	// Date when player joined clan
-	JoinedAt UnixTime `json:"joined_at,omitempty"`
-	// Technical position name
-	Role string `json:"role,omitempty"`
-	// Short info about clan.
-	// An extra field.
-	Clan struct {
-		// Clan ID
-		ClanId int `json:"clan_id,omitempty"`
-		// Clan creation date
-		CreatedAt UnixTime `json:"created_at,omitempty"`
-		// Emblems set ID
-		EmblemSetId int `json:"emblem_set_id,omitempty"`
-		// Number of clan members
-		MembersCount int `json:"members_count,omitempty"`
-		// Clan name
-		Name string `json:"name,omitempty"`
-		// Clan tag
-		Tag string `json:"tag,omitempty"`
-	} `json:"clan,omitempty"`
-}
 
 // WotbClansAccountinfo Method returns player clan data. Player clan data exist only for accounts, that were participating in clan activities: sent join requests, were clan members etc.
 //
@@ -62,7 +34,7 @@ type WotbClansAccountinfo struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WotbClansAccountinfo(realm Realm, accountId []int, extra []string, fields []string, language string) (*WotbClansAccountinfo, error) {
+func (client *Client) WotbClansAccountinfo(realm Realm, accountId []int, extra []string, fields []string, language string) (*wotb.ClansAccountinfo, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -74,7 +46,7 @@ func (client *Client) WotbClansAccountinfo(realm Realm, accountId []int, extra [
 		"language": language,
 	}
 
-	var result *WotbClansAccountinfo
+	var result *wotb.ClansAccountinfo
 	err := client.doGetDataRequest(realm, "/wotb/clans/accountinfo/", reqParam, &result)
 	return result, err
 }

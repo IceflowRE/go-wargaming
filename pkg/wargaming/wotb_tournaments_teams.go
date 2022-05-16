@@ -2,33 +2,10 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
-	"strings"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotb"
 	"strconv"
+	"strings"
 )
-
-type WotbTournamentsTeams struct {
-	// Team clan ID
-	ClanId int `json:"clan_id,omitempty"`
-	// Team status
-	Status string `json:"status,omitempty"`
-	// Team ID
-	TeamId int `json:"team_id,omitempty"`
-	// Team name
-	Title string `json:"title,omitempty"`
-	// Tournament ID
-	TournamentId int `json:"tournament_id,omitempty"`
-	// Information on team players
-	Players struct {
-		// Player account ID
-		AccountId int `json:"account_id,omitempty"`
-		// Link to player image
-		Image string `json:"image,omitempty"`
-		// Player name
-		Name string `json:"name,omitempty"`
-		// Technical position name
-		Role string `json:"role,omitempty"`
-	} `json:"players,omitempty"`
-}
 
 // WotbTournamentsTeams Method returns list of teams in tournament.
 //
@@ -60,7 +37,7 @@ type WotbTournamentsTeams struct {
 //     "disqualified" &mdash; team is disqualified
 // team_id:
 //     Team ID. Maximum limit: 25.
-func (client *Client) WotbTournamentsTeams(realm Realm, accountId []int, clanId []int, tournamentId int, fields []string, language string, limit int, pageNo int, search string, status []string, teamId []int) (*WotbTournamentsTeams, error) {
+func (client *Client) WotbTournamentsTeams(realm Realm, accountId []int, clanId []int, tournamentId int, fields []string, language string, limit int, pageNo int, search string, status []string, teamId []int) (*wotb.TournamentsTeams, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -78,7 +55,7 @@ func (client *Client) WotbTournamentsTeams(realm Realm, accountId []int, clanId 
 		"team_id": utils.SliceIntToString(teamId, ","),
 	}
 
-	var result *WotbTournamentsTeams
+	var result *wotb.TournamentsTeams
 	err := client.doGetDataRequest(realm, "/wotb/tournaments/teams/", reqParam, &result)
 	return result, err
 }

@@ -2,15 +2,9 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strings"
 )
-
-type WotTanksMastery struct {
-	// Values of these percentiles for each piece of equipment
-	Distribution map[string]string `json:"distribution,omitempty"`
-	// Date of data update
-	UpdatedAt UnixTime `json:"updated_at,omitempty"`
-}
 
 // WotTanksMastery The method returns percentiles of the distribution of average damage or experience values for each piece of equipment
 //
@@ -43,7 +37,7 @@ type WotTanksMastery struct {
 //     "ko" &mdash; 한국어
 // tank_id:
 //     Player's vehicle ID. Maximum limit: 100.
-func (client *Client) WotTanksMastery(realm Realm, distribution string, percentile []int, fields []string, language string, tankId []int) (*WotTanksMastery, error) {
+func (client *Client) WotTanksMastery(realm Realm, distribution string, percentile []int, fields []string, language string, tankId []int) (*wot.TanksMastery, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -56,7 +50,7 @@ func (client *Client) WotTanksMastery(realm Realm, distribution string, percenti
 		"tank_id": utils.SliceIntToString(tankId, ","),
 	}
 
-	var result *WotTanksMastery
+	var result *wot.TanksMastery
 	err := client.doGetDataRequest(realm, "/wot/tanks/mastery/", reqParam, &result)
 	return result, err
 }

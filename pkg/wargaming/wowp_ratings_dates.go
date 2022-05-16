@@ -2,13 +2,9 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wowp"
 	"strings"
 )
-
-type WowpRatingsDates struct {
-	// Dates with available ratings
-	Dates []UnixTime `json:"dates,omitempty"`
-}
 
 // WowpRatingsDates Method returns dates with available rating data.
 //
@@ -35,7 +31,7 @@ type WowpRatingsDates struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WowpRatingsDates(realm Realm, accountId []int, type_ string, fields []string, language string) (*WowpRatingsDates, error) {
+func (client *Client) WowpRatingsDates(realm Realm, accountId []int, type_ string, fields []string, language string) (*wowp.RatingsDates, error) {
 	if err := ValidateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -47,7 +43,7 @@ func (client *Client) WowpRatingsDates(realm Realm, accountId []int, type_ strin
 		"language": language,
 	}
 
-	var result *WowpRatingsDates
+	var result *wowp.RatingsDates
 	err := client.doGetDataRequest(realm, "/wowp/ratings/dates/", reqParam, &result)
 	return result, err
 }

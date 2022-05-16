@@ -1,71 +1,10 @@
 package wargaming
 
 import (
-	"strings"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wows"
 	"strconv"
+	"strings"
 )
-
-type WowsAccountStatsbydate struct {
-	// Statistics in Co-op Battles.
-	// An extra field.
-	Pve struct {
-		// Player account ID
-		AccountId int `json:"account_id,omitempty"`
-		// Battle type
-		BattleType string `json:"battle_type,omitempty"`
-		// Battles fought
-		Battles int `json:"battles,omitempty"`
-		// Base capture points
-		CapturePoints int `json:"capture_points,omitempty"`
-		// Damage caused
-		DamageDealt int `json:"damage_dealt,omitempty"`
-		// Date in the format "%Y%m%d"
-		Date string `json:"date,omitempty"`
-		// Base defense points
-		DroppedCapturePoints int `json:"dropped_capture_points,omitempty"`
-		// Number of vehicles destroyed
-		Frags int `json:"frags,omitempty"`
-		// Maximum Experience Points per battle, including XP earned with Premium Account
-		MaxXp int `json:"max_xp,omitempty"`
-		// Enemy aircraft destroyed
-		PlanesKilled int `json:"planes_killed,omitempty"`
-		// Battles survived
-		SurvivedBattles int `json:"survived_battles,omitempty"`
-		// Victories
-		Wins int `json:"wins,omitempty"`
-		// Total Experience Points, including XP earned with Premium Account
-		Xp int `json:"xp,omitempty"`
-	} `json:"pve,omitempty"`
-	// Statistics in Random Battles
-	Pvp struct {
-		// Player account ID
-		AccountId int `json:"account_id,omitempty"`
-		// Battle type
-		BattleType string `json:"battle_type,omitempty"`
-		// Battles fought
-		Battles int `json:"battles,omitempty"`
-		// Base capture points
-		CapturePoints int `json:"capture_points,omitempty"`
-		// Damage caused
-		DamageDealt int `json:"damage_dealt,omitempty"`
-		// Date in the format "%Y%m%d"
-		Date string `json:"date,omitempty"`
-		// Base defense points
-		DroppedCapturePoints int `json:"dropped_capture_points,omitempty"`
-		// Number of vehicles destroyed
-		Frags int `json:"frags,omitempty"`
-		// Maximum Experience Points per battle, including XP earned with Premium Account
-		MaxXp int `json:"max_xp,omitempty"`
-		// Enemy aircraft destroyed
-		PlanesKilled int `json:"planes_killed,omitempty"`
-		// Battles survived
-		SurvivedBattles int `json:"survived_battles,omitempty"`
-		// Victories
-		Wins int `json:"wins,omitempty"`
-		// Total Experience Points, including XP earned with Premium Account
-		Xp int `json:"xp,omitempty"`
-	} `json:"pvp,omitempty"`
-}
 
 // WowsAccountStatsbydate Method returns statistics slices by dates in specified time span.
 //
@@ -100,7 +39,7 @@ type WowsAccountStatsbydate struct {
 //     "zh-cn" &mdash; 中文 
 //     "pt-br" &mdash; Português do Brasil 
 //     "es-mx" &mdash; Español (México)
-func (client *Client) WowsAccountStatsbydate(realm Realm, accountId int, accessToken string, dates []string, extra []string, fields []string, language string) (*WowsAccountStatsbydate, error) {
+func (client *Client) WowsAccountStatsbydate(realm Realm, accountId int, accessToken string, dates []string, extra []string, fields []string, language string) (*wows.AccountStatsbydate, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -114,7 +53,7 @@ func (client *Client) WowsAccountStatsbydate(realm Realm, accountId int, accessT
 		"language": language,
 	}
 
-	var result *WowsAccountStatsbydate
+	var result *wows.AccountStatsbydate
 	err := client.doGetDataRequest(realm, "/wows/account/statsbydate/", reqParam, &result)
 	return result, err
 }

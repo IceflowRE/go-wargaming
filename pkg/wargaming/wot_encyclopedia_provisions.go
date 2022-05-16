@@ -1,31 +1,11 @@
 package wargaming
 
 import (
-	"strconv"
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
+	"strconv"
 	"strings"
 )
-
-type WotEncyclopediaProvisions struct {
-	// Achievement description
-	Description string `json:"description,omitempty"`
-	// Image link
-	Image string `json:"image,omitempty"`
-	// Vehicle name
-	Name string `json:"name,omitempty"`
-	// Cost in credits
-	PriceCredit int `json:"price_credit,omitempty"`
-	// Cost in gold
-	PriceGold int `json:"price_gold,omitempty"`
-	// Equipment or consumables ID
-	ProvisionId int `json:"provision_id,omitempty"`
-	// Technical name
-	Tag string `json:"tag,omitempty"`
-	// Type: consumable or equipment
-	Type_ string `json:"type,omitempty"`
-	// Weight in kilos. Used for equipment only.
-	Weight int `json:"weight,omitempty"`
-}
 
 // WotEncyclopediaProvisions Method returns a list of available equipment and consumables.
 //
@@ -60,7 +40,7 @@ type WotEncyclopediaProvisions struct {
 //     
 //     "equipment" &mdash; Consumables 
 //     "optionalDevice" &mdash; Equipment
-func (client *Client) WotEncyclopediaProvisions(realm Realm, fields []string, language string, limit int, pageNo int, provisionId []int, type_ []string) (*WotEncyclopediaProvisions, error) {
+func (client *Client) WotEncyclopediaProvisions(realm Realm, fields []string, language string, limit int, pageNo int, provisionId []int, type_ []string) (*wot.EncyclopediaProvisions, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -74,7 +54,7 @@ func (client *Client) WotEncyclopediaProvisions(realm Realm, fields []string, la
 		"type": strings.Join(type_, ","),
 	}
 
-	var result *WotEncyclopediaProvisions
+	var result *wot.EncyclopediaProvisions
 	err := client.doGetDataRequest(realm, "/wot/encyclopedia/provisions/", reqParam, &result)
 	return result, err
 }

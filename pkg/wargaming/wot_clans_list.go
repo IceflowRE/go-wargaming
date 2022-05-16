@@ -1,37 +1,10 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strconv"
 	"strings"
 )
-
-type WotClansList struct {
-	// Clan ID
-	ClanId int `json:"clan_id,omitempty"`
-	// Clan color in HEX #RRGGBB
-	Color string `json:"color,omitempty"`
-	// Clan creation date
-	CreatedAt UnixTime `json:"created_at,omitempty"`
-	// Number of clan members
-	MembersCount int `json:"members_count,omitempty"`
-	// Clan name
-	Name string `json:"name,omitempty"`
-	// Clan tag
-	Tag string `json:"tag,omitempty"`
-	// Information on clan emblems in games and on clan portal
-	Emblems struct {
-		// List of links to 195x195 px emblems
-		X195 map[string]string `json:"x195,omitempty"`
-		// List of links to 24x24 px emblems
-		X24 map[string]string `json:"x24,omitempty"`
-		// List of links to 256x256 px emblems
-		X256 map[string]string `json:"x256,omitempty"`
-		// List of links to 32x32 px emblems
-		X32 map[string]string `json:"x32,omitempty"`
-		// List of links to 64x64 px emblems
-		X64 map[string]string `json:"x64,omitempty"`
-	} `json:"emblems,omitempty"`
-}
 
 // WotClansList Method searches through clans and sorts them in a specified order.
 //
@@ -61,7 +34,7 @@ type WotClansList struct {
 //     Page number. Default is 1. Min value is 1.
 // search:
 //     Part of name or tag for clan search. Minimum 2 characters
-func (client *Client) WotClansList(realm Realm, fields []string, language string, limit int, pageNo int, search string) ([]*WotClansList, error) {
+func (client *Client) WotClansList(realm Realm, fields []string, language string, limit int, pageNo int, search string) ([]*wot.ClansList, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -74,7 +47,7 @@ func (client *Client) WotClansList(realm Realm, fields []string, language string
 		"search": search,
 	}
 
-	var result []*WotClansList
+	var result []*wot.ClansList
 	err := client.doGetDataRequest(realm, "/wot/clans/list/", reqParam, &result)
 	return result, err
 }

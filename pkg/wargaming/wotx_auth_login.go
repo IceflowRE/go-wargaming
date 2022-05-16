@@ -1,14 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotx"
 	"strconv"
 )
-
-type WotxAuthLogin struct {
-	// URL where user is redirected for authentication.
-	// This URL is returned only if parameter nofollow=1 is passed in.
-	Location string `json:"location,omitempty"`
-}
 
 // WotxAuthLogin Method authenticates user based on PlayStation Network ID which is used in World of Tanks PlayStation 4. To log in, player must enter PlayStation Network ID and password.
 // Information on authorization status is sent to URL specified in redirect_uri parameter.
@@ -62,7 +57,7 @@ type WotxAuthLogin struct {
 // redirect_uri:
 //     URL where user is redirected after authentication.
 //     By default: api-console.worldoftanks.com/wotx//blank/
-func (client *Client) WotxAuthLogin(realm Realm, display string, expiresAt int, language string, nofollow int, redirectUri string) (*WotxAuthLogin, error) {
+func (client *Client) WotxAuthLogin(realm Realm, display string, expiresAt int, language string, nofollow int, redirectUri string) (*wotx.AuthLogin, error) {
 	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
@@ -75,7 +70,7 @@ func (client *Client) WotxAuthLogin(realm Realm, display string, expiresAt int, 
 		"redirect_uri": redirectUri,
 	}
 
-	var result *WotxAuthLogin
+	var result *wotx.AuthLogin
 	err := client.doGetDataRequest(realm, "/wotx/auth/login/", reqParam, &result)
 	return result, err
 }

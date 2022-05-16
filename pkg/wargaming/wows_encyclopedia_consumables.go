@@ -1,34 +1,11 @@
 package wargaming
 
 import (
-	"strconv"
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wows"
+	"strconv"
 	"strings"
 )
-
-type WowsEncyclopediaConsumables struct {
-	// Consumable ID
-	ConsumableId int `json:"consumable_id,omitempty"`
-	// Consumable description
-	Description string `json:"description,omitempty"`
-	// Link to consumable image
-	Image string `json:"image,omitempty"`
-	// Consumable name
-	Name string `json:"name,omitempty"`
-	// Cost in credits
-	PriceCredit int `json:"price_credit,omitempty"`
-	// Cost in doubloons
-	PriceGold int `json:"price_gold,omitempty"`
-	// Consumable type
-	Type_ string `json:"type,omitempty"`
-	// Consumable characteristics
-	Profile struct {
-		// Characteristic description
-		Description string `json:"description,omitempty"`
-		// Characteristic value
-		Value float32 `json:"value,omitempty"`
-	} `json:"profile,omitempty"`
-}
 
 // WowsEncyclopediaConsumables Method returns information about consumables: camouflages, flags, and upgrades.
 //
@@ -67,7 +44,7 @@ type WowsEncyclopediaConsumables struct {
 //     "Permoflage" &mdash; Permanent camouflages 
 //     "Modernization" &mdash; Upgrades 
 //     "Skin" &mdash; Ship camouflages
-func (client *Client) WowsEncyclopediaConsumables(realm Realm, consumableId []int, fields []string, language string, limit int, pageNo int, type_ string) (*WowsEncyclopediaConsumables, error) {
+func (client *Client) WowsEncyclopediaConsumables(realm Realm, consumableId []int, fields []string, language string, limit int, pageNo int, type_ string) (*wows.EncyclopediaConsumables, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -81,7 +58,7 @@ func (client *Client) WowsEncyclopediaConsumables(realm Realm, consumableId []in
 		"type": type_,
 	}
 
-	var result *WowsEncyclopediaConsumables
+	var result *wows.EncyclopediaConsumables
 	err := client.doGetDataRequest(realm, "/wows/encyclopedia/consumables/", reqParam, &result)
 	return result, err
 }

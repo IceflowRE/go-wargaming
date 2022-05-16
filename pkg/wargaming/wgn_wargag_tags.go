@@ -1,16 +1,10 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgn"
 	"strconv"
 	"strings"
 )
-
-type WgnWargagTags struct {
-	// Tag name
-	Name string `json:"name,omitempty"`
-	// Tag ID
-	TagId int `json:"tag_id,omitempty"`
-}
 
 // WgnWargagTags Method returns information about content tags.
 //
@@ -20,7 +14,7 @@ type WgnWargagTags struct {
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 // tag_id:
 //     Tag ID
-func (client *Client) WgnWargagTags(realm Realm, fields []string, tagId int) (*WgnWargagTags, error) {
+func (client *Client) WgnWargagTags(realm Realm, fields []string, tagId int) (*wgn.WargagTags, error) {
 	if err := ValidateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil, err
 	}
@@ -30,7 +24,7 @@ func (client *Client) WgnWargagTags(realm Realm, fields []string, tagId int) (*W
 		"tag_id": strconv.Itoa(tagId),
 	}
 
-	var result *WgnWargagTags
+	var result *wgn.WargagTags
 	err := client.doGetDataRequest(realm, "/wgn/wargag/tags/", reqParam, &result)
 	return result, err
 }

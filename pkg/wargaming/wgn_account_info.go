@@ -2,28 +2,9 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgn"
 	"strings"
 )
-
-type WgnAccountInfo struct {
-	// Player ID
-	AccountId int `json:"account_id,omitempty"`
-	// Date when player's account was created
-	CreatedAt UnixTime `json:"created_at,omitempty"`
-	// List of games player has played
-	Games []string `json:"games,omitempty"`
-	// Player name
-	Nickname string `json:"nickname,omitempty"`
-	// Player's private data
-	Private struct {
-		// Amount of Free Experience
-		FreeXp int `json:"free_xp,omitempty"`
-		// Current gold balance
-		Gold int `json:"gold,omitempty"`
-		// Premium Account expiration date
-		PremiumExpiresAt UnixTime `json:"premium_expires_at,omitempty"`
-	} `json:"private,omitempty"`
-}
 
 // WgnAccountInfo Method returns Wargaming account details.
 //
@@ -51,7 +32,7 @@ type WgnAccountInfo struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WgnAccountInfo(realm Realm, accountId []int, accessToken string, fields []string, language string) (*WgnAccountInfo, error) {
+func (client *Client) WgnAccountInfo(realm Realm, accountId []int, accessToken string, fields []string, language string) (map[string]*wgn.AccountInfo, error) {
 	if err := ValidateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -63,7 +44,7 @@ func (client *Client) WgnAccountInfo(realm Realm, accountId []int, accessToken s
 		"language": language,
 	}
 
-	var result *WgnAccountInfo
+	var result map[string]*wgn.AccountInfo
 	err := client.doGetDataRequest(realm, "/wgn/account/info/", reqParam, &result)
 	return result, err
 }

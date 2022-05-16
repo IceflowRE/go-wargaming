@@ -1,31 +1,10 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strconv"
 	"strings"
 )
-
-type WotGlobalmapEvents struct {
-	// Finishing time
-	End string `json:"end,omitempty"`
-	// Event ID
-	EventId string `json:"event_id,omitempty"`
-	// Event name
-	EventName string `json:"event_name,omitempty"`
-	// Start time
-	Start string `json:"start,omitempty"`
-	// Status
-	Status string `json:"status,omitempty"`
-	// Fronts. Only event fronts are presented in response.
-	Fronts struct {
-		// Front ID
-		FrontId string `json:"front_id,omitempty"`
-		// Front name
-		FrontName string `json:"front_name,omitempty"`
-		// Link to Front
-		Url string `json:"url,omitempty"`
-	} `json:"fronts,omitempty"`
-}
 
 // WotGlobalmapEvents Method returns events information.
 //
@@ -49,7 +28,7 @@ type WotGlobalmapEvents struct {
 //     "PLANNED" &mdash; Upcoming event 
 //     "ACTIVE" &mdash; Current event 
 //     "FINISHED" &mdash; Event is over
-func (client *Client) WotGlobalmapEvents(realm Realm, eventId string, fields []string, language string, limit int, pageNo int, status string) (*WotGlobalmapEvents, error) {
+func (client *Client) WotGlobalmapEvents(realm Realm, eventId string, fields []string, language string, limit int, pageNo int, status string) (*wot.GlobalmapEvents, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -63,7 +42,7 @@ func (client *Client) WotGlobalmapEvents(realm Realm, eventId string, fields []s
 		"status": status,
 	}
 
-	var result *WotGlobalmapEvents
+	var result *wot.GlobalmapEvents
 	err := client.doGetDataRequest(realm, "/wot/globalmap/events/", reqParam, &result)
 	return result, err
 }

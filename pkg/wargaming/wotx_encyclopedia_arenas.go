@@ -1,19 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotx"
 	"strings"
 )
-
-type WotxEncyclopediaArenas struct {
-	// Map ID
-	ArenaId string `json:"arena_id,omitempty"`
-	// Map type
-	CamouflageType string `json:"camouflage_type,omitempty"`
-	// Short map description
-	Description string `json:"description,omitempty"`
-	// Localized map name
-	NameI18N string `json:"name_i18n,omitempty"`
-}
 
 // WotxEncyclopediaArenas Method returns information about maps.
 //
@@ -31,7 +21,7 @@ type WotxEncyclopediaArenas struct {
 //     "fr" &mdash; Français 
 //     "es" &mdash; Español 
 //     "tr" &mdash; Türkçe
-func (client *Client) WotxEncyclopediaArenas(realm Realm, fields []string, language string) (*WotxEncyclopediaArenas, error) {
+func (client *Client) WotxEncyclopediaArenas(realm Realm, fields []string, language string) (*wotx.EncyclopediaArenas, error) {
 	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
@@ -41,7 +31,7 @@ func (client *Client) WotxEncyclopediaArenas(realm Realm, fields []string, langu
 		"language": language,
 	}
 
-	var result *WotxEncyclopediaArenas
+	var result *wotx.EncyclopediaArenas
 	err := client.doGetDataRequest(realm, "/wotx/encyclopedia/arenas/", reqParam, &result)
 	return result, err
 }

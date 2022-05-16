@@ -2,86 +2,11 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
-	"strings"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wowp"
 	"strconv"
+	"strings"
 )
-
-type WowpRatingsAccounts struct {
-	// Player account ID
-	AccountId int `json:"account_id,omitempty"`
-	// Battles fought
-	BattlesCount struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value int `json:"value,omitempty"`
-	} `json:"battles_count,omitempty"`
-	// Total damage caused to aircraft
-	DamageDealt struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value int `json:"value,omitempty"`
-	} `json:"damage_dealt,omitempty"`
-	// Total damage caused to targets
-	DamageDealtGround struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value int `json:"value,omitempty"`
-	} `json:"damage_dealt_ground,omitempty"`
-	// Enemy aircraft destroyed
-	FragsCount struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value int `json:"value,omitempty"`
-	} `json:"frags_count,omitempty"`
-	// Total number of targets destroyed
-	FragsCountGround struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value int `json:"value,omitempty"`
-	} `json:"frags_count_ground,omitempty"`
-	// Victories/Battles ratio
-	WinsRatio struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value float32 `json:"value,omitempty"`
-	} `json:"wins_ratio,omitempty"`
-	// Average experience per battle
-	XpAvg struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value float32 `json:"value,omitempty"`
-	} `json:"xp_avg,omitempty"`
-	// Maximum experience per battle
-	XpMax struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value int `json:"value,omitempty"`
-	} `json:"xp_max,omitempty"`
-}
 
 // WowpRatingsAccounts Method returns player ratings by specified IDs.
 //
@@ -110,7 +35,7 @@ type WowpRatingsAccounts struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WowpRatingsAccounts(realm Realm, accountId []int, date UnixTime, type_ string, fields []string, language string) (*WowpRatingsAccounts, error) {
+func (client *Client) WowpRatingsAccounts(realm Realm, accountId []int, date wgnTime.UnixTime, type_ string, fields []string, language string) (*wowp.RatingsAccounts, error) {
 	if err := ValidateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -123,7 +48,7 @@ func (client *Client) WowpRatingsAccounts(realm Realm, accountId []int, date Uni
 		"language": language,
 	}
 
-	var result *WowpRatingsAccounts
+	var result *wowp.RatingsAccounts
 	err := client.doGetDataRequest(realm, "/wowp/ratings/accounts/", reqParam, &result)
 	return result, err
 }

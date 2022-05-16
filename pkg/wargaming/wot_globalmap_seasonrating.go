@@ -1,32 +1,10 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strconv"
 	"strings"
 )
-
-type WotGlobalmapSeasonrating struct {
-	// Award level
-	AwardLevel string `json:"award_level,omitempty"`
-	// Clan ID
-	ClanId int `json:"clan_id,omitempty"`
-	// Clan color
-	Color string `json:"color,omitempty"`
-	// Clan name
-	Name string `json:"name,omitempty"`
-	// Current rating
-	Rank int `json:"rank,omitempty"`
-	// Rating changes during previous turn
-	RankDelta int `json:"rank_delta,omitempty"`
-	// Clan tag
-	Tag string `json:"tag,omitempty"`
-	// Date of rating calculation
-	UpdatedAt UnixTime `json:"updated_at,omitempty"`
-	// Victory Points
-	VictoryPoints int `json:"victory_points,omitempty"`
-	// Victory Points to get the next award
-	VictoryPointsToNextAward int `json:"victory_points_to_next_award,omitempty"`
-}
 
 // WotGlobalmapSeasonrating Method returns season clan rating.
 //
@@ -46,7 +24,7 @@ type WotGlobalmapSeasonrating struct {
 //     Clans limit. Default is 10. Min value is 1. Maximum value: 100.
 // page_no:
 //     Page number. Default is 1. Min value is 1.
-func (client *Client) WotGlobalmapSeasonrating(realm Realm, seasonId string, vehicleLevel string, fields []string, limit int, pageNo int) (*WotGlobalmapSeasonrating, error) {
+func (client *Client) WotGlobalmapSeasonrating(realm Realm, seasonId string, vehicleLevel string, fields []string, limit int, pageNo int) (*wot.GlobalmapSeasonrating, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -59,7 +37,7 @@ func (client *Client) WotGlobalmapSeasonrating(realm Realm, seasonId string, veh
 		"page_no": strconv.Itoa(pageNo),
 	}
 
-	var result *WotGlobalmapSeasonrating
+	var result *wot.GlobalmapSeasonrating
 	err := client.doGetDataRequest(realm, "/wot/globalmap/seasonrating/", reqParam, &result)
 	return result, err
 }

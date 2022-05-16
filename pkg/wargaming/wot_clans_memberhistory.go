@@ -1,22 +1,10 @@
 package wargaming
 
 import (
-	"strings"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strconv"
+	"strings"
 )
-
-type WotClansMemberhistory struct {
-	// Player account ID
-	AccountId int `json:"account_id,omitempty"`
-	// Clan ID
-	ClanId int `json:"clan_id,omitempty"`
-	// Date when player joined clan
-	JoinedAt UnixTime `json:"joined_at,omitempty"`
-	// Date when player left clan
-	LeftAt UnixTime `json:"left_at,omitempty"`
-	// Last position in clan
-	Role string `json:"role,omitempty"`
-}
 
 // WotClansMemberhistory Method returns information about player's clan history. Data on 10 last clan memberships are presented in the response.This method will be removed. Use method Player's clan history (World of Tanks)
 //
@@ -42,7 +30,7 @@ type WotClansMemberhistory struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WotClansMemberhistory(realm Realm, accountId int, fields []string, language string) (*WotClansMemberhistory, error) {
+func (client *Client) WotClansMemberhistory(realm Realm, accountId int, fields []string, language string) (*wot.ClansMemberhistory, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -53,7 +41,7 @@ func (client *Client) WotClansMemberhistory(realm Realm, accountId int, fields [
 		"language": language,
 	}
 
-	var result *WotClansMemberhistory
+	var result *wot.ClansMemberhistory
 	err := client.doGetDataRequest(realm, "/wot/clans/memberhistory/", reqParam, &result)
 	return result, err
 }

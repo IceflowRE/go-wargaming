@@ -2,18 +2,15 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strings"
 )
 
-type WotRatingsDates struct {
-	// Dates with available ratings
-	Dates []UnixTime `json:"dates,omitempty"`
-}
-
-// WotRatingsDates Deprecated: Attention! The method is deprecated.
-// Method returns dates with available rating data.
+// WotRatingsDates Method returns dates with available rating data.
 //
 // https://developers.wargaming.net/reference/all/wot/ratings/dates
+//
+// Deprecated: Attention! The method is deprecated.
 //
 // account_id:
 //     Player account ID. Maximum limit: 100.
@@ -44,7 +41,7 @@ type WotRatingsDates struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WotRatingsDates(realm Realm, accountId []int, type_ string, battleType string, fields []string, language string) (*WotRatingsDates, error) {
+func (client *Client) WotRatingsDates(realm Realm, accountId []int, type_ string, battleType string, fields []string, language string) (*wot.RatingsDates, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -57,7 +54,7 @@ func (client *Client) WotRatingsDates(realm Realm, accountId []int, type_ string
 		"language": language,
 	}
 
-	var result *WotRatingsDates
+	var result *wot.RatingsDates
 	err := client.doGetDataRequest(realm, "/wot/ratings/dates/", reqParam, &result)
 	return result, err
 }

@@ -1,22 +1,10 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotb"
 	"strconv"
 	"strings"
 )
-
-type WotbClansList struct {
-	// Clan ID
-	ClanId int `json:"clan_id,omitempty"`
-	// Clan creation date
-	CreatedAt UnixTime `json:"created_at,omitempty"`
-	// Number of clan members
-	MembersCount int `json:"members_count,omitempty"`
-	// Clan name
-	Name string `json:"name,omitempty"`
-	// Clan tag
-	Tag string `json:"tag,omitempty"`
-}
 
 // WotbClansList Method searches through clans and sorts them in a specified order.
 //
@@ -46,7 +34,7 @@ type WotbClansList struct {
 //     Page number. Default is 1. Min value is 1.
 // search:
 //     Part of name or tag for clan search. Minimum 2 characters
-func (client *Client) WotbClansList(realm Realm, fields []string, language string, limit int, pageNo int, search string) ([]*WotbClansList, error) {
+func (client *Client) WotbClansList(realm Realm, fields []string, language string, limit int, pageNo int, search string) ([]*wotb.ClansList, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -59,7 +47,7 @@ func (client *Client) WotbClansList(realm Realm, fields []string, language strin
 		"search": search,
 	}
 
-	var result []*WotbClansList
+	var result []*wotb.ClansList
 	err := client.doGetDataRequest(realm, "/wotb/clans/list/", reqParam, &result)
 	return result, err
 }

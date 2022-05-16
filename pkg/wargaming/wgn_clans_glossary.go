@@ -1,20 +1,15 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgn"
 	"strings"
 )
 
-type WgnClansGlossary struct {
-	// Available clan positions
-	ClansRoles map[string]string `json:"clans_roles,omitempty"`
-	// Game with clan entities
-	Game string `json:"game,omitempty"`
-}
-
-// WgnClansGlossary Deprecated: Attention! The method is deprecated.
-// Method returns information on clan entities in World of Tanks and World of Warplanes.This method will be removed. Use method Clan glossary (World of Tanks)
+// WgnClansGlossary Method returns information on clan entities in World of Tanks and World of Warplanes.This method will be removed. Use method Clan glossary (World of Tanks)
 //
 // https://developers.wargaming.net/reference/all/wgn/clans/glossary
+//
+// Deprecated: Attention! The method is deprecated.
 //
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
@@ -39,7 +34,7 @@ type WgnClansGlossary struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WgnClansGlossary(realm Realm, fields []string, game string, language string) (*WgnClansGlossary, error) {
+func (client *Client) WgnClansGlossary(realm Realm, fields []string, game string, language string) (*wgn.ClansGlossary, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -50,7 +45,7 @@ func (client *Client) WgnClansGlossary(realm Realm, fields []string, game string
 		"language": language,
 	}
 
-	var result *WgnClansGlossary
+	var result *wgn.ClansGlossary
 	err := client.doGetDataRequest(realm, "/wgn/clans/glossary/", reqParam, &result)
 	return result, err
 }

@@ -2,24 +2,9 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wowp"
 	"strings"
 )
-
-type WowpAccountAchievements struct {
-	// Player account ID
-	AccountId int `json:"account_id,omitempty"`
-	// Achievements earned
-	Achievements struct {
-		// Number
-		Count int `json:"count,omitempty"`
-		// First time when an achievement was received
-		FirstAt UnixTime `json:"first_at,omitempty"`
-		// Last time when an achievement was received
-		LastAt UnixTime `json:"last_at,omitempty"`
-		// Most number
-		MaxCount int `json:"max_count,omitempty"`
-	} `json:"achievements,omitempty"`
-}
 
 // WowpAccountAchievements Method returns players' achievement details.
 //
@@ -44,7 +29,7 @@ type WowpAccountAchievements struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WowpAccountAchievements(realm Realm, accountId []int, fields []string, language string) (*WowpAccountAchievements, error) {
+func (client *Client) WowpAccountAchievements(realm Realm, accountId []int, fields []string, language string) (*wowp.AccountAchievements, error) {
 	if err := ValidateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -55,7 +40,7 @@ func (client *Client) WowpAccountAchievements(realm Realm, accountId []int, fiel
 		"language": language,
 	}
 
-	var result *WowpAccountAchievements
+	var result *wowp.AccountAchievements
 	err := client.doGetDataRequest(realm, "/wowp/account/achievements/", reqParam, &result)
 	return result, err
 }

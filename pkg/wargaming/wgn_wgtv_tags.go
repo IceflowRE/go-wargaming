@@ -1,38 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgn"
 	"strings"
 )
-
-type WgnWgtvTags struct {
-	// List of categories
-	Categories struct {
-		// Content category ID
-		CategoryId int `json:"category_id,omitempty"`
-		// Localized name of the category
-		Name string `json:"name,omitempty"`
-		// Sort order
-		Order int `json:"order,omitempty"`
-	} `json:"categories,omitempty"`
-	// List of programs
-	Programs struct {
-		// Localized name of the program
-		Name string `json:"name,omitempty"`
-		// Sort order
-		Order int `json:"order,omitempty"`
-		// Program ID
-		ProgramId int `json:"program_id,omitempty"`
-	} `json:"programs,omitempty"`
-	// List of projects
-	Projects struct {
-		// Name of the game project
-		Name string `json:"name,omitempty"`
-		// Sort order
-		Order int `json:"order,omitempty"`
-		// Game project ID
-		ProjectId int `json:"project_id,omitempty"`
-	} `json:"projects,omitempty"`
-}
 
 // WgnWgtvTags Method returns lists of game projects, categories, and programs.
 //
@@ -56,7 +27,7 @@ type WgnWgtvTags struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WgnWgtvTags(realm Realm, fields []string, language string) (*WgnWgtvTags, error) {
+func (client *Client) WgnWgtvTags(realm Realm, fields []string, language string) (*wgn.WgtvTags, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -66,7 +37,7 @@ func (client *Client) WgnWgtvTags(realm Realm, fields []string, language string)
 		"language": language,
 	}
 
-	var result *WgnWgtvTags
+	var result *wgn.WgtvTags
 	err := client.doGetDataRequest(realm, "/wgn/wgtv/tags/", reqParam, &result)
 	return result, err
 }

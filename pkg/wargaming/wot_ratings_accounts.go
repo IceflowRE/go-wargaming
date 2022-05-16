@@ -2,156 +2,17 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
-	"strings"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strconv"
+	"strings"
 )
 
-type WotRatingsAccounts struct {
-	// Player account ID
-	AccountId int `json:"account_id,omitempty"`
-	// Number of battles left to be included in ratings
-	BattlesToPlay int `json:"battles_to_play,omitempty"`
-	// Battles fought
-	BattlesCount struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value int `json:"value,omitempty"`
-	} `json:"battles_count,omitempty"`
-	// Base capture points
-	CapturePoints struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value int `json:"value,omitempty"`
-	} `json:"capture_points,omitempty"`
-	// Average damage caused per battle
-	DamageAvg struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value float32 `json:"value,omitempty"`
-	} `json:"damage_avg,omitempty"`
-	// Total damage caused
-	DamageDealt struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value int `json:"value,omitempty"`
-	} `json:"damage_dealt,omitempty"`
-	// Average number of vehicles destroyed per battle
-	FragsAvg struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value float32 `json:"value,omitempty"`
-	} `json:"frags_avg,omitempty"`
-	// Vehicles destroyed
-	FragsCount struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value int `json:"value,omitempty"`
-	} `json:"frags_count,omitempty"`
-	// Personal rating
-	GlobalRating struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value int `json:"value,omitempty"`
-	} `json:"global_rating,omitempty"`
-	// Hit ratio
-	HitsRatio struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value float32 `json:"value,omitempty"`
-	} `json:"hits_ratio,omitempty"`
-	// Average number of vehicles spotted per battle
-	SpottedAvg struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value float32 `json:"value,omitempty"`
-	} `json:"spotted_avg,omitempty"`
-	// Vehicles spotted
-	SpottedCount struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value int `json:"value,omitempty"`
-	} `json:"spotted_count,omitempty"`
-	// Survive ratio
-	SurvivedRatio struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value float32 `json:"value,omitempty"`
-	} `json:"survived_ratio,omitempty"`
-	// Victories/Battles ratio
-	WinsRatio struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value float32 `json:"value,omitempty"`
-	} `json:"wins_ratio,omitempty"`
-	// Total experience
-	XpAmount struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value int `json:"value,omitempty"`
-	} `json:"xp_amount,omitempty"`
-	// Average experience per battle
-	XpAvg struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value float32 `json:"value,omitempty"`
-	} `json:"xp_avg,omitempty"`
-	// Maximum experience per battle
-	XpMax struct {
-		// Position
-		Rank int `json:"rank,omitempty"`
-		// Change of position in rating
-		RankDelta int `json:"rank_delta,omitempty"`
-		// Absolute value
-		Value int `json:"value,omitempty"`
-	} `json:"xp_max,omitempty"`
-}
-
-// WotRatingsAccounts Deprecated: Attention! The method is deprecated.
-// Method returns player ratings by specified IDs.
+// WotRatingsAccounts Method returns player ratings by specified IDs.
 //
 // https://developers.wargaming.net/reference/all/wot/ratings/accounts
+//
+// Deprecated: Attention! The method is deprecated.
 //
 // account_id:
 //     IDs of player accounts. Maximum limit: 100.
@@ -184,7 +45,7 @@ type WotRatingsAccounts struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WotRatingsAccounts(realm Realm, accountId []int, date UnixTime, type_ string, battleType string, fields []string, language string) (*WotRatingsAccounts, error) {
+func (client *Client) WotRatingsAccounts(realm Realm, accountId []int, date wgnTime.UnixTime, type_ string, battleType string, fields []string, language string) (*wot.RatingsAccounts, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -198,7 +59,7 @@ func (client *Client) WotRatingsAccounts(realm Realm, accountId []int, date Unix
 		"language": language,
 	}
 
-	var result *WotRatingsAccounts
+	var result *wot.RatingsAccounts
 	err := client.doGetDataRequest(realm, "/wot/ratings/accounts/", reqParam, &result)
 	return result, err
 }

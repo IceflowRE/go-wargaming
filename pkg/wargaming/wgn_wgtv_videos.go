@@ -2,45 +2,11 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
-	"strings"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgn"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgnTime"
 	"strconv"
+	"strings"
 )
-
-type WgnWgtvVideos struct {
-	// List of category IDs
-	CategoryId []int `json:"category_id,omitempty"`
-	// Localized description of the video
-	Description string `json:"description,omitempty"`
-	// Video duration in seconds. The field can return null.
-	Duration int `json:"duration,omitempty"`
-	// Name of the video on YouTube
-	ExtTitle string `json:"ext_title,omitempty"`
-	// "Important" mark
-	Important bool `json:"important,omitempty"`
-	// Program ID
-	ProgramId int `json:"program_id,omitempty"`
-	// List of project IDs
-	ProjectId []int `json:"project_id,omitempty"`
-	// Publication date and time
-	PublishedAt UnixTime `json:"published_at,omitempty"`
-	// Localized name of the video
-	Title string `json:"title,omitempty"`
-	// List of IDs of vehicles covered in the video
-	Vehicles map[string]string `json:"vehicles,omitempty"`
-	// Youtube ID
-	VideoId string `json:"video_id,omitempty"`
-	// Youtube link
-	VideoUrl string `json:"video_url,omitempty"`
-	// List of images
-	Thumbnails struct {
-		// Height
-		Height int `json:"height,omitempty"`
-		// Image link
-		Url string `json:"url,omitempty"`
-		// Width
-		Width int `json:"width,omitempty"`
-	} `json:"thumbnails,omitempty"`
-}
 
 // WgnWgtvVideos Method returns list of videos filtered by the specified parameter.
 //
@@ -84,7 +50,7 @@ type WgnWgtvVideos struct {
 //     Vehicle ID. Maximum limit: 100.
 // video_id:
 //     Youtube ID. Maximum limit: 100.
-func (client *Client) WgnWgtvVideos(realm Realm, categoryId []int, dateFrom UnixTime, fields []string, important int, language string, limit int, pageNo int, programId []int, projectId []int, q string, vehicleId []int, videoId []string) (*WgnWgtvVideos, error) {
+func (client *Client) WgnWgtvVideos(realm Realm, categoryId []int, dateFrom wgnTime.UnixTime, fields []string, important int, language string, limit int, pageNo int, programId []int, projectId []int, q string, vehicleId []int, videoId []string) ([]*wgn.WgtvVideos, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -104,7 +70,7 @@ func (client *Client) WgnWgtvVideos(realm Realm, categoryId []int, dateFrom Unix
 		"video_id": strings.Join(videoId, ","),
 	}
 
-	var result *WgnWgtvVideos
+	var result []*wgn.WgtvVideos
 	err := client.doGetDataRequest(realm, "/wgn/wgtv/videos/", reqParam, &result)
 	return result, err
 }

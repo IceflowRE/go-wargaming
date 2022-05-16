@@ -2,12 +2,8 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgn"
 )
-
-type WgnWgtvVehicles struct {
-	// Vehicle IDs by games
-	Vehicles map[string]string `json:"vehicles,omitempty"`
-}
 
 // WgnWgtvVehicles Method returns list of vehicles sorted by games and covered by videos.
 //
@@ -19,7 +15,7 @@ type WgnWgtvVehicles struct {
 //     Program ID. Maximum limit: 100.
 // project_id:
 //     Game project ID. Maximum limit: 100.
-func (client *Client) WgnWgtvVehicles(realm Realm, categoryId []int, programId []int, projectId []int) (*WgnWgtvVehicles, error) {
+func (client *Client) WgnWgtvVehicles(realm Realm, categoryId []int, programId []int, projectId []int) (*wgn.WgtvVehicles, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -30,7 +26,7 @@ func (client *Client) WgnWgtvVehicles(realm Realm, categoryId []int, programId [
 		"project_id": utils.SliceIntToString(projectId, ","),
 	}
 
-	var result *WgnWgtvVehicles
+	var result *wgn.WgtvVehicles
 	err := client.doGetDataRequest(realm, "/wgn/wgtv/vehicles/", reqParam, &result)
 	return result, err
 }

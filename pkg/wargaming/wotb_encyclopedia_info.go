@@ -1,28 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotb"
 	"strings"
 )
-
-type WotbEncyclopediaInfo struct {
-	// Game client version
-	GameVersion string `json:"game_version,omitempty"`
-	// List of supported languages
-	Languages map[string]string `json:"languages,omitempty"`
-	// Time when details on vehicles in Encyclopedia were updated
-	TanksUpdatedAt UnixTime `json:"tanks_updated_at,omitempty"`
-	// Nations available
-	VehicleNations map[string]string `json:"vehicle_nations,omitempty"`
-	// Available vehicle types
-	VehicleTypes map[string]string `json:"vehicle_types,omitempty"`
-	// Award sections
-	AchievementSections struct {
-		// Award section name
-		Name string `json:"name,omitempty"`
-		// Award section order
-		Order int `json:"order,omitempty"`
-	} `json:"achievement_sections,omitempty"`
-}
 
 // WotbEncyclopediaInfo Method returns information about Tankopedia.
 //
@@ -46,7 +27,7 @@ type WotbEncyclopediaInfo struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WotbEncyclopediaInfo(realm Realm, fields []string, language string) (*WotbEncyclopediaInfo, error) {
+func (client *Client) WotbEncyclopediaInfo(realm Realm, fields []string, language string) (*wotb.EncyclopediaInfo, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -56,7 +37,7 @@ func (client *Client) WotbEncyclopediaInfo(realm Realm, fields []string, languag
 		"language": language,
 	}
 
-	var result *WotbEncyclopediaInfo
+	var result *wotb.EncyclopediaInfo
 	err := client.doGetDataRequest(realm, "/wotb/encyclopedia/info/", reqParam, &result)
 	return result, err
 }

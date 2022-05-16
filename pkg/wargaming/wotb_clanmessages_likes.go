@@ -2,15 +2,9 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotb"
 	"strings"
 )
-
-type WotbClanmessagesLikes struct {
-	// Liker Account ID
-	AccountId int `json:"account_id,omitempty"`
-	// Date when message was liked
-	LikedAt UnixTime `json:"liked_at,omitempty"`
-}
 
 // WotbClanmessagesLikes Method returns message likes on clan message board.
 //
@@ -38,7 +32,7 @@ type WotbClanmessagesLikes struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WotbClanmessagesLikes(realm Realm, accessToken string, messageId []int, fields []string, language string) (*WotbClanmessagesLikes, error) {
+func (client *Client) WotbClanmessagesLikes(realm Realm, accessToken string, messageId []int, fields []string, language string) (*wotb.ClanmessagesLikes, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -50,7 +44,7 @@ func (client *Client) WotbClanmessagesLikes(realm Realm, accessToken string, mes
 		"language": language,
 	}
 
-	var result *WotbClanmessagesLikes
+	var result *wotb.ClanmessagesLikes
 	err := client.doGetDataRequest(realm, "/wotb/clanmessages/likes/", reqParam, &result)
 	return result, err
 }

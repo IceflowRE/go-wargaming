@@ -2,14 +2,8 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotx"
 )
-
-type WotxAccountXuidinfo struct {
-	// Player account ID
-	AccountId int `json:"account_id,omitempty"`
-	// Player Microsoft XUID
-	Xuid int `json:"xuid,omitempty"`
-}
 
 // WotxAccountXuidinfo Method returns player details based on the player Microsoft XUID.
 //
@@ -17,7 +11,7 @@ type WotxAccountXuidinfo struct {
 //
 // xuid:
 //     Player Microsoft XUID. Maximum limit: 100.
-func (client *Client) WotxAccountXuidinfo(realm Realm, xuid []int) (*WotxAccountXuidinfo, error) {
+func (client *Client) WotxAccountXuidinfo(realm Realm, xuid []int) (*wotx.AccountXuidinfo, error) {
 	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
@@ -26,7 +20,7 @@ func (client *Client) WotxAccountXuidinfo(realm Realm, xuid []int) (*WotxAccount
 		"xuid": utils.SliceIntToString(xuid, ","),
 	}
 
-	var result *WotxAccountXuidinfo
+	var result *wotx.AccountXuidinfo
 	err := client.doGetDataRequest(realm, "/wotx/account/xuidinfo/", reqParam, &result)
 	return result, err
 }

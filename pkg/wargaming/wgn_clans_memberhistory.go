@@ -1,27 +1,16 @@
 package wargaming
 
 import (
-	"strings"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgn"
 	"strconv"
+	"strings"
 )
 
-type WgnClansMemberhistory struct {
-	// Player account ID
-	AccountId int `json:"account_id,omitempty"`
-	// Clan ID
-	ClanId int `json:"clan_id,omitempty"`
-	// Date when player joined clan
-	JoinedAt UnixTime `json:"joined_at,omitempty"`
-	// Date when player left clan
-	LeftAt UnixTime `json:"left_at,omitempty"`
-	// Last position in clan
-	Role string `json:"role,omitempty"`
-}
-
-// WgnClansMemberhistory Deprecated: Attention! The method is deprecated.
-// Method returns information about player's clan history. Data on 10 last clan memberships are presented in the response.This method will be removed. Use method Player's clan history (World of Tanks)
+// WgnClansMemberhistory Method returns information about player's clan history. Data on 10 last clan memberships are presented in the response.This method will be removed. Use method Player's clan history (World of Tanks)
 //
 // https://developers.wargaming.net/reference/all/wgn/clans/memberhistory
+//
+// Deprecated: Attention! The method is deprecated.
 //
 // account_id:
 //     Account ID. Min value is 1.
@@ -48,7 +37,7 @@ type WgnClansMemberhistory struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WgnClansMemberhistory(realm Realm, accountId int, fields []string, game string, language string) (*WgnClansMemberhistory, error) {
+func (client *Client) WgnClansMemberhistory(realm Realm, accountId int, fields []string, game string, language string) (*wgn.ClansMemberhistory, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -60,7 +49,7 @@ func (client *Client) WgnClansMemberhistory(realm Realm, accountId int, fields [
 		"language": language,
 	}
 
-	var result *WgnClansMemberhistory
+	var result *wgn.ClansMemberhistory
 	err := client.doGetDataRequest(realm, "/wgn/clans/memberhistory/", reqParam, &result)
 	return result, err
 }

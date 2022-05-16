@@ -1,31 +1,10 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strconv"
 	"strings"
 )
-
-type WotGlobalmapSeasons struct {
-	// Finishing time
-	End string `json:"end,omitempty"`
-	// Season ID
-	SeasonId string `json:"season_id,omitempty"`
-	// Season name
-	SeasonName string `json:"season_name,omitempty"`
-	// Start time
-	Start string `json:"start,omitempty"`
-	// Status
-	Status string `json:"status,omitempty"`
-	// Fronts. Only season fronts are presented in response.
-	Fronts struct {
-		// Front ID
-		FrontId string `json:"front_id,omitempty"`
-		// Front name
-		FrontName string `json:"front_name,omitempty"`
-		// Link to Front
-		Url string `json:"url,omitempty"`
-	} `json:"fronts,omitempty"`
-}
 
 // WotGlobalmapSeasons Method returns information about seasons.
 //
@@ -49,7 +28,7 @@ type WotGlobalmapSeasons struct {
 //     "PLANNED" &mdash; Upcoming season 
 //     "ACTIVE" &mdash; Current season 
 //     "FINISHED" &mdash; Season is over
-func (client *Client) WotGlobalmapSeasons(realm Realm, fields []string, language string, limit int, pageNo int, seasonId string, status string) (*WotGlobalmapSeasons, error) {
+func (client *Client) WotGlobalmapSeasons(realm Realm, fields []string, language string, limit int, pageNo int, seasonId string, status string) (*wot.GlobalmapSeasons, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -63,7 +42,7 @@ func (client *Client) WotGlobalmapSeasons(realm Realm, fields []string, language
 		"status": status,
 	}
 
-	var result *WotGlobalmapSeasons
+	var result *wot.GlobalmapSeasons
 	err := client.doGetDataRequest(realm, "/wot/globalmap/seasons/", reqParam, &result)
 	return result, err
 }

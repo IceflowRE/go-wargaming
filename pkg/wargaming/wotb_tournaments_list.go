@@ -1,58 +1,10 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotb"
 	"strconv"
 	"strings"
 )
-
-type WotbTournamentsList struct {
-	// Tournament description
-	Description string `json:"description,omitempty"`
-	// Tournament end date and time
-	EndAt UnixTime `json:"end_at,omitempty"`
-	// Matches start date and time
-	MatchesStartAt UnixTime `json:"matches_start_at,omitempty"`
-	// Registration end date and time
-	RegistrationEndAt UnixTime `json:"registration_end_at,omitempty"`
-	// Registration start date and time
-	RegistrationStartAt UnixTime `json:"registration_start_at,omitempty"`
-	// Tournament start date and time
-	StartAt UnixTime `json:"start_at,omitempty"`
-	// Tournament status
-	Status string `json:"status,omitempty"`
-	// Tournament name
-	Title string `json:"title,omitempty"`
-	// Tournament id
-	TournamentId int `json:"tournament_id,omitempty"`
-	// Award for participating in tournament
-	Award struct {
-		// Award amount
-		Amount int `json:"amount,omitempty"`
-		// Award currency: Free XP, gold or credits
-		Currency string `json:"currency,omitempty"`
-	} `json:"award,omitempty"`
-	// Fee for participating in tournament
-	Fee struct {
-		// Fee amount
-		Amount int `json:"amount,omitempty"`
-		// Fee currency: Free XP, gold or credits
-		Currency string `json:"currency,omitempty"`
-	} `json:"fee,omitempty"`
-	// Tournament Logo
-	Logo struct {
-		// Link to logo
-		Original string `json:"original,omitempty"`
-		// Link to preview
-		Preview string `json:"preview,omitempty"`
-	} `json:"logo,omitempty"`
-	// Award for winning tournament
-	WinnerAward struct {
-		// Winner Award amount
-		Amount int `json:"amount,omitempty"`
-		// Winner Award currency: Free XP, gold or credits
-		Currency string `json:"currency,omitempty"`
-	} `json:"winner_award,omitempty"`
-}
 
 // WotbTournamentsList Method returns list of tournaments.
 //
@@ -79,7 +31,7 @@ type WotbTournamentsList struct {
 //     "running" &mdash; The first match has started 
 //     "finished" &mdash; The last match among all stages has been played 
 //     "complete" &mdash; Tournament has been completed
-func (client *Client) WotbTournamentsList(realm Realm, fields []string, language string, limit int, pageNo int, search string, status []string) ([]*WotbTournamentsList, error) {
+func (client *Client) WotbTournamentsList(realm Realm, fields []string, language string, limit int, pageNo int, search string, status []string) ([]*wotb.TournamentsList, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -93,7 +45,7 @@ func (client *Client) WotbTournamentsList(realm Realm, fields []string, language
 		"status": strings.Join(status, ","),
 	}
 
-	var result []*WotbTournamentsList
+	var result []*wotb.TournamentsList
 	err := client.doGetDataRequest(realm, "/wotb/tournaments/list/", reqParam, &result)
 	return result, err
 }

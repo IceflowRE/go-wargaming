@@ -1,30 +1,10 @@
 package wargaming
 
 import (
-	"strings"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strconv"
+	"strings"
 )
-
-type WotGlobalmapClanbattles struct {
-	// Attack Type: ground, auction, tournament
-	AttackType string `json:"attack_type,omitempty"`
-	// Enemy clan ID
-	CompetitorId int `json:"competitor_id,omitempty"`
-	// Front ID
-	FrontId string `json:"front_id,omitempty"`
-	// Front name
-	FrontName string `json:"front_name,omitempty"`
-	// Province ID
-	ProvinceId string `json:"province_id,omitempty"`
-	// Province name
-	ProvinceName string `json:"province_name,omitempty"`
-	// Battle date and time
-	Time UnixTime `json:"time,omitempty"`
-	// Battle type: attack or defense
-	Type_ string `json:"type,omitempty"`
-	// Vehicle Tier
-	VehicleLevel int `json:"vehicle_level,omitempty"`
-}
 
 // WotGlobalmapClanbattles Method returns list of clan's battles on the Global Map.
 //
@@ -42,7 +22,7 @@ type WotGlobalmapClanbattles struct {
 //     Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
 // page_no:
 //     Page number. Default is 1. Min value is 1.
-func (client *Client) WotGlobalmapClanbattles(realm Realm, clanId int, fields []string, language string, limit int, pageNo int) (*WotGlobalmapClanbattles, error) {
+func (client *Client) WotGlobalmapClanbattles(realm Realm, clanId int, fields []string, language string, limit int, pageNo int) (*wot.GlobalmapClanbattles, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -55,7 +35,7 @@ func (client *Client) WotGlobalmapClanbattles(realm Realm, clanId int, fields []
 		"page_no": strconv.Itoa(pageNo),
 	}
 
-	var result *WotGlobalmapClanbattles
+	var result *wot.GlobalmapClanbattles
 	err := client.doGetDataRequest(realm, "/wot/globalmap/clanbattles/", reqParam, &result)
 	return result, err
 }

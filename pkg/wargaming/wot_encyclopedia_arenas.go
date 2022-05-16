@@ -1,19 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strings"
 )
-
-type WotEncyclopediaArenas struct {
-	// Map ID
-	ArenaId string `json:"arena_id,omitempty"`
-	// Map type
-	CamouflageType string `json:"camouflage_type,omitempty"`
-	// Short map description
-	Description string `json:"description,omitempty"`
-	// Localized map name
-	NameI18N string `json:"name_i18n,omitempty"`
-}
 
 // WotEncyclopediaArenas Method returns information about maps.
 //
@@ -37,7 +27,7 @@ type WotEncyclopediaArenas struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WotEncyclopediaArenas(realm Realm, fields []string, language string) (*WotEncyclopediaArenas, error) {
+func (client *Client) WotEncyclopediaArenas(realm Realm, fields []string, language string) (*wot.EncyclopediaArenas, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -47,7 +37,7 @@ func (client *Client) WotEncyclopediaArenas(realm Realm, fields []string, langua
 		"language": language,
 	}
 
-	var result *WotEncyclopediaArenas
+	var result *wot.EncyclopediaArenas
 	err := client.doGetDataRequest(realm, "/wot/encyclopedia/arenas/", reqParam, &result)
 	return result, err
 }

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 import re
+import shutil
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Optional
 
 import requests
 
@@ -13,35 +13,36 @@ def get(path):
                         headers={'X-Requested-With': 'XMLHttpRequest'}).json()
 
 
-realmToGo = {
-    "asia": "RealmAsia",
-    "eu": "RealmEu",
-    "na": "RealmNa",
-    "ru": "RealmRu",
-    "wgcb": "RealmWgcb",
-}
+def realm_to_go(realm: str) -> str:
+    return {
+        "asia": "RealmAsia",
+        "eu": "RealmEu",
+        "na": "RealmNa",
+        "ru": "RealmRu",
+        "wgcb": "RealmWgcb",
+    }[realm]
 
-typeToGo = {
-    "associative array": "map[string]string",
-    "block_header": "struct",
-    "boolean": "bool",
-    "float": "float32",
-    "list of integers": "[]int",
-    "numeric": "int",
-    "string": "string",
-    "timestamp": "UnixTime",
-    "list of strings": "[]string",
-    "list of timestamps": "[]UnixTime",
-    "list of dicts": "map[string]string",
-    "object": "struct",
-    "timestamp/date": "UnixTime",
 
-    # used in parameters
-    "numeric, list": "[]int",
-    "string, list": "[]string",
-}
+def type_to_go(typ: str) -> str:
+    return {
+        "associative array": "map[string]string",
+        "block_header": "struct",
+        "boolean": "bool",
+        "float": "float32",
+        "list of integers": "[]int",
+        "numeric": "int",
+        "string": "string",
+        "timestamp": "wgnTime.UnixTime",
+        "list of strings": "[]string",
+        "list of timestamps": "[]wgnTime.UnixTime",
+        "list of dicts": "map[string]string",
+        "object": "struct",
+        "timestamp/date": "wgnTime.UnixTime",
 
-rxHtml = re.compile("<.*?>")
+        # used in parameters
+        "numeric, list": "[]int",
+        "string, list": "[]string",
+    }[typ]
 
 
 def name_to_camel(name: str) -> str:
@@ -58,69 +59,160 @@ def name_to_camel_lower(name: str) -> str:
     return new_name[0].lower() + new_name[1:]
 
 
-@dataclass
-class Field:
-    description: str = ""
-    fields: dict[str, 'Field'] = field(default_factory=dict)
-    typ: str = ""
+def camel_to_snake(name: str) -> str:
+    return ''.join(['_' + char.lower() if char.isupper() else char for char in name]).lstrip('_')
 
-    def __setitem__(self, key, value):
-        self.fields[key] = value
+
+rxHtml = re.compile("<.*?>")
+
+
+def clean_documentation(text: str) -> str:
+    return rxHtml.sub("", text).strip("\n")
+
+
+def comment_documentation(text: str) -> str:
+    return "// " + text.replace('\n', "\n// ")
+
+
+def get_base_return_type(method: dict) -> str:
+    if method['key'].endswith("_account_info"):
+        return "map"
+    if method['name'].startswith("List of") or method['slug'] == "list":
+        return "list"
+    return "struct"
+
+
+@dataclass
+class Struct:
+    name: str = ""
+    description: str = ""
+    fields: list = field(default_factory=list)
+    typ: str = ""
+    json_tag: str = ""
+
+    def __lt__(self, other):
+        return self.name < other.name
+
+    def __hash__(self):
+        return hash(self.name)
+
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            return self.name == other.name and self.description == other.description and self.fields == other.fields and self.typ == other.typ
+        elif isinstance(other, str):
+            return self.name == other
+        return False
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
     def __getitem__(self, item):
-        return self.fields[item]
+        for struct in self.fields:
+            if struct.name == item:
+                return struct
+        raise ValueError()
 
+    def __contains__(self, item):
+        for struct in self.fields:
+            if struct.name == item:
+                return True
+        return False
+
+    def get(self, item, default=None):
+        for struct in self.fields:
+            if struct.name == item:
+                return struct
+        return default
+
+    def _get_idx(self, name):
+        for idx, struct in enumerate(self.fields):
+            if struct.name == name:
+                return idx
+        return -1
+
+    # fields may contain nested structure in an unsorted order!
+    # You may get the deepest item before the items above.
     @classmethod
-    def from_list(cls, fields: list) -> 'Field':
-        go_fields = cls()
+    def from_doc(cls, name: str, fields: list) -> 'Struct':
+        base = cls(name=name, typ="struct", json_tag=camel_to_snake(name))
+        if base.name == "type":
+            base.name = "typ"
         for cur_field in fields:
             typ = cur_field['type']
             if typ == 'empty_line':
                 continue
-            go_field: Field = Field(
-                description=rxHtml.sub("", cur_field['description']).rstrip("\n").replace('\n', "\n// "),
-                fields={},
-                typ=typeToGo[typ]
+            go_field: Struct = Struct(
+                name=name_to_camel(cur_field['name'][-1]),
+                json_tag=cur_field['name'][-1],
+                description=clean_documentation(cur_field['description']),
+                typ=type_to_go(typ),
             )
-            cur_go_field: Field = go_fields
-            for idx in range(len(cur_field['name'])):
-                name: str = cur_field['name'][idx]
-                if idx == len(cur_field['name']) - 1:
-                    cur_go_field.fields[name] = go_field
-                    continue
-                if name not in cur_go_field.fields:
-                    cur_go_field.fields[name] = Field()
-                cur_go_field = cur_go_field.fields[name]
-        return go_fields
-
-    @staticmethod
-    def to_str(base: 'Field', lines: Optional[list[str]] = None, depth: int = 1) -> str:
-        if lines is None:
-            lines = []
-        tabs: str = '\t' * depth
-        for name, cur_field in base.fields.items():
-            doc = cur_field.description.replace("\n", f"\n{tabs}")
-            lines.append(f"{tabs}// {doc}")
-            if "struct" in cur_field.typ:
-                lines.append(f"{tabs}{name_to_camel(name)} {cur_field.typ} {'{'}")
-                Field.to_str(cur_field, lines, depth + 1)
-                lines.append(f"{tabs}{'}'} `json:\"{name},omitempty\"`")
+            # get nested struct
+            cur_struct: Struct = base
+            max_depth: int = len(cur_field['name']) - 1
+            for idx, field_name in enumerate(cur_field['name']):
+                field_name = name_to_camel(field_name)
+                if idx == max_depth:
+                    break
+                new_struct = cur_struct.get(field_name)
+                if new_struct is None:
+                    new_struct = Struct(name=field_name)
+                    cur_struct.fields.append(new_struct)
+                cur_struct = new_struct
+            # if already existing update values
+            new_struct: Struct = cur_struct.get(go_field.name)
+            if new_struct is None:
+                cur_struct.fields.append(go_field)
             else:
-                lines.append(f"{tabs}{name_to_camel(name)} {cur_field.typ} `json:\"{name},omitempty\"`")
-        if depth != 1:
-            return ""
-        return '\n'.join(lines)
+                new_struct.description = go_field.description
+                new_struct.typ = go_field.typ
+                new_struct.json_tag = go_field.json_tag
+        return base
 
-    def fix(self, method: str) -> 'Field':
+    def to_code(self, is_root: bool = False) -> tuple[str, set[str]]:
+        imports = set()
+        if "wgnTime.UnixTime" in self.typ:
+            imports.add('"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgnTime"')
+        lines = []
+        if self.description:
+            documentation = self.description.replace('\n', "\n// ")
+            lines.append(f"// {documentation}")
+        json_tag = f'`json:"{self.json_tag},omitempty"`'
+        if is_root:
+            json_tag = ""
+        if "struct" in self.typ:
+            if is_root:
+                lines.append(f"type {self.name} {self.typ} {'{'}")
+            else:
+                lines.append(f"{self.name} {self.typ} {'{'}")
+            fields = self.fields
+            fields.sort(reverse=True)
+            for field in fields:
+                field_code, field_imports = field.to_code()
+                field_str = "\t" + field_code.replace("\n", "\n\t")
+                lines.append(field_str)
+                imports.update(field_imports)
+            lines.append(f'{"}"} {json_tag}')
+        else:
+            lines.append(f'{self.name} {self.typ} {json_tag}')
+        if is_root and imports:
+            imports_l = list(imports)
+            imports_l.sort()
+            lines.insert(0, "import (\n\t" + "\n\t".join(imports) + "\n)\n")
+        return '\n'.join(lines), imports
+
+    # Fix inaccurate wargaming documentation.
+    def fix(self, method: str) -> 'Struct':
         match method:
             case "wot_account_info":
-                self.fields['statistics']['frags'].typ = "map[string]int"
-                self.fields['private']['boosters'].typ = "map[string]struct"
+                self['Statistics']['Frags'].typ = "map[string]int"
+                self['Private']['Boosters'].typ = "map[string]struct"
             case "wot_encyclopedia_vehicles":
-                self.fields['default_profile']['ammo']['stun']['duration'].typ = "[]int"
+                self['DefaultProfile']['Ammo']['Stun']['Duration'].typ = "[]int"
         return self
 
 
+# Api method parameter.
 @dataclass
 class Parameter:
     description: str = ""
@@ -134,173 +226,186 @@ class Parameter:
 
 class Parameters:
     def __init__(self, parameters: list[dict]):
-        params = Parameters._from_list_dict(parameters)
-
-        self.doc: str = Parameters._to_doc(params)
-        self.imports: str = Parameters._to_imports(params)
-        self.method_params: str = Parameters._to_method_params(params)
-        self.req_map: str = Parameters._to_req_map(params)
-
-    @staticmethod
-    def _from_list_dict(parameters: list[dict]) -> list['Parameter']:
-        params = []
+        self._params = []
         for cur_param in parameters:
             if cur_param['name'] == "application_id":
                 continue
-            params.append(Parameter(
-                description=rxHtml.sub("", cur_param['description']).rstrip("\n").replace('\n', "\n//     "),
+            self._params.append(Parameter(
+                description=rxHtml.sub("", cur_param['description']).strip("\n").replace('\n', "\n    "),
                 name=cur_param['name'],
                 required=cur_param.get('required', False),
-                typ=typeToGo[cur_param['type']]
+                typ=type_to_go(cur_param['type']),
             ))
-        params.sort()
-        return params
+        self._params.sort()
 
-    @staticmethod
-    def _to_method_params(params: list['Parameter']) -> str:
+    def method_params(self) -> str:
         parts = []
-        for param in params:
+        for param in self._params:
             parts.append(f"{name_to_camel_lower(param.name)} {param.typ}")
         if parts:
             return ', ' + ', '.join(parts)
         return ""
 
-    @staticmethod
-    def _to_imports(params: list['Parameter']) -> str:
+    def imports(self) -> list[str]:
         imports = set()
-        for param in params:
+        for param in self._params:
             match param.typ:
-                case ("int" | "UnixTime"):
+                case ("int"):
                     imports.add('"strconv"')
-                case "[]string":
-                    imports.add('"strings"')
                 case "[]int":
                     imports.add('"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"')
-        if imports:
-            return '\t' + '\n\t'.join(imports)
-        return ""
+                case "[]string":
+                    imports.add('"strings"')
+                case "wgnTime.UnixTime":
+                    imports.add('"strconv"')
+                    imports.add('"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgnTime"')
 
-    @staticmethod
-    def _to_req_map(params: list['Parameter']) -> str:
+        imports = list(imports)
+        imports.sort()
+        return imports
+
+    def req_map(self) -> str:
         lines = []
-        for param in params:
+        for param in self._params:
             match param.typ:
                 case "int":
                     lines.append(f'\t\t"{param.name}": strconv.Itoa({name_to_camel_lower(param.name)}),')
-                case "[]string":
-                    lines.append(f'\t\t"{param.name}": strings.Join({name_to_camel_lower(param.name)}, ","),')
                 case "[]int":
                     lines.append(f'\t\t"{param.name}": utils.SliceIntToString({name_to_camel_lower(param.name)}, ","),')
-                case "UnixTime":
-                    lines.append(f'\t\t"{param.name}": strconv.FormatInt({name_to_camel_lower(param.name)}.Unix(), 10),')
+                case "[]string":
+                    lines.append(f'\t\t"{param.name}": strings.Join({name_to_camel_lower(param.name)}, ","),')
+                case "wgnTime.UnixTime":
+                    lines.append(
+                        f'\t\t"{param.name}": strconv.FormatInt({name_to_camel_lower(param.name)}.Unix(), 10),')
                 case _:
                     lines.append(f'\t\t"{param.name}": {name_to_camel_lower(param.name)},')
         return '\n'.join(lines)
 
-    @staticmethod
-    def _to_doc(params: list['Parameter']) -> str:
+    def doc(self) -> str:
         lines = []
-        for param in params:
-            lines.append(f'// {param.name}:')
-            lines.append(f"//     {param.description}")
+        for param in self._params:
+            lines.append(f'{param.name}:')
+            lines.append(f"    {param.description}")
         return '\n'.join(lines)
 
 
-@dataclass
-class GoFile:
-    name: str
-    realms: str
-    documentation: str
-    fields: str
-    params: Parameters
-    http_methods: list
-    return_type: str
+class GoApi:
+    def __init__(self, game: str, method: str, base_return_type: str, data: dict):
+        params = Parameters(data['parameters'])
 
+        self.file_name: str = method
+        self.allowed_realms: str = ', '.join([realm_to_go(realm) for realm in data['available_display_indices']])
+        self.documentation: str = clean_documentation(data['description'])
+        self.param_documentation = params.doc()
+        self.game: str = game
+        self.struct: Struct = Struct.from_doc(name_to_camel(method[len(f"{game}_"):]), data.get('fields', [])).fix(
+            method)
+        self.method_params: str = params.method_params()
+        self.http_req_map: str = params.req_map()
+        self.http_methods: list = data['allowed_http_methods']
+        self.return_type: str = ""
+        self.imports: str = ""
+        self.deprecated: bool = data.get('deprecated', False)
 
-def function_to_go(key: str, base_return_type: str, data: dict) -> GoFile:
-    go_file = GoFile(
-        name=key,
-        realms=', '.join([realmToGo[realm] for realm in data['available_display_indices']]),
-        documentation=rxHtml.sub("", data['description']).rstrip("\n").replace('\n', "\n// "),
-        fields=Field.to_str(Field.from_list(data.get('fields', [])).fix(key)),
-        params=Parameters(data['parameters']),
-        http_methods=data['allowed_http_methods'],
-        return_type="",
-    )
-    if data.get('deprecated', False):
-        go_file.documentation = "Deprecated: Attention! The method is deprecated.\n// " + go_file.documentation
-    match base_return_type:
-        case 'list':
-            go_file.return_type = f"[]*{name_to_camel(go_file.name)}"
-        case _:
-            go_file.return_type = f"*{name_to_camel(go_file.name)}"
-    return go_file
+        imports = params.imports()
+        # has fields (returns something)
+        if self.struct.fields:
+            imports.append(f'"github.com/IceflowRE/go-wargaming/pkg/wargaming/{self.game}"')
+        imports.sort()
+        if imports:
+            self.imports = "import (\n\t" + "\n\t".join(imports) + "\n)"
+        match base_return_type:
+            case 'list':
+                self.return_type = f"[]*{self.game}.{self.struct.name}"
+            case 'map':
+                self.return_type = f"map[string]*{self.game}.{self.struct.name}"
+            case _:
+                self.return_type = f"*{self.game}.{self.struct.name}"
 
-
-def gen_api(output: Path):
-    games = get('methods')['data']
-    for game_data in games:
-        for section in game_data['sections']:
-            for method in section['methods']:
-                # method = {'key': 'wot_ratings_accounts', 'slug': 'list'}
-                print(f"Generating {method['key']}")
-
-                data = get(f"methods/{method['key']}")['data']
-                go: GoFile = function_to_go(method['key'], method['slug'], data)
-
-                meth_return_type = f"({go.return_type}, error)" if go.fields else "error"
-                return_struct = ""
-                if go.fields:
-                    return_struct = f"""type {name_to_camel(go.name)} struct {'{'}
-{go.fields}
-{'}'}
-"""
-                imports = ""
-                if go.params.imports:
-                    imports = f"""
-import (
-{go.params.imports}
-)
-"""
-                if go.fields:
-                    req_method = "doGetDataRequest" if "GET" in go.http_methods else "doPostDataRequest"
-                    req_part = f"""
-\tvar result {go.return_type}
-\terr := client.{req_method}(realm, "/{go.name.replace('_', '/')}/", reqParam, &result)
+    def method_file(self) -> str:
+        meth_return_type = f"({self.return_type}, error)" if self.struct.fields else "error"
+        if self.struct.fields:
+            req_method = "doGetDataRequest" if "GET" in self.http_methods else "doPostDataRequest"
+            req_part = f"""
+\tvar result {self.return_type}
+\terr := client.{req_method}(realm, "/{self.file_name.replace('_', '/')}/", reqParam, &result)
 \treturn result, err"""
-                else:
-                    req_method = "doGetRequest" if "GET" in go.http_methods else "doPostRequest"
-                    req_part = f"""
-\terr := client.{req_method}(realm, "/{go.name.replace('_', '/')}/", reqParam)
+        else:
+            req_method = "doGetRequest" if "GET" in self.http_methods else "doPostRequest"
+            req_part = f"""
+\terr := client.{req_method}(realm, "/{self.file_name.replace('_', '/')}/", reqParam)
 \treturn err"""
+        documentation = f"""\n// {name_to_camel(self.file_name)} {comment_documentation(self.documentation)[3:]}
+//
+// https://developers.wargaming.net/reference/all/{self.file_name.replace('_', '/')}"""
+        if self.deprecated:
+            documentation += "\n//\n// Deprecated: Attention! The method is deprecated."
+        if self.param_documentation:
+            documentation += "\n//\n" + comment_documentation(self.param_documentation)
+        return f"""package wargaming
 
-                content = f"""package wargaming
-{imports}
-{return_struct}
-// {name_to_camel(go.name)} {go.documentation}
-//
-// https://developers.wargaming.net/reference/all/{go.name.replace('_', '/')}
-//
-{go.params.doc}
-func (client *Client) {name_to_camel(go.name)}(realm Realm{go.params.method_params}) {meth_return_type} {'{'}
-\tif err := ValidateRealm(realm, []Realm{'{'}{go.realms}{'}'}); err != nil {'{'}
-\t\t{'return nil, err' if go.fields else 'return nil'}
+{self.imports}
+{documentation}
+func (client *Client) {name_to_camel(self.file_name)}(realm Realm{self.method_params}) {meth_return_type} {'{'}
+\tif err := ValidateRealm(realm, []Realm{'{'}{self.allowed_realms}{'}'}); err != nil {'{'}
+\t\t{'return nil, err' if self.struct.fields else 'return nil'}
 \t{'}'}
 
 \treqParam := map[string]string{'{'}
-{go.params.req_map}
+{self.http_req_map}
 \t{'}'}
 {req_part}
 {'}'}
 """
-                output.joinpath(f"{go.name}.go").write_text(content, encoding='utf-8')
+
+    def struct_file(self) -> str:
+        code, _ = self.struct.to_code(True)
+        return f"package " + str(self.game) + "\n\n" + code + "\n"
+
+
+def gen_go_api(game_name: str, method: str, base_return_type: str) -> GoApi:
+    data = get(f"methods/{method}")['data']
+    return GoApi(game_name, method, base_return_type, data)
+
+
+def gen_api(output: Path, games: dict):
+    counter = 0
+    max_methods = 0
+    for game in games:
+        for section in game['sections']:
+            max_methods += len(section['methods'])
+
+    for game in games:
+        game_name = game['slug']
+        if game['sections']:
+            output.joinpath(game_name).mkdir(parents=True, exist_ok=True)
+        for section in game['sections']:
+            for method in section['methods']:
+                counter += 1
+                # method = {'key': 'wot_ratings_accounts', 'slug': 'list'}
+                print(f"Generating ({str(counter).zfill(len(str(max_methods)))}/{max_methods}) {method['key']}")
+
+                go: GoApi = gen_go_api(game_name, method['key'], get_base_return_type(method))
+                output.joinpath(f"{go.file_name}.go").write_text(go.method_file(), encoding='utf-8')
+                if go.struct.fields:
+                    output.joinpath(game_name).joinpath(f"{go.file_name[len(f'{go.game}_'):]}.go").write_text(
+                        go.struct_file(), encoding='utf-8')
 
 
 if __name__ == '__main__':
     output = Path("./pkg/wargaming/")
+
+    games = get('methods')['data']
+    prefixes = [game['slug'] for game in games]
     # remove files
-    for path in output.glob('*.go'):
-        if any([path.name.startswith(prefix) for prefix in ['wgn', 'wot', 'wotb', 'wotx', 'wowp', 'wows']]):
-            path.unlink()
+    print("Remove existing files.")
+    for path in output.iterdir():
+        if path.name == "wgnTime":
+            continue
+        if any([path.name.startswith(prefix) for prefix in prefixes]):
+            if path.is_dir():
+                shutil.rmtree(path)
+            else:
+                path.unlink()
     # gen api files
-    gen_api(output)
+    gen_api(output, games)

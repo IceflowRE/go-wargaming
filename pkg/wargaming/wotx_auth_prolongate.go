@@ -1,17 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotx"
 	"strconv"
 )
-
-type WotxAuthProlongate struct {
-	// Access token is passed to all methods requiring authorization.
-	AccessToken string `json:"access_token,omitempty"`
-	// Player account ID
-	AccountId int `json:"account_id,omitempty"`
-	// Access_token expiration time
-	ExpiresAt UnixTime `json:"expires_at,omitempty"`
-}
 
 // WotxAuthProlongate Method generates new access_token based on the current token.
 // This method is used when the player is still using the application but the current access_token is about to expire.
@@ -23,7 +15,7 @@ type WotxAuthProlongate struct {
 // expires_at:
 //     Access_token expiration time in UNIX. Delta can also be specified in seconds.
 //     Expiration time and delta must not exceed two weeks from the current time.
-func (client *Client) WotxAuthProlongate(realm Realm, accessToken string, expiresAt int) (*WotxAuthProlongate, error) {
+func (client *Client) WotxAuthProlongate(realm Realm, accessToken string, expiresAt int) (*wotx.AuthProlongate, error) {
 	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
@@ -33,7 +25,7 @@ func (client *Client) WotxAuthProlongate(realm Realm, accessToken string, expire
 		"expires_at": strconv.Itoa(expiresAt),
 	}
 
-	var result *WotxAuthProlongate
+	var result *wotx.AuthProlongate
 	err := client.doPostDataRequest(realm, "/wotx/auth/prolongate/", reqParam, &result)
 	return result, err
 }

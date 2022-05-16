@@ -1,16 +1,10 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wows"
 	"strconv"
 	"strings"
 )
-
-type WowsAccountList struct {
-	// Player ID
-	AccountId int `json:"account_id,omitempty"`
-	// Player name
-	Nickname string `json:"nickname,omitempty"`
-}
 
 // WowsAccountList Method returns partial list of players. The list is filtered by initial characters of user name and sorted alphabetically.
 //
@@ -44,7 +38,7 @@ type WowsAccountList struct {
 //     
 //     "startswith" &mdash; Search by initial characters of player name. Minimum length: 3 characters. Maximum length: 24 characters. (by default)
 //     "exact" &mdash; Search by exact match of player name. Case insensitive. You can enter several names, separated with commas (up to 100).
-func (client *Client) WowsAccountList(realm Realm, search string, fields []string, language string, limit int, type_ string) ([]*WowsAccountList, error) {
+func (client *Client) WowsAccountList(realm Realm, search string, fields []string, language string, limit int, type_ string) ([]*wows.AccountList, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -57,7 +51,7 @@ func (client *Client) WowsAccountList(realm Realm, search string, fields []strin
 		"type": type_,
 	}
 
-	var result []*WowsAccountList
+	var result []*wows.AccountList
 	err := client.doGetDataRequest(realm, "/wows/account/list/", reqParam, &result)
 	return result, err
 }

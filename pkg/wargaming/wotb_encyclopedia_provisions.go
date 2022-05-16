@@ -2,25 +2,9 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotb"
 	"strings"
 )
-
-type WotbEncyclopediaProvisions struct {
-	// Localized description
-	DescriptionI18N string `json:"description_i18n,omitempty"`
-	// Localized name
-	NameI18N string `json:"name_i18n,omitempty"`
-	// Cost in credits
-	PriceCredit int `json:"price_credit,omitempty"`
-	// Purchase cost in gold
-	PriceGold int `json:"price_gold,omitempty"`
-	// Equipment or consumable ID
-	ProvisionId int `json:"provision_id,omitempty"`
-	// List of compatible vehicle IDs
-	Tanks []int `json:"tanks,omitempty"`
-	// Type
-	Type_ string `json:"type,omitempty"`
-}
 
 // WotbEncyclopediaProvisions Method returns list of available equipment and consumables.
 //
@@ -53,7 +37,7 @@ type WotbEncyclopediaProvisions struct {
 //     
 //     "equipment" &mdash; Consumables 
 //     "optionalDevice" &mdash; Equipment
-func (client *Client) WotbEncyclopediaProvisions(realm Realm, fields []string, language string, provisionId []int, tankId []int, type_ string) (*WotbEncyclopediaProvisions, error) {
+func (client *Client) WotbEncyclopediaProvisions(realm Realm, fields []string, language string, provisionId []int, tankId []int, type_ string) (*wotb.EncyclopediaProvisions, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -66,7 +50,7 @@ func (client *Client) WotbEncyclopediaProvisions(realm Realm, fields []string, l
 		"type": type_,
 	}
 
-	var result *WotbEncyclopediaProvisions
+	var result *wotb.EncyclopediaProvisions
 	err := client.doGetDataRequest(realm, "/wotb/encyclopedia/provisions/", reqParam, &result)
 	return result, err
 }

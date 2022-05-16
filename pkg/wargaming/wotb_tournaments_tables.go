@@ -2,38 +2,10 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
-	"strings"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotb"
 	"strconv"
+	"strings"
 )
-
-type WotbTournamentsTables struct {
-	// ID of a default clan emblem
-	ClanEmblemPresetId int `json:"clan_emblem_preset_id,omitempty"`
-	// Team clan ID
-	ClanId int `json:"clan_id,omitempty"`
-	// Name of a team's clan
-	ClanLabel string `json:"clan_label,omitempty"`
-	// ID of a team's group
-	GroupId int `json:"group_id,omitempty"`
-	// Sequence number of a group in a stage
-	GroupOrder int `json:"group_order,omitempty"`
-	// Number of matches played by a team
-	MatchesPlayed int `json:"matches_played,omitempty"`
-	// Team's place
-	Position int `json:"position,omitempty"`
-	// Number of the tour in which a team exited the tournament; relevant only for Single Elimination (SE) and Double Elimination (DE) tournament brackets
-	Round int `json:"round,omitempty"`
-	// Stage ID
-	StageId int `json:"stage_id,omitempty"`
-	// Team ID
-	TeamId int `json:"team_id,omitempty"`
-	// Points earned by a team; relevant only for "Round Robin" tournament brackets
-	TeamPoints int `json:"team_points,omitempty"`
-	// Team name
-	Title string `json:"title,omitempty"`
-	// Tournament ID
-	TournamentId int `json:"tournament_id,omitempty"`
-}
 
 // WotbTournamentsTables Method returns tournament brackets.
 //
@@ -55,7 +27,7 @@ type WotbTournamentsTables struct {
 //     Number of returned entries. Default is 10. Min value is 1. Maximum value: 25.
 // page_no:
 //     Result page number. Default is 1. Min value is 1.
-func (client *Client) WotbTournamentsTables(realm Realm, stageId int, tournamentId int, fields []string, groupId []int, language string, limit int, pageNo int) (*WotbTournamentsTables, error) {
+func (client *Client) WotbTournamentsTables(realm Realm, stageId int, tournamentId int, fields []string, groupId []int, language string, limit int, pageNo int) (*wotb.TournamentsTables, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -70,7 +42,7 @@ func (client *Client) WotbTournamentsTables(realm Realm, stageId int, tournament
 		"page_no": strconv.Itoa(pageNo),
 	}
 
-	var result *WotbTournamentsTables
+	var result *wotb.TournamentsTables
 	err := client.doGetDataRequest(realm, "/wotb/tournaments/tables/", reqParam, &result)
 	return result, err
 }

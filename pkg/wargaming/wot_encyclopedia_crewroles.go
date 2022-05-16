@@ -1,17 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strings"
 )
-
-type WotEncyclopediaCrewroles struct {
-	// Сrew qualification name
-	Name string `json:"name,omitempty"`
-	// Сrew qualification ID
-	Role string `json:"role,omitempty"`
-	// List of crew member qualifications
-	Skills []string `json:"skills,omitempty"`
-}
 
 // WotEncyclopediaCrewroles Method returns full description of all crew qualifications.
 //
@@ -37,7 +29,7 @@ type WotEncyclopediaCrewroles struct {
 //     "ko" &mdash; 한국어
 // role:
 //     Сrew qualification ID. Maximum limit: 100.
-func (client *Client) WotEncyclopediaCrewroles(realm Realm, fields []string, language string, role []string) (*WotEncyclopediaCrewroles, error) {
+func (client *Client) WotEncyclopediaCrewroles(realm Realm, fields []string, language string, role []string) (*wot.EncyclopediaCrewroles, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -48,7 +40,7 @@ func (client *Client) WotEncyclopediaCrewroles(realm Realm, fields []string, lan
 		"role": strings.Join(role, ","),
 	}
 
-	var result *WotEncyclopediaCrewroles
+	var result *wot.EncyclopediaCrewroles
 	err := client.doGetDataRequest(realm, "/wot/encyclopedia/crewroles/", reqParam, &result)
 	return result, err
 }

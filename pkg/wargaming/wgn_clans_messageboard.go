@@ -1,28 +1,15 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wgn"
 	"strings"
 )
 
-type WgnClansMessageboard struct {
-	// Message author ID
-	AuthorId int `json:"author_id,omitempty"`
-	// Message creation date
-	CreatedAt UnixTime `json:"created_at,omitempty"`
-	// ID of a player who has changed the message
-	EditorId int `json:"editor_id,omitempty"`
-	// Indicates if the message has been read
-	IsRead bool `json:"is_read,omitempty"`
-	// Message text
-	Message string `json:"message,omitempty"`
-	// Date when message was updated
-	UpdatedAt UnixTime `json:"updated_at,omitempty"`
-}
-
-// WgnClansMessageboard Deprecated: Attention! The method is deprecated.
-// Method returns messages of clan message board.This method will be removed. Use method Message board (World of Tanks)
+// WgnClansMessageboard Method returns messages of clan message board.This method will be removed. Use method Message board (World of Tanks)
 //
 // https://developers.wargaming.net/reference/all/wgn/clans/messageboard
+//
+// Deprecated: Attention! The method is deprecated.
 //
 // access_token:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
@@ -33,7 +20,7 @@ type WgnClansMessageboard struct {
 //     
 //     "wot" &mdash; World of Tanks (by default)
 //     "wowp" &mdash; World of Warplanes
-func (client *Client) WgnClansMessageboard(realm Realm, accessToken string, fields []string, game string) (*WgnClansMessageboard, error) {
+func (client *Client) WgnClansMessageboard(realm Realm, accessToken string, fields []string, game string) (*wgn.ClansMessageboard, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -44,7 +31,7 @@ func (client *Client) WgnClansMessageboard(realm Realm, accessToken string, fiel
 		"game": game,
 	}
 
-	var result *WgnClansMessageboard
+	var result *wgn.ClansMessageboard
 	err := client.doGetDataRequest(realm, "/wgn/clans/messageboard/", reqParam, &result)
 	return result, err
 }

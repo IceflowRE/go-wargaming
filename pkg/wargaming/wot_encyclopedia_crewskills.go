@@ -1,26 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strings"
 )
-
-type WotEncyclopediaCrewskills struct {
-	// Skill description
-	Description string `json:"description,omitempty"`
-	// Indicates if it is a perk
-	IsPerk bool `json:"is_perk,omitempty"`
-	// Skill name
-	Name string `json:"name,omitempty"`
-	// Skill ID
-	Skill string `json:"skill,omitempty"`
-	// URL to skill icon
-	ImageUrl struct {
-		// URL to large image
-		BigIcon string `json:"big_icon,omitempty"`
-		// URL to small image
-		SmallIcon string `json:"small_icon,omitempty"`
-	} `json:"image_url,omitempty"`
-}
 
 // WotEncyclopediaCrewskills Method returns full description of all crew skills.
 //
@@ -48,7 +31,7 @@ type WotEncyclopediaCrewskills struct {
 //     Сrew qualification ID
 // skill:
 //     Skill ID. Maximum limit: 100.
-func (client *Client) WotEncyclopediaCrewskills(realm Realm, fields []string, language string, role string, skill []string) (*WotEncyclopediaCrewskills, error) {
+func (client *Client) WotEncyclopediaCrewskills(realm Realm, fields []string, language string, role string, skill []string) (*wot.EncyclopediaCrewskills, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -60,7 +43,7 @@ func (client *Client) WotEncyclopediaCrewskills(realm Realm, fields []string, la
 		"skill": strings.Join(skill, ","),
 	}
 
-	var result *WotEncyclopediaCrewskills
+	var result *wot.EncyclopediaCrewskills
 	err := client.doGetDataRequest(realm, "/wot/encyclopedia/crewskills/", reqParam, &result)
 	return result, err
 }

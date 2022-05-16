@@ -2,52 +2,9 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strings"
 )
-
-type WotGlobalmapClanprovinces struct {
-	// Map ID
-	ArenaId string `json:"arena_id,omitempty"`
-	// Localized map name
-	ArenaName string `json:"arena_name,omitempty"`
-	// Clan ID
-	ClanId int `json:"clan_id,omitempty"`
-	// Daily income
-	DailyRevenue int `json:"daily_revenue,omitempty"`
-	// Front ID
-	FrontId string `json:"front_id,omitempty"`
-	// Front name
-	FrontName string `json:"front_name,omitempty"`
-	// Indicates the landing type of a province
-	LandingType string `json:"landing_type,omitempty"`
-	// Maximum vehicle Tier in a Front
-	MaxVehicleLevel int `json:"max_vehicle_level,omitempty"`
-	// Date when province will restore its revenue after ransack
-	PillageEndAt string `json:"pillage_end_at,omitempty"`
-	// Prime Time in UTC
-	PrimeTime string `json:"prime_time,omitempty"`
-	// Province ID
-	ProvinceId string `json:"province_id,omitempty"`
-	// Province name
-	ProvinceName string `json:"province_name,omitempty"`
-	// Income level from 0 to 11. 0 value means that income was not raised.
-	RevenueLevel int `json:"revenue_level,omitempty"`
-	// Province owned (number of turns)
-	TurnsOwned int `json:"turns_owned,omitempty"`
-	// Restricted province information
-	Private struct {
-		// Indicates availability of connection to the Headquarters
-		HqConnected bool `json:"hq_connected,omitempty"`
-		// Province income limit. Valid values:
-		// 
-		// 
-		// False—this province income is not blocked due to reaching province income limit. Though, it might be blocked by event rules.
-		// 
-		// 
-		// True—this province income is blocked, as province income limit has been reached.
-		IsRevenueLimitExceeded bool `json:"is_revenue_limit_exceeded,omitempty"`
-	} `json:"private,omitempty"`
-}
 
 // WotGlobalmapClanprovinces Method returns lists of clans provinces.
 //
@@ -63,7 +20,7 @@ type WotGlobalmapClanprovinces struct {
 //     Language. Default is "ru". Valid values:
 //     
 //     "ru" &mdash; Russian (by default)
-func (client *Client) WotGlobalmapClanprovinces(realm Realm, clanId []int, accessToken string, fields []string, language string) (*WotGlobalmapClanprovinces, error) {
+func (client *Client) WotGlobalmapClanprovinces(realm Realm, clanId []int, accessToken string, fields []string, language string) (*wot.GlobalmapClanprovinces, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -75,7 +32,7 @@ func (client *Client) WotGlobalmapClanprovinces(realm Realm, clanId []int, acces
 		"language": language,
 	}
 
-	var result *WotGlobalmapClanprovinces
+	var result *wot.GlobalmapClanprovinces
 	err := client.doGetDataRequest(realm, "/wot/globalmap/clanprovinces/", reqParam, &result)
 	return result, err
 }

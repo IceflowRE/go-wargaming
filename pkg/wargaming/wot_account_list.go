@@ -1,16 +1,10 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strconv"
 	"strings"
 )
-
-type WotAccountList struct {
-	// Player ID
-	AccountId int `json:"account_id,omitempty"`
-	// Player name
-	Nickname string `json:"nickname,omitempty"`
-}
 
 // WotAccountList Method returns partial list of players. The list is filtered by initial characters of user name and sorted alphabetically.
 //
@@ -43,7 +37,7 @@ type WotAccountList struct {
 //     
 //     "startswith" &mdash; Search by initial characters of player name. Minimum length: 3 characters. Maximum length: 24 characters. (by default)
 //     "exact" &mdash; Search by exact match of player name. Case insensitive. You can enter several names, separated with commas (up to 100).
-func (client *Client) WotAccountList(realm Realm, search string, fields []string, language string, limit int, type_ string) ([]*WotAccountList, error) {
+func (client *Client) WotAccountList(realm Realm, search string, fields []string, language string, limit int, type_ string) ([]*wot.AccountList, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -56,7 +50,7 @@ func (client *Client) WotAccountList(realm Realm, search string, fields []string
 		"type": type_,
 	}
 
-	var result []*WotAccountList
+	var result []*wot.AccountList
 	err := client.doGetDataRequest(realm, "/wot/account/list/", reqParam, &result)
 	return result, err
 }

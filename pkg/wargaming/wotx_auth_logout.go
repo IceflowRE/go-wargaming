@@ -1,6 +1,7 @@
 package wargaming
 
 
+
 // WotxAuthLogout Method deletes user's access_token.
 // After this method is called, access_token becomes invalid.
 //

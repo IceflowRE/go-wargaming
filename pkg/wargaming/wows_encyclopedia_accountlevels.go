@@ -1,17 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wows"
 	"strings"
 )
-
-type WowsEncyclopediaAccountlevels struct {
-	// URL to Service Record level icon
-	Image string `json:"image,omitempty"`
-	// Points to achieve the Service Record level
-	Points int `json:"points,omitempty"`
-	// Service Record level
-	Tier int `json:"tier,omitempty"`
-}
 
 // WowsEncyclopediaAccountlevels Method returns information about Service Record levels.
 //
@@ -19,7 +11,7 @@ type WowsEncyclopediaAccountlevels struct {
 //
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-func (client *Client) WowsEncyclopediaAccountlevels(realm Realm, fields []string) (*WowsEncyclopediaAccountlevels, error) {
+func (client *Client) WowsEncyclopediaAccountlevels(realm Realm, fields []string) (*wows.EncyclopediaAccountlevels, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -28,7 +20,7 @@ func (client *Client) WowsEncyclopediaAccountlevels(realm Realm, fields []string
 		"fields": strings.Join(fields, ","),
 	}
 
-	var result *WowsEncyclopediaAccountlevels
+	var result *wows.EncyclopediaAccountlevels
 	err := client.doGetDataRequest(realm, "/wows/encyclopedia/accountlevels/", reqParam, &result)
 	return result, err
 }

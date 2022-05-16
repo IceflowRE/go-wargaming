@@ -2,15 +2,9 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotb"
 	"strings"
 )
-
-type WotbAccountAchievements struct {
-	// Achievements earned
-	Achievements map[string]string `json:"achievements,omitempty"`
-	// Maximum values of achievement series
-	MaxSeries map[string]string `json:"max_series,omitempty"`
-}
 
 // WotbAccountAchievements Method returns players' achievement details.
 //
@@ -36,7 +30,7 @@ type WotbAccountAchievements struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WotbAccountAchievements(realm Realm, accountId []int, fields []string, language string) (*WotbAccountAchievements, error) {
+func (client *Client) WotbAccountAchievements(realm Realm, accountId []int, fields []string, language string) (*wotb.AccountAchievements, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -47,7 +41,7 @@ func (client *Client) WotbAccountAchievements(realm Realm, accountId []int, fiel
 		"language": language,
 	}
 
-	var result *WotbAccountAchievements
+	var result *wotb.AccountAchievements
 	err := client.doGetDataRequest(realm, "/wotb/account/achievements/", reqParam, &result)
 	return result, err
 }

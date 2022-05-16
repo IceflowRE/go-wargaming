@@ -1,22 +1,10 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wows"
 	"strconv"
 	"strings"
 )
-
-type WowsClansList struct {
-	// Clan ID
-	ClanId int `json:"clan_id,omitempty"`
-	// Clan creation date
-	CreatedAt UnixTime `json:"created_at,omitempty"`
-	// Number of clan members
-	MembersCount int `json:"members_count,omitempty"`
-	// Clan name
-	Name string `json:"name,omitempty"`
-	// Clan tag
-	Tag string `json:"tag,omitempty"`
-}
 
 // WowsClansList Method searches through clans and sorts them in a specified order.
 //
@@ -47,7 +35,7 @@ type WowsClansList struct {
 //     Page number. Default is 1. Min value is 1.
 // search:
 //     Part of name or tag for clan search. Minimum 2 characters
-func (client *Client) WowsClansList(realm Realm, fields []string, language string, limit int, pageNo int, search string) ([]*WowsClansList, error) {
+func (client *Client) WowsClansList(realm Realm, fields []string, language string, limit int, pageNo int, search string) ([]*wows.ClansList, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -60,7 +48,7 @@ func (client *Client) WowsClansList(realm Realm, fields []string, language strin
 		"search": search,
 	}
 
-	var result []*WowsClansList
+	var result []*wows.ClansList
 	err := client.doGetDataRequest(realm, "/wows/clans/list/", reqParam, &result)
 	return result, err
 }

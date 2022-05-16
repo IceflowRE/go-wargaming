@@ -2,17 +2,9 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotx"
 	"strings"
 )
-
-type WotxAccountAchievements struct {
-	// Achievements earned
-	Achievements map[string]string `json:"achievements,omitempty"`
-	// Maximum values of achievement series
-	MaxSeries map[string]string `json:"max_series,omitempty"`
-	// Ribbons earned
-	Ribbons map[string]string `json:"ribbons,omitempty"`
-}
 
 // WotxAccountAchievements Method returns players' achievement details.
 // Achievement properties define the achievements field values
@@ -37,7 +29,7 @@ type WotxAccountAchievements struct {
 //     "fr" &mdash; Français 
 //     "es" &mdash; Español 
 //     "tr" &mdash; Türkçe
-func (client *Client) WotxAccountAchievements(realm Realm, accountId []int, fields []string, language string) (*WotxAccountAchievements, error) {
+func (client *Client) WotxAccountAchievements(realm Realm, accountId []int, fields []string, language string) (*wotx.AccountAchievements, error) {
 	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
@@ -48,7 +40,7 @@ func (client *Client) WotxAccountAchievements(realm Realm, accountId []int, fiel
 		"language": language,
 	}
 
-	var result *WotxAccountAchievements
+	var result *wotx.AccountAchievements
 	err := client.doGetDataRequest(realm, "/wotx/account/achievements/", reqParam, &result)
 	return result, err
 }

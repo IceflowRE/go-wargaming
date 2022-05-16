@@ -1,16 +1,13 @@
 package wargaming
 
-type WowpEncyclopediaInfo struct {
-	// Date when Encyclopedia data were updated
-	UpdatedAt UnixTime `json:"updated_at,omitempty"`
-}
+import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wowp"
+)
 
 // WowpEncyclopediaInfo Method returns information about Encyclopedia.
 //
 // https://developers.wargaming.net/reference/all/wowp/encyclopedia/info
-//
-
-func (client *Client) WowpEncyclopediaInfo(realm Realm) (*WowpEncyclopediaInfo, error) {
+func (client *Client) WowpEncyclopediaInfo(realm Realm) (*wowp.EncyclopediaInfo, error) {
 	if err := ValidateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -19,7 +16,7 @@ func (client *Client) WowpEncyclopediaInfo(realm Realm) (*WowpEncyclopediaInfo, 
 
 	}
 
-	var result *WowpEncyclopediaInfo
+	var result *wowp.EncyclopediaInfo
 	err := client.doGetDataRequest(realm, "/wowp/encyclopedia/info/", reqParam, &result)
 	return result, err
 }

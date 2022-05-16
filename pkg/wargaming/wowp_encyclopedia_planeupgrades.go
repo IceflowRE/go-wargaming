@@ -2,38 +2,9 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wowp"
 	"strings"
 )
-
-type WowpEncyclopediaPlaneupgrades struct {
-	// Slot name
-	SlotName string `json:"slot_name,omitempty"`
-	// Localized slot_name field
-	SlotNameI18N string `json:"slot_name_i18n,omitempty"`
-	// Modules available
-	Modules struct {
-		// ID of unique bind of slot and module
-		BindId int `json:"bind_id,omitempty"`
-		// Incompatible modules
-		Conflicts []string `json:"conflicts,omitempty"`
-		// Number of installed modules
-		Count int `json:"count,omitempty"`
-		// List of IDs of incompatible modules
-		IncompatibleModules []int `json:"incompatible_modules,omitempty"`
-		// Indicates if the module is standard
-		IsDefault bool `json:"is_default,omitempty"`
-		// Module ID
-		ModuleId int `json:"module_id,omitempty"`
-		// Module name
-		Name string `json:"name,omitempty"`
-		// Aircraft ID to be opened with module research
-		NextPlaneId int `json:"next_plane_id,omitempty"`
-		// Name of parent module in Tech Tree
-		Parent string `json:"parent,omitempty"`
-		// Parent module ID in Tech Tree
-		ParentId int `json:"parent_id,omitempty"`
-	} `json:"modules,omitempty"`
-}
 
 // WowpEncyclopediaPlaneupgrades Method returns information from Encyclopedia about slots of aircrafts and lists of modules which are compatible with specified slots.
 //
@@ -58,7 +29,7 @@ type WowpEncyclopediaPlaneupgrades struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WowpEncyclopediaPlaneupgrades(realm Realm, planeId []int, fields []string, language string) (*WowpEncyclopediaPlaneupgrades, error) {
+func (client *Client) WowpEncyclopediaPlaneupgrades(realm Realm, planeId []int, fields []string, language string) (*wowp.EncyclopediaPlaneupgrades, error) {
 	if err := ValidateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -69,7 +40,7 @@ func (client *Client) WowpEncyclopediaPlaneupgrades(realm Realm, planeId []int, 
 		"language": language,
 	}
 
-	var result *WowpEncyclopediaPlaneupgrades
+	var result *wowp.EncyclopediaPlaneupgrades
 	err := client.doGetDataRequest(realm, "/wowp/encyclopedia/planeupgrades/", reqParam, &result)
 	return result, err
 }

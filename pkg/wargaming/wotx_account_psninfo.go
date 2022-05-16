@@ -1,15 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotx"
 	"strings"
 )
-
-type WotxAccountPsninfo struct {
-	// Account ID
-	AccountId int `json:"account_id,omitempty"`
-	// Play Station UID
-	Psnid string `json:"psnid,omitempty"`
-}
 
 // WotxAccountPsninfo Method returns player data based on Play Station UID
 //
@@ -17,7 +11,7 @@ type WotxAccountPsninfo struct {
 //
 // psnid:
 //     Play Station UID. Maximum limit: 100.
-func (client *Client) WotxAccountPsninfo(realm Realm, psnid []string) (*WotxAccountPsninfo, error) {
+func (client *Client) WotxAccountPsninfo(realm Realm, psnid []string) (*wotx.AccountPsninfo, error) {
 	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
@@ -26,7 +20,7 @@ func (client *Client) WotxAccountPsninfo(realm Realm, psnid []string) (*WotxAcco
 		"psnid": strings.Join(psnid, ","),
 	}
 
-	var result *WotxAccountPsninfo
+	var result *wotx.AccountPsninfo
 	err := client.doGetDataRequest(realm, "/wotx/account/psninfo/", reqParam, &result)
 	return result, err
 }

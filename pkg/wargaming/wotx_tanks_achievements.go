@@ -2,24 +2,10 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
-	"strings"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotx"
 	"strconv"
+	"strings"
 )
-
-type WotxTanksAchievements struct {
-	// Player account ID
-	AccountId int `json:"account_id,omitempty"`
-	// Achievements earned
-	Achievements map[string]string `json:"achievements,omitempty"`
-	// Maximum values of achievement series
-	MaxSeries map[string]string `json:"max_series,omitempty"`
-	// Ribbons earned
-	Ribbons map[string]string `json:"ribbons,omitempty"`
-	// Current values of Achievement Series
-	Series map[string]string `json:"series,omitempty"`
-	// Vehicle ID
-	TankId int `json:"tank_id,omitempty"`
-}
 
 // WotxTanksAchievements Method returns players' achievement details.
 // Achievement properties define the achievements field values
@@ -53,7 +39,7 @@ type WotxTanksAchievements struct {
 //     "tr" &mdash; Türkçe
 // tank_id:
 //     Player's vehicle ID. Maximum limit: 100.
-func (client *Client) WotxTanksAchievements(realm Realm, accountId int, accessToken string, fields []string, inGarage string, language string, tankId []int) (*WotxTanksAchievements, error) {
+func (client *Client) WotxTanksAchievements(realm Realm, accountId int, accessToken string, fields []string, inGarage string, language string, tankId []int) (*wotx.TanksAchievements, error) {
 	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
@@ -67,7 +53,7 @@ func (client *Client) WotxTanksAchievements(realm Realm, accountId int, accessTo
 		"tank_id": utils.SliceIntToString(tankId, ","),
 	}
 
-	var result *WotxTanksAchievements
+	var result *wotx.TanksAchievements
 	err := client.doGetDataRequest(realm, "/wotx/tanks/achievements/", reqParam, &result)
 	return result, err
 }

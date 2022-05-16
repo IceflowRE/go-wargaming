@@ -1,22 +1,15 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strings"
 )
 
-type WotRatingsTypes struct {
-	// Rating categories
-	RankFields []string `json:"rank_fields,omitempty"`
-	// Rating threshold
-	Threshold int `json:"threshold,omitempty"`
-	// Rating period
-	Type_ string `json:"type,omitempty"`
-}
-
-// WotRatingsTypes Deprecated: Attention! The method is deprecated.
-// Method returns dictionary of rating periods and ratings details.
+// WotRatingsTypes Method returns dictionary of rating periods and ratings details.
 //
 // https://developers.wargaming.net/reference/all/wot/ratings/types
+//
+// Deprecated: Attention! The method is deprecated.
 //
 // battle_type:
 //     Battle types. Default is "default". Valid values:
@@ -43,7 +36,7 @@ type WotRatingsTypes struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WotRatingsTypes(realm Realm, battleType string, fields []string, language string) (*WotRatingsTypes, error) {
+func (client *Client) WotRatingsTypes(realm Realm, battleType string, fields []string, language string) (*wot.RatingsTypes, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -54,7 +47,7 @@ func (client *Client) WotRatingsTypes(realm Realm, battleType string, fields []s
 		"language": language,
 	}
 
-	var result *WotRatingsTypes
+	var result *wot.RatingsTypes
 	err := client.doGetDataRequest(realm, "/wot/ratings/types/", reqParam, &result)
 	return result, err
 }

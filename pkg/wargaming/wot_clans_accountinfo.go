@@ -2,49 +2,9 @@ package wargaming
 
 import (
 	"github.com/IceflowRE/go-wargaming/pkg/wargaming/utils"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strings"
 )
-
-type WotClansAccountinfo struct {
-	// Player account ID
-	AccountId int `json:"account_id,omitempty"`
-	// Player name
-	AccountName string `json:"account_name,omitempty"`
-	// Date when player joined clan
-	JoinedAt UnixTime `json:"joined_at,omitempty"`
-	// Technical position name
-	Role string `json:"role,omitempty"`
-	// Position
-	RoleI18N string `json:"role_i18n,omitempty"`
-	// Short clan info
-	Clan struct {
-		// Clan ID
-		ClanId int `json:"clan_id,omitempty"`
-		// Clan color in HEX #RRGGBB
-		Color string `json:"color,omitempty"`
-		// Clan creation date
-		CreatedAt UnixTime `json:"created_at,omitempty"`
-		// Number of clan members
-		MembersCount int `json:"members_count,omitempty"`
-		// Clan name
-		Name string `json:"name,omitempty"`
-		// Clan tag
-		Tag string `json:"tag,omitempty"`
-		// Information on clan emblems in games and on clan portal
-		Emblems struct {
-			// List of links to 195x195 px emblems
-			X195 map[string]string `json:"x195,omitempty"`
-			// List of links to 24x24 px emblems
-			X24 map[string]string `json:"x24,omitempty"`
-			// List of links to 256x256 px emblems
-			X256 map[string]string `json:"x256,omitempty"`
-			// List of links to 32x32 px emblems
-			X32 map[string]string `json:"x32,omitempty"`
-			// List of links to 64x64 px emblems
-			X64 map[string]string `json:"x64,omitempty"`
-		} `json:"emblems,omitempty"`
-	} `json:"clan,omitempty"`
-}
 
 // WotClansAccountinfo Method returns detailed clan member information and brief clan details.
 //
@@ -70,7 +30,7 @@ type WotClansAccountinfo struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WotClansAccountinfo(realm Realm, accountId []int, fields []string, language string) (*WotClansAccountinfo, error) {
+func (client *Client) WotClansAccountinfo(realm Realm, accountId []int, fields []string, language string) (*wot.ClansAccountinfo, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -81,7 +41,7 @@ func (client *Client) WotClansAccountinfo(realm Realm, accountId []int, fields [
 		"language": language,
 	}
 
-	var result *WotClansAccountinfo
+	var result *wot.ClansAccountinfo
 	err := client.doGetDataRequest(realm, "/wot/clans/accountinfo/", reqParam, &result)
 	return result, err
 }

@@ -1,14 +1,10 @@
 package wargaming
 
 import (
-	"strings"
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wot"
 	"strconv"
+	"strings"
 )
-
-type WotStrongholdActivateclanreserve struct {
-	// Activation time of a clan Reserve
-	ActivatedAt UnixTime `json:"activated_at,omitempty"`
-}
 
 // WotStrongholdActivateclanreserve This method activates an available clan Reserve. A clan Reserve can be activated only by a clan member with the required permission.
 //
@@ -29,7 +25,7 @@ type WotStrongholdActivateclanreserve struct {
 //     "be" &mdash; Belarusian 
 //     "uk" &mdash; Ukrainian 
 //     "kk" &mdash; Kazakh
-func (client *Client) WotStrongholdActivateclanreserve(realm Realm, accessToken string, reserveLevel int, reserveType string, fields []string, language string) (*WotStrongholdActivateclanreserve, error) {
+func (client *Client) WotStrongholdActivateclanreserve(realm Realm, accessToken string, reserveLevel int, reserveType string, fields []string, language string) (*wot.StrongholdActivateclanreserve, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -42,7 +38,7 @@ func (client *Client) WotStrongholdActivateclanreserve(realm Realm, accessToken 
 		"language": language,
 	}
 
-	var result *WotStrongholdActivateclanreserve
+	var result *wot.StrongholdActivateclanreserve
 	err := client.doPostDataRequest(realm, "/wot/stronghold/activateclanreserve/", reqParam, &result)
 	return result, err
 }

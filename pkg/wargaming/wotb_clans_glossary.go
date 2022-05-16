@@ -1,18 +1,9 @@
 package wargaming
 
 import (
+	"github.com/IceflowRE/go-wargaming/pkg/wargaming/wotb"
 	"strings"
 )
-
-type WotbClansGlossary struct {
-	// Available clan positions
-	ClansRoles map[string]string `json:"clans_roles,omitempty"`
-	// Clan settings
-	Settings struct {
-		// Max number of clan members
-		MaxMembersCount int `json:"max_members_count,omitempty"`
-	} `json:"settings,omitempty"`
-}
 
 // WotbClansGlossary Method returns information on clan entities.
 //
@@ -36,7 +27,7 @@ type WotbClansGlossary struct {
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-func (client *Client) WotbClansGlossary(realm Realm, fields []string, language string) (*WotbClansGlossary, error) {
+func (client *Client) WotbClansGlossary(realm Realm, fields []string, language string) (*wotb.ClansGlossary, error) {
 	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -46,7 +37,7 @@ func (client *Client) WotbClansGlossary(realm Realm, fields []string, language s
 		"language": language,
 	}
 
-	var result *WotbClansGlossary
+	var result *wotb.ClansGlossary
 	err := client.doGetDataRequest(realm, "/wotb/clans/glossary/", reqParam, &result)
 	return result, err
 }
