@@ -10,7 +10,7 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wotx/clans/accountinfo
 //
-// account_id:
+// accountId:
 //     Account ID. Maximum limit: 100. Min value is 1.
 // extra:
 //     Extra fields that will be added to the response. Valid values:

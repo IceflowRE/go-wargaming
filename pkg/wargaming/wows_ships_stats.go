@@ -11,9 +11,9 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wows/ships/stats
 //
-// account_id:
+// accountId:
 //     Player account ID
-// access_token:
+// accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 // extra:
 //     Extra fields that will be added to the response. Valid values:
@@ -34,7 +34,7 @@ import (
 //     "rank_solo"
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-// in_garage:
+// inGarage:
 //     Filter by ship availability in the Port. If the parameter is not specified, all ships are returned. Parameter processing requires a valid access_token for the specified account_id. Valid values:
 //     
 //     "1" &mdash; Return ships available in the Port. 
@@ -56,7 +56,7 @@ import (
 //     "zh-cn" &mdash; 中文 
 //     "pt-br" &mdash; Português do Brasil 
 //     "es-mx" &mdash; Español (México)
-// ship_id:
+// shipId:
 //     Player's ship ID. Maximum limit: 100.
 func (client *Client) WowsShipsStats(realm Realm, accountId int, accessToken string, extra []string, fields []string, inGarage string, language string, shipId []int) (*wows.ShipsStats, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {

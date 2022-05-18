@@ -10,7 +10,7 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wotb/encyclopedia/vehicleprofiles
 //
-// tank_id:
+// tankId:
 //     Vehicle ID. Maximum limit: 25.
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
@@ -30,7 +30,7 @@ import (
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-// order_by:
+// orderBy:
 //     Sorting. Valid values:
 //     
 //     "price_credit" &mdash; by cost in credits 

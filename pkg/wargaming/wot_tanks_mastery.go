@@ -35,7 +35,7 @@ import (
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-// tank_id:
+// tankId:
 //     Player's vehicle ID. Maximum limit: 100.
 func (client *Client) WotTanksMastery(realm Realm, distribution string, percentile []int, fields []string, language string, tankId []int) (*wot.TanksMastery, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {

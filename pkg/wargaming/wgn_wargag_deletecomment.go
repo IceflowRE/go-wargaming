@@ -8,9 +8,9 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wgn/wargag/deletecomment
 //
-// access_token:
+// accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
-// comment_id:
+// commentId:
 //     Comment ID
 func (client *Client) WgnWargagDeletecomment(realm Realm, accessToken string, commentId int) error {
 	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {

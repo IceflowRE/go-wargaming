@@ -28,11 +28,11 @@ import (
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-// module_id:
+// moduleId:
 //     Module ID. Maximum limit: 100.
 // nation:
 //     Nation
-// type:
+// type_:
 //     Module type. Valid values:
 //     
 //     "vehicleEngine" &mdash; Engines 

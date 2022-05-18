@@ -12,7 +12,7 @@ import (
 //
 // Deprecated: Attention! The method is deprecated.
 //
-// tank_id:
+// tankId:
 //     Vehicle ID. Maximum limit: 1000.
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.

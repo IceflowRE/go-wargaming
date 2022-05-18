@@ -15,7 +15,7 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wotx/account/achievements
 //
-// account_id:
+// accountId:
 //     Player account ID. Maximum limit: 100.
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.

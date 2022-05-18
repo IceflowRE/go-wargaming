@@ -10,9 +10,9 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wot/account/tanks
 //
-// account_id:
+// accountId:
 //     Player account ID. Maximum limit: 100.
-// access_token:
+// accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
@@ -32,7 +32,7 @@ import (
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-// tank_id:
+// tankId:
 //     Player's vehicle ID. Maximum limit: 100.
 func (client *Client) WotAccountTanks(realm Realm, accountId []int, accessToken string, fields []string, language string, tankId []int) (*wot.AccountTanks, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {

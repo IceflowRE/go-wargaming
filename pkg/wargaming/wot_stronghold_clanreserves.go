@@ -9,7 +9,7 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wot/stronghold/clanreserves
 //
-// access_token:
+// accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.

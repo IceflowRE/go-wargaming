@@ -31,7 +31,7 @@ import (
 //     "page" &mdash; Page 
 //     "popup" &mdash; Popup window 
 //     "touch" &mdash; Mobile view
-// expires_at:
+// expiresAt:
 //     Access_token expiration time in UNIX. Delta can also be specified in seconds.
 //     Expiration time and delta must not exceed two weeks from the current time.
 // language:
@@ -54,7 +54,7 @@ import (
 //     "zh-cn" &mdash; Simplified Chinese
 // nofollow:
 //     If parameter nofollow=1 is passed in, the user is not redirected. URL is returned in response. Default is 0. Min value is 0. Maximum value: 1.
-// redirect_uri:
+// redirectUri:
 //     URL where user is redirected after authentication.
 //     By default: api-console.worldoftanks.com/wotx//blank/
 func (client *Client) WotxAuthLogin(realm Realm, display string, expiresAt int, language string, nofollow int, redirectUri string) (*wotx.AuthLogin, error) {

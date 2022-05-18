@@ -10,13 +10,13 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/seasonratingneighbors
 //
-// clan_id:
+// clanId:
 //     Clan ID. To get a clan ID, use the Clans method. Min value is 1.
 // limit:
 //     Neighbors limit. Default is 10. Min value is 1. Maximum value: 99.
-// season_id:
+// seasonId:
 //     Season ID. To get a season ID, use the Seasons method.
-// vehicle_level:
+// vehicleLevel:
 //     Vehicle Tier. Valid values:
 //     
 //     "6" &mdash; Vehicles of Tier 6 

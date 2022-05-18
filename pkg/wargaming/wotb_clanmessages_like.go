@@ -8,14 +8,14 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wotb/clanmessages/like
 //
-// access_token:
+// accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 // action:
 //     Action. Valid values:
 //     
 //     "add" &mdash; Set a like for message 
 //     "remove" &mdash; Remove a like for message
-// message_id:
+// messageId:
 //     Message ID
 func (client *Client) WotbClanmessagesLike(realm Realm, accessToken string, action string, messageId int) error {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {

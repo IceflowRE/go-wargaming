@@ -12,9 +12,9 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wgn/wgtv/videos
 //
-// category_id:
+// categoryId:
 //     Content category ID. Maximum limit: 100.
-// date_from:
+// dateFrom:
 //     Dated from the specified date
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
@@ -38,17 +38,17 @@ import (
 //     "ko" &mdash; 한국어
 // limit:
 //     Number of returned entries (fewer can be returned, but not more than 1000). If the limit sent exceeds 1000, a limit of 100 is applied (by default).
-// page_no:
+// pageNo:
 //     Result page number. Default is 1. Min value is 1.
-// program_id:
+// programId:
 //     Program ID. Maximum limit: 100.
-// project_id:
+// projectId:
 //     Game project ID. Maximum limit: 100.
 // q:
 //     Text for search by name
-// vehicle_id:
+// vehicleId:
 //     Vehicle ID. Maximum limit: 100.
-// video_id:
+// videoId:
 //     Youtube ID. Maximum limit: 100.
 func (client *Client) WgnWgtvVideos(realm Realm, categoryId []int, dateFrom wgnTime.UnixTime, fields []string, important int, language string, limit int, pageNo int, programId []int, projectId []int, q string, vehicleId []int, videoId []string) ([]*wgn.WgtvVideos, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {

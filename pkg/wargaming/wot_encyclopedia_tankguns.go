@@ -46,13 +46,13 @@ import (
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-// module_id:
+// moduleId:
 //     Module ID. Maximum limit: 1000.
 // nation:
 //     Nation. Maximum limit: 100.
-// tank_id:
+// tankId:
 //     Compatible vehicle ID
-// turret_id:
+// turretId:
 //     Compatible turret ID
 func (client *Client) WotEncyclopediaTankguns(realm Realm, fields []string, language string, moduleId []int, nation []string, tankId int, turretId int) (*wot.EncyclopediaTankguns, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {

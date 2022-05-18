@@ -13,9 +13,9 @@ import (
 //
 // limit:
 //     Number of returned entries (fewer can be returned, but not more than 1000). If the limit sent exceeds 1000, a limit of 10 is applied (by default).
-// page_no:
+// pageNo:
 //     Page number. Default is 1. Min value is 1.
-// rank_field:
+// rankField:
 //     Rating category
 // date:
 //     Ratings calculation date. Date in UNIX timestamp or ISO 8601 format. E.g.: 1376542800 or 2013-08-15T00:00:00

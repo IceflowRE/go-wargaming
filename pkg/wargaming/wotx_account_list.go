@@ -26,7 +26,7 @@ import (
 //     "tr" &mdash; Türkçe
 // limit:
 //     Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of None is applied (by default).
-// type:
+// type_:
 //     Search type. Default is "startswith". Valid values:
 //     
 //     "startswith" &mdash; Search by initial characters of player name. Minimum length: 3 characters. Maximum length: 24 characters. (by default)

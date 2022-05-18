@@ -10,11 +10,11 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wgn/wargag/comments
 //
-// content_id:
+// contentId:
 //     Publication ID
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-// page_no:
+// pageNo:
 //     Result page number
 func (client *Client) WgnWargagComments(realm Realm, contentId int, fields []string, pageNo int) (*wgn.WargagComments, error) {
 	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {

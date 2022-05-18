@@ -11,11 +11,11 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wotb/clanmessages/messages
 //
-// access_token:
+// accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
-// expires_after:
+// expiresAfter:
 //     Search for messages with end date of relevance equal or after the value. Date in UNIX timestamp or ISO 8601 format. E.g.: 1376542800 or 2013-08-15T00:00:00
-// expires_before:
+// expiresBefore:
 //     Search for messages with end date of relevance before the value. Date in UNIX timestamp or ISO 8601 format. E.g.: 1376542800 or 2013-08-15T00:00:00
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
@@ -42,9 +42,9 @@ import (
 //     "ko" &mdash; 한국어
 // limit:
 //     Number of returned entries. If the value sent exceeds 100, a limit of 25 is applied (by default). Default is 25. Min value is 1.
-// message_id:
+// messageId:
 //     Message ID
-// order_by:
+// orderBy:
 //     Sorting. Valid values:
 //     
 //     
@@ -70,14 +70,14 @@ import (
 //     
 //     
 //     -type — by message type in reverse order. Default is "importance, type". Maximum limit: 100.
-// page_no:
+// pageNo:
 //     Page number. Default is 1. Min value is 1.
 // status:
 //     Message status. Valid values:
 //     
 //     "active" &mdash; Active message 
 //     "deleted" &mdash; Deleted message
-// type:
+// type_:
 //     Message type. Valid values:
 //     
 //     "general" &mdash; General messages 

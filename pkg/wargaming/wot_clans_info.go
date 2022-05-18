@@ -10,9 +10,9 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wot/clans/info
 //
-// clan_id:
+// clanId:
 //     Clan ID. Maximum limit: 100.
-// access_token:
+// accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 // extra:
 //     Extra fields that will be added to the response. Valid values:
@@ -36,7 +36,7 @@ import (
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-// members_key:
+// membersKey:
 //     This parameter changes members field type. Valid values:
 //     
 //     "id" &mdash; Members field will contain associative array with account_id indexing in response

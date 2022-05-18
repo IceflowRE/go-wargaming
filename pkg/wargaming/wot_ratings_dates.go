@@ -12,11 +12,11 @@ import (
 //
 // Deprecated: Attention! The method is deprecated.
 //
-// account_id:
+// accountId:
 //     Player account ID. Maximum limit: 100.
-// type:
+// type_:
 //     Rating period. For valid values, check the Types of ratings method.
-// battle_type:
+// battleType:
 //     Battle types. Default is "default". Valid values:
 //     
 //     "company" &mdash; Tank Company Battles 

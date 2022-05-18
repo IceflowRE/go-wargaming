@@ -11,7 +11,7 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wowp/planes/achievements
 //
-// account_id:
+// accountId:
 //     Player account ID
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
@@ -30,7 +30,7 @@ import (
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-// plane_id:
+// planeId:
 //     Aircraft ID. Maximum limit: 100.
 func (client *Client) WowpPlanesAchievements(realm Realm, accountId int, fields []string, language string, planeId []int) (*wowp.PlanesAchievements, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {

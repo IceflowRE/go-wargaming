@@ -18,7 +18,7 @@ import (
 //     "ru" &mdash; Русский (by default)
 // limit:
 //     Page limit. Number of tournaments in one page. Default is 10. Min value is 1. Maximum value: 25.
-// page_no:
+// pageNo:
 //     Result page number. Default is 1. Min value is 1.
 // search:
 //     First letters in tournament name for search. Minimum length: 2 characters. Maximum length: 50 characters.

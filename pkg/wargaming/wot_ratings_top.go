@@ -15,15 +15,15 @@ import (
 //
 // limit:
 //     Number of returned entries. Default is 10. Min value is 1. Maximum value: 1000.
-// page_no:
+// pageNo:
 //     Result page number. Default is 1. Min value is 1.
-// rank_field:
+// rankField:
 //     Rating category
 // date:
 //     Ratings calculation date. Up to 7 days before the current date; default value: yesterday. Date in UNIX timestamp or ISO 8601 format. E.g.: 1376542800 or 2013-08-15T00:00:00
-// type:
+// type_:
 //     Rating period. For valid values, check the Types of ratings method.
-// battle_type:
+// battleType:
 //     Battle types. Default is "default". Valid values:
 //     
 //     "company" &mdash; Tank Company Battles 

@@ -29,7 +29,7 @@ import (
 //     "zh-cn" &mdash; 中文 
 //     "pt-br" &mdash; Português do Brasil 
 //     "es-mx" &mdash; Español (México)
-// skill_id:
+// skillId:
 //     Skill ID. Maximum limit: 100.
 func (client *Client) WowsEncyclopediaCrewskills(realm Realm, fields []string, language string, skillId []int) (*wows.EncyclopediaCrewskills, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {

@@ -12,7 +12,7 @@ import (
 //
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-// tag_id:
+// tagId:
 //     Tag ID
 func (client *Client) WgnWargagTags(realm Realm, fields []string, tagId int) (*wgn.WargagTags, error) {
 	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {

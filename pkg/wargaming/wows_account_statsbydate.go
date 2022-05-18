@@ -10,9 +10,9 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wows/account/statsbydate
 //
-// account_id:
+// accountId:
 //     Player account ID
-// access_token:
+// accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 // dates:
 //     List of dates to return statistics slices for. Format: YYYYMMDD. Max. dates range - 28 days from the current date. Statistics slice for yesterday will be returned by default. Maximum limit: 10.

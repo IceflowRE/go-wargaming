@@ -10,23 +10,23 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/shipprofile
 //
-// artillery_id:
+// artilleryId:
 //     Main Battery ID. If the module is not indicated, module of basic configuration is used.
-// dive_bomber_id:
+// diveBomberId:
 //     Dive bombers' ID. If the module is not indicated, module of basic configuration is used.
-// engine_id:
+// engineId:
 //     Engine ID. If the module is not indicated, module of basic configuration is used.
-// fighter_id:
+// fighterId:
 //     Fighters' ID. If the module is not indicated, module of basic configuration is used.
-// ship_id:
+// shipId:
 //     Ship ID
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-// fire_control_id:
+// fireControlId:
 //     ID of Gun Fire Control System. If the module is not indicated, module of basic configuration is used.
-// flight_control_id:
+// flightControlId:
 //     ID of Flight Control System. If the module is not indicated, module of basic configuration is used.
-// hull_id:
+// hullId:
 //     Hull ID. If the module is not indicated, module of basic configuration is used.
 // language:
 //     Localization language. Default is "ru". Valid values:
@@ -45,9 +45,9 @@ import (
 //     "zh-cn" &mdash; 中文 
 //     "pt-br" &mdash; Português do Brasil 
 //     "es-mx" &mdash; Español (México)
-// torpedo_bomber_id:
+// torpedoBomberId:
 //     Torpedo bombers' ID. If the module is not indicated, module of basic configuration is used.
-// torpedoes_id:
+// torpedoesId:
 //     Torpedo tubes' ID. If the module is not indicated, module of basic configuration is used.
 func (client *Client) WowsEncyclopediaShipprofile(realm Realm, artilleryId int, diveBomberId int, engineId int, fighterId int, shipId int, fields []string, fireControlId int, flightControlId int, hullId int, language string, torpedoBomberId int, torpedoesId int) (*wows.EncyclopediaShipprofile, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {

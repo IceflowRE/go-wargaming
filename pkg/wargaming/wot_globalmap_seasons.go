@@ -18,9 +18,9 @@ import (
 //     "ru" &mdash; Russian (by default)
 // limit:
 //     Page limit. Default is 5. Min value is 1. Maximum value: 20.
-// page_no:
+// pageNo:
 //     Page number. Default is 1. Min value is 1.
-// season_id:
+// seasonId:
 //     Season ID
 // status:
 //     Response with seasons filtered by status. Valid values:

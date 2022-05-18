@@ -24,7 +24,7 @@ import (
 //     "tr" &mdash; Türkçe
 // nation:
 //     Nation. Maximum limit: 100.
-// tank_id:
+// tankId:
 //     Vehicle ID. Maximum limit: 100.
 // tier:
 //     Tier. Maximum limit: 100.

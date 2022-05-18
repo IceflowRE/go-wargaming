@@ -34,11 +34,11 @@ import (
 //     Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
 // nation:
 //     Nation. Maximum limit: 100.
-// page_no:
+// pageNo:
 //     Result page number. Default is 1. Min value is 1.
-// ship_id:
+// shipId:
 //     Ship ID. Maximum limit: 100.
-// type:
+// type_:
 //     Ship type. Maximum limit: 100. Valid values:
 //     
 //     "AirCarrier" &mdash; Aircraft carrier 

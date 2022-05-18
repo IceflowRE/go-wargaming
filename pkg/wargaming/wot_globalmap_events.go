@@ -10,7 +10,7 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/events
 //
-// event_id:
+// eventId:
 //     Event ID
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
@@ -20,7 +20,7 @@ import (
 //     "ru" &mdash; Russian (by default)
 // limit:
 //     Page limit. Default is 5. Min value is 1. Maximum value: 20.
-// page_no:
+// pageNo:
 //     Page number. Default is 1. Min value is 1.
 // status:
 //     Response with events filtered by status. Valid values:

@@ -9,9 +9,9 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wgn/wargag/newcomment
 //
-// access_token:
+// accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
-// content_id:
+// contentId:
 //     Publication ID
 // text:
 //     Comment text. Maximum length: 1000 symbols. Maximum length: 1000.

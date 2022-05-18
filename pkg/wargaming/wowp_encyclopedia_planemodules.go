@@ -10,7 +10,7 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wowp/encyclopedia/planemodules
 //
-// plane_id:
+// planeId:
 //     Aircraft ID. Maximum limit: 1000.
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
@@ -29,7 +29,7 @@ import (
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-// type:
+// type_:
 //     Configuration. Default is "engine, bomb, rocket, turret, turretfront, turretupper, turretlower, gun, construction". Maximum limit: 100. Valid values:
 //     
 //     "engine" &mdash; engine 

@@ -9,11 +9,11 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wgn/wgtv/vehicles
 //
-// category_id:
+// categoryId:
 //     Content category ID. Maximum limit: 100.
-// program_id:
+// programId:
 //     Program ID. Maximum limit: 100.
-// project_id:
+// projectId:
 //     Game project ID. Maximum limit: 100.
 func (client *Client) WgnWgtvVehicles(realm Realm, categoryId []int, programId []int, projectId []int) (*wgn.WgtvVehicles, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {

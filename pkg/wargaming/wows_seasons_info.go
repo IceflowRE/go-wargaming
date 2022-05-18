@@ -29,7 +29,7 @@ import (
 //     "zh-cn" &mdash; 中文 
 //     "pt-br" &mdash; Português do Brasil 
 //     "es-mx" &mdash; Español (México)
-// season_id:
+// seasonId:
 //     Season ID. Maximum limit: 100.
 func (client *Client) WowsSeasonsInfo(realm Realm, fields []string, language string, seasonId []int) (*wows.SeasonsInfo, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {

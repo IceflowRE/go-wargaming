@@ -8,9 +8,9 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wotb/clanmessages/delete
 //
-// access_token:
+// accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
-// message_id:
+// messageId:
 //     Message ID
 func (client *Client) WotbClanmessagesDelete(realm Realm, accessToken string, messageId int) error {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {

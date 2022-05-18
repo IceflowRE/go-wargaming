@@ -10,13 +10,13 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wotb/encyclopedia/vehicleprofile
 //
-// engine_id:
+// engineId:
 //     Engine ID. If module is not specified, standard module is used by default.
-// tank_id:
+// tankId:
 //     Vehicle ID
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-// gun_id:
+// gunId:
 //     Gun ID. If module is not specified, standard module is used by default.
 // language:
 //     Localization language. Default is "ru". Valid values:
@@ -34,11 +34,11 @@ import (
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-// profile_id:
+// profileId:
 //     Configuration ID. If specified, parameters of IDs of separate modules are ignored.
-// suspension_id:
+// suspensionId:
 //     Suspension ID. If module is not specified, standard module is used by default.
-// turret_id:
+// turretId:
 //     Turret ID. If module is not specified, standard module is used by default.
 func (client *Client) WotbEncyclopediaVehicleprofile(realm Realm, engineId int, tankId int, fields []string, gunId int, language string, profileId string, suspensionId int, turretId int) (*wotb.EncyclopediaVehicleprofile, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {

@@ -10,9 +10,9 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wotb/clanmessages/create
 //
-// access_token:
+// accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
-// expires_at:
+// expiresAt:
 //     Date when message will become irrelevant. Date in UNIX timestamp or ISO 8601 format. E.g.: 1376542800 or 2013-08-15T00:00:00. Date must be in the future.
 // importance:
 //     Message importance. Valid values:
@@ -23,7 +23,7 @@ import (
 //     Message text. Max. length: 1000. Maximum length: 1000.
 // title:
 //     Message title. Max. length: 100. Maximum length: 100.
-// type:
+// type_:
 //     Message type. Valid values:
 //     
 //     "general" &mdash; General messages 

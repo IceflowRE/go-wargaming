@@ -11,7 +11,7 @@ import (
 //
 // Deprecated: Attention! The method is deprecated.
 //
-// battle_type:
+// battleType:
 //     Battle types. Default is "default". Valid values:
 //     
 //     "company" &mdash; Tank Company Battles 

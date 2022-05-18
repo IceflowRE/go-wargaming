@@ -32,11 +32,11 @@ import (
 //     "es-mx" &mdash; Español (México)
 // limit:
 //     Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
-// module_id:
+// moduleId:
 //     Module ID. Maximum limit: 100.
-// page_no:
+// pageNo:
 //     Result page number. Default is 1. Min value is 1.
-// type:
+// type_:
 //     Module type. Valid values:
 //     
 //     "Artillery" &mdash; Main battery 

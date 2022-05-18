@@ -27,9 +27,9 @@ import (
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-// skill_id:
+// skillId:
 //     Skills IDs. Maximum limit: 100.
-// vehicle_type:
+// vehicleType:
 //     Vehicle types. Maximum limit: 100.
 func (client *Client) WotbEncyclopediaCrewskills(realm Realm, fields []string, language string, skillId []string, vehicleType []string) (*wotb.EncyclopediaCrewskills, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {

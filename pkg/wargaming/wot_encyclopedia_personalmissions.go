@@ -10,7 +10,7 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wot/encyclopedia/personalmissions
 //
-// campaign_id:
+// campaignId:
 //     Campaign ID. Maximum limit: 100.
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
@@ -30,9 +30,9 @@ import (
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-// operation_id:
+// operationId:
 //     Operation ID. Maximum limit: 100.
-// set_id:
+// setId:
 //     Mission branch ID. Maximum limit: 100.
 // tag:
 //     Mission tag. Maximum limit: 100.

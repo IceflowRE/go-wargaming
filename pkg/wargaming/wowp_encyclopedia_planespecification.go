@@ -11,11 +11,11 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wowp/encyclopedia/planespecification
 //
-// bind_id:
+// bindId:
 //     ID of unique bind of slot and module. Maximum limit: 100.
-// module_id:
+// moduleId:
 //     Module ID. Maximum limit: 100.
-// plane_id:
+// planeId:
 //     Aircraft ID
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.

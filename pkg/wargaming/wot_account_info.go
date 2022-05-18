@@ -10,9 +10,9 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wot/account/info
 //
-// account_id:
+// accountId:
 //     Player account ID. Maximum limit: 100.
-// access_token:
+// accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 // extra:
 //     Extra fields that will be added to the response. Valid values:

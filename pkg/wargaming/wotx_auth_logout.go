@@ -7,7 +7,7 @@ package wargaming
 //
 // https://developers.wargaming.net/reference/all/wotx/auth/logout
 //
-// access_token:
+// accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 func (client *Client) WotxAuthLogout(realm Realm, accessToken string) error {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {

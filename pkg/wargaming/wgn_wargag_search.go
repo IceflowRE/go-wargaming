@@ -12,17 +12,17 @@ import (
 //
 // q:
 //     Search text. Minimum length: 3 characters. Case insensitive.
-// access_token:
+// accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
-// category_id:
+// categoryId:
 //     Content category ID
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-// rating_threshold:
+// ratingThreshold:
 //     Threshold of publication rating
-// tag_id:
+// tagId:
 //     Tag ID
-// type:
+// type_:
 //     Content type. Valid values:
 //     
 //     "quote" &mdash; Quote content 

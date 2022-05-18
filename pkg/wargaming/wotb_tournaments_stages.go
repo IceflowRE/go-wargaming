@@ -10,7 +10,7 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wotb/tournaments/stages
 //
-// tournament_id:
+// tournamentId:
 //     Tournament ID that can be retrieved from the Tournaments list method.
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
@@ -20,7 +20,7 @@ import (
 //     "ru" &mdash; Русский (by default)
 // limit:
 //     Number of returned entries. Default is 10. Min value is 1. Maximum value: 25.
-// page_no:
+// pageNo:
 //     Result page number. Default is 1. Min value is 1.
 func (client *Client) WotbTournamentsStages(realm Realm, tournamentId int, fields []string, language string, limit int, pageNo int) (*wotb.TournamentsStages, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {

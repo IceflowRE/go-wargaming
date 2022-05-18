@@ -10,11 +10,11 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/seasonclaninfo
 //
-// clan_id:
+// clanId:
 //     Clan ID. To get a clan ID, use the Clans method. Min value is 1.
-// season_id:
+// seasonId:
 //     Season ID. To get a season ID, use the Seasons method.
-// vehicle_level:
+// vehicleLevel:
 //     List of vehicle Tiers. Maximum limit: 100. Valid values:
 //     
 //     "6" &mdash; Vehicles of Tier 6 

@@ -10,9 +10,9 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wgn/wargag/categories
 //
-// category_id:
+// categoryId:
 //     Content category ID
-// type:
+// type_:
 //     Content type. Valid values:
 //     
 //     "video" &mdash; Video content type 

@@ -11,7 +11,7 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/consumables
 //
-// consumable_id:
+// consumableId:
 //     Consumable ID. Maximum limit: 100.
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
@@ -34,9 +34,9 @@ import (
 //     "es-mx" &mdash; Español (México)
 // limit:
 //     Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
-// page_no:
+// pageNo:
 //     Page limit. Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default). Default is 1.
-// type:
+// type_:
 //     Consumable type. Valid values:
 //     
 //     "Camouflage" &mdash; Camouflages 

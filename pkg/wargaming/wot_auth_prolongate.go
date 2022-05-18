@@ -10,9 +10,9 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wot/auth/prolongate
 //
-// access_token:
+// accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
-// expires_at:
+// expiresAt:
 //     Access_token expiration time in UNIX. Delta can also be specified in seconds.
 //     Expiration time and delta must not exceed two weeks from the current time.
 func (client *Client) WotAuthProlongate(realm Realm, accessToken string, expiresAt int) (*wot.AuthProlongate, error) {

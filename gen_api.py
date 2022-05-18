@@ -284,7 +284,7 @@ class Parameters:
     def doc(self) -> str:
         lines = []
         for param in self._params:
-            lines.append(f'{param.name}:')
+            lines.append(f'{name_to_camel_lower(param.name)}:')
             lines.append(f"    {param.description}")
         return '\n'.join(lines)
 

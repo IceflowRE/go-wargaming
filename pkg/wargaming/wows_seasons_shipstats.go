@@ -11,9 +11,9 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wows/seasons/shipstats
 //
-// account_id:
+// accountId:
 //     Player account ID
-// access_token:
+// accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
@@ -34,9 +34,9 @@ import (
 //     "zh-cn" &mdash; 中文 
 //     "pt-br" &mdash; Português do Brasil 
 //     "es-mx" &mdash; Español (México)
-// season_id:
+// seasonId:
 //     Season ID. Maximum limit: 100.
-// ship_id:
+// shipId:
 //     Ship ID. Maximum limit: 100.
 func (client *Client) WowsSeasonsShipstats(realm Realm, accountId int, accessToken string, fields []string, language string, seasonId []int, shipId []int) (*wows.SeasonsShipstats, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {

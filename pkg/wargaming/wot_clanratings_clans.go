@@ -12,7 +12,7 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wot/clanratings/clans
 //
-// clan_id:
+// clanId:
 //     Clan IDs. Maximum limit: 100.
 // date:
 //     Ratings calculation date. Date in UNIX timestamp or ISO 8601 format. E.g.: 1376542800 or 2013-08-15T00:00:00

@@ -28,11 +28,11 @@ import (
 //     "th" &mdash; ไทย 
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
-// provision_id:
+// provisionId:
 //     Equipment or consumable ID. Maximum limit: 100.
-// tank_id:
+// tankId:
 //     Vehicle ID. Maximum limit: 100.
-// type:
+// type_:
 //     Type. Valid values:
 //     
 //     "equipment" &mdash; Consumables 

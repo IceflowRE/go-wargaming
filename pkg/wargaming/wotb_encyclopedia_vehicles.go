@@ -30,7 +30,7 @@ import (
 //     "ko" &mdash; 한국어
 // nation:
 //     Nation. Maximum limit: 100.
-// tank_id:
+// tankId:
 //     Vehicle ID. Maximum limit: 100.
 func (client *Client) WotbEncyclopediaVehicles(realm Realm, fields []string, language string, nation []string, tankId []int) (*wotb.EncyclopediaVehicles, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {

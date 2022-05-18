@@ -11,11 +11,11 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wotb/tournaments/teams
 //
-// account_id:
+// accountId:
 //     ID of the account that belongs to the team. Maximum limit: 100.
-// clan_id:
+// clanId:
 //     ID of the clan that owns the team. Maximum limit: 100.
-// tournament_id:
+// tournamentId:
 //     Tournament ID that can be retrieved from the Tournaments list method.
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
@@ -25,7 +25,7 @@ import (
 //     "ru" &mdash; Русский (by default)
 // limit:
 //     Number of returned entries. Default is 10. Min value is 1. Maximum value: 100.
-// page_no:
+// pageNo:
 //     Result page number. Default is 1. Min value is 1.
 // search:
 //     First letters in team name for search. Minimum length: 2 characters. Maximum length: 50 characters.
@@ -35,7 +35,7 @@ import (
 //     "forming" &mdash; team roster is not yet confirmed 
 //     "confirmed" &mdash; team roster is confirmed 
 //     "disqualified" &mdash; team is disqualified
-// team_id:
+// teamId:
 //     Team ID. Maximum limit: 25.
 func (client *Client) WotbTournamentsTeams(realm Realm, accountId []int, clanId []int, tournamentId int, fields []string, language string, limit int, pageNo int, search string, status []string, teamId []int) (*wotb.TournamentsTeams, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {

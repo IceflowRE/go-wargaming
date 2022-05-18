@@ -33,13 +33,13 @@ import (
 //     Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
 // nation:
 //     Nation. Maximum limit: 100.
-// page_no:
+// pageNo:
 //     Result page number
-// tank_id:
+// tankId:
 //     Vehicle ID. Maximum limit: 100.
 // tier:
 //     Tier. Maximum limit: 100.
-// type:
+// type_:
 //     Vehicle type. Maximum limit: 100. Valid values:
 //     
 //     "heavyTank" &mdash; Heavy Tank 

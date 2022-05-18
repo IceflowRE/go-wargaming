@@ -9,9 +9,9 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wgn/wargag/rate
 //
-// access_token:
+// accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
-// content_id:
+// contentId:
 //     Publication ID
 // rating:
 //     Rate. Valid values:

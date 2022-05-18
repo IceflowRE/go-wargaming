@@ -36,7 +36,7 @@ import (
 //     "uk" &mdash; U.K. 
 //     "china" &mdash; China 
 //     "japan" &mdash; Japan
-// type:
+// type_:
 //     Type. Maximum limit: 100. Valid values:
 //     
 //     "fighter" &mdash; Fighter 

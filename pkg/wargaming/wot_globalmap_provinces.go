@@ -10,17 +10,17 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/provinces
 //
-// arena_id:
+// arenaId:
 //     Map ID
-// daily_revenue_gte:
+// dailyRevenueGte:
 //     Search for provinces with daily income equal to or more than the value
-// daily_revenue_lte:
+// dailyRevenueLte:
 //     Search for provinces with daily income equal to or less than the value
-// front_id:
+// frontId:
 //     Front ID. To get a front ID, use the Fronts method.
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-// landing_type:
+// landingType:
 //     Search for provinces by landing type. Valid values:
 //     
 //     "null" &mdash; auctions disabled 
@@ -32,7 +32,7 @@ import (
 //     "ru" &mdash; Russian (by default)
 // limit:
 //     Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
-// order_by:
+// orderBy:
 //     Sorting. Valid values:
 //     
 //     "province_id" &mdash; by province name 
@@ -41,11 +41,11 @@ import (
 //     "-daily_revenue" &mdash; by province income in reverse order 
 //     "prime_hour" &mdash; by Prime Time 
 //     "-prime_hour" &mdash; by Prime Time in reverse order
-// page_no:
+// pageNo:
 //     Page number. Default is 1. Min value is 1.
-// prime_hour:
+// primeHour:
 //     Search for provinces with the value of Prime Time start hour. Values available: from 0 to 23. Maximum value: 23.
-// province_id:
+// provinceId:
 //     Filter by the list of province IDs. Maximum limit: 100.
 func (client *Client) WotGlobalmapProvinces(realm Realm, arenaId string, dailyRevenueGte int, dailyRevenueLte int, frontId string, fields []string, landingType string, language string, limit int, orderBy string, pageNo int, primeHour int, provinceId []string) (*wot.GlobalmapProvinces, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {

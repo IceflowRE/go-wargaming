@@ -11,15 +11,15 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wowp/ratings/neighbors
 //
-// account_id:
+// accountId:
 //     Player account ID
 // date:
 //     Ratings calculation date. Up to 7 days before the current date; default value: yesterday. Date in UNIX timestamp or ISO 8601 format. E.g.: 1376542800 or 2013-08-15T00:00:00
 // limit:
 //     Maximum number of adjacent positions in rating. Default is 5. Min value is 1. Maximum value: 50.
-// rank_field:
+// rankField:
 //     Rating category
-// type:
+// type_:
 //     Rating period. For valid values, check the Types of ratings method.
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
