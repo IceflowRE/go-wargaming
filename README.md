@@ -4,8 +4,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/IceflowRE/go-wargaming/blob/master/LICENSE.md)
 ![API Coverage](https://img.shields.io/badge/API%20coverage-188%20%2F%20188-green.svg)
 
-[![Github Actions](https://github.com/IceflowRE/go-wargaming/workflows/Build/badge.svg)](https://github.com/IceflowRE/go-wargaming/actions)
 [![Go report card](https://goreportcard.com/badge/github.com/IceflowRE/go-wargaming)](https://goreportcard.com/report/github.com/IceflowRE/go-wargaming)
+[![Go Reference](https://pkg.go.dev/badge/github.com/IceflowRE/go-wargaming.svg)](https://pkg.go.dev/github.com/IceflowRE/go-wargaming)
 
 ---
 
