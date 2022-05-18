@@ -23,7 +23,7 @@ import (
 // page_no:
 //     Result page number. Default is 1. Min value is 1.
 func (client *Client) WotbTournamentsStages(realm Realm, tournamentId int, fields []string, language string, limit int, pageNo int) (*wotb.TournamentsStages, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

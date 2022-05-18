@@ -29,7 +29,7 @@ import (
 //     "ACTIVE" &mdash; Current season 
 //     "FINISHED" &mdash; Season is over
 func (client *Client) WotGlobalmapSeasons(realm Realm, fields []string, language string, limit int, pageNo int, seasonId string, status string) (*wot.GlobalmapSeasons, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

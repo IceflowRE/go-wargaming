@@ -37,7 +37,7 @@ import (
 // tag:
 //     Mission tag. Maximum limit: 100.
 func (client *Client) WotEncyclopediaPersonalmissions(realm Realm, campaignId []int, fields []string, language string, operationId []int, setId []int, tag []string) (*wot.EncyclopediaPersonalmissions, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

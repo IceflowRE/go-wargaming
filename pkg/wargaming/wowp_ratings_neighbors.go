@@ -39,7 +39,7 @@ import (
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
 func (client *Client) WowpRatingsNeighbors(realm Realm, accountId int, date wgnTime.UnixTime, limit int, rankField string, type_ string, fields []string, language string) (*wowp.RatingsNeighbors, error) {
-	if err := ValidateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

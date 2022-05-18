@@ -49,7 +49,7 @@ import (
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
 func (client *Client) WotRatingsTop(realm Realm, limit int, pageNo int, rankField string, date wgnTime.UnixTime, type_ string, battleType string, fields []string, language string) (*wot.RatingsTop, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

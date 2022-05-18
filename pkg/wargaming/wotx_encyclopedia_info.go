@@ -22,7 +22,7 @@ import (
 //     "es" &mdash; Español 
 //     "tr" &mdash; Türkçe
 func (client *Client) WotxEncyclopediaInfo(realm Realm, fields []string, language string) (*wotx.EncyclopediaInfo, error) {
-	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
 

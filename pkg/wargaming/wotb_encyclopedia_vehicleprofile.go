@@ -41,7 +41,7 @@ import (
 // turret_id:
 //     Turret ID. If module is not specified, standard module is used by default.
 func (client *Client) WotbEncyclopediaVehicleprofile(realm Realm, engineId int, tankId int, fields []string, gunId int, language string, profileId string, suspensionId int, turretId int) (*wotb.EncyclopediaVehicleprofile, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

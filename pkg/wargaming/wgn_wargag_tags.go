@@ -15,7 +15,7 @@ import (
 // tag_id:
 //     Tag ID
 func (client *Client) WgnWargagTags(realm Realm, fields []string, tagId int) (*wgn.WargagTags, error) {
-	if err := ValidateRealm(realm, []Realm{RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil, err
 	}
 

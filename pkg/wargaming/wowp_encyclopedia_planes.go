@@ -45,7 +45,7 @@ import (
 //     "navy" &mdash; Multirole Fighter 
 //     "bomber" &mdash; Bomber
 func (client *Client) WowpEncyclopediaPlanes(realm Realm, fields []string, language string, nation []string, type_ []string) ([]*wowp.EncyclopediaPlanes, error) {
-	if err := ValidateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

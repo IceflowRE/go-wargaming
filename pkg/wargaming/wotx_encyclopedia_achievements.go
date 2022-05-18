@@ -27,7 +27,7 @@ import (
 //     "es" &mdash; Español 
 //     "tr" &mdash; Türkçe
 func (client *Client) WotxEncyclopediaAchievements(realm Realm, category []string, fields []string, language string) (*wotx.EncyclopediaAchievements, error) {
-	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
 

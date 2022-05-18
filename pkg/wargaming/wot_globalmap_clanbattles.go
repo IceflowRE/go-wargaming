@@ -23,7 +23,7 @@ import (
 // page_no:
 //     Page number. Default is 1. Min value is 1.
 func (client *Client) WotGlobalmapClanbattles(realm Realm, clanId int, fields []string, language string, limit int, pageNo int) (*wot.GlobalmapClanbattles, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

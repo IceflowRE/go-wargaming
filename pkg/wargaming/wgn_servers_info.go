@@ -34,7 +34,7 @@ import (
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
 func (client *Client) WgnServersInfo(realm Realm, fields []string, game []string, language string) (*wgn.ServersInfo, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

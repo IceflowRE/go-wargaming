@@ -34,7 +34,7 @@ import (
 //     "pt-br" &mdash; Português do Brasil 
 //     "es-mx" &mdash; Español (México)
 func (client *Client) WowsAccountAchievements(realm Realm, accountId []int, accessToken string, fields []string, language string) (*wows.AccountAchievements, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

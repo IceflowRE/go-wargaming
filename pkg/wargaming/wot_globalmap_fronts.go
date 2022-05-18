@@ -23,7 +23,7 @@ import (
 // page_no:
 //     Page number. Default is 1. Min value is 1.
 func (client *Client) WotGlobalmapFronts(realm Realm, fields []string, frontId []string, language string, limit int, pageNo int) (*wot.GlobalmapFronts, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

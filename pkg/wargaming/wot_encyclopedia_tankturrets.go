@@ -35,7 +35,7 @@ import (
 // nation:
 //     Nation. Maximum limit: 100.
 func (client *Client) WotEncyclopediaTankturrets(realm Realm, fields []string, language string, moduleId []int, nation []string) (*wot.EncyclopediaTankturrets, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

@@ -36,7 +36,7 @@ import (
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
 func (client *Client) WowpRatingsAccounts(realm Realm, accountId []int, date wgnTime.UnixTime, type_ string, fields []string, language string) (*wowp.RatingsAccounts, error) {
-	if err := ValidateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

@@ -21,7 +21,7 @@ import (
 // page_no:
 //     Page number. Default is 1. Min value is 1.
 func (client *Client) WotGlobalmapEventrating(realm Realm, eventId string, frontId string, fields []string, limit int, pageNo int) (*wot.GlobalmapEventrating, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

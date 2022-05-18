@@ -45,7 +45,7 @@ import (
 //     "startswith" &mdash; Search by initial characters of player name. Minimum length: 3 characters. Maximum length: 24 characters. (by default)
 //     "exact" &mdash; Search by exact match of player name. Case insensitive. You can enter several names, separated with commas (up to 100).
 func (client *Client) WgnAccountList(realm Realm, search string, fields []string, game []string, language string, limit int, type_ string) ([]*wgn.AccountList, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

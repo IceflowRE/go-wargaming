@@ -10,7 +10,7 @@ package wargaming
 // access_token:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 func (client *Client) WotAuthLogout(realm Realm, accessToken string) error {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil
 	}
 

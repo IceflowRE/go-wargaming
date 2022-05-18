@@ -33,7 +33,7 @@ import (
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
 func (client *Client) WgnAccountInfo(realm Realm, accountId []int, accessToken string, fields []string, language string) (map[string]*wgn.AccountInfo, error) {
-	if err := ValidateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

@@ -40,7 +40,7 @@ import (
 //     "pt-br" &mdash; Português do Brasil 
 //     "es-mx" &mdash; Español (México)
 func (client *Client) WowsAccountStatsbydate(realm Realm, accountId int, accessToken string, dates []string, extra []string, fields []string, language string) (*wows.AccountStatsbydate, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

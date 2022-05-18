@@ -13,7 +13,7 @@ import (
 // comment_id:
 //     Comment ID
 func (client *Client) WgnWargagDeletecomment(realm Realm, accessToken string, commentId int) error {
-	if err := ValidateRealm(realm, []Realm{RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil
 	}
 

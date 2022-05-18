@@ -49,7 +49,7 @@ import (
 //     "TorpedoBomber" &mdash; Torpedo Bombers 
 //     "DiveBomber" &mdash; Dive bombers
 func (client *Client) WowsEncyclopediaModules(realm Realm, fields []string, language string, limit int, moduleId []int, pageNo int, type_ string) (*wows.EncyclopediaModules, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

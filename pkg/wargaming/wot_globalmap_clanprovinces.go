@@ -21,7 +21,7 @@ import (
 //     
 //     "ru" &mdash; Russian (by default)
 func (client *Client) WotGlobalmapClanprovinces(realm Realm, clanId []int, accessToken string, fields []string, language string) (*wot.GlobalmapClanprovinces, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

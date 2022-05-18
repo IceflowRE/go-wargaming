@@ -32,7 +32,7 @@ import (
 // season_id:
 //     Season ID. Maximum limit: 100.
 func (client *Client) WowsSeasonsInfo(realm Realm, fields []string, language string, seasonId []int) (*wows.SeasonsInfo, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

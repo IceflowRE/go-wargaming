@@ -41,7 +41,7 @@ import (
 // tank_id:
 //     Player's vehicle ID. Maximum limit: 100.
 func (client *Client) WotbTanksStats(realm Realm, accountId int, accessToken string, fields []string, inGarage string, language string, tankId []int) (*wotb.TanksStats, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

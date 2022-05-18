@@ -38,7 +38,7 @@ import (
 // limit:
 //     Number of returned entries (fewer can be returned, but not more than 50). If the limit sent exceeds 50, a limit of 5 is applied (by default).
 func (client *Client) WotClanratingsNeighbors(realm Realm, clanId int, rankField string, date wgnTime.UnixTime, fields []string, language string, limit int) (*wot.ClanratingsNeighbors, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

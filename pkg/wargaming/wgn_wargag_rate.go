@@ -19,7 +19,7 @@ import (
 //     "up" &mdash; Rate content positively 
 //     "down" &mdash; Rate content negatively
 func (client *Client) WgnWargagRate(realm Realm, accessToken string, contentId int, rating string) (*wgn.WargagRate, error) {
-	if err := ValidateRealm(realm, []Realm{RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil, err
 	}
 

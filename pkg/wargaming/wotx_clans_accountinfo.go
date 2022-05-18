@@ -29,7 +29,7 @@ import (
 //     "es" &mdash; Español 
 //     "tr" &mdash; Türkçe
 func (client *Client) WotxClansAccountinfo(realm Realm, accountId []int, extra []string, fields []string, language string) (*wotx.ClansAccountinfo, error) {
-	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
 

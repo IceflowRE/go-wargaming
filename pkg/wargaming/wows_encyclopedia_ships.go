@@ -46,7 +46,7 @@ import (
 //     "Destroyer" &mdash; Destroyer 
 //     "Cruiser" &mdash; Cruiser
 func (client *Client) WowsEncyclopediaShips(realm Realm, fields []string, language string, limit int, nation []string, pageNo int, shipId []int, type_ []string) (*wows.EncyclopediaShips, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

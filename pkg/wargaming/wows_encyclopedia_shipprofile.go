@@ -50,7 +50,7 @@ import (
 // torpedoes_id:
 //     Torpedo tubes' ID. If the module is not indicated, module of basic configuration is used.
 func (client *Client) WowsEncyclopediaShipprofile(realm Realm, artilleryId int, diveBomberId int, engineId int, fighterId int, shipId int, fields []string, fireControlId int, flightControlId int, hullId int, language string, torpedoBomberId int, torpedoesId int) (*wows.EncyclopediaShipprofile, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

@@ -17,7 +17,7 @@ import (
 // page_no:
 //     Result page number
 func (client *Client) WgnWargagComments(realm Realm, contentId int, fields []string, pageNo int) (*wgn.WargagComments, error) {
-	if err := ValidateRealm(realm, []Realm{RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil, err
 	}
 

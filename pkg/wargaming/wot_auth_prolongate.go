@@ -16,7 +16,7 @@ import (
 //     Access_token expiration time in UNIX. Delta can also be specified in seconds.
 //     Expiration time and delta must not exceed two weeks from the current time.
 func (client *Client) WotAuthProlongate(realm Realm, accessToken string, expiresAt int) (*wot.AuthProlongate, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

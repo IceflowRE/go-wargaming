@@ -30,7 +30,7 @@ import (
 // to_position:
 //     Allows to get all team standings up to a specific place, including this place
 func (client *Client) WotbTournamentsStandings(realm Realm, tournamentId int, fields []string, fromPosition int, language string, limit int, pageNo int, teamId []int, toPosition int) (*wotb.TournamentsStandings, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

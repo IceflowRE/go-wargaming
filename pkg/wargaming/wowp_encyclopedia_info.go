@@ -8,7 +8,7 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wowp/encyclopedia/info
 func (client *Client) WowpEncyclopediaInfo(realm Realm) (*wowp.EncyclopediaInfo, error) {
-	if err := ValidateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

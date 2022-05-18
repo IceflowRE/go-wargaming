@@ -45,7 +45,7 @@ import (
 //     "Modernization" &mdash; Upgrades 
 //     "Skin" &mdash; Ship camouflages
 func (client *Client) WowsEncyclopediaConsumables(realm Realm, consumableId []int, fields []string, language string, limit int, pageNo int, type_ string) (*wows.EncyclopediaConsumables, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

@@ -38,7 +38,7 @@ import (
 //     "equipment" &mdash; Consumables 
 //     "optionalDevice" &mdash; Equipment
 func (client *Client) WotbEncyclopediaProvisions(realm Realm, fields []string, language string, provisionId []int, tankId []int, type_ string) (*wotb.EncyclopediaProvisions, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

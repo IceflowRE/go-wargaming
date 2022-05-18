@@ -42,7 +42,7 @@ import (
 //     "gun" &mdash; autocannon 
 //     "construction" &mdash; airframe
 func (client *Client) WowpEncyclopediaPlanemodules(realm Realm, planeId []int, fields []string, language string, type_ []string) (*wowp.EncyclopediaPlanemodules, error) {
-	if err := ValidateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

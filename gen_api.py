@@ -347,7 +347,7 @@ class GoApi:
 {self.imports}
 {documentation}
 func (client *Client) {name_to_camel(self.file_name)}(realm Realm{self.method_params}) {meth_return_type} {'{'}
-\tif err := ValidateRealm(realm, []Realm{'{'}{self.allowed_realms}{'}'}); err != nil {'{'}
+\tif err := validateRealm(realm, []Realm{'{'}{self.allowed_realms}{'}'}); err != nil {'{'}
 \t\t{'return nil, err' if self.struct.fields else 'return nil'}
 \t{'}'}
 

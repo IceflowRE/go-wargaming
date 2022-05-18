@@ -29,7 +29,7 @@ import (
 //     "ACTIVE" &mdash; Current event 
 //     "FINISHED" &mdash; Event is over
 func (client *Client) WotGlobalmapEvents(realm Realm, eventId string, fields []string, language string, limit int, pageNo int, status string) (*wot.GlobalmapEvents, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

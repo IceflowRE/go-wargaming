@@ -31,7 +31,7 @@ import (
 // nation:
 //     Nation
 func (client *Client) WowsEncyclopediaCrewranks(realm Realm, fields []string, language string, nation string) (*wows.EncyclopediaCrewranks, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

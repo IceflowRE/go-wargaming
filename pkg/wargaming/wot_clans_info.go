@@ -41,7 +41,7 @@ import (
 //     
 //     "id" &mdash; Members field will contain associative array with account_id indexing in response
 func (client *Client) WotClansInfo(realm Realm, clanId []int, accessToken string, extra []string, fields []string, language string, membersKey string) (*wot.ClansInfo, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

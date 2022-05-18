@@ -30,7 +30,7 @@ import (
 //     "es" &mdash; Español 
 //     "tr" &mdash; Türkçe
 func (client *Client) WotxAccountAchievements(realm Realm, accountId []int, fields []string, language string) (*wotx.AccountAchievements, error) {
-	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
 

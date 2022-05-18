@@ -27,7 +27,7 @@ import (
 //     "es" &mdash; Español 
 //     "tr" &mdash; Türkçe
 func (client *Client) WotxAccountInfo(realm Realm, accountId []int, accessToken string, fields []string, language string) (map[string]*wotx.AccountInfo, error) {
-	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
 

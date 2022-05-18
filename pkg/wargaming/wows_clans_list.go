@@ -36,7 +36,7 @@ import (
 // search:
 //     Part of name or tag for clan search. Minimum 2 characters
 func (client *Client) WowsClansList(realm Realm, fields []string, language string, limit int, pageNo int, search string) ([]*wows.ClansList, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

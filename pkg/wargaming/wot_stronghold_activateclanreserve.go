@@ -26,7 +26,7 @@ import (
 //     "uk" &mdash; Ukrainian 
 //     "kk" &mdash; Kazakh
 func (client *Client) WotStrongholdActivateclanreserve(realm Realm, accessToken string, reserveLevel int, reserveType string, fields []string, language string) (*wot.StrongholdActivateclanreserve, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

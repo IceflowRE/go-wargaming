@@ -18,7 +18,7 @@ import (
 // message_id:
 //     Message ID
 func (client *Client) WotbClanmessagesLike(realm Realm, accessToken string, action string, messageId int) error {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil
 	}
 

@@ -8,7 +8,7 @@ import (
 //
 // https://developers.wargaming.net/reference/all/wot/clanratings/types
 func (client *Client) WotClanratingsTypes(realm Realm) (*wot.ClanratingsTypes, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

@@ -16,7 +16,7 @@ import (
 // text:
 //     Comment text. Maximum length: 1000 symbols. Maximum length: 1000.
 func (client *Client) WgnWargagNewcomment(realm Realm, accessToken string, contentId int, text string) (*wgn.WargagNewcomment, error) {
-	if err := ValidateRealm(realm, []Realm{RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil, err
 	}
 

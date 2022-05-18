@@ -32,7 +32,7 @@ import (
 // vehicle_type:
 //     Vehicle types. Maximum limit: 100.
 func (client *Client) WotbEncyclopediaCrewskills(realm Realm, fields []string, language string, skillId []string, vehicleType []string) (*wotb.EncyclopediaCrewskills, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

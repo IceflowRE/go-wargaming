@@ -30,7 +30,7 @@ import (
 // role:
 //     Сrew qualification ID. Maximum limit: 100.
 func (client *Client) WotEncyclopediaCrewroles(realm Realm, fields []string, language string, role []string) (*wot.EncyclopediaCrewroles, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

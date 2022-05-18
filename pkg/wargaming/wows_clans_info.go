@@ -36,7 +36,7 @@ import (
 //     "pt-br" &mdash; Português do Brasil 
 //     "es-mx" &mdash; Español (México)
 func (client *Client) WowsClansInfo(realm Realm, clanId []int, extra []string, fields []string, language string) (*wows.ClansInfo, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

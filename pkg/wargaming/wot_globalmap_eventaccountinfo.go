@@ -21,7 +21,7 @@ import (
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 func (client *Client) WotGlobalmapEventaccountinfo(realm Realm, accountId int, clanId int, eventId string, frontId []string, fields []string) (*wot.GlobalmapEventaccountinfo, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

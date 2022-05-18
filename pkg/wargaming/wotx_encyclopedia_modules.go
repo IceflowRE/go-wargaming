@@ -44,7 +44,7 @@ import (
 //     "vehicleChassis" &mdash; Suspension 
 //     "vehicleTurret" &mdash; Turret
 func (client *Client) WotxEncyclopediaModules(realm Realm, extra []string, fields []string, language string, limit int, moduleId []int, nation []string, pageNo int, type_ []string) (*wotx.EncyclopediaModules, error) {
-	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
 

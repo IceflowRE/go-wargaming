@@ -29,7 +29,7 @@ import (
 //     "pt-br" &mdash; Português do Brasil 
 //     "es-mx" &mdash; Español (México)
 func (client *Client) WowsEncyclopediaCollectioncards(realm Realm, fields []string, language string) (*wows.EncyclopediaCollectioncards, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

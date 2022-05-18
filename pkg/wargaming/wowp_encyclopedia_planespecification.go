@@ -35,7 +35,7 @@ import (
 //     "vi" &mdash; Tiếng Việt 
 //     "ko" &mdash; 한국어
 func (client *Client) WowpEncyclopediaPlanespecification(realm Realm, bindId []int, moduleId []int, planeId int, fields []string, language string) (*wowp.EncyclopediaPlanespecification, error) {
-	if err := ValidateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

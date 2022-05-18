@@ -48,7 +48,7 @@ import (
 // province_id:
 //     Filter by the list of province IDs. Maximum limit: 100.
 func (client *Client) WotGlobalmapProvinces(realm Realm, arenaId string, dailyRevenueGte int, dailyRevenueLte int, frontId string, fields []string, landingType string, language string, limit int, orderBy string, pageNo int, primeHour int, provinceId []string) (*wot.GlobalmapProvinces, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

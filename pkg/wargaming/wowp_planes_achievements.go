@@ -33,7 +33,7 @@ import (
 // plane_id:
 //     Aircraft ID. Maximum limit: 100.
 func (client *Client) WowpPlanesAchievements(realm Realm, accountId int, fields []string, language string, planeId []int) (*wowp.PlanesAchievements, error) {
-	if err := ValidateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

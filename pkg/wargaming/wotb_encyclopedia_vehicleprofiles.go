@@ -36,7 +36,7 @@ import (
 //     "price_credit" &mdash; by cost in credits 
 //     "-price_credit" &mdash; by cost in credits, in reverse order
 func (client *Client) WotbEncyclopediaVehicleprofiles(realm Realm, tankId []int, fields []string, language string, orderBy string) (*wotb.EncyclopediaVehicleprofiles, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

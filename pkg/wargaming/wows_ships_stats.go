@@ -59,7 +59,7 @@ import (
 // ship_id:
 //     Player's ship ID. Maximum limit: 100.
 func (client *Client) WowsShipsStats(realm Realm, accountId int, accessToken string, extra []string, fields []string, inGarage string, language string, shipId []int) (*wows.ShipsStats, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

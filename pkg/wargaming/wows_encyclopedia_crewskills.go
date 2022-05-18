@@ -32,7 +32,7 @@ import (
 // skill_id:
 //     Skill ID. Maximum limit: 100.
 func (client *Client) WowsEncyclopediaCrewskills(realm Realm, fields []string, language string, skillId []int) (*wows.EncyclopediaCrewskills, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

@@ -53,7 +53,7 @@ import (
 //     "pt-br" &mdash; Português do Brasil 
 //     "es-mx" &mdash; Español (México)
 func (client *Client) WowsAccountInfo(realm Realm, accountId []int, accessToken string, extra []string, fields []string, language string) (map[string]*wows.AccountInfo, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

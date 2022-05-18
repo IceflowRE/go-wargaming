@@ -58,7 +58,7 @@ import (
 //     URL where user is redirected after authentication.
 //     By default: api-console.worldoftanks.com/wotx//blank/
 func (client *Client) WotxAuthLogin(realm Realm, display string, expiresAt int, language string, nofollow int, redirectUri string) (*wotx.AuthLogin, error) {
-	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
 

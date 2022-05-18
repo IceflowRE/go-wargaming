@@ -22,7 +22,7 @@ import (
 //     "uk" &mdash; Ukrainian 
 //     "kk" &mdash; Kazakh
 func (client *Client) WotStrongholdClaninfo(realm Realm, clanId []int, fields []string, language string) (*wot.StrongholdClaninfo, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

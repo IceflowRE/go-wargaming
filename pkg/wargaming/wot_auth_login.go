@@ -40,7 +40,7 @@ import (
 //     URL where user is redirected after authentication.
 //     By default: api.worldoftanks.ru/wot//blank/
 func (client *Client) WotAuthLogin(realm Realm, display string, expiresAt int, nofollow int, redirectUri string) (*wot.AuthLogin, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

@@ -29,7 +29,7 @@ import (
 // search:
 //     Part of name or tag for clan search. Minimum 2 characters
 func (client *Client) WotxClansList(realm Realm, fields []string, language string, limit int, pageNo int, search string) ([]*wotx.ClansList, error) {
-	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
 

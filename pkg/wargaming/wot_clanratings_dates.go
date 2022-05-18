@@ -12,7 +12,7 @@ import (
 // limit:
 //     Number of returned entries (fewer can be returned, but not more than 365). If the limit sent exceeds 365, a limit of 7 is applied (by default).
 func (client *Client) WotClanratingsDates(realm Realm, limit int) (*wot.ClanratingsDates, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

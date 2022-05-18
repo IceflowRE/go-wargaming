@@ -55,7 +55,7 @@ import (
 // turret_id:
 //     Compatible turret ID
 func (client *Client) WotEncyclopediaTankguns(realm Realm, fields []string, language string, moduleId []int, nation []string, tankId int, turretId int) (*wot.EncyclopediaTankguns, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

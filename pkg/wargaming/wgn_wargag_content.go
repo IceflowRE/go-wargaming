@@ -43,7 +43,7 @@ import (
 //     "video" &mdash; Video content 
 //     "picture" &mdash; Image content type
 func (client *Client) WgnWargagContent(realm Realm, accessToken string, accountId int, categoryId int, contentId int, date wgnTime.UnixTime, fields []string, orderBy string, pageNo int, ratingThreshold int, tagId int, type_ string) (*wgn.WargagContent, error) {
-	if err := ValidateRealm(realm, []Realm{RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil, err
 	}
 

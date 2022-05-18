@@ -12,7 +12,7 @@ import (
 // xuid:
 //     Player Microsoft XUID. Maximum limit: 100.
 func (client *Client) WotxAccountXuidinfo(realm Realm, xuid []int) (*wotx.AccountXuidinfo, error) {
-	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
 

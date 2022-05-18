@@ -21,7 +21,7 @@ import (
 //     "uk" &mdash; Ukrainian 
 //     "kk" &mdash; Kazakh
 func (client *Client) WotStrongholdClanreserves(realm Realm, accessToken string, fields []string, language string) (*wot.StrongholdClanreserves, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

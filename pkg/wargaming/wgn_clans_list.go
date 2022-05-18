@@ -51,7 +51,7 @@ import (
 // search:
 //     Part of name or tag for clan search. Minimum 2 characters
 func (client *Client) WgnClansList(realm Realm, fields []string, game []string, language string, limit int, pageNo int, search string) ([]*wgn.ClansList, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

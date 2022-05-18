@@ -21,7 +21,7 @@ import (
 // limit:
 //     Neighbors limit. Default is 10. Min value is 1. Maximum value: 99.
 func (client *Client) WotGlobalmapEventratingneighbors(realm Realm, clanId int, eventId string, frontId string, fields []string, limit int) (*wot.GlobalmapEventratingneighbors, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

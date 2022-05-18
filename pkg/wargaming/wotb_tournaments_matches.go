@@ -32,7 +32,7 @@ import (
 // team_id:
 //     Team ID. Maximum limit: 10.
 func (client *Client) WotbTournamentsMatches(realm Realm, stageId int, tournamentId int, fields []string, groupId []int, language string, limit int, pageNo int, roundNumber []int, teamId []int) (*wotb.TournamentsMatches, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

@@ -25,7 +25,7 @@ import (
 //     "es" &mdash; Español 
 //     "tr" &mdash; Türkçe
 func (client *Client) WotxEncyclopediaVehicleupgrades(realm Realm, tankId []int, fields []string, language string) (*wotx.EncyclopediaVehicleupgrades, error) {
-	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
 

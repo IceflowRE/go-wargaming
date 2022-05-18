@@ -21,7 +21,7 @@ import (
 //     "wot" &mdash; World of Tanks (by default)
 //     "wowp" &mdash; World of Warplanes
 func (client *Client) WgnClansMessageboard(realm Realm, accessToken string, fields []string, game string) (*wgn.ClansMessageboard, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

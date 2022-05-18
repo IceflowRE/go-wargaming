@@ -39,7 +39,7 @@ func (err InvalidRealm) Error() string {
 	return string(err)
 }
 
-func ValidateRealm(realm Realm, allowedRealms []Realm) error {
+func validateRealm(realm Realm, allowedRealms []Realm) error {
 	if !utils.Contains(allowedRealms, realm) {
 		return InvalidRealm(realm)
 	}

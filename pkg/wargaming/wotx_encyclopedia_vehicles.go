@@ -29,7 +29,7 @@ import (
 // tier:
 //     Tier. Maximum limit: 100.
 func (client *Client) WotxEncyclopediaVehicles(realm Realm, fields []string, language string, nation []string, tankId []int, tier []int) (*wotx.EncyclopediaVehicles, error) {
-	if err := ValidateRealm(realm, []Realm{RealmWgcb}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}
 

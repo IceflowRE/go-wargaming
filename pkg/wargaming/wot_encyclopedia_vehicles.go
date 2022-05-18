@@ -48,7 +48,7 @@ import (
 //     "lightTank" &mdash; Light Tank 
 //     "SPG" &mdash; SPG
 func (client *Client) WotEncyclopediaVehicles(realm Realm, fields []string, language string, limit int, nation []string, pageNo int, tankId []int, tier []int, type_ []string) (*wot.EncyclopediaVehicles, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

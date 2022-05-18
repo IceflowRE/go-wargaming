@@ -32,7 +32,7 @@ import (
 //     "finished" &mdash; The last match among all stages has been played 
 //     "complete" &mdash; Tournament has been completed
 func (client *Client) WotbTournamentsList(realm Realm, fields []string, language string, limit int, pageNo int, search string, status []string) ([]*wotb.TournamentsList, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

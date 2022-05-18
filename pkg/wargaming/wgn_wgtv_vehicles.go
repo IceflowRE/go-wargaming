@@ -16,7 +16,7 @@ import (
 // project_id:
 //     Game project ID. Maximum limit: 100.
 func (client *Client) WgnWgtvVehicles(realm Realm, categoryId []int, programId []int, projectId []int) (*wgn.WgtvVehicles, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 

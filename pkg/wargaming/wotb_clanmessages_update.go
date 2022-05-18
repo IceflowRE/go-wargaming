@@ -33,7 +33,7 @@ import (
 //     "meeting" &mdash; Meeting messages 
 //     "battle" &mdash; Battle messages
 func (client *Client) WotbClanmessagesUpdate(realm Realm, accessToken string, expiresAt wgnTime.UnixTime, importance string, messageId int, text string, title string, type_ string) (*wotb.ClanmessagesUpdate, error) {
-	if err := ValidateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 
