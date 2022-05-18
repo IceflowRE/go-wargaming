@@ -15,13 +15,13 @@ import (
 // language:
 //     Localization language. Default is "en". Valid values:
 //     
-//     "en" &mdash; English (by default)
-//     "ru" &mdash; Русский 
-//     "pl" &mdash; Polski 
-//     "de" &mdash; Deutsch 
-//     "fr" &mdash; Français 
-//     "es" &mdash; Español 
-//     "tr" &mdash; Türkçe
+//     "en" - English (by default)
+//     "ru" - Русский 
+//     "pl" - Polski 
+//     "de" - Deutsch 
+//     "fr" - Français 
+//     "es" - Español 
+//     "tr" - Türkçe
 // limit:
 //     Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
 // pageNo:

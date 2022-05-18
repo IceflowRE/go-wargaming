@@ -29,8 +29,8 @@ import (
 // display:
 //     Layout for mobile applications. Valid values:
 //     
-//     "page" &mdash; Page 
-//     "popup" &mdash; Popup window
+//     "page" - Page 
+//     "popup" - Popup window
 // expiresAt:
 //     Access_token expiration time in UNIX. Delta can also be specified in seconds.
 //     Expiration time and delta must not exceed two weeks from the current time.

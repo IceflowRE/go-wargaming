@@ -17,8 +17,8 @@ import (
 // importance:
 //     Message importance. Valid values:
 //     
-//     "important" &mdash; Important messages 
-//     "standard" &mdash; Standard messages
+//     "important" - Important messages 
+//     "standard" - Standard messages
 // messageId:
 //     Message ID
 // text:
@@ -28,10 +28,10 @@ import (
 // type_:
 //     Message type. Valid values:
 //     
-//     "general" &mdash; General messages 
-//     "training" &mdash; Training messages 
-//     "meeting" &mdash; Meeting messages 
-//     "battle" &mdash; Battle messages
+//     "general" - General messages 
+//     "training" - Training messages 
+//     "meeting" - Meeting messages 
+//     "battle" - Battle messages
 func (client *Client) WotbClanmessagesUpdate(realm Realm, accessToken string, expiresAt wgnTime.UnixTime, importance string, messageId int, text string, title string, type_ string) (*wotb.ClanmessagesUpdate, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err

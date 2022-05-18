@@ -19,9 +19,9 @@ import (
 // vehicleLevel:
 //     Vehicle Tier. Valid values:
 //     
-//     "6" &mdash; Vehicles of Tier 6 
-//     "8" &mdash; Vehicles of Tier 8 
-//     "10" &mdash; Vehicles of Tier 10
+//     "6" - Vehicles of Tier 6 
+//     "8" - Vehicles of Tier 8 
+//     "10" - Vehicles of Tier 10
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 func (client *Client) WotGlobalmapSeasonratingneighbors(realm Realm, clanId int, limit int, seasonId string, vehicleLevel string, fields []string) (*wot.GlobalmapSeasonratingneighbors, error) {

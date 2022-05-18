@@ -17,25 +17,25 @@ import (
 // language:
 //     Localization language. Default is "ru". Valid values:
 //     
-//     "en" &mdash; English 
-//     "ru" &mdash; Русский (by default)
-//     "pl" &mdash; Polski 
-//     "de" &mdash; Deutsch 
-//     "fr" &mdash; Français 
-//     "es" &mdash; Español 
-//     "zh-cn" &mdash; 简体中文 
-//     "tr" &mdash; Türkçe 
-//     "cs" &mdash; Čeština 
-//     "th" &mdash; ไทย 
-//     "vi" &mdash; Tiếng Việt 
-//     "ko" &mdash; 한국어
+//     "en" - English 
+//     "ru" - Русский (by default)
+//     "pl" - Polski 
+//     "de" - Deutsch 
+//     "fr" - Français 
+//     "es" - Español 
+//     "zh-cn" - 简体中文 
+//     "tr" - Türkçe 
+//     "cs" - Čeština 
+//     "th" - ไทย 
+//     "vi" - Tiếng Việt 
+//     "ko" - 한국어
 // limit:
 //     Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of None is applied (by default).
 // type_:
 //     Search type. Default is "startswith". Valid values:
 //     
-//     "startswith" &mdash; Search by initial characters of player name. Minimum length: 3 characters. Maximum length: 24 characters. (by default)
-//     "exact" &mdash; Search by exact match of player name. Case insensitive. You can enter several names, separated with commas (up to 100).
+//     "startswith" - Search by initial characters of player name. Minimum length: 3 characters. Maximum length: 24 characters. (by default)
+//     "exact" - Search by exact match of player name. Case insensitive. You can enter several names, separated with commas (up to 100).
 func (client *Client) WowpAccountList(realm Realm, search string, fields []string, language string, limit int, type_ string) ([]*wowp.AccountList, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err

@@ -16,10 +16,10 @@ import (
 // language:
 //     Localization language. Default is "ru". Valid values:
 //     
-//     "ru" &mdash; Russian (by default)
-//     "be" &mdash; Belarusian 
-//     "uk" &mdash; Ukrainian 
-//     "kk" &mdash; Kazakh
+//     "ru" - Russian (by default)
+//     "be" - Belarusian 
+//     "uk" - Ukrainian 
+//     "kk" - Kazakh
 func (client *Client) WotStrongholdClanreserves(realm Realm, accessToken string, fields []string, language string) (*wot.StrongholdClanreserves, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err

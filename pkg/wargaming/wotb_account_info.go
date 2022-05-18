@@ -24,19 +24,19 @@ import (
 // language:
 //     Localization language. Default is "ru". Valid values:
 //     
-//     "en" &mdash; English 
-//     "ru" &mdash; Русский (by default)
-//     "pl" &mdash; Polski 
-//     "de" &mdash; Deutsch 
-//     "fr" &mdash; Français 
-//     "es" &mdash; Español 
-//     "zh-cn" &mdash; 简体中文 
-//     "zh-tw" &mdash; 繁體中文 
-//     "tr" &mdash; Türkçe 
-//     "cs" &mdash; Čeština 
-//     "th" &mdash; ไทย 
-//     "vi" &mdash; Tiếng Việt 
-//     "ko" &mdash; 한국어
+//     "en" - English 
+//     "ru" - Русский (by default)
+//     "pl" - Polski 
+//     "de" - Deutsch 
+//     "fr" - Français 
+//     "es" - Español 
+//     "zh-cn" - 简体中文 
+//     "zh-tw" - 繁體中文 
+//     "tr" - Türkçe 
+//     "cs" - Čeština 
+//     "th" - ไทย 
+//     "vi" - Tiếng Việt 
+//     "ko" - 한국어
 func (client *Client) WotbAccountInfo(realm Realm, accountId []int, accessToken string, extra []string, fields []string, language string) (map[string]*wotb.AccountInfo, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err

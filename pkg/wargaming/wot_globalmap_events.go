@@ -17,7 +17,7 @@ import (
 // language:
 //     Language. Default is "ru". Valid values:
 //     
-//     "ru" &mdash; Russian (by default)
+//     "ru" - Russian (by default)
 // limit:
 //     Page limit. Default is 5. Min value is 1. Maximum value: 20.
 // pageNo:
@@ -25,9 +25,9 @@ import (
 // status:
 //     Response with events filtered by status. Valid values:
 //     
-//     "PLANNED" &mdash; Upcoming event 
-//     "ACTIVE" &mdash; Current event 
-//     "FINISHED" &mdash; Event is over
+//     "PLANNED" - Upcoming event 
+//     "ACTIVE" - Current event 
+//     "FINISHED" - Event is over
 func (client *Client) WotGlobalmapEvents(realm Realm, eventId string, fields []string, language string, limit int, pageNo int, status string) (*wot.GlobalmapEvents, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err

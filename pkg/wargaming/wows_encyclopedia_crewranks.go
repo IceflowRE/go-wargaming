@@ -14,20 +14,20 @@ import (
 // language:
 //     Localization language. Default is "ru". Valid values:
 //     
-//     "cs" &mdash; Čeština 
-//     "de" &mdash; Deutsch 
-//     "en" &mdash; English 
-//     "es" &mdash; Español 
-//     "fr" &mdash; Français 
-//     "ja" &mdash; 日本語 
-//     "pl" &mdash; Polski 
-//     "ru" &mdash; Русский (by default)
-//     "th" &mdash; ไทย 
-//     "zh-tw" &mdash; 繁體中文 
-//     "tr" &mdash; Türkçe 
-//     "zh-cn" &mdash; 中文 
-//     "pt-br" &mdash; Português do Brasil 
-//     "es-mx" &mdash; Español (México)
+//     "cs" - Čeština 
+//     "de" - Deutsch 
+//     "en" - English 
+//     "es" - Español 
+//     "fr" - Français 
+//     "ja" - 日本語 
+//     "pl" - Polski 
+//     "ru" - Русский (by default)
+//     "th" - ไทย 
+//     "zh-tw" - 繁體中文 
+//     "tr" - Türkçe 
+//     "zh-cn" - 中文 
+//     "pt-br" - Português do Brasil 
+//     "es-mx" - Español (México)
 // nation:
 //     Nation
 func (client *Client) WowsEncyclopediaCrewranks(realm Realm, fields []string, language string, nation string) (*wows.EncyclopediaCrewranks, error) {

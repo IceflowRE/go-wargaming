@@ -9,8 +9,9 @@ import requests
 
 
 def get(path):
-    return requests.get(f'https://developers.wargaming.net/api/{path}/?realm=all',
-                        headers={'X-Requested-With': 'XMLHttpRequest'}).json()
+    return requests.get(
+        f'https://developers.wargaming.net/api/{path}/?realm=all', headers={'X-Requested-With': 'XMLHttpRequest'}
+    ).json()
 
 
 def realm_to_go(realm: str) -> str:
@@ -67,7 +68,7 @@ rxHtml = re.compile("<.*?>")
 
 
 def clean_documentation(text: str) -> str:
-    return rxHtml.sub("", text).strip("\n")
+    return rxHtml.sub("", text).strip("\n").replace("&mdash;", "-")
 
 
 def comment_documentation(text: str) -> str:
@@ -231,7 +232,7 @@ class Parameters:
             if cur_param['name'] == "application_id":
                 continue
             self._params.append(Parameter(
-                description=rxHtml.sub("", cur_param['description']).strip("\n").replace('\n', "\n    "),
+                description=clean_documentation(cur_param['description']),
                 name=cur_param['name'],
                 required=cur_param.get('required', False),
                 typ=type_to_go(cur_param['type']),
@@ -285,7 +286,7 @@ class Parameters:
         lines = []
         for param in self._params:
             lines.append(f'{name_to_camel_lower(param.name)}:')
-            lines.append(f"    {param.description}")
+            lines.append("    " + param.description.replace("\n", "\n    "))
         return '\n'.join(lines)
 
 

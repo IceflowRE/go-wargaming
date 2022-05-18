@@ -16,8 +16,8 @@ import (
 // rating:
 //     Rate. Valid values:
 //     
-//     "up" &mdash; Rate content positively 
-//     "down" &mdash; Rate content negatively
+//     "up" - Rate content positively 
+//     "down" - Rate content negatively
 func (client *Client) WgnWargagRate(realm Realm, accessToken string, contentId int, rating string) (*wgn.WargagRate, error) {
 	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil, err

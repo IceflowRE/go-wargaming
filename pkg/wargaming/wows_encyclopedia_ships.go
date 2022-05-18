@@ -16,20 +16,20 @@ import (
 // language:
 //     Localization language. Default is "ru". Valid values:
 //     
-//     "cs" &mdash; Čeština 
-//     "de" &mdash; Deutsch 
-//     "en" &mdash; English 
-//     "es" &mdash; Español 
-//     "fr" &mdash; Français 
-//     "ja" &mdash; 日本語 
-//     "pl" &mdash; Polski 
-//     "ru" &mdash; Русский (by default)
-//     "th" &mdash; ไทย 
-//     "zh-tw" &mdash; 繁體中文 
-//     "tr" &mdash; Türkçe 
-//     "zh-cn" &mdash; 中文 
-//     "pt-br" &mdash; Português do Brasil 
-//     "es-mx" &mdash; Español (México)
+//     "cs" - Čeština 
+//     "de" - Deutsch 
+//     "en" - English 
+//     "es" - Español 
+//     "fr" - Français 
+//     "ja" - 日本語 
+//     "pl" - Polski 
+//     "ru" - Русский (by default)
+//     "th" - ไทย 
+//     "zh-tw" - 繁體中文 
+//     "tr" - Türkçe 
+//     "zh-cn" - 中文 
+//     "pt-br" - Português do Brasil 
+//     "es-mx" - Español (México)
 // limit:
 //     Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
 // nation:
@@ -41,10 +41,10 @@ import (
 // type_:
 //     Ship type. Maximum limit: 100. Valid values:
 //     
-//     "AirCarrier" &mdash; Aircraft carrier 
-//     "Battleship" &mdash; Battleship 
-//     "Destroyer" &mdash; Destroyer 
-//     "Cruiser" &mdash; Cruiser
+//     "AirCarrier" - Aircraft carrier 
+//     "Battleship" - Battleship 
+//     "Destroyer" - Destroyer 
+//     "Cruiser" - Cruiser
 func (client *Client) WowsEncyclopediaShips(realm Realm, fields []string, language string, limit int, nation []string, pageNo int, shipId []int, type_ []string) (*wows.EncyclopediaShips, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err

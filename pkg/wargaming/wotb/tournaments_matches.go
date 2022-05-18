@@ -19,10 +19,10 @@ type TournamentsMatches struct {
 	Team1Id int `json:"team_1_id,omitempty"`
 	// Match state. Valid values:
 	// 
-	// "waiting_results" &mdash; Match is still in progress and there are no final results 
-	// "got_results" &mdash; Match was finished and there are final results 
-	// "canceled" &mdash; Match was cancelled 
-	// "upcoming" &mdash; Already scheduled match state
+	// "waiting_results" - Match is still in progress and there are no final results 
+	// "got_results" - Match was finished and there are final results 
+	// "canceled" - Match was cancelled 
+	// "upcoming" - Already scheduled match state
 	State string `json:"state,omitempty"`
 	// Match start time
 	StartTime wgnTime.UnixTime `json:"start_time,omitempty"`

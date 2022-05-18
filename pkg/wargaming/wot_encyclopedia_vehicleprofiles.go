@@ -17,24 +17,24 @@ import (
 // language:
 //     Localization language. Default is "ru". Valid values:
 //     
-//     "en" &mdash; English 
-//     "ru" &mdash; Русский (by default)
-//     "pl" &mdash; Polski 
-//     "de" &mdash; Deutsch 
-//     "fr" &mdash; Français 
-//     "es" &mdash; Español 
-//     "zh-cn" &mdash; 简体中文 
-//     "zh-tw" &mdash; 繁體中文 
-//     "tr" &mdash; Türkçe 
-//     "cs" &mdash; Čeština 
-//     "th" &mdash; ไทย 
-//     "vi" &mdash; Tiếng Việt 
-//     "ko" &mdash; 한국어
+//     "en" - English 
+//     "ru" - Русский (by default)
+//     "pl" - Polski 
+//     "de" - Deutsch 
+//     "fr" - Français 
+//     "es" - Español 
+//     "zh-cn" - 简体中文 
+//     "zh-tw" - 繁體中文 
+//     "tr" - Türkçe 
+//     "cs" - Čeština 
+//     "th" - ไทย 
+//     "vi" - Tiếng Việt 
+//     "ko" - 한국어
 // orderBy:
 //     Sorting. Valid values:
 //     
-//     "price_credit" &mdash; by cost in credits 
-//     "-price_credit" &mdash; by cost in credits, in reverse order
+//     "price_credit" - by cost in credits 
+//     "-price_credit" - by cost in credits, in reverse order
 func (client *Client) WotEncyclopediaVehicleprofiles(realm Realm, tankId int, fields []string, language string, orderBy string) (*wot.EncyclopediaVehicleprofiles, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err

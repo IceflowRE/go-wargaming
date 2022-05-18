@@ -15,8 +15,8 @@ import (
 // type_:
 //     Content type. Valid values:
 //     
-//     "video" &mdash; Video content type 
-//     "picture" &mdash; Image content type
+//     "video" - Video content type 
+//     "picture" - Image content type
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 func (client *Client) WgnWargagCategories(realm Realm, categoryId int, type_ string, fields []string) (*wgn.WargagCategories, error) {

@@ -20,23 +20,23 @@ import (
 // inGarage:
 //     Filter by aircraft availability in the Hangar. If the parameter is not specified, all aircraft are returned. Parameter processing requires a valid access_token for the specified account_id. Valid values:
 //     
-//     "1" &mdash; Return aircraft available in the Hangar. 
-//     "0" &mdash; Return aircraft that are no longer available in the Hangar.
+//     "1" - Return aircraft available in the Hangar. 
+//     "0" - Return aircraft that are no longer available in the Hangar.
 // language:
 //     Localization language. Default is "ru". Valid values:
 //     
-//     "en" &mdash; English 
-//     "ru" &mdash; Русский (by default)
-//     "pl" &mdash; Polski 
-//     "de" &mdash; Deutsch 
-//     "fr" &mdash; Français 
-//     "es" &mdash; Español 
-//     "zh-cn" &mdash; 简体中文 
-//     "tr" &mdash; Türkçe 
-//     "cs" &mdash; Čeština 
-//     "th" &mdash; ไทย 
-//     "vi" &mdash; Tiếng Việt 
-//     "ko" &mdash; 한국어
+//     "en" - English 
+//     "ru" - Русский (by default)
+//     "pl" - Polski 
+//     "de" - Deutsch 
+//     "fr" - Français 
+//     "es" - Español 
+//     "zh-cn" - 简体中文 
+//     "tr" - Türkçe 
+//     "cs" - Čeština 
+//     "th" - ไทย 
+//     "vi" - Tiếng Việt 
+//     "ko" - 한국어
 // planeId:
 //     Aircraft ID. Maximum limit: 100.
 func (client *Client) WowpPlanesStats(realm Realm, accountId int, accessToken string, fields []string, inGarage string, language string, planeId []int) (*wowp.PlanesStats, error) {

@@ -37,25 +37,25 @@ import (
 // inGarage:
 //     Filter by ship availability in the Port. If the parameter is not specified, all ships are returned. Parameter processing requires a valid access_token for the specified account_id. Valid values:
 //     
-//     "1" &mdash; Return ships available in the Port. 
-//     "0" &mdash; Return ships that are no longer in the Port.
+//     "1" - Return ships available in the Port. 
+//     "0" - Return ships that are no longer in the Port.
 // language:
 //     Localization language. Default is "ru". Valid values:
 //     
-//     "cs" &mdash; Čeština 
-//     "de" &mdash; Deutsch 
-//     "en" &mdash; English 
-//     "es" &mdash; Español 
-//     "fr" &mdash; Français 
-//     "ja" &mdash; 日本語 
-//     "pl" &mdash; Polski 
-//     "ru" &mdash; Русский (by default)
-//     "th" &mdash; ไทย 
-//     "zh-tw" &mdash; 繁體中文 
-//     "tr" &mdash; Türkçe 
-//     "zh-cn" &mdash; 中文 
-//     "pt-br" &mdash; Português do Brasil 
-//     "es-mx" &mdash; Español (México)
+//     "cs" - Čeština 
+//     "de" - Deutsch 
+//     "en" - English 
+//     "es" - Español 
+//     "fr" - Français 
+//     "ja" - 日本語 
+//     "pl" - Polski 
+//     "ru" - Русский (by default)
+//     "th" - ไทย 
+//     "zh-tw" - 繁體中文 
+//     "tr" - Türkçe 
+//     "zh-cn" - 中文 
+//     "pt-br" - Português do Brasil 
+//     "es-mx" - Español (México)
 // shipId:
 //     Player's ship ID. Maximum limit: 100.
 func (client *Client) WowsShipsStats(realm Realm, accountId int, accessToken string, extra []string, fields []string, inGarage string, language string, shipId []int) (*wows.ShipsStats, error) {

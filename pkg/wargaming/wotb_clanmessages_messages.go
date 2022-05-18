@@ -22,24 +22,24 @@ import (
 // importance:
 //     Message importance. Valid values:
 //     
-//     "important" &mdash; Important messages 
-//     "standard" &mdash; Standard messages
+//     "important" - Important messages 
+//     "standard" - Standard messages
 // language:
 //     Localization language. Default is "ru". Valid values:
 //     
-//     "en" &mdash; English 
-//     "ru" &mdash; Русский (by default)
-//     "pl" &mdash; Polski 
-//     "de" &mdash; Deutsch 
-//     "fr" &mdash; Français 
-//     "es" &mdash; Español 
-//     "zh-cn" &mdash; 简体中文 
-//     "zh-tw" &mdash; 繁體中文 
-//     "tr" &mdash; Türkçe 
-//     "cs" &mdash; Čeština 
-//     "th" &mdash; ไทย 
-//     "vi" &mdash; Tiếng Việt 
-//     "ko" &mdash; 한국어
+//     "en" - English 
+//     "ru" - Русский (by default)
+//     "pl" - Polski 
+//     "de" - Deutsch 
+//     "fr" - Français 
+//     "es" - Español 
+//     "zh-cn" - 简体中文 
+//     "zh-tw" - 繁體中文 
+//     "tr" - Türkçe 
+//     "cs" - Čeština 
+//     "th" - ไทย 
+//     "vi" - Tiếng Việt 
+//     "ko" - 한국어
 // limit:
 //     Number of returned entries. If the value sent exceeds 100, a limit of 25 is applied (by default). Default is 25. Min value is 1.
 // messageId:
@@ -75,15 +75,15 @@ import (
 // status:
 //     Message status. Valid values:
 //     
-//     "active" &mdash; Active message 
-//     "deleted" &mdash; Deleted message
+//     "active" - Active message 
+//     "deleted" - Deleted message
 // type_:
 //     Message type. Valid values:
 //     
-//     "general" &mdash; General messages 
-//     "training" &mdash; Training messages 
-//     "meeting" &mdash; Meeting messages 
-//     "battle" &mdash; Battle messages
+//     "general" - General messages 
+//     "training" - Training messages 
+//     "meeting" - Meeting messages 
+//     "battle" - Battle messages
 func (client *Client) WotbClanmessagesMessages(realm Realm, accessToken string, expiresAfter wgnTime.UnixTime, expiresBefore wgnTime.UnixTime, fields []string, importance string, language string, limit int, messageId int, orderBy []string, pageNo int, status string, type_ string) (*wotb.ClanmessagesMessages, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err

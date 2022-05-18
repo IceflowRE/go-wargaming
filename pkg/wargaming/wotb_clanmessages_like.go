@@ -13,8 +13,8 @@ import (
 // action:
 //     Action. Valid values:
 //     
-//     "add" &mdash; Set a like for message 
-//     "remove" &mdash; Remove a like for message
+//     "add" - Set a like for message 
+//     "remove" - Remove a like for message
 // messageId:
 //     Message ID
 func (client *Client) WotbClanmessagesLike(realm Realm, accessToken string, action string, messageId int) error {

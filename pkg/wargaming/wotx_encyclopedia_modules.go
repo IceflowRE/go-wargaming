@@ -20,13 +20,13 @@ import (
 // language:
 //     Localization language. Default is "en". Valid values:
 //     
-//     "en" &mdash; English (by default)
-//     "ru" &mdash; Русский 
-//     "pl" &mdash; Polski 
-//     "de" &mdash; Deutsch 
-//     "fr" &mdash; Français 
-//     "es" &mdash; Español 
-//     "tr" &mdash; Türkçe
+//     "en" - English (by default)
+//     "ru" - Русский 
+//     "pl" - Polski 
+//     "de" - Deutsch 
+//     "fr" - Français 
+//     "es" - Español 
+//     "tr" - Türkçe
 // limit:
 //     Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
 // moduleId:
@@ -38,11 +38,11 @@ import (
 // type_:
 //     Module type. Maximum limit: 100. Valid values:
 //     
-//     "vehicleRadio" &mdash; Radio 
-//     "vehicleEngine" &mdash; Engines 
-//     "vehicleGun" &mdash; Gun 
-//     "vehicleChassis" &mdash; Suspension 
-//     "vehicleTurret" &mdash; Turret
+//     "vehicleRadio" - Radio 
+//     "vehicleEngine" - Engines 
+//     "vehicleGun" - Gun 
+//     "vehicleChassis" - Suspension 
+//     "vehicleTurret" - Turret
 func (client *Client) WotxEncyclopediaModules(realm Realm, extra []string, fields []string, language string, limit int, moduleId []int, nation []string, pageNo int, type_ []string) (*wotx.EncyclopediaModules, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err

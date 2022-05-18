@@ -15,7 +15,7 @@ import (
 // language:
 //     Language. Default is "ru". Valid values:
 //     
-//     "ru" &mdash; Russian (by default)
+//     "ru" - Russian (by default)
 // limit:
 //     Page limit. Default is 5. Min value is 1. Maximum value: 20.
 // pageNo:
@@ -25,9 +25,9 @@ import (
 // status:
 //     Response with seasons filtered by status. Valid values:
 //     
-//     "PLANNED" &mdash; Upcoming season 
-//     "ACTIVE" &mdash; Current season 
-//     "FINISHED" &mdash; Season is over
+//     "PLANNED" - Upcoming season 
+//     "ACTIVE" - Current season 
+//     "FINISHED" - Season is over
 func (client *Client) WotGlobalmapSeasons(realm Realm, fields []string, language string, limit int, pageNo int, seasonId string, status string) (*wot.GlobalmapSeasons, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err

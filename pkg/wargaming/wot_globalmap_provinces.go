@@ -23,24 +23,24 @@ import (
 // landingType:
 //     Search for provinces by landing type. Valid values:
 //     
-//     "null" &mdash; auctions disabled 
-//     "auction" &mdash; auction 
-//     "tournament" &mdash; landing tournament
+//     "null" - auctions disabled 
+//     "auction" - auction 
+//     "tournament" - landing tournament
 // language:
 //     Language. Default is "ru". Valid values:
 //     
-//     "ru" &mdash; Russian (by default)
+//     "ru" - Russian (by default)
 // limit:
 //     Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
 // orderBy:
 //     Sorting. Valid values:
 //     
-//     "province_id" &mdash; by province name 
-//     "-province_id" &mdash; by province name in reverse order 
-//     "daily_revenue" &mdash; by province income 
-//     "-daily_revenue" &mdash; by province income in reverse order 
-//     "prime_hour" &mdash; by Prime Time 
-//     "-prime_hour" &mdash; by Prime Time in reverse order
+//     "province_id" - by province name 
+//     "-province_id" - by province name in reverse order 
+//     "daily_revenue" - by province income 
+//     "-daily_revenue" - by province income in reverse order 
+//     "prime_hour" - by Prime Time 
+//     "-prime_hour" - by Prime Time in reverse order
 // pageNo:
 //     Page number. Default is 1. Min value is 1.
 // primeHour:

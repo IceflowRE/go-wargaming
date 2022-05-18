@@ -20,19 +20,19 @@ import (
 // language:
 //     Localization language. Default is "ru". Valid values:
 //     
-//     "en" &mdash; English 
-//     "ru" &mdash; Русский (by default)
-//     "pl" &mdash; Polski 
-//     "de" &mdash; Deutsch 
-//     "fr" &mdash; Français 
-//     "es" &mdash; Español 
-//     "zh-cn" &mdash; 简体中文 
-//     "zh-tw" &mdash; 繁體中文 
-//     "tr" &mdash; Türkçe 
-//     "cs" &mdash; Čeština 
-//     "th" &mdash; ไทย 
-//     "vi" &mdash; Tiếng Việt 
-//     "ko" &mdash; 한국어
+//     "en" - English 
+//     "ru" - Русский (by default)
+//     "pl" - Polski 
+//     "de" - Deutsch 
+//     "fr" - Français 
+//     "es" - Español 
+//     "zh-cn" - 简体中文 
+//     "zh-tw" - 繁體中文 
+//     "tr" - Türkçe 
+//     "cs" - Čeština 
+//     "th" - ไทย 
+//     "vi" - Tiếng Việt 
+//     "ko" - 한국어
 // limit:
 //     Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
 // moduleId:
@@ -44,11 +44,11 @@ import (
 // type_:
 //     Module type. Maximum limit: 100. Valid values:
 //     
-//     "vehicleRadio" &mdash; Radio 
-//     "vehicleEngine" &mdash; Engines 
-//     "vehicleGun" &mdash; Gun 
-//     "vehicleChassis" &mdash; Suspension 
-//     "vehicleTurret" &mdash; Turret
+//     "vehicleRadio" - Radio 
+//     "vehicleEngine" - Engines 
+//     "vehicleGun" - Gun 
+//     "vehicleChassis" - Suspension 
+//     "vehicleTurret" - Turret
 func (client *Client) WotEncyclopediaModules(realm Realm, extra []string, fields []string, language string, limit int, moduleId []int, nation []string, pageNo int, type_ []string) (*wot.EncyclopediaModules, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err

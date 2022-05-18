@@ -18,8 +18,8 @@ import (
 // game:
 //     Name of the game to perform the clan search in. If the parameter is not specified, search will be executed across World of Tanks. Default is "wot". Valid values:
 //     
-//     "wot" &mdash; World of Tanks (by default)
-//     "wowp" &mdash; World of Warplanes
+//     "wot" - World of Tanks (by default)
+//     "wowp" - World of Warplanes
 func (client *Client) WgnClansMessageboard(realm Realm, accessToken string, fields []string, game string) (*wgn.ClansMessageboard, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err

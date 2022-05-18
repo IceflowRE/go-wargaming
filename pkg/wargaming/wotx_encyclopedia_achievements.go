@@ -12,20 +12,20 @@ import (
 // category:
 //     Filter by award category. Maximum limit: 100. Valid values:
 //     
-//     "achievements" &mdash; Achievements 
-//     "ribbons" &mdash; Ribbons
+//     "achievements" - Achievements 
+//     "ribbons" - Ribbons
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 // language:
 //     Localization language. Default is "en". Valid values:
 //     
-//     "en" &mdash; English (by default)
-//     "ru" &mdash; Русский 
-//     "pl" &mdash; Polski 
-//     "de" &mdash; Deutsch 
-//     "fr" &mdash; Français 
-//     "es" &mdash; Español 
-//     "tr" &mdash; Türkçe
+//     "en" - English (by default)
+//     "ru" - Русский 
+//     "pl" - Polski 
+//     "de" - Deutsch 
+//     "fr" - Français 
+//     "es" - Español 
+//     "tr" - Türkçe
 func (client *Client) WotxEncyclopediaAchievements(realm Realm, category []string, fields []string, language string) (*wotx.EncyclopediaAchievements, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err

@@ -20,18 +20,18 @@ import (
 // inGarage:
 //     Filter by vehicle availability in the Garage. If the parameter is not specified, all vehicles are returned. Parameter processing requires a valid access_token for the specified account_id. Valid values:
 //     
-//     "1" &mdash; Return vehicles available in the Garage. 
-//     "0" &mdash; Return vehicles that are no longer in the Garage.
+//     "1" - Return vehicles available in the Garage. 
+//     "0" - Return vehicles that are no longer in the Garage.
 // language:
 //     Localization language. Default is "en". Valid values:
 //     
-//     "en" &mdash; English (by default)
-//     "ru" &mdash; Русский 
-//     "pl" &mdash; Polski 
-//     "de" &mdash; Deutsch 
-//     "fr" &mdash; Français 
-//     "es" &mdash; Español 
-//     "tr" &mdash; Türkçe
+//     "en" - English (by default)
+//     "ru" - Русский 
+//     "pl" - Polski 
+//     "de" - Deutsch 
+//     "fr" - Français 
+//     "es" - Español 
+//     "tr" - Türkçe
 // tankId:
 //     Player's vehicle ID. Maximum limit: 100.
 func (client *Client) WotxTanksStats(realm Realm, accountId int, accessToken string, fields []string, inGarage string, language string, tankId []int) (*wotx.TanksStats, error) {

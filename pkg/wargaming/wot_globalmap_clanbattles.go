@@ -17,7 +17,7 @@ import (
 // language:
 //     Language. Default is "ru". Valid values:
 //     
-//     "ru" &mdash; Russian (by default)
+//     "ru" - Russian (by default)
 // limit:
 //     Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
 // pageNo:

@@ -21,13 +21,13 @@ import (
 // language:
 //     Localization language. Default is "en". Valid values:
 //     
-//     "en" &mdash; English (by default)
-//     "ru" &mdash; Русский 
-//     "pl" &mdash; Polski 
-//     "de" &mdash; Deutsch 
-//     "fr" &mdash; Français 
-//     "es" &mdash; Español 
-//     "tr" &mdash; Türkçe
+//     "en" - English (by default)
+//     "ru" - Русский 
+//     "pl" - Polski 
+//     "de" - Deutsch 
+//     "fr" - Français 
+//     "es" - Español 
+//     "tr" - Türkçe
 // profileId:
 //     Configuration ID. If specified, parameters of IDs of separate modules are ignored.
 // radioId:

@@ -17,30 +17,30 @@ import (
 // language:
 //     Localization language. Default is "ru". Valid values:
 //     
-//     "en" &mdash; English 
-//     "ru" &mdash; Русский (by default)
-//     "pl" &mdash; Polski 
-//     "de" &mdash; Deutsch 
-//     "fr" &mdash; Français 
-//     "es" &mdash; Español 
-//     "zh-cn" &mdash; 简体中文 
-//     "tr" &mdash; Türkçe 
-//     "cs" &mdash; Čeština 
-//     "th" &mdash; ไทย 
-//     "vi" &mdash; Tiếng Việt 
-//     "ko" &mdash; 한국어
+//     "en" - English 
+//     "ru" - Русский (by default)
+//     "pl" - Polski 
+//     "de" - Deutsch 
+//     "fr" - Français 
+//     "es" - Español 
+//     "zh-cn" - 简体中文 
+//     "tr" - Türkçe 
+//     "cs" - Čeština 
+//     "th" - ไทย 
+//     "vi" - Tiếng Việt 
+//     "ko" - 한국어
 // type_:
 //     Configuration. Default is "engine, bomb, rocket, turret, turretfront, turretupper, turretlower, gun, construction". Maximum limit: 100. Valid values:
 //     
-//     "engine" &mdash; engine 
-//     "bomb" &mdash; bomb 
-//     "rocket" &mdash; rocket 
-//     "turret" &mdash; rear gun 
-//     "turretfront" &mdash; Передняя турель 
-//     "turretupper" &mdash; Верхняя турель 
-//     "turretlower" &mdash; Нижняя турель 
-//     "gun" &mdash; autocannon 
-//     "construction" &mdash; airframe
+//     "engine" - engine 
+//     "bomb" - bomb 
+//     "rocket" - rocket 
+//     "turret" - rear gun 
+//     "turretfront" - Передняя турель 
+//     "turretupper" - Верхняя турель 
+//     "turretlower" - Нижняя турель 
+//     "gun" - autocannon 
+//     "construction" - airframe
 func (client *Client) WowpEncyclopediaPlanemodules(realm Realm, planeId []int, fields []string, language string, type_ []string) (*wowp.EncyclopediaPlanemodules, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err

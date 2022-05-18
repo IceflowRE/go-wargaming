@@ -15,7 +15,7 @@ import (
 // language:
 //     Localization language. Default is "ru". Valid values:
 //     
-//     "ru" &mdash; Русский (by default)
+//     "ru" - Русский (by default)
 // limit:
 //     Page limit. Number of tournaments in one page. Default is 10. Min value is 1. Maximum value: 25.
 // pageNo:
@@ -25,12 +25,12 @@ import (
 // status:
 //     Tournament status. Maximum limit: 100. Valid values:
 //     
-//     "upcoming" &mdash; Tournament is planned 
-//     "registration_started" &mdash; Players can apply to join the tournament 
-//     "registration_finished" &mdash; Registration has finished 
-//     "running" &mdash; The first match has started 
-//     "finished" &mdash; The last match among all stages has been played 
-//     "complete" &mdash; Tournament has been completed
+//     "upcoming" - Tournament is planned 
+//     "registration_started" - Players can apply to join the tournament 
+//     "registration_finished" - Registration has finished 
+//     "running" - The first match has started 
+//     "finished" - The last match among all stages has been played 
+//     "complete" - Tournament has been completed
 func (client *Client) WotbTournamentsList(realm Realm, fields []string, language string, limit int, pageNo int, search string, status []string) ([]*wotb.TournamentsList, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err

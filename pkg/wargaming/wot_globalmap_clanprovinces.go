@@ -19,7 +19,7 @@ import (
 // language:
 //     Language. Default is "ru". Valid values:
 //     
-//     "ru" &mdash; Russian (by default)
+//     "ru" - Russian (by default)
 func (client *Client) WotGlobalmapClanprovinces(realm Realm, clanId []int, accessToken string, fields []string, language string) (*wot.GlobalmapClanprovinces, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err

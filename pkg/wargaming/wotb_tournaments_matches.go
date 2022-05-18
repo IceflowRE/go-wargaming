@@ -22,7 +22,7 @@ import (
 // language:
 //     Localization language. Default is "ru". Valid values:
 //     
-//     "ru" &mdash; Русский (by default)
+//     "ru" - Русский (by default)
 // limit:
 //     Number of returned entries. Default is 10. Min value is 1. Maximum value: 25.
 // pageNo:

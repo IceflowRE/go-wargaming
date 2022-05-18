@@ -19,8 +19,8 @@ import (
 // inRating:
 //     Get data only for accounts with rating. Default is 0. Valid values:
 //     
-//     "1" &mdash; Only with rating 
-//     "0" &mdash; All (by default)
+//     "1" - Only with rating 
+//     "0" - All (by default)
 // limit:
 //     Accounts limit. Default is 20. Min value is 10. Maximum value: 100.
 // pageNo:

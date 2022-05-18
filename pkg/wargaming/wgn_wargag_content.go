@@ -26,10 +26,10 @@ import (
 // orderBy:
 //     Sorting. Default is "-date". Valid values:
 //     
-//     "date" &mdash; by publication date 
-//     "-date" &mdash; by publication date in reverse order (by default)
-//     "rating" &mdash; by rating value 
-//     "-rating" &mdash; by rating value in reverse order
+//     "date" - by publication date 
+//     "-date" - by publication date in reverse order (by default)
+//     "rating" - by rating value 
+//     "-rating" - by rating value in reverse order
 // pageNo:
 //     Result page number
 // ratingThreshold:
@@ -39,9 +39,9 @@ import (
 // type_:
 //     Content type. Valid values:
 //     
-//     "quote" &mdash; Quote content 
-//     "video" &mdash; Video content 
-//     "picture" &mdash; Image content type
+//     "quote" - Quote content 
+//     "video" - Video content 
+//     "picture" - Image content type
 func (client *Client) WgnWargagContent(realm Realm, accessToken string, accountId int, categoryId int, contentId int, date wgnTime.UnixTime, fields []string, orderBy string, pageNo int, ratingThreshold int, tagId int, type_ string) (*wgn.WargagContent, error) {
 	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil, err

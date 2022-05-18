@@ -17,7 +17,7 @@ import (
 // language:
 //     Localization language. Default is "ru". Valid values:
 //     
-//     "ru" &mdash; Русский (by default)
+//     "ru" - Русский (by default)
 func (client *Client) WotbTournamentsInfo(realm Realm, tournamentId []int, fields []string, language string) (*wotb.TournamentsInfo, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err

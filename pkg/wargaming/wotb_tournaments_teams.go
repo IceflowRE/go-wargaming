@@ -22,7 +22,7 @@ import (
 // language:
 //     Localization language. Default is "ru". Valid values:
 //     
-//     "ru" &mdash; Русский (by default)
+//     "ru" - Русский (by default)
 // limit:
 //     Number of returned entries. Default is 10. Min value is 1. Maximum value: 100.
 // pageNo:
@@ -32,9 +32,9 @@ import (
 // status:
 //     Team status. Maximum limit: 100. Valid values:
 //     
-//     "forming" &mdash; team roster is not yet confirmed 
-//     "confirmed" &mdash; team roster is confirmed 
-//     "disqualified" &mdash; team is disqualified
+//     "forming" - team roster is not yet confirmed 
+//     "confirmed" - team roster is confirmed 
+//     "disqualified" - team is disqualified
 // teamId:
 //     Team ID. Maximum limit: 25.
 func (client *Client) WotbTournamentsTeams(realm Realm, accountId []int, clanId []int, tournamentId int, fields []string, language string, limit int, pageNo int, search string, status []string, teamId []int) (*wotb.TournamentsTeams, error) {

@@ -25,9 +25,9 @@ import (
 // type_:
 //     Content type. Valid values:
 //     
-//     "quote" &mdash; Quote content 
-//     "video" &mdash; Video content 
-//     "picture" &mdash; Image content type
+//     "quote" - Quote content 
+//     "video" - Video content 
+//     "picture" - Image content type
 func (client *Client) WgnWargagSearch(realm Realm, q string, accessToken string, categoryId int, fields []string, ratingThreshold int, tagId int, type_ string) (*wgn.WargagSearch, error) {
 	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil, err

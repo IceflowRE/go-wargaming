@@ -18,20 +18,20 @@ import (
 // language:
 //     Localization language. Default is "ru". Valid values:
 //     
-//     "cs" &mdash; Čeština 
-//     "de" &mdash; Deutsch 
-//     "en" &mdash; English 
-//     "es" &mdash; Español 
-//     "fr" &mdash; Français 
-//     "ja" &mdash; 日本語 
-//     "pl" &mdash; Polski 
-//     "ru" &mdash; Русский (by default)
-//     "th" &mdash; ไทย 
-//     "zh-tw" &mdash; 繁體中文 
-//     "tr" &mdash; Türkçe 
-//     "zh-cn" &mdash; 中文 
-//     "pt-br" &mdash; Português do Brasil 
-//     "es-mx" &mdash; Español (México)
+//     "cs" - Čeština 
+//     "de" - Deutsch 
+//     "en" - English 
+//     "es" - Español 
+//     "fr" - Français 
+//     "ja" - 日本語 
+//     "pl" - Polski 
+//     "ru" - Русский (by default)
+//     "th" - ไทย 
+//     "zh-tw" - 繁體中文 
+//     "tr" - Türkçe 
+//     "zh-cn" - 中文 
+//     "pt-br" - Português do Brasil 
+//     "es-mx" - Español (México)
 // limit:
 //     Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
 // pageNo:
@@ -39,11 +39,11 @@ import (
 // type_:
 //     Consumable type. Valid values:
 //     
-//     "Camouflage" &mdash; Camouflages 
-//     "Flags" &mdash; Flags 
-//     "Permoflage" &mdash; Permanent camouflages 
-//     "Modernization" &mdash; Upgrades 
-//     "Skin" &mdash; Ship camouflages
+//     "Camouflage" - Camouflages 
+//     "Flags" - Flags 
+//     "Permoflage" - Permanent camouflages 
+//     "Modernization" - Upgrades 
+//     "Skin" - Ship camouflages
 func (client *Client) WowsEncyclopediaConsumables(realm Realm, consumableId []int, fields []string, language string, limit int, pageNo int, type_ string) (*wows.EncyclopediaConsumables, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
