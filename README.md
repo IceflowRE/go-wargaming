@@ -9,7 +9,7 @@
 
 ---
 
-WARNING: Method interfaces may change in the future based on feedback.
+**WARNING: Library will change it's interface in the next iterations, to behave more like other known API libraries (go-github, go-gitlab) and support context.**
 
 Go (golang) implementation of the [Wargaming.net Public API](https://developers.wargaming.net/documentation/guide/getting-started/). Providing structs and functions.
 
