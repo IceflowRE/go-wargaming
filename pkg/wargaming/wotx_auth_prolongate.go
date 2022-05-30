@@ -12,6 +12,7 @@ import (
 //
 // accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
+//     Parameter is required.
 // expiresAt:
 //     Access_token expiration time in UNIX. Delta can also be specified in seconds.
 //     Expiration time and delta must not exceed two weeks from the current time.

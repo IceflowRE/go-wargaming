@@ -11,10 +11,13 @@ import (
 //
 // accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
+//     Parameter is required.
 // contentId:
 //     Publication ID
+//     Parameter is required.
 // text:
 //     Comment text. Maximum length: 1000 symbols. Maximum length: 1000.
+//     Parameter is required.
 func (client *Client) WgnWargagNewcomment(realm Realm, accessToken string, contentId int, text string) (*wgn.WargagNewcomment, error) {
 	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil, err

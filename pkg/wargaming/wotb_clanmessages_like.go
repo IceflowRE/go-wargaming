@@ -10,13 +10,16 @@ import (
 //
 // accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
+//     Parameter is required.
 // action:
 //     Action. Valid values:
 //     
 //     "add" - Set a like for message 
 //     "remove" - Remove a like for message
+//     Parameter is required.
 // messageId:
 //     Message ID
+//     Parameter is required.
 func (client *Client) WotbClanmessagesLike(realm Realm, accessToken string, action string, messageId int) error {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil

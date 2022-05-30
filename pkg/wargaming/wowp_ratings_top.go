@@ -19,8 +19,10 @@ import (
 //     Result page number. Default is 1. Min value is 1.
 // rankField:
 //     Rating category
+//     Parameter is required.
 // type_:
 //     Rating period. For valid values, check the Types of ratings method.
+//     Parameter is required.
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 // language:

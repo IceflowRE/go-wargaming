@@ -12,6 +12,7 @@ import (
 //
 // accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
+//     Parameter is required.
 // expiresAt:
 //     Date when message will become irrelevant. Date in UNIX timestamp or ISO 8601 format. E.g.: 1376542800 or 2013-08-15T00:00:00. Date must be in the future.
 // importance:
@@ -21,6 +22,7 @@ import (
 //     "standard" - Standard messages
 // messageId:
 //     Message ID
+//     Parameter is required.
 // text:
 //     Message text. Max. length: 1000. Maximum length: 1000.
 // title:

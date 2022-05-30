@@ -12,12 +12,14 @@ import (
 //
 // seasonId:
 //     Season ID. To get a season ID, use the Seasons method.
+//     Parameter is required.
 // vehicleLevel:
 //     Vehicle Tier. Valid values:
 //     
 //     "6" - Vehicles of Tier 6 
 //     "8" - Vehicles of Tier 8 
 //     "10" - Vehicles of Tier 10
+//     Parameter is required.
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 // limit:

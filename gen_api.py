@@ -8,7 +8,7 @@ from pathlib import Path
 import requests
 
 
-def get(path):
+def get(path: str):
     return requests.get(
         f'https://developers.wargaming.net/api/{path}/?realm=all', headers={'X-Requested-With': 'XMLHttpRequest'}
     ).json()
@@ -185,7 +185,7 @@ class Struct:
             if is_root:
                 lines.append(f"type {self.name} {self.typ} {'{'}")
             else:
-                lines.append(f"{self.name} {self.typ} {'{'}")
+                lines.append(f"{self.name} {self.typ} {{")
             fields = self.fields
             fields.sort(reverse=True)
             for field in fields:
@@ -193,7 +193,7 @@ class Struct:
                 field_str = "\t" + field_code.replace("\n", "\n\t")
                 lines.append(field_str)
                 imports.update(field_imports)
-            lines.append(f'{"}"} {json_tag}')
+            lines.append(f'}} {json_tag}')
         else:
             lines.append(f'{self.name} {self.typ} {json_tag}')
         if is_root and imports:
@@ -201,16 +201,6 @@ class Struct:
             imports_l.sort()
             lines.insert(0, "import (\n\t" + "\n\t".join(imports) + "\n)\n")
         return '\n'.join(lines), imports
-
-    # Fix inaccurate wargaming documentation.
-    def fix(self, method: str) -> 'Struct':
-        match method:
-            case "wot_account_info":
-                self['Statistics']['Frags'].typ = "map[string]int"
-                self['Private']['Boosters'].typ = "map[string]struct"
-            case "wot_encyclopedia_vehicles":
-                self['DefaultProfile']['Ammo']['Stun']['Duration'].typ = "[]int"
-        return self
 
 
 # Api method parameter.
@@ -227,21 +217,27 @@ class Parameter:
 
 class Parameters:
     def __init__(self, parameters: list[dict]):
-        self._params = []
+        self.params = []
         for cur_param in parameters:
             if cur_param['name'] == "application_id":
                 continue
-            self._params.append(Parameter(
+            self.params.append(Parameter(
                 description=clean_documentation(cur_param['description']),
                 name=cur_param['name'],
                 required=cur_param.get('required', False),
                 typ=type_to_go(cur_param['type']),
             ))
-        self._params.sort()
+        self.params.sort()
+
+    def contains_param_name(self, name: str) -> bool:
+        for param in self.params:
+            if param.name == name:
+                return True
+        return False
 
     def method_params(self) -> str:
         parts = []
-        for param in self._params:
+        for param in self.params:
             parts.append(f"{name_to_camel_lower(param.name)} {param.typ}")
         if parts:
             return ', ' + ', '.join(parts)
@@ -249,7 +245,7 @@ class Parameters:
 
     def imports(self) -> list[str]:
         imports = set()
-        for param in self._params:
+        for param in self.params:
             match param.typ:
                 case ("int"):
                     imports.add('"strconv"')
@@ -267,7 +263,7 @@ class Parameters:
 
     def req_map(self) -> str:
         lines = []
-        for param in self._params:
+        for param in self.params:
             match param.typ:
                 case "int":
                     lines.append(f'\t\t"{param.name}": strconv.Itoa({name_to_camel_lower(param.name)}),')
@@ -284,31 +280,28 @@ class Parameters:
 
     def doc(self) -> str:
         lines = []
-        for param in self._params:
+        for param in self.params:
             lines.append(f'{name_to_camel_lower(param.name)}:')
             lines.append("    " + param.description.replace("\n", "\n    "))
+            if param.required:
+                lines.append("    Parameter is required.")
         return '\n'.join(lines)
 
 
 class GoApi:
     def __init__(self, game: str, method: str, base_return_type: str, data: dict):
-        params = Parameters(data['parameters'])
-
-        self.file_name: str = method
-        self.allowed_realms: str = ', '.join([realm_to_go(realm) for realm in data['available_display_indices']])
+        self.method_id: str = method
+        self.allowed_realms: list[str] = [realm_to_go(realm) for realm in data['available_display_indices']]
         self.documentation: str = clean_documentation(data['description'])
-        self.param_documentation = params.doc()
         self.game: str = game
-        self.struct: Struct = Struct.from_doc(name_to_camel(method[len(f"{game}_"):]), data.get('fields', [])).fix(
-            method)
-        self.method_params: str = params.method_params()
-        self.http_req_map: str = params.req_map()
+        self.struct: Struct = Struct.from_doc(name_to_camel(method[len(f"{game}_"):]), data.get('fields', []))
+        self.params: Parameters = Parameters(data['parameters'])
         self.http_methods: list = data['allowed_http_methods']
         self.return_type: str = ""
         self.imports: str = ""
         self.deprecated: bool = data.get('deprecated', False)
 
-        imports = params.imports()
+        imports = self.params.imports()
         # has fields (returns something)
         if self.struct.fields:
             imports.append(f'"github.com/IceflowRE/go-wargaming/pkg/wargaming/{self.game}"')
@@ -322,6 +315,18 @@ class GoApi:
                 self.return_type = f"map[string]*{self.game}.{self.struct.name}"
             case _:
                 self.return_type = f"*{self.game}.{self.struct.name}"
+        self._fix()
+
+    # Fix inaccurate wargaming documentation.
+    def _fix(self):
+        match self.method_id:
+            case "wot_account_info":
+                self.struct['Statistics']['Frags'].typ = "map[string]int"
+                self.struct['Private']['Boosters'].typ = "map[string]struct"
+            case "wot_encyclopedia_vehicles":
+                self.struct['DefaultProfile']['Ammo']['Stun']['Duration'].typ = "[]int"
+            case "wot_globalmap_seasonratingneighbors":
+                self.return_type = f"[]{self.return_type}"
 
     def method_file(self) -> str:
         meth_return_type = f"({self.return_type}, error)" if self.struct.fields else "error"
@@ -329,34 +334,36 @@ class GoApi:
             req_method = "doGetDataRequest" if "GET" in self.http_methods else "doPostDataRequest"
             req_part = f"""
 \tvar result {self.return_type}
-\terr := client.{req_method}(realm, "/{self.file_name.replace('_', '/')}/", reqParam, &result)
+\terr := client.{req_method}(realm, "/{self.method_id.replace('_', '/')}/", reqParam, &result)
 \treturn result, err"""
         else:
             req_method = "doGetRequest" if "GET" in self.http_methods else "doPostRequest"
             req_part = f"""
-\terr := client.{req_method}(realm, "/{self.file_name.replace('_', '/')}/", reqParam)
+\terr := client.{req_method}(realm, "/{self.method_id.replace('_', '/')}/", reqParam)
 \treturn err"""
-        documentation = f"""\n// {name_to_camel(self.file_name)} {comment_documentation(self.documentation)[3:]}
+        documentation = f"""\n// {name_to_camel(self.method_id)} {comment_documentation(self.documentation)[3:]}
 //
-// https://developers.wargaming.net/reference/all/{self.file_name.replace('_', '/')}"""
+// https://developers.wargaming.net/reference/all/{self.method_id.replace('_', '/')}"""
         if self.deprecated:
             documentation += "\n//\n// Deprecated: Attention! The method is deprecated."
-        if self.param_documentation:
-            documentation += "\n//\n" + comment_documentation(self.param_documentation)
+        params_doc: str = self.params.doc()
+        if params_doc:
+            documentation += "\n//\n" + comment_documentation(params_doc)
+        allowed_realms: str = ', '.join(self.allowed_realms)
         return f"""package wargaming
 
 {self.imports}
 {documentation}
-func (client *Client) {name_to_camel(self.file_name)}(realm Realm{self.method_params}) {meth_return_type} {'{'}
-\tif err := validateRealm(realm, []Realm{'{'}{self.allowed_realms}{'}'}); err != nil {'{'}
+func (client *Client) {name_to_camel(self.method_id)}(realm Realm{self.params.method_params()}) {meth_return_type} {{
+\tif err := validateRealm(realm, []Realm{{{allowed_realms}}}); err != nil {{
 \t\t{'return nil, err' if self.struct.fields else 'return nil'}
-\t{'}'}
+\t}}
 
-\treqParam := map[string]string{'{'}
-{self.http_req_map}
-\t{'}'}
+\treqParam := map[string]string{{
+{self.params.req_map()}
+\t}}
 {req_part}
-{'}'}
+}}
 """
 
     def struct_file(self) -> str:
@@ -364,34 +371,62 @@ func (client *Client) {name_to_camel(self.file_name)}(realm Realm{self.method_pa
         return f"package " + str(self.game) + "\n\n" + code + "\n"
 
 
-def gen_go_api(game_name: str, method: str, base_return_type: str) -> GoApi:
-    data = get(f"methods/{method}")['data']
-    return GoApi(game_name, method, base_return_type, data)
+def check_unit_test(unit_test: str, go: GoApi):
+    # ignore deprecated methods
+    meth_name: str = name_to_camel(go.method_id)
+    is_tested: bool = meth_name in unit_test
+    if go.deprecated:
+        if is_tested:
+            print("    > Method is deprecated, but still tested. Remove the test.")
+        return
+    # ignore to complex methods
+    if go.method_id in [
+        "wot_stronghold_activateclanreserve",
+        "wot_auth_login",
+        "wotb_clanmessages_create", "wotb_clanmessages_delete", "wotb_clanmessages_like", "wotb_clanmessages_likes",
+        "wotb_clanmessages_update",
+        "wgn_wargag_rate", "wgn_wargag_newcomment", "wgn_wargag_deletecomment",
+        "wotb_tournaments_info", "wotb_tournaments_teams", "wotb_tournaments_stages", "wotb_tournaments_matches",
+        "wotb_tournaments_standings", "wotb_tournaments_tables",
+        "wotx_account_xuidinfo", "wotx_account_psninfo",
+        "wotx_auth_login",
+    ]:
+        if not is_tested:
+            print(f'    > Method is not tested and complex. Add a test case with content \'skipTest("{meth_name}", reasonTooComplex, test)\'.')
+            return
+        if f'skipTest("{meth_name}"' not in unit_test:
+            print("    > Method is marked as complex and tested. Remove it from the complex list.")
+        return
+    if not is_tested:
+        print("    > Method is not tested. Add a test case.")
 
 
 def gen_api(output: Path, games: dict):
-    counter = 0
-    max_methods = 0
+    counter: int = 0
+    max_methods: int = 0
     for game in games:
         for section in game['sections']:
             max_methods += len(section['methods'])
 
+    unit_test: str = output.joinpath("client_test.go").read_text(encoding='utf-8')
     for game in games:
+        if not game['sections']:
+            continue
         game_name = game['slug']
-        if game['sections']:
-            output.joinpath(game_name).mkdir(parents=True, exist_ok=True)
+        output.joinpath(game_name).mkdir(parents=True, exist_ok=True)
         for section in game['sections']:
             for method in section['methods']:
                 counter += 1
                 # method = {'key': 'wot_ratings_accounts', 'slug': 'list'}
                 print(f"Generating ({str(counter).zfill(len(str(max_methods)))}/{max_methods}) {method['key']}")
 
-                go: GoApi = gen_go_api(game_name, method['key'], get_base_return_type(method))
-                output.joinpath(f"{go.file_name}.go").write_text(go.method_file(), encoding='utf-8')
+                raw_data = get(f"methods/{method['key']}")['data']
+                go: GoApi = GoApi(game_name, method['key'], get_base_return_type(method), raw_data)
+                output.joinpath(f"{go.method_id}.go").write_text(go.method_file(), encoding='utf-8')
                 if go.struct.fields:
-                    output.joinpath(game_name).joinpath(f"{go.file_name[len(f'{go.game}_'):]}.go").write_text(
+                    output.joinpath(game_name).joinpath(f"{go.method_id[len(f'{go.game}_'):]}.go").write_text(
                         go.struct_file(), encoding='utf-8')
-
+                check_unit_test(unit_test, go)
 
 if __name__ == '__main__':
     output = Path("./pkg/wargaming/")

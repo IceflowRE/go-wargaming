@@ -11,6 +11,7 @@ import (
 //
 // psnid:
 //     Play Station UID. Maximum limit: 100.
+//     Parameter is required.
 func (client *Client) WotxAccountPsninfo(realm Realm, psnid []string) (*wotx.AccountPsninfo, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err

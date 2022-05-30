@@ -12,6 +12,7 @@ import (
 //
 // clanId:
 //     Clan ID. Maximum limit: 100.
+//     Parameter is required.
 // accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 // extra:

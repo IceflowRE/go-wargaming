@@ -15,8 +15,10 @@ import (
 //     
 //     "damage" - Use damage distribution 
 //     "xp" - Use a distribution based on experience
+//     Parameter is required.
 // percentile:
 //     A list of percentiles to be included in the response. Maximum limit: 10. Min value is 1. Maximum value: 100.
+//     Parameter is required.
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 // language:

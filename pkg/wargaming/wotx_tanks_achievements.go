@@ -18,6 +18,7 @@ import (
 //
 // accountId:
 //     Player account ID. Min value is 0.
+//     Parameter is required.
 // accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 // fields:

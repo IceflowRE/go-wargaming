@@ -12,19 +12,22 @@ import (
 //
 // clanId:
 //     Clan ID. To get a clan ID, use the Clans method. Min value is 1.
+//     Parameter is required.
 // limit:
 //     Neighbors limit. Default is 10. Min value is 1. Maximum value: 99.
 // seasonId:
 //     Season ID. To get a season ID, use the Seasons method.
+//     Parameter is required.
 // vehicleLevel:
 //     Vehicle Tier. Valid values:
 //     
 //     "6" - Vehicles of Tier 6 
 //     "8" - Vehicles of Tier 8 
 //     "10" - Vehicles of Tier 10
+//     Parameter is required.
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-func (client *Client) WotGlobalmapSeasonratingneighbors(realm Realm, clanId int, limit int, seasonId string, vehicleLevel string, fields []string) (*wot.GlobalmapSeasonratingneighbors, error) {
+func (client *Client) WotGlobalmapSeasonratingneighbors(realm Realm, clanId int, limit int, seasonId string, vehicleLevel string, fields []string) ([]*wot.GlobalmapSeasonratingneighbors, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
@@ -37,7 +40,7 @@ func (client *Client) WotGlobalmapSeasonratingneighbors(realm Realm, clanId int,
 		"fields": strings.Join(fields, ","),
 	}
 
-	var result *wot.GlobalmapSeasonratingneighbors
+	var result []*wot.GlobalmapSeasonratingneighbors
 	err := client.doGetDataRequest(realm, "/wot/globalmap/seasonratingneighbors/", reqParam, &result)
 	return result, err
 }

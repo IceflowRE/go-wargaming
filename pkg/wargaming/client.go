@@ -15,6 +15,25 @@ type response struct {
 	Data   any            `json:"data,omitempty"`
 }
 
+// Client for all api requests.
+// As a quick start:
+//	// create client
+//	client := wargaming.NewClient("a7f838650dcb008552966db063eeeb35")
+//	// get account list
+//	res, err := client.WotAccountList(wargaming.RealmEu, "Yzne", []string{}, "", 0, "")
+//	// print out
+//	if err != nil {
+//		fmt.Println(err.Error())
+//	} else {
+//		for _, value := range res {
+//			fmt.Println(value)
+//		}
+//	}
+// or with a custom http.Client
+//	client := wargaming.NewClient("d5dcedcbea865ea892202ba7361e626c").
+//		WithHttpClient(&http.Client{
+//		Timeout: 10 * time.Second,
+//	})
 type Client struct {
 	httpClient    *http.Client
 	applicationId string

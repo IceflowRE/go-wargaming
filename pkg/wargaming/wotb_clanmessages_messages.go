@@ -13,6 +13,7 @@ import (
 //
 // accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
+//     Parameter is required.
 // expiresAfter:
 //     Search for messages with end date of relevance equal or after the value. Date in UNIX timestamp or ISO 8601 format. E.g.: 1376542800 or 2013-08-15T00:00:00
 // expiresBefore:

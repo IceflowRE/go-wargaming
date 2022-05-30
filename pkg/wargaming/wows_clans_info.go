@@ -12,6 +12,7 @@ import (
 //
 // clanId:
 //     Clan ID. Maximum limit: 100. Min value is 1.
+//     Parameter is required.
 // extra:
 //     Extra fields that will be added to the response. Valid values:
 //     

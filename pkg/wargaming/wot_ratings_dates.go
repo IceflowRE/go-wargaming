@@ -16,6 +16,7 @@ import (
 //     Player account ID. Maximum limit: 100.
 // type_:
 //     Rating period. For valid values, check the Types of ratings method.
+//     Parameter is required.
 // battleType:
 //     Battle types. Default is "default". Valid values:
 //     

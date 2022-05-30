@@ -11,13 +11,16 @@ import (
 //
 // accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
+//     Parameter is required.
 // contentId:
 //     Publication ID
+//     Parameter is required.
 // rating:
 //     Rate. Valid values:
 //     
 //     "up" - Rate content positively 
 //     "down" - Rate content negatively
+//     Parameter is required.
 func (client *Client) WgnWargagRate(realm Realm, accessToken string, contentId int, rating string) (*wgn.WargagRate, error) {
 	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil, err

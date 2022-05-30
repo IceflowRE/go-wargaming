@@ -13,8 +13,10 @@ import (
 //
 // accountId:
 //     Player account ID. Maximum limit: 100.
+//     Parameter is required.
 // tankId:
 //     Player's vehicle ID
+//     Parameter is required.
 // fields:
 //     Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 // language:
