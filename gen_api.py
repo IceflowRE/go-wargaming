@@ -611,6 +611,14 @@ def gen_api(output: Path, games: dict):
                     flags=re.DOTALL)
     output.joinpath(f"client.go").write_text(client, encoding='utf-8')
 
+    deprecated_files = []
+    for go in api:
+        if go.deprecated:
+            deprecated_files.append(f'    - "wargaming/{go.method_id}"')
+    if deprecated_files:
+        ignore = '\n'.join(deprecated_files)
+        Path("./codecov.yml").write_text(f"ignore:\n{ignore}\n")
+
 
 if __name__ == '__main__':
     output = Path("./wargaming/")

@@ -84,6 +84,7 @@ NOTE: Using the context package, one can easily pass cancelation signals and dea
 ## Development
 
 To run the generation of the API code and check for their unit tests: 
+It will also edit `wargaming/client.go` and `codecov.yml`.
 
 ```shell
 python ./gen_api.py
