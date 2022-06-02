@@ -135,6 +135,12 @@ class Parameters:
             ))
         self.params.sort()
 
+    def get(self, name) -> Optional[Parameter]:
+        for param in self.params:
+            if param.name == name:
+                return param
+        return None
+
     def filter(self, required: bool) -> 'Parameters':
         params = Parameters([])
         for param in self.params:
@@ -492,6 +498,15 @@ def fix_api(go: GoApi):
             go.response_struct['DefaultProfile']['Ammo']['Stun']['Duration'].typ = "[]int"
         case "wot_globalmap_events":
             go.response_struct['Fronts'].typ = "[]*struct"
+        case "wot_globalmap_eventaccountinfo":
+            # account_id OR clan_id is required
+            param = go.params.get("accountId")
+            param.required = False
+            go.options_struct.fields.append(Struct(
+                name=name_to_camel(camel_to_snake(param.name)),
+                description=param.description,
+                typ=go_pointer(param.typ),
+            ))
         case "wot_globalmap_fronts":
             go.response_struct['AvailableExtensions'].typ = "[]*struct"
         case "wot_globalmap_seasons":

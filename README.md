@@ -79,11 +79,12 @@ options := &wot.AccountListOptions{
 }
 ```
 
-NOTE: Using the context package, one can easily pass cancelation signals and deadlines to various services of the client for handling a request. In case there is no context available, then context.Background() can be used as a starting point.
+NOTE: Using the context package, one can easily pass cancelation signals and deadlines to various services of the client for handling a request. In case there is no context available, then `context.Background()` can be used as a starting point.
 
 ## Development
 
-To run the generation of the API code and check for their unit tests: 
+To run the generation of the API code and check for their unit tests:
+
 It will also edit `wargaming/client.go` and `codecov.yml`.
 
 ```shell

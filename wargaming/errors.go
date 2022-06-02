@@ -34,19 +34,19 @@ var apiErrorMessages = map[string]string{
 	"SEARCH_NOT_SPECIFIED":       "Search parameter not specified with no account_id",                             // 402
 }
 
-// ApiErrorStringToString will return "" if nothing found.
-func ApiErrorStringToString(error string) string {
-	if val, ok := apiErrorMessages[error]; ok {
+// Description will return an detailed description about the error, will return "" if nothing description can be provided.
+func (err ResponseError) Description() string {
+	if val, ok := apiErrorMessages[err.Message]; ok {
 		return val
 	}
 	switch {
-	case strings.HasPrefix(error, "INVALID_"):
-		return fmt.Sprintf("Specified field value %s is not valid.", strings.ToLower(strings.TrimPrefix(error, "INVALID_")))
-	case strings.HasSuffix(error, "_LIST_LIMIT_EXCEEDED"):
-		return fmt.Sprintf("Limit of passed-in identifiers in the %s exceeded.", strings.ToLower(strings.TrimSuffix(error, "_LIST_LIMIT_EXCEEDED")))
-	case strings.HasSuffix(error, "_NOT_SPECIFIED"):
-		return fmt.Sprintf("Required field %s is not specified.", strings.ToLower(strings.TrimSuffix(error, "_NOT_SPECIFIED")))
-	case strings.HasSuffix(error, "_NOT_FOUND"):
+	case strings.HasPrefix(err.Message, "INVALID_"):
+		return fmt.Sprintf("Specified field value '%s' is not valid.", err.Field)
+	case strings.HasSuffix(err.Message, "_LIST_LIMIT_EXCEEDED"):
+		return fmt.Sprintf("Limit of passed-in identifiers in the '%s' exceeded.", err.Field)
+	case strings.HasSuffix(err.Message, "_NOT_SPECIFIED"):
+		return fmt.Sprintf("Required field '%s' is not specified.", err.Field)
+	case strings.HasSuffix(err.Message, "_NOT_FOUND"):
 		return "Data not found."
 	}
 	return ""

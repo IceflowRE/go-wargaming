@@ -13,21 +13,18 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
-// accountId:
-//     Account ID. Min value is 1.
 // eventId:
 //     Event ID. To get an event ID, use the Events method.
 // frontId:
 //     Front ID. To get a front ID, use the Fronts method. Maximum limit: 10.
-func (service *wotService) GlobalmapEventaccountinfo(ctx context.Context, realm Realm, accountId int, eventId string, frontId []string, options *wot.GlobalmapEventaccountinfoOptions) (*wot.GlobalmapEventaccountinfo, error) {
+func (service *wotService) GlobalmapEventaccountinfo(ctx context.Context, realm Realm, eventId string, frontId []string, options *wot.GlobalmapEventaccountinfoOptions) (*wot.GlobalmapEventaccountinfo, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
 
 	reqParam := map[string]string{
-		"account_id": strconv.Itoa(accountId),
-		"event_id":   eventId,
-		"front_id":   strings.Join(frontId, ","),
+		"event_id": eventId,
+		"front_id": strings.Join(frontId, ","),
 	}
 	if options != nil {
 		if options.Fields != nil {
@@ -35,6 +32,9 @@ func (service *wotService) GlobalmapEventaccountinfo(ctx context.Context, realm 
 		}
 		if options.ClanId != nil {
 			reqParam["clan_id"] = strconv.Itoa(*options.ClanId)
+		}
+		if options.AccountId != nil {
+			reqParam["account_id"] = strconv.Itoa(*options.AccountId)
 		}
 	}
 

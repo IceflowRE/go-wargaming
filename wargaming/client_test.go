@@ -153,8 +153,21 @@ func TestApi(test *testing.T) {
 		checkErr(test, err)
 	})
 	delay()
-	test.Run("WotGlobalmapEventaccountinfo", func(test *testing.T) {
-		_, err := client.Wot.GlobalmapEventaccountinfo(context.Background(), RealmEu, wotAccountId, "season_18", []string{"season_18_bg"}, nil)
+	test.Run("WotGlobalmapEventaccountinfo_accountId", func(test *testing.T) {
+		_, err := client.Wot.GlobalmapEventaccountinfo(context.Background(), RealmEu, "season_18", []string{"season_18_bg"},
+			&wot.GlobalmapEventaccountinfoOptions{
+				AccountId: Int(wotAccountId),
+			},
+		)
+		checkErr(test, err)
+	})
+	delay()
+	test.Run("WotGlobalmapEventaccountinfo_clan", func(test *testing.T) {
+		_, err := client.Wot.GlobalmapEventaccountinfo(context.Background(), RealmEu, "season_18", []string{"season_18_bg"},
+			&wot.GlobalmapEventaccountinfoOptions{
+				ClanId: Int(wotClanId),
+			},
+		)
 		checkErr(test, err)
 	})
 	delay()
