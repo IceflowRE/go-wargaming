@@ -6,7 +6,7 @@ on:
         branches:
             - main
 
-name: Testing
+name: Building
 env:
     GO111MODULE: on
 
@@ -19,17 +19,10 @@ jobs:
             actions: write  # for styfle/cancel-workflow-action to cancel/stop running workflows
             contents: read  # for actions/checkout to fetch code
         strategy:
-            # currently only test on linux and latest go version, due to using live servers
             matrix:
-                go-version: [1.x]
-                platform: [ubuntu-latest]
-                include:
-                    # only update test coverage stats with the most recent go version on linux
-                    - go-version: 1.x
-                      platform: ubuntu-latest
-                      update-coverage: true
+                go-version: [1.18.x]
+                platform: [ubuntu-latest, windows-latest, macos-latest]
         runs-on: ${{ matrix.platform }}
-
         steps:
             - name: Cancel previous workflow
               uses: styfle/cancel-workflow-action@0.9.1
@@ -41,9 +34,5 @@ jobs:
                   go-version: ${{ matrix.go-version }}
             - uses: actions/checkout@v3
 
-            - name: Test
-              run: go test -v -race -coverprofile coverage.txt -covermode atomic ./...
-
-            - name: Upload coverage to Codecov
-              if: ${{ matrix.update-coverage }}
-              uses: codecov/codecov-action@v3.1.0
+            - name: Build
+              run: go build ./...
