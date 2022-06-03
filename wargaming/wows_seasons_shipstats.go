@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// SeasonsShipstats Method returns players' ships statistics in Ranked Battles seasons. Accounts with hidden game profiles are excluded from response. Hidden profiles are listed in the field meta.hidden.
+// SeasonsShipstats returns players' ships statistics in Ranked Battles seasons. Accounts with hidden game profiles are excluded from response. Hidden profiles are listed in the field meta.hidden.
 //
 // https://developers.wargaming.net/reference/all/wows/seasons/shipstats
 //

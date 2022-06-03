@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaShipprofile Method returns parameters of ships in all existing configurations.
+// EncyclopediaShipprofile returns parameters of ships in all existing configurations.
 //
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/shipprofile
 //

@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// RatingsDates Method returns dates with available rating data.
+// RatingsDates returns dates with available rating data.
 //
 // https://developers.wargaming.net/reference/all/wowp/ratings/dates
 //

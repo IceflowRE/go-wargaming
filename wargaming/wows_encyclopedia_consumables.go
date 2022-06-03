@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaConsumables Method returns information about consumables: camouflages, flags, and upgrades.
+// EncyclopediaConsumables returns information about consumables: camouflages, flags, and upgrades.
 //
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/consumables
 //

@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaPersonalmissions Method returns details on Personal Missions on the basis of specified campaign IDs, operation IDs, mission branch and tag IDs.
+// EncyclopediaPersonalmissions returns details on Personal Missions on the basis of specified campaign IDs, operation IDs, mission branch and tag IDs.
 //
 // https://developers.wargaming.net/reference/all/wot/encyclopedia/personalmissions
 //

@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// ClansAccountinfo Method returns player clan data. Player clan data exist only for accounts, that were participating in clan activities: sent join requests, were clan members etc.
+// ClansAccountinfo returns player clan data. Player clan data exist only for accounts, that were participating in clan activities: sent join requests, were clan members etc.
 //
 // https://developers.wargaming.net/reference/all/wotb/clans/accountinfo
 //

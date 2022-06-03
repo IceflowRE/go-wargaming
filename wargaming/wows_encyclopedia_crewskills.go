@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaCrewskills Method returns information about Commanders' skills.
+// EncyclopediaCrewskills returns information about Commanders' skills.
 //
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/crewskills
 //

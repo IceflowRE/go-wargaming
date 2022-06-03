@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaModules Method returns list of available modules that can be mounted on a ship (hull, engines, etc.).
+// EncyclopediaModules returns list of available modules that can be mounted on a ship (hull, engines, etc.).
 //
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/modules
 //

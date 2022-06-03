@@ -6,7 +6,7 @@ import (
 	"github.com/IceflowRE/go-wargaming/v2/wargaming/wotx"
 )
 
-// AccountXuidinfo Method returns player details based on the player Microsoft XUID.
+// AccountXuidinfo returns player details based on the player Microsoft XUID.
 //
 // https://developers.wargaming.net/reference/all/wotx/account/xuidinfo
 //

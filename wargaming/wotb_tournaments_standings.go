@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// TournamentsStandings Method returns tournament results of each team.
+// TournamentsStandings returns tournament results of each team.
 //
 // https://developers.wargaming.net/reference/all/wotb/tournaments/standings
 //

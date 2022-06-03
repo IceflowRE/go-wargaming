@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// ShipsStats Method returns general statistics for each ship of a player. Accounts with hidden game profiles are excluded from response. Hidden profiles are listed in the field meta.hidden.
+// ShipsStats returns general statistics for each ship of a player. Accounts with hidden game profiles are excluded from response. Hidden profiles are listed in the field meta.hidden.
 //
 // https://developers.wargaming.net/reference/all/wows/ships/stats
 //

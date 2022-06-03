@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// WargagSearch Method searches content for specified text.
+// WargagSearch searches content for specified text.
 //
 // https://developers.wargaming.net/reference/all/wgn/wargag/search
 //

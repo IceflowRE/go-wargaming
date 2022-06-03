@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// ClansGlossary Method returns general information about clans.
+// ClansGlossary returns general information about clans.
 //
 // https://developers.wargaming.net/reference/all/wotx/clans/glossary
 //

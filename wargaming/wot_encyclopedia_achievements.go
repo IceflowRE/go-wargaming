@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaAchievements Method returns information about achievements.
+// EncyclopediaAchievements returns information about achievements.
 //
 // https://developers.wargaming.net/reference/all/wot/encyclopedia/achievements
 //

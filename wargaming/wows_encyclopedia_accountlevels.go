@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaAccountlevels Method returns information about Service Record levels.
+// EncyclopediaAccountlevels returns information about Service Record levels.
 //
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/accountlevels
 //

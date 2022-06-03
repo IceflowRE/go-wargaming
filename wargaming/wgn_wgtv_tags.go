@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// WgtvTags Method returns lists of game projects, categories, and programs.
+// WgtvTags returns lists of game projects, categories, and programs.
 //
 // https://developers.wargaming.net/reference/all/wgn/wgtv/tags
 //

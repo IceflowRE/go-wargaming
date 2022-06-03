@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// GlobalmapSeasonrating Method returns season clan rating.
+// GlobalmapSeasonrating returns season clan rating.
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/seasonrating
 //

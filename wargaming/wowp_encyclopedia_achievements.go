@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaAchievements Method returns dictionary of achievements from Encyclopedia.
+// EncyclopediaAchievements returns dictionary of achievements from Encyclopedia.
 //
 // https://developers.wargaming.net/reference/all/wowp/encyclopedia/achievements
 //

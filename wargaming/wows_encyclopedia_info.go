@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaInfo Method returns information about encyclopedia.
+// EncyclopediaInfo returns information about encyclopedia.
 //
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/info
 //

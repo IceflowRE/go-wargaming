@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// StrongholdClanreserves Method returns information about available Reserves and their current status.
+// StrongholdClanreserves returns information about available Reserves and their current status.
 //
 // https://developers.wargaming.net/reference/all/wot/stronghold/clanreserves
 //

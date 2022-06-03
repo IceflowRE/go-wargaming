@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaCrewranks Method returns information about Commanders' ranks.
+// EncyclopediaCrewranks returns information about Commanders' ranks.
 //
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/crewranks
 //

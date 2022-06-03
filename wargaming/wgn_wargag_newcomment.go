@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-// WargagNewcomment Method allows to add comments. A valid access_token for the specified account is required. Comments allowed for picture and video content only.
+// WargagNewcomment allows to add comments. A valid access_token for the specified account is required. Comments allowed for picture and video content only.
 //
 // https://developers.wargaming.net/reference/all/wgn/wargag/newcomment
 //

@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// ClansAccountinfo Method returns player clan data. Player clan data exist only for accounts, that were clan members at least once.
+// ClansAccountinfo returns player clan data. Player clan data exist only for accounts, that were clan members at least once.
 //
 // https://developers.wargaming.net/reference/all/wotx/clans/accountinfo
 //

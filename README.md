@@ -89,7 +89,7 @@ It will also edit `wargaming/client.go` and `codecov.yml`.
 
 ```shell
 python ./gen_api.py
-go fmt ./wargaming/
+gofmt -l -w -s ./wargaming/
 ```
 
 The client test requires an environment variable `WARGAMING_API_ID` with the API ID.

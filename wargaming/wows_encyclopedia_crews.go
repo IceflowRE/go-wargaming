@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaCrews Method returns information about Commanders.
+// EncyclopediaCrews returns information about Commanders.
 //
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/crews
 //

@@ -5,7 +5,7 @@ import (
 	"github.com/IceflowRE/go-wargaming/v2/wargaming/wot"
 )
 
-// ClanratingsTypes Method returns details on ratings types and categories.
+// ClanratingsTypes returns details on ratings types and categories.
 //
 // https://developers.wargaming.net/reference/all/wot/clanratings/types
 //

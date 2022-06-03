@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// AccountInfo2 Method returns player details.
+// AccountInfo2 returns player details.
 //
 // https://developers.wargaming.net/reference/all/wowp/account/info2
 //

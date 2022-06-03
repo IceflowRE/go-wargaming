@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaTankradios Method returns list of radios.
+// EncyclopediaTankradios returns list of radios.
 //
 // https://developers.wargaming.net/reference/all/wot/encyclopedia/tankradios
 //

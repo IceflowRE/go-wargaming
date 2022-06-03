@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// GlobalmapEventclaninfo Method returns clan's statistics for a specific event.
+// GlobalmapEventclaninfo returns clan's statistics for a specific event.
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/eventclaninfo
 //

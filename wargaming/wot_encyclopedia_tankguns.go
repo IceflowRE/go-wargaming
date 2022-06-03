@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaTankguns Method returns a tanks' gun list.
+// EncyclopediaTankguns returns a tanks' gun list.
 // The logic of this method and some field values may vary according to optional parameters passed.
 // Changeable fields:
 //

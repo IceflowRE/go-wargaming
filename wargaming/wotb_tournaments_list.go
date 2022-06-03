@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// TournamentsList Method returns list of tournaments.
+// TournamentsList returns list of tournaments.
 //
 // https://developers.wargaming.net/reference/all/wotb/tournaments/list
 //

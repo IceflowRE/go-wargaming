@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// ClansList Method searches through clans and sorts them in a specified order.
+// ClansList searches through clans and sorts them in a specified order.
 //
 // https://developers.wargaming.net/reference/all/wowp/clans/list
 //

@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaBattletypes Method returns information about battle types.
+// EncyclopediaBattletypes returns information about battle types.
 //
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/battletypes
 //

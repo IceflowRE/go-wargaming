@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaBattlearenas Method returns the information about maps.
+// EncyclopediaBattlearenas returns the information about maps.
 //
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/battlearenas
 //

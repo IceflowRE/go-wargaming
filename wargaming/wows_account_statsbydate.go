@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// AccountStatsbydate Method returns statistics slices by dates in specified time span.
+// AccountStatsbydate returns statistics slices by dates in specified time span.
 //
 // https://developers.wargaming.net/reference/all/wows/account/statsbydate
 //

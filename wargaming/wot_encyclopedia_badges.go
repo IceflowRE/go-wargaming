@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaBadges Method returns list of available badges a player can gain in Ranked Battles.
+// EncyclopediaBadges returns list of available badges a player can gain in Ranked Battles.
 //
 // https://developers.wargaming.net/reference/all/wot/encyclopedia/badges
 //

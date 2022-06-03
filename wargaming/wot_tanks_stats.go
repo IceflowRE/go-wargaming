@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// TanksStats Method returns overall statistics, Tank Company statistics, and clan statistics per each vehicle for each user.
+// TanksStats returns overall statistics, Tank Company statistics, and clan statistics per each vehicle for each user.
 //
 // https://developers.wargaming.net/reference/all/wot/tanks/stats
 //

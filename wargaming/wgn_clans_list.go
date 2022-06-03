@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// ClansList Method searches and sorts clans by the following logic:
+// ClansList searches and sorts clans by the following logic:
 //
 // exact match of clan tag placed first
 // exact match of clan name placed second

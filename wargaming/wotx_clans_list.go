@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// ClansList Method returns partial list of clans in alphabetical order by clan name or tag.
+// ClansList returns partial list of clans in alphabetical order by clan name or tag.
 //
 // https://developers.wargaming.net/reference/all/wotx/clans/list
 //

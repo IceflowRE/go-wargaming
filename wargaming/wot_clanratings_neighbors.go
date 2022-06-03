@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// ClanratingsNeighbors Method returns list of adjacent positions in specified clan rating.
+// ClanratingsNeighbors returns list of adjacent positions in specified clan rating.
 //
 // https://developers.wargaming.net/reference/all/wot/clanratings/neighbors
 //

@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// ClanratingsTop Method returns the list of top clans by specified parameters.
+// ClanratingsTop returns the list of top clans by specified parameters.
 //
 // https://developers.wargaming.net/reference/all/wot/clanratings/top
 //

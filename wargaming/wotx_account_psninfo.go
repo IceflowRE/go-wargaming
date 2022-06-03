@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// AccountPsninfo Method returns player data based on Play Station UID
+// AccountPsninfo returns player data based on Play Station UID
 //
 // https://developers.wargaming.net/reference/all/wotx/account/psninfo
 //

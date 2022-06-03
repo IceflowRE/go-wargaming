@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// WargagCategories Method returns information about content categories.
+// WargagCategories returns information about content categories.
 //
 // https://developers.wargaming.net/reference/all/wgn/wargag/categories
 //

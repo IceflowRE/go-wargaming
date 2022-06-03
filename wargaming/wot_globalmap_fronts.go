@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// GlobalmapFronts Method returns information about the Global Map Fronts.
+// GlobalmapFronts returns information about the Global Map Fronts.
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/fronts
 //

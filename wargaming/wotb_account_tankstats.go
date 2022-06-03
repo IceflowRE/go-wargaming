@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// AccountTankstats Method returns players' statistics on the vehicle.
+// AccountTankstats returns players' statistics on the vehicle.
 //
 // https://developers.wargaming.net/reference/all/wotb/account/tankstats
 //

@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// AccountTanks Method returns details on player's vehicles.
+// AccountTanks returns details on player's vehicles.
 //
 // https://developers.wargaming.net/reference/all/wot/account/tanks
 //

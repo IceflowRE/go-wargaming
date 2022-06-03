@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// WargagComments Method returns comments to the content.
+// WargagComments returns comments to the content.
 //
 // https://developers.wargaming.net/reference/all/wgn/wargag/comments
 //

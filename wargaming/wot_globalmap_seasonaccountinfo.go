@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// GlobalmapSeasonaccountinfo Method returns player's statistics for a specific season.
+// GlobalmapSeasonaccountinfo returns player's statistics for a specific season.
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/seasonaccountinfo
 //

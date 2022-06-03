@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// TournamentsMatches Method returns information about matches of a particular tournament and stage.
+// TournamentsMatches returns information about matches of a particular tournament and stage.
 //
 // https://developers.wargaming.net/reference/all/wotb/tournaments/matches
 //

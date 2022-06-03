@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// ClansGlossary Method returns information on clan entities in World of Tanks and World of Warplanes.This method will be removed. Use method Clan glossary (World of Tanks)
+// ClansGlossary returns information on clan entities in World of Tanks and World of Warplanes.This method will be removed. Use method Clan glossary (World of Tanks)
 //
 // https://developers.wargaming.net/reference/all/wgn/clans/glossary
 //

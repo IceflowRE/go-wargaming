@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaCrewroles Method returns information about crews.
+// EncyclopediaCrewroles returns information about crews.
 //
 // https://developers.wargaming.net/reference/all/wotx/encyclopedia/crewroles
 //

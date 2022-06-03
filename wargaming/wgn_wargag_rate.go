@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-// WargagRate Method allows to rate content. A valid access_token for the specified account is required.
+// WargagRate allows to rate content. A valid access_token for the specified account is required.
 //
 // https://developers.wargaming.net/reference/all/wgn/wargag/rate
 //

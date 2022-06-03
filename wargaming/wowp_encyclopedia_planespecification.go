@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaPlanespecification Method returns information from Encyclopedia about aircraft specifications depending on installed modules.
+// EncyclopediaPlanespecification returns information from Encyclopedia about aircraft specifications depending on installed modules.
 //
 // https://developers.wargaming.net/reference/all/wowp/encyclopedia/planespecification
 //

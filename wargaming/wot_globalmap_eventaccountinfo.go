@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// GlobalmapEventaccountinfo Method returns player's statistics for a specific event
+// GlobalmapEventaccountinfo returns player's statistics for a specific event
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/eventaccountinfo
 //

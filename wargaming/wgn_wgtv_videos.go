@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// WgtvVideos Method returns list of videos filtered by the specified parameter.
+// WgtvVideos returns list of videos filtered by the specified parameter.
 //
 // https://developers.wargaming.net/reference/all/wgn/wgtv/videos
 //

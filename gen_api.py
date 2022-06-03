@@ -352,6 +352,8 @@ class GoApi:
             return_type="",
             imports={'"context"'}
         )
+        if self.service_method.documentation.startswith("Method "):
+            self.service_method.documentation = self.service_method.documentation[len("Method "):]
         if self.method_id.startswith(f"{game}_"):
             self.service_method.name = name_to_camel(self.method_id[len(game) + 1:])
 

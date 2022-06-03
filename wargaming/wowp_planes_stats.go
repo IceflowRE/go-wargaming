@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// PlanesStats Method returns statistics on player's aircraft.
+// PlanesStats returns statistics on player's aircraft.
 //
 // https://developers.wargaming.net/reference/all/wowp/planes/stats
 //

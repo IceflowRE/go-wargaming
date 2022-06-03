@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// GlobalmapEventaccountratingneighbors Method returns adjacent position in account event rating.
+// GlobalmapEventaccountratingneighbors returns adjacent position in account event rating.
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/eventaccountratingneighbors
 //

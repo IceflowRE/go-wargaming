@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// SeasonsAccountinfo Method returns players' statistics in Ranked Battles seasons. Accounts with hidden game profiles are excluded from response. Hidden profiles are listed in the field meta.hidden.
+// SeasonsAccountinfo returns players' statistics in Ranked Battles seasons. Accounts with hidden game profiles are excluded from response. Hidden profiles are listed in the field meta.hidden.
 //
 // https://developers.wargaming.net/reference/all/wows/seasons/accountinfo
 //

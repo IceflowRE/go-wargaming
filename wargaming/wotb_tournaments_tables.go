@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// TournamentsTables Method returns tournament brackets.
+// TournamentsTables returns tournament brackets.
 //
 // https://developers.wargaming.net/reference/all/wotb/tournaments/tables
 //

@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// AccountAchievements Method returns players' achievement details.
+// AccountAchievements returns players' achievement details.
 //
 // https://developers.wargaming.net/reference/all/wotb/account/achievements
 //

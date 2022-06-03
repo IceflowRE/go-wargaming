@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// TournamentsInfo Method returns detailed information on the specified tournament.
+// TournamentsInfo returns detailed information on the specified tournament.
 //
 // https://developers.wargaming.net/reference/all/wotb/tournaments/info
 //

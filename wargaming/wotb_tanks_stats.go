@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// TanksStats Method returns general statistics for each vehicle of each player.
+// TanksStats returns general statistics for each vehicle of each player.
 //
 // https://developers.wargaming.net/reference/all/wotb/tanks/stats
 //

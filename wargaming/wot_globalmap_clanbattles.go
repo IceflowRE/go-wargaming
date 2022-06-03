@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// GlobalmapClanbattles Method returns list of clan's battles on the Global Map.
+// GlobalmapClanbattles returns list of clan's battles on the Global Map.
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/clanbattles
 //

@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// GlobalmapEventrating Method returns event clan rating
+// GlobalmapEventrating returns event clan rating
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/eventrating
 //

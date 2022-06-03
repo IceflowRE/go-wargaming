@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// AccountAchievements Method returns information about players' achievements. Accounts with hidden game profiles are excluded from response. Hidden profiles are listed in the field meta.hidden.
+// AccountAchievements returns information about players' achievements. Accounts with hidden game profiles are excluded from response. Hidden profiles are listed in the field meta.hidden.
 //
 // https://developers.wargaming.net/reference/all/wows/account/achievements
 //

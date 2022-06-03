@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaAchievements Method returns list of awards, medals, ribbons.
+// EncyclopediaAchievements returns list of awards, medals, ribbons.
 //
 // https://developers.wargaming.net/reference/all/wotx/encyclopedia/achievements
 //

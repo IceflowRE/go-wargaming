@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// ClansInfo Method returns detailed clan information.
+// ClansInfo returns detailed clan information.
 //
 // https://developers.wargaming.net/reference/all/wowp/clans/info
 //

@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaTankturrets Method returns list of turrets.
+// EncyclopediaTankturrets returns list of turrets.
 //
 // https://developers.wargaming.net/reference/all/wot/encyclopedia/tankturrets
 //

@@ -5,7 +5,7 @@ import (
 	"github.com/IceflowRE/go-wargaming/v2/wargaming/wowp"
 )
 
-// EncyclopediaInfo Method returns information about Encyclopedia.
+// EncyclopediaInfo returns information about Encyclopedia.
 //
 // https://developers.wargaming.net/reference/all/wowp/encyclopedia/info
 //

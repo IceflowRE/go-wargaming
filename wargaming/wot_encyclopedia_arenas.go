@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaArenas Method returns information about maps.
+// EncyclopediaArenas returns information about maps.
 //
 // https://developers.wargaming.net/reference/all/wot/encyclopedia/arenas
 //

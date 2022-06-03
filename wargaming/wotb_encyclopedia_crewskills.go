@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaCrewskills Method returns information about crew skills.
+// EncyclopediaCrewskills returns information about crew skills.
 //
 // https://developers.wargaming.net/reference/all/wotb/encyclopedia/crewskills
 //

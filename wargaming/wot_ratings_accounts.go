@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// RatingsAccounts Method returns player ratings by specified IDs.
+// RatingsAccounts returns player ratings by specified IDs.
 //
 // https://developers.wargaming.net/reference/all/wot/ratings/accounts
 //

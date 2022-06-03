@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// AccountList Method returns partial list of players who have ever accessed in any Wargaming game. The list is filtered by name or by initial characters of user name and sorted alphabetically.
+// AccountList returns partial list of players who have ever accessed in any Wargaming game. The list is filtered by name or by initial characters of user name and sorted alphabetically.
 //
 // https://developers.wargaming.net/reference/all/wgn/account/list
 //

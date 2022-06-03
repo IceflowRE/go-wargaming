@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaCrewroles Method returns full description of all crew qualifications.
+// EncyclopediaCrewroles returns full description of all crew qualifications.
 //
 // https://developers.wargaming.net/reference/all/wot/encyclopedia/crewroles
 //

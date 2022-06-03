@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// GlobalmapEventratingneighbors Method returns list of adjacent positions in event clan rating
+// GlobalmapEventratingneighbors returns list of adjacent positions in event clan rating
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/eventratingneighbors
 //

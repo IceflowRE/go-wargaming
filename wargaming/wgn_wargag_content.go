@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// WargagContent Method returns information about content.
+// WargagContent returns information about content.
 //
 // https://developers.wargaming.net/reference/all/wgn/wargag/content
 //

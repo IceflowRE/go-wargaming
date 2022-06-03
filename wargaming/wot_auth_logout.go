@@ -4,7 +4,7 @@ import (
 	"context"
 )
 
-// AuthLogout Method deletes user's access_token.
+// AuthLogout deletes user's access_token.
 // After this method is called, access_token becomes invalid.
 //
 // https://developers.wargaming.net/reference/all/wot/auth/logout

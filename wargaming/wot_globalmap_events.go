@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// GlobalmapEvents Method returns events information.
+// GlobalmapEvents returns events information.
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/events
 //

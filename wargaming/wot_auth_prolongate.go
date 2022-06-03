@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-// AuthProlongate Method generates new access_token based on the current token.
+// AuthProlongate generates new access_token based on the current token.
 // This method is used when the player is still using the application but the current access_token is about to expire.
 //
 // https://developers.wargaming.net/reference/all/wot/auth/prolongate

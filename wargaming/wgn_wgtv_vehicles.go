@@ -6,7 +6,7 @@ import (
 	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgn"
 )
 
-// WgtvVehicles Method returns list of vehicles sorted by games and covered by videos.
+// WgtvVehicles returns list of vehicles sorted by games and covered by videos.
 //
 // https://developers.wargaming.net/reference/all/wgn/wgtv/vehicles
 //

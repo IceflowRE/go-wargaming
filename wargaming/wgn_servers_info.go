@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// ServersInfo Method returns the number of online players on the servers.
+// ServersInfo returns the number of online players on the servers.
 //
 // https://developers.wargaming.net/reference/all/wgn/servers/info
 //

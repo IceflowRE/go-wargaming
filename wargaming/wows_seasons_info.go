@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// SeasonsInfo Method returns information about Ranked Battles seasons.
+// SeasonsInfo returns information about Ranked Battles seasons.
 //
 // https://developers.wargaming.net/reference/all/wows/seasons/info
 //

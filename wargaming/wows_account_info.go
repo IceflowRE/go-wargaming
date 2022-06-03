@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// AccountInfo Method returns player details. Players may hide their game profiles, use field hidden_profile for determination.
+// AccountInfo returns player details. Players may hide their game profiles, use field hidden_profile for determination.
 //
 // https://developers.wargaming.net/reference/all/wows/account/info
 //

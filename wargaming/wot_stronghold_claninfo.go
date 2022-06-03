@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// StrongholdClaninfo Method returns general information and the battle statistics of clans in the Stronghold mode. Please note that information about the number of battles fought as well as the number of defeats and victories is updated once every 24 hours.
+// StrongholdClaninfo returns general information and the battle statistics of clans in the Stronghold mode. Please note that information about the number of battles fought as well as the number of defeats and victories is updated once every 24 hours.
 //
 // https://developers.wargaming.net/reference/all/wot/stronghold/claninfo
 //

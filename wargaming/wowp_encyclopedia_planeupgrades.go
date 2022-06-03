@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaPlaneupgrades Method returns information from Encyclopedia about slots of aircrafts and lists of modules which are compatible with specified slots.
+// EncyclopediaPlaneupgrades returns information from Encyclopedia about slots of aircrafts and lists of modules which are compatible with specified slots.
 //
 // https://developers.wargaming.net/reference/all/wowp/encyclopedia/planeupgrades
 //

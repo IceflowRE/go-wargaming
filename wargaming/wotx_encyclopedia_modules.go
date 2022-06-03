@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaModules Method returns list of available modules that can be installed on vehicles, such as engines, turrets, etc. At least one input filter parameter (module ID, type) is required to be indicated.
+// EncyclopediaModules returns list of available modules that can be installed on vehicles, such as engines, turrets, etc. At least one input filter parameter (module ID, type) is required to be indicated.
 //
 // https://developers.wargaming.net/reference/all/wotx/encyclopedia/modules
 //

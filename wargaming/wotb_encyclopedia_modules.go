@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaModules Method returns list of available modules, such as guns, engines, etc.
+// EncyclopediaModules returns list of available modules, such as guns, engines, etc.
 //
 // https://developers.wargaming.net/reference/all/wotb/encyclopedia/modules
 //

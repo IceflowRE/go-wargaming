@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// ClansMemberhistory Method returns information about player's clan history. Data on 10 last clan memberships are presented in the response.This method will be removed. Use method Player's clan history (World of Tanks)
+// ClansMemberhistory returns information about player's clan history. Data on 10 last clan memberships are presented in the response.This method will be removed. Use method Player's clan history (World of Tanks)
 //
 // https://developers.wargaming.net/reference/all/wot/clans/memberhistory
 //

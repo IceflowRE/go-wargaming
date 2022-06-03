@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaTanks Method returns list of all vehicles from Tankopedia.
+// EncyclopediaTanks returns list of all vehicles from Tankopedia.
 //
 // https://developers.wargaming.net/reference/all/wot/encyclopedia/tanks
 //

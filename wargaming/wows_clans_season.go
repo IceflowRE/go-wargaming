@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// ClansSeason Method returns information about Clan Battles season.
+// ClansSeason returns information about Clan Battles season.
 //
 // https://developers.wargaming.net/reference/all/wows/clans/season
 //

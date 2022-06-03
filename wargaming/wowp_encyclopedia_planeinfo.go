@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaPlaneinfo Method returns aircraft details from Encyclopedia.
+// EncyclopediaPlaneinfo returns aircraft details from Encyclopedia.
 //
 // https://developers.wargaming.net/reference/all/wowp/encyclopedia/planeinfo
 //

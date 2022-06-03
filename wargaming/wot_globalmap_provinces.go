@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// GlobalmapProvinces Method returns information about the Global Map provinces.
+// GlobalmapProvinces returns information about the Global Map provinces.
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/provinces
 //

@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-// ClanmessagesDelete Method removes a message on clan message board.
+// ClanmessagesDelete removes a message on clan message board.
 //
 // https://developers.wargaming.net/reference/all/wotb/clanmessages/delete
 //

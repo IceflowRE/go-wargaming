@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// ClanratingsClans Method returns clan ratings by specified IDs.
+// ClanratingsClans returns clan ratings by specified IDs.
 //
 // https://developers.wargaming.net/reference/all/wot/clanratings/clans
 //

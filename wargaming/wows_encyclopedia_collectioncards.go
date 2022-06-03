@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaCollectioncards Method returns information about items that are included in the collection.
+// EncyclopediaCollectioncards returns information about items that are included in the collection.
 //
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/collectioncards
 //

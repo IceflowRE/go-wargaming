@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// RatingsTop Method returns list of top players by specified parameter.
+// RatingsTop returns list of top players by specified parameter.
 //
 // https://developers.wargaming.net/reference/all/wot/ratings/top
 //

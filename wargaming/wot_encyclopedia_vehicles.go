@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaVehicles Method returns list of available vehicles.
+// EncyclopediaVehicles returns list of available vehicles.
 //
 // https://developers.wargaming.net/reference/all/wot/encyclopedia/vehicles
 //

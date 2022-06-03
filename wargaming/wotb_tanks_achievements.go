@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// TanksAchievements Method returns list of player's achievements on all vehicles.
+// TanksAchievements returns list of player's achievements on all vehicles.
 //
 // https://developers.wargaming.net/reference/all/wotb/tanks/achievements
 //

@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaProvisions Method returns list of available equipment and consumables.
+// EncyclopediaProvisions returns list of available equipment and consumables.
 //
 // https://developers.wargaming.net/reference/all/wotb/encyclopedia/provisions
 //

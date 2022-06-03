@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// RatingsTypes Method returns dictionary of rating periods and ratings details.
+// RatingsTypes returns dictionary of rating periods and ratings details.
 //
 // https://developers.wargaming.net/reference/all/wowp/ratings/types
 //

@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaVehicleupgrades Method returns list of vehicle equipment and consumables.
+// EncyclopediaVehicleupgrades returns list of vehicle equipment and consumables.
 //
 // https://developers.wargaming.net/reference/all/wotx/encyclopedia/vehicleupgrades
 //

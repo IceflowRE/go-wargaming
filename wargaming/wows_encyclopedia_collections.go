@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaCollections Method returns information about collections.
+// EncyclopediaCollections returns information about collections.
 //
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/collections
 //

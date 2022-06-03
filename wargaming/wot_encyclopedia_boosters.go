@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaBoosters Method returns information about Personal Reserves.
+// EncyclopediaBoosters returns information about Personal Reserves.
 //
 // https://developers.wargaming.net/reference/all/wot/encyclopedia/boosters
 //

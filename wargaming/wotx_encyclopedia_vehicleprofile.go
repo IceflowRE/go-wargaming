@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaVehicleprofile Method returns vehicle configuration characteristics based on the specified module IDs.
+// EncyclopediaVehicleprofile returns vehicle configuration characteristics based on the specified module IDs.
 //
 // https://developers.wargaming.net/reference/all/wotx/encyclopedia/vehicleprofile
 //

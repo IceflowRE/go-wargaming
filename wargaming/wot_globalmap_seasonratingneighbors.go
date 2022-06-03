@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// GlobalmapSeasonratingneighbors Method returns list of adjacent positions in season clan rating.
+// GlobalmapSeasonratingneighbors returns list of adjacent positions in season clan rating.
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/seasonratingneighbors
 //

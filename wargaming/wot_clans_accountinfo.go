@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// ClansAccountinfo Method returns detailed clan member information and brief clan details.
+// ClansAccountinfo returns detailed clan member information and brief clan details.
 //
 // https://developers.wargaming.net/reference/all/wot/clans/accountinfo
 //

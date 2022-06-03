@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaVehicleprofiles Method returns vehicle configuration characteristics.
+// EncyclopediaVehicleprofiles returns vehicle configuration characteristics.
 //
 // https://developers.wargaming.net/reference/all/wot/encyclopedia/vehicleprofiles
 //

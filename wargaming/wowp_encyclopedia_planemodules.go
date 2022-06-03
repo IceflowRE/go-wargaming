@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaPlanemodules Method returns information from Encyclopedia about modules available for specified aircrafts.
+// EncyclopediaPlanemodules returns information from Encyclopedia about modules available for specified aircrafts.
 //
 // https://developers.wargaming.net/reference/all/wowp/encyclopedia/planemodules
 //

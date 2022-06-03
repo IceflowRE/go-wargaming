@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-// ClanratingsDates Method returns dates with available rating data.
+// ClanratingsDates returns dates with available rating data.
 //
 // https://developers.wargaming.net/reference/all/wot/clanratings/dates
 //

@@ -7,7 +7,7 @@ import (
 	"strconv"
 )
 
-// ClanmessagesCreate Method creates a message on clan message board.
+// ClanmessagesCreate creates a message on clan message board.
 //
 // https://developers.wargaming.net/reference/all/wotb/clanmessages/create
 //

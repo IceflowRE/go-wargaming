@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// ClansMessageboard Method returns messages of clan message board.This method will be removed. Use method Message board (World of Tanks)
+// ClansMessageboard returns messages of clan message board.This method will be removed. Use method Message board (World of Tanks)
 //
 // https://developers.wargaming.net/reference/all/wot/clans/messageboard
 //

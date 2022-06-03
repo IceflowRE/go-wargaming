@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// GlobalmapInfo Method returns general information about the Global Map.
+// GlobalmapInfo returns general information about the Global Map.
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/info
 //

@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-// AuthLogin Method authenticates user based on PlayStation Network ID which is used in World of Tanks PlayStation 4. To log in, player must enter PlayStation Network ID and password.
+// AuthLogin authenticates user based on PlayStation Network ID which is used in World of Tanks PlayStation 4. To log in, player must enter PlayStation Network ID and password.
 // Information on authorization status is sent to URL specified in redirect_uri parameter.
 // If authentication is successful, the following parameters are sent to redirect_uri:
 //

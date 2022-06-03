@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-// ClanmessagesUpdate Method updates a message on clan message board. At least one changed parameter should be specified.
+// ClanmessagesUpdate updates a message on clan message board. At least one changed parameter should be specified.
 //
 // https://developers.wargaming.net/reference/all/wotb/clanmessages/update
 //

@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaShips Method returns list of ships available.
+// EncyclopediaShips returns list of ships available.
 //
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/ships
 //

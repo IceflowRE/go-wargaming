@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// TanksAchievements Method returns list of achievements on all player's vehicles.
+// TanksAchievements returns list of achievements on all player's vehicles.
 // Achievement properties define the achievements field values:
 //
 // 1-4 for Mastery Badges and Stage Achievements (type: "class");

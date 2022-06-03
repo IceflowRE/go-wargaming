@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// ClansMembersinfo Method returns detailed clan member information and brief clan details. Information is available for World of Tanks and World of Warplanes clans.This method will be removed. Use method Clan member details (World of Tanks)
+// ClansMembersinfo returns detailed clan member information and brief clan details. Information is available for World of Tanks and World of Warplanes clans.This method will be removed. Use method Clan member details (World of Tanks)
 //
 // https://developers.wargaming.net/reference/all/wgn/clans/membersinfo
 //

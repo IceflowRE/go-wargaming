@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// ClanmessagesLikes Method returns message likes on clan message board.
+// ClanmessagesLikes returns message likes on clan message board.
 //
 // https://developers.wargaming.net/reference/all/wotb/clanmessages/likes
 //

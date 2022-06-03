@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-// ClanmessagesLike Method likes or unlikes a message on clan message board.
+// ClanmessagesLike likes or unlikes a message on clan message board.
 //
 // https://developers.wargaming.net/reference/all/wotb/clanmessages/like
 //

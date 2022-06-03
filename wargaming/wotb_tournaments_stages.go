@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// TournamentsStages Method returns list of stages in specified tournament.
+// TournamentsStages returns list of stages in specified tournament.
 //
 // https://developers.wargaming.net/reference/all/wotb/tournaments/stages
 //

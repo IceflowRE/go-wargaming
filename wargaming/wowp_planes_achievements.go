@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// PlanesAchievements Method returns achievements on player's aircraft.
+// PlanesAchievements returns achievements on player's aircraft.
 //
 // https://developers.wargaming.net/reference/all/wowp/planes/achievements
 //

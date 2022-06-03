@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-// WargagDeletecomment Method allows to delete comments. A valid access_token for the specified account is required.
+// WargagDeletecomment allows to delete comments. A valid access_token for the specified account is required.
 //
 // https://developers.wargaming.net/reference/all/wgn/wargag/deletecomment
 //

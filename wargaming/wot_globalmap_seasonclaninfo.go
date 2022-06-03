@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// GlobalmapSeasonclaninfo Method returns clan's statistics for a specific season.
+// GlobalmapSeasonclaninfo returns clan's statistics for a specific season.
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/seasonclaninfo
 //

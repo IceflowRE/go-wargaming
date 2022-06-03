@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// RatingsNeighbors Method returns list of adjacent positions in specified rating.
+// RatingsNeighbors returns list of adjacent positions in specified rating.
 //
 // https://developers.wargaming.net/reference/all/wowp/ratings/neighbors
 //

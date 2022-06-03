@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaTankengines Method returns list of engines.
+// EncyclopediaTankengines returns list of engines.
 //
 // https://developers.wargaming.net/reference/all/wot/encyclopedia/tankengines
 //

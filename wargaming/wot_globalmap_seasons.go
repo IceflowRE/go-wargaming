@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// GlobalmapSeasons Method returns information about seasons.
+// GlobalmapSeasons returns information about seasons.
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/seasons
 //

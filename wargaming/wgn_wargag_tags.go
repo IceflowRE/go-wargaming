@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// WargagTags Method returns information about content tags.
+// WargagTags returns information about content tags.
 //
 // https://developers.wargaming.net/reference/all/wgn/wargag/tags
 //

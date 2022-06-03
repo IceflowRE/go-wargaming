@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// GlobalmapClanprovinces Method returns lists of clans provinces.
+// GlobalmapClanprovinces returns lists of clans provinces.
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/clanprovinces
 //

@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaTankchassis Method returns list of suspensions.
+// EncyclopediaTankchassis returns list of suspensions.
 //
 // https://developers.wargaming.net/reference/all/wot/encyclopedia/tankchassis
 //

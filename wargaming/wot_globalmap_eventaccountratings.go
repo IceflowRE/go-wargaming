@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// GlobalmapEventaccountratings Method returns account event rating.
+// GlobalmapEventaccountratings returns account event rating.
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/eventaccountratings
 //

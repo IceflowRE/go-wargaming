@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaInfo Method returns information about Tankopedia.
+// EncyclopediaInfo returns information about Tankopedia.
 //
 // https://developers.wargaming.net/reference/all/wotx/encyclopedia/info
 //

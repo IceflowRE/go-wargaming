@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// AccountInfo Method returns Wargaming account details.
+// AccountInfo returns Wargaming account details.
 //
 // https://developers.wargaming.net/reference/all/wgn/account/info
 //

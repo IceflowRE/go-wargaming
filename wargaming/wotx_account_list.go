@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// AccountList Method returns partial list of players. The list is filtered by initial characters of user name and sorted alphabetically.
+// AccountList returns partial list of players. The list is filtered by initial characters of user name and sorted alphabetically.
 //
 // https://developers.wargaming.net/reference/all/wotx/account/list
 //

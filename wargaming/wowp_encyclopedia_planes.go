@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaPlanes Method returns list of all aircrafts from Encyclopedia.
+// EncyclopediaPlanes returns list of all aircrafts from Encyclopedia.
 //
 // https://developers.wargaming.net/reference/all/wowp/encyclopedia/planes
 //

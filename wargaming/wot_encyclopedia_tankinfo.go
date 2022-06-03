@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// EncyclopediaTankinfo Method returns vehicle details from Tankopedia.
+// EncyclopediaTankinfo returns vehicle details from Tankopedia.
 //
 // https://developers.wargaming.net/reference/all/wot/encyclopedia/tankinfo
 //

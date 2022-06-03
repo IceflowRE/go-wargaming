@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// ClanmessagesMessages Method returns messages of clan message board. If a single message requested by ID, all filters are ignored and total equals null.
+// ClanmessagesMessages returns messages of clan message board. If a single message requested by ID, all filters are ignored and total equals null.
 //
 // https://developers.wargaming.net/reference/all/wotb/clanmessages/messages
 //

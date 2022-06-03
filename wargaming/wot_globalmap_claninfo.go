@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// GlobalmapClaninfo Method returns clan data on the Global Map.
+// GlobalmapClaninfo returns clan data on the Global Map.
 //
 // https://developers.wargaming.net/reference/all/wot/globalmap/claninfo
 //
