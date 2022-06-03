@@ -11,7 +11,7 @@
 
 Go client for accessing [Wargaming.net Public API](https://developers.wargaming.net/documentation/guide/getting-started/).
 
-This api client is generated automatically based on the provided documentation of Wargaming.
+This api client is generated automatically based on the documentation provided by Wargaming.
 The documentation is often inaccurate, especially the return types (object, list, map), so manual fixes afterwards are required. If something was not corrected, please open an issue.
 
 ## Installation
