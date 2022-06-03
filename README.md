@@ -19,7 +19,7 @@ The documentation is often inaccurate, especially the return types (object, list
 go-wargaming is compatible with modern Go releases in module mode, with Go installed:
 
 ```shell
-go get github.com/IceflowRE/go-wargaming/v2.0.0
+go get github.com/IceflowRE/go-wargaming/v2
 ```
 
 will resolve and add the package to the current development module, along with its dependencies.
@@ -27,14 +27,14 @@ will resolve and add the package to the current development module, along with i
 Or just import it and run `go get` afterwards
 
 ```go
-import "github.com/IceflowRE/go-wargaming/v2.0.0/wargaming"
+import "github.com/IceflowRE/go-wargaming/v2/wargaming"
 ```
 
 ## Usage
 
 ```go
-import "github.com/IceflowRE/go-wargaming/v2.0.0/wargaming" // with go modules
-import "github.com/IceflowRE/go-wargaming/wargaming"        // without go modules
+import "github.com/IceflowRE/go-wargaming/v2/wargaming" // with go modules
+import "github.com/IceflowRE/go-wargaming/wargaming"    // without go modules
 ```
 
 Create a new Wargaming Client and use the different services to access the different sections of the Wargaming API.
