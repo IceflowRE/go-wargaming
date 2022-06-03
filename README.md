@@ -16,7 +16,7 @@ The documentation is often inaccurate, especially the return types (object, list
 
 ## Installation
 
-go-wargaming is compatible with modern Go releases in module mode, with Go installed:
+go-wargaming is compatible with modern Go releases and modules enabled.
 
 ```shell
 go get github.com/IceflowRE/go-wargaming/v2
