@@ -11,7 +11,7 @@ type TournamentsMatchesOptions struct {
 	// Group ID that can be retrieved from the Tournaments Stages method. Maximum limit: 10.
 	GroupId []int
 	// Localization language. Default is "ru". Valid values:
-	// 
+	//
 	// "ru" - Русский (by default)
 	Language *string
 	// Number of returned entries. Default is 10. Min value is 1. Maximum value: 25.
@@ -40,10 +40,10 @@ type TournamentsMatches struct {
 	// Match start time
 	StartTime *wgnTime.UnixTime `json:"start_time,omitempty"`
 	// Match state. Valid values:
-	// 
-	// "waiting_results" - Match is still in progress and there are no final results 
-	// "got_results" - Match was finished and there are final results 
-	// "canceled" - Match was cancelled 
+	//
+	// "waiting_results" - Match is still in progress and there are no final results
+	// "got_results" - Match was finished and there are final results
+	// "canceled" - Match was cancelled
 	// "upcoming" - Already scheduled match state
 	State *string `json:"state,omitempty"`
 	// Team 1 ID

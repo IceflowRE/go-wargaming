@@ -1,25 +1,24 @@
 package wows
 
-
 // ClansGlossaryOptions options.
 type ClansGlossaryOptions struct {
 	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 	Fields []string
 	// Localization language. Default is "ru". Valid values:
-	// 
-	// "cs" - Čeština 
-	// "de" - Deutsch 
-	// "en" - English 
-	// "es" - Español 
-	// "fr" - Français 
-	// "ja" - 日本語 
-	// "pl" - Polski 
+	//
+	// "cs" - Čeština
+	// "de" - Deutsch
+	// "en" - English
+	// "es" - Español
+	// "fr" - Français
+	// "ja" - 日本語
+	// "pl" - Polski
 	// "ru" - Русский (by default)
-	// "th" - ไทย 
-	// "zh-tw" - 繁體中文 
-	// "tr" - Türkçe 
-	// "zh-cn" - 中文 
-	// "pt-br" - Português do Brasil 
+	// "th" - ไทย
+	// "zh-tw" - 繁體中文
+	// "tr" - Türkçe
+	// "zh-cn" - 中文
+	// "pt-br" - Português do Brasil
 	// "es-mx" - Español (México)
 	Language *string
 }
@@ -35,7 +34,7 @@ type ClansGlossary struct {
 	// Installations
 	Buildings *struct {
 		// The type of the bonus that is provided to the clan members after building the installation. Existing bonus types:
-		// 
+		//
 		// exp_boost—rate of additional XP;
 		// members_count—number of clan members on which the clan size is increased;
 		// maintenance_discount—rate of reducing cost of servicing ships;

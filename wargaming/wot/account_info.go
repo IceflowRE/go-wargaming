@@ -9,43 +9,43 @@ type AccountInfoOptions struct {
 	// Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 	AccessToken *string
 	// Extra fields that will be added to the response. Valid values:
-	// 
-	// "private.boosters" 
-	// "private.garage" 
-	// "private.grouped_contacts" 
-	// "private.personal_missions" 
-	// "private.rented" 
-	// "statistics.epic" 
-	// "statistics.fallout" 
-	// "statistics.globalmap_absolute" 
-	// "statistics.globalmap_champion" 
-	// "statistics.globalmap_middle" 
-	// "statistics.random" 
-	// "statistics.ranked_10x10" 
-	// "statistics.ranked_15x15" 
-	// "statistics.ranked_battles" 
-	// "statistics.ranked_battles_current" 
-	// "statistics.ranked_battles_previous" 
-	// "statistics.ranked_season_1" 
-	// "statistics.ranked_season_2" 
+	//
+	// "private.boosters"
+	// "private.garage"
+	// "private.grouped_contacts"
+	// "private.personal_missions"
+	// "private.rented"
+	// "statistics.epic"
+	// "statistics.fallout"
+	// "statistics.globalmap_absolute"
+	// "statistics.globalmap_champion"
+	// "statistics.globalmap_middle"
+	// "statistics.random"
+	// "statistics.ranked_10x10"
+	// "statistics.ranked_15x15"
+	// "statistics.ranked_battles"
+	// "statistics.ranked_battles_current"
+	// "statistics.ranked_battles_previous"
+	// "statistics.ranked_season_1"
+	// "statistics.ranked_season_2"
 	// "statistics.ranked_season_3"
 	Extra []string
 	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 	Fields []string
 	// Localization language. Default is "ru". Valid values:
-	// 
-	// "en" - English 
+	//
+	// "en" - English
 	// "ru" - Русский (by default)
-	// "pl" - Polski 
-	// "de" - Deutsch 
-	// "fr" - Français 
-	// "es" - Español 
-	// "zh-cn" - 简体中文 
-	// "zh-tw" - 繁體中文 
-	// "tr" - Türkçe 
-	// "cs" - Čeština 
-	// "th" - ไทย 
-	// "vi" - Tiếng Việt 
+	// "pl" - Polski
+	// "de" - Deutsch
+	// "fr" - Français
+	// "es" - Español
+	// "zh-cn" - 简体中文
+	// "zh-tw" - 繁體中文
+	// "tr" - Türkçe
+	// "cs" - Čeština
+	// "th" - ไทย
+	// "vi" - Tiếng Việt
 	// "ko" - 한국어
 	Language *string
 }
@@ -85,7 +85,7 @@ type AccountInfo struct {
 			// Expiration time
 			ExpirationTime *wgnTime.UnixTime `json:"expiration_time,omitempty"`
 			// Status of Personal Reserves. Valid values:
-			// 
+			//
 			// ACTIVE - Active
 			// INACTIVE - Inactive
 			// USED - Used
@@ -120,7 +120,7 @@ type AccountInfo struct {
 		IsPremium *bool `json:"is_premium,omitempty"`
 		// Personal Missions Progress. The key is a task id, the value is a status.
 		// Possible statuses:
-		// 
+		//
 		// NONE - a mission is unavailable
 		// UNLOCKED - a mission is available
 		// NEED_GET_MAIN_REWARD - the main reward has not been received
@@ -129,7 +129,7 @@ type AccountInfo struct {
 		// NEED_GET_ALL_REWARDS - no rewards have been received
 		// ALL_REWARDS_GOTTEN - all rewards have been received
 		// .
-		// 
+		//
 		// An extra field.
 		PersonalMissions map[string]string `json:"personal_missions,omitempty"`
 		// Premium Account expiration time

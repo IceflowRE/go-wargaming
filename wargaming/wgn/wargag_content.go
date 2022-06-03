@@ -19,10 +19,10 @@ type WargagContentOptions struct {
 	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 	Fields []string
 	// Sorting. Default is "-date". Valid values:
-	// 
-	// "date" - by publication date 
+	//
+	// "date" - by publication date
 	// "-date" - by publication date in reverse order (by default)
-	// "rating" - by rating value 
+	// "rating" - by rating value
 	// "-rating" - by rating value in reverse order
 	OrderBy *string
 	// Result page number
@@ -32,9 +32,9 @@ type WargagContentOptions struct {
 	// Tag ID
 	TagId *int
 	// Content type. Valid values:
-	// 
-	// "quote" - Quote content 
-	// "video" - Video content 
+	//
+	// "quote" - Quote content
+	// "video" - Video content
 	// "picture" - Image content type
 	Type_ *string
 }

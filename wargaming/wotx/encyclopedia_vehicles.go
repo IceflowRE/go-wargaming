@@ -1,18 +1,17 @@
 package wotx
 
-
 // EncyclopediaVehiclesOptions options.
 type EncyclopediaVehiclesOptions struct {
 	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 	Fields []string
 	// Localization language. Default is "en". Valid values:
-	// 
+	//
 	// "en" - English (by default)
-	// "ru" - Русский 
-	// "pl" - Polski 
-	// "de" - Deutsch 
-	// "fr" - Français 
-	// "es" - Español 
+	// "ru" - Русский
+	// "pl" - Polski
+	// "de" - Deutsch
+	// "fr" - Français
+	// "es" - Español
 	// "tr" - Türkçe
 	Language *string
 	// Nation. Maximum limit: 100.
@@ -40,7 +39,7 @@ type EncyclopediaVehicles struct {
 	// Nation
 	Nation *string `json:"nation,omitempty"`
 	// List of vehicles available for research in form of pairs:
-	// 
+	//
 	// researched vehicle ID
 	// cost of research in XP
 	NextTanks map[string]string `json:"next_tanks,omitempty"`
@@ -49,7 +48,7 @@ type EncyclopediaVehicles struct {
 	// Cost in gold
 	PriceGold *int `json:"price_gold,omitempty"`
 	// List of research costs in form of pairs:
-	// 
+	//
 	// parent vehicle ID
 	// cost of research in XP
 	PricesXp map[string]string `json:"prices_xp,omitempty"`

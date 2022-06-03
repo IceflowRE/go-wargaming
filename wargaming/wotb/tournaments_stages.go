@@ -9,7 +9,7 @@ type TournamentsStagesOptions struct {
 	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 	Fields []string
 	// Localization language. Default is "ru". Valid values:
-	// 
+	//
 	// "ru" - Русский (by default)
 	Language *string
 	// Number of returned entries. Default is 10. Min value is 1. Maximum value: 25.
@@ -47,17 +47,17 @@ type TournamentsStages struct {
 	// Stage start day and time
 	StartAt *wgnTime.UnixTime `json:"start_at,omitempty"`
 	// Stage state. Valid values:
-	// 
-	// 
+	//
+	//
 	// draft — stage created as draft
-	// 
-	// 
+	//
+	//
 	// groups_ready —  stage has completed groups
-	// 
-	// 
+	//
+	//
 	// schedule_ready — stage has a finalized schedule
-	// 
-	// 
+	//
+	//
 	// complete — stage completed
 	State *string `json:"state,omitempty"`
 	// Stage name
@@ -65,14 +65,14 @@ type TournamentsStages struct {
 	// Tournament ID
 	TournamentId *int `json:"tournament_id,omitempty"`
 	// Bracket type of the stage. Valid values:
-	// 
-	// 
+	//
+	//
 	// RR — round robin
-	// 
-	// 
+	//
+	//
 	// SE — single elimination
-	// 
-	// 
+	//
+	//
 	// DE — double elimination
 	Type_ *string `json:"type,omitempty"`
 	// Number of victories to win the match

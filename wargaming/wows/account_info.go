@@ -9,41 +9,41 @@ type AccountInfoOptions struct {
 	// Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 	AccessToken *string
 	// Extra fields that will be added to the response. Valid values:
-	// 
-	// "private.grouped_contacts" 
-	// "private.port" 
-	// "statistics.club" 
-	// "statistics.oper_div" 
-	// "statistics.oper_div_hard" 
-	// "statistics.oper_solo" 
-	// "statistics.pve" 
-	// "statistics.pve_div2" 
-	// "statistics.pve_div3" 
-	// "statistics.pve_solo" 
-	// "statistics.pvp_div2" 
-	// "statistics.pvp_div3" 
-	// "statistics.pvp_solo" 
-	// "statistics.rank_div2" 
-	// "statistics.rank_div3" 
+	//
+	// "private.grouped_contacts"
+	// "private.port"
+	// "statistics.club"
+	// "statistics.oper_div"
+	// "statistics.oper_div_hard"
+	// "statistics.oper_solo"
+	// "statistics.pve"
+	// "statistics.pve_div2"
+	// "statistics.pve_div3"
+	// "statistics.pve_solo"
+	// "statistics.pvp_div2"
+	// "statistics.pvp_div3"
+	// "statistics.pvp_solo"
+	// "statistics.rank_div2"
+	// "statistics.rank_div3"
 	// "statistics.rank_solo"
 	Extra []string
 	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 	Fields []string
 	// Localization language. Default is "ru". Valid values:
-	// 
-	// "cs" - Čeština 
-	// "de" - Deutsch 
-	// "en" - English 
-	// "es" - Español 
-	// "fr" - Français 
-	// "ja" - 日本語 
-	// "pl" - Polski 
+	//
+	// "cs" - Čeština
+	// "de" - Deutsch
+	// "en" - English
+	// "es" - Español
+	// "fr" - Français
+	// "ja" - 日本語
+	// "pl" - Polski
 	// "ru" - Русский (by default)
-	// "th" - ไทย 
-	// "zh-tw" - 繁體中文 
-	// "tr" - Türkçe 
-	// "zh-cn" - 中文 
-	// "pt-br" - Português do Brasil 
+	// "th" - ไทย
+	// "zh-tw" - 繁體中文
+	// "tr" - Türkçe
+	// "zh-cn" - 中文
+	// "pt-br" - Português do Brasil
 	// "es-mx" - Español (México)
 	Language *string
 }

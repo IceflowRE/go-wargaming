@@ -1,6 +1,5 @@
 package wgn
 
-
 // WgtvVehiclesOptions options.
 type WgtvVehiclesOptions struct {
 	// Content category ID. Maximum limit: 100.

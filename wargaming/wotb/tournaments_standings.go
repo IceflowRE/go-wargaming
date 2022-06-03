@@ -1,6 +1,5 @@
 package wotb
 
-
 // TournamentsStandingsOptions options.
 type TournamentsStandingsOptions struct {
 	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
@@ -8,7 +7,7 @@ type TournamentsStandingsOptions struct {
 	// Allows to get all team standings starting from a specific place, including this place
 	FromPosition *int
 	// Localization language. Default is "ru". Valid values:
-	// 
+	//
 	// "ru" - Русский (by default)
 	Language *string
 	// Number of returned entries. Default is 10. Min value is 1. Maximum value: 25.

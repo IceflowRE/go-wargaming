@@ -1,6 +1,5 @@
 package wot
 
-
 // GlobalmapClanprovincesOptions options.
 type GlobalmapClanprovincesOptions struct {
 	// Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
@@ -8,7 +7,7 @@ type GlobalmapClanprovincesOptions struct {
 	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 	Fields []string
 	// Language. Default is "ru". Valid values:
-	// 
+	//
 	// "ru" - Russian (by default)
 	Language *string
 }
@@ -39,11 +38,11 @@ type GlobalmapClanprovinces struct {
 		// Indicates availability of connection to the Headquarters
 		HqConnected *bool `json:"hq_connected,omitempty"`
 		// Province income limit. Valid values:
-		// 
-		// 
+		//
+		//
 		// False—this province income is not blocked due to reaching province income limit. Though, it might be blocked by event rules.
-		// 
-		// 
+		//
+		//
 		// True—this province income is blocked, as province income limit has been reached.
 		IsRevenueLimitExceeded *bool `json:"is_revenue_limit_exceeded,omitempty"`
 	} `json:"private,omitempty"`

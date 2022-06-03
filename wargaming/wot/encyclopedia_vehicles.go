@@ -1,24 +1,23 @@
 package wot
 
-
 // EncyclopediaVehiclesOptions options.
 type EncyclopediaVehiclesOptions struct {
 	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 	Fields []string
 	// Localization language. Default is "ru". Valid values:
-	// 
-	// "en" - English 
+	//
+	// "en" - English
 	// "ru" - Русский (by default)
-	// "pl" - Polski 
-	// "de" - Deutsch 
-	// "fr" - Français 
-	// "es" - Español 
-	// "zh-cn" - 简体中文 
-	// "zh-tw" - 繁體中文 
-	// "tr" - Türkçe 
-	// "cs" - Čeština 
-	// "th" - ไทย 
-	// "vi" - Tiếng Việt 
+	// "pl" - Polski
+	// "de" - Deutsch
+	// "fr" - Français
+	// "es" - Español
+	// "zh-cn" - 简体中文
+	// "zh-tw" - 繁體中文
+	// "tr" - Türkçe
+	// "cs" - Čeština
+	// "th" - ไทย
+	// "vi" - Tiếng Việt
 	// "ko" - 한국어
 	Language *string
 	// Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
@@ -32,11 +31,11 @@ type EncyclopediaVehiclesOptions struct {
 	// Tier. Maximum limit: 100.
 	Tier []int
 	// Vehicle type. Maximum limit: 100. Valid values:
-	// 
-	// "heavyTank" - Heavy Tank 
-	// "AT-SPG" - Tank Destroyer 
-	// "mediumTank" - Medium Tank 
-	// "lightTank" - Light Tank 
+	//
+	// "heavyTank" - Heavy Tank
+	// "AT-SPG" - Tank Destroyer
+	// "mediumTank" - Medium Tank
+	// "lightTank" - Light Tank
 	// "SPG" - SPG
 	Type_ []string
 }
@@ -297,7 +296,7 @@ type EncyclopediaVehicles struct {
 	// Nation
 	Nation *string `json:"nation,omitempty"`
 	// List of vehicles available for research in form of pairs:
-	// 
+	//
 	// researched vehicle ID
 	// cost of research in XP
 	NextTanks map[string]string `json:"next_tanks,omitempty"`
@@ -306,7 +305,7 @@ type EncyclopediaVehicles struct {
 	// Cost in gold
 	PriceGold *int `json:"price_gold,omitempty"`
 	// List of research costs in form of pairs:
-	// 
+	//
 	// parent vehicle ID
 	// cost of research in XP
 	PricesXp map[string]string `json:"prices_xp,omitempty"`

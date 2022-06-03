@@ -17,9 +17,9 @@ type WargagSearchOptions struct {
 	// Tag ID
 	TagId *int
 	// Content type. Valid values:
-	// 
-	// "quote" - Quote content 
-	// "video" - Video content 
+	//
+	// "quote" - Quote content
+	// "video" - Video content
 	// "picture" - Image content type
 	Type_ *string
 }

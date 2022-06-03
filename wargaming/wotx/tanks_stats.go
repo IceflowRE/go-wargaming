@@ -11,18 +11,18 @@ type TanksStatsOptions struct {
 	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 	Fields []string
 	// Filter by vehicle availability in the Garage. If the parameter is not specified, all vehicles are returned. Parameter processing requires a valid access_token for the specified account_id. Valid values:
-	// 
-	// "1" - Return vehicles available in the Garage. 
+	//
+	// "1" - Return vehicles available in the Garage.
 	// "0" - Return vehicles that are no longer in the Garage.
 	InGarage *string
 	// Localization language. Default is "en". Valid values:
-	// 
+	//
 	// "en" - English (by default)
-	// "ru" - Русский 
-	// "pl" - Polski 
-	// "de" - Deutsch 
-	// "fr" - Français 
-	// "es" - Español 
+	// "ru" - Русский
+	// "pl" - Polski
+	// "de" - Deutsch
+	// "fr" - Français
+	// "es" - Español
 	// "tr" - Türkçe
 	Language *string
 	// Player's vehicle ID. Maximum limit: 100.
@@ -137,9 +137,9 @@ type TanksStats struct {
 	// Last battle time
 	LastBattleTime *wgnTime.UnixTime `json:"last_battle_time,omitempty"`
 	// Mastery Badges:
-	// 
+	//
 	// 0 — None
-	// 1 — 3rd Class 
+	// 1 — 3rd Class
 	// 2 — 2nd Class
 	// 3 — 1st Class
 	// 4 — Ace Tanker

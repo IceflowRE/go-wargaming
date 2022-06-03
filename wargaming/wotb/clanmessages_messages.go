@@ -13,24 +13,24 @@ type ClanmessagesMessagesOptions struct {
 	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 	Fields []string
 	// Message importance. Valid values:
-	// 
-	// "important" - Important messages 
+	//
+	// "important" - Important messages
 	// "standard" - Standard messages
 	Importance *string
 	// Localization language. Default is "ru". Valid values:
-	// 
-	// "en" - English 
+	//
+	// "en" - English
 	// "ru" - Русский (by default)
-	// "pl" - Polski 
-	// "de" - Deutsch 
-	// "fr" - Français 
-	// "es" - Español 
-	// "zh-cn" - 简体中文 
-	// "zh-tw" - 繁體中文 
-	// "tr" - Türkçe 
-	// "cs" - Čeština 
-	// "th" - ไทย 
-	// "vi" - Tiếng Việt 
+	// "pl" - Polski
+	// "de" - Deutsch
+	// "fr" - Français
+	// "es" - Español
+	// "zh-cn" - 简体中文
+	// "zh-tw" - 繁體中文
+	// "tr" - Türkçe
+	// "cs" - Čeština
+	// "th" - ไทย
+	// "vi" - Tiếng Việt
 	// "ko" - 한국어
 	Language *string
 	// Number of returned entries. If the value sent exceeds 100, a limit of 25 is applied (by default). Default is 25. Min value is 1.
@@ -38,43 +38,43 @@ type ClanmessagesMessagesOptions struct {
 	// Message ID
 	MessageId *int
 	// Sorting. Valid values:
-	// 
-	// 
+	//
+	//
 	// importance — by message importance
-	// 
-	// 
+	//
+	//
 	// -importance — by message importance in reverse order
-	// 
-	// 
+	//
+	//
 	// created_at — by date of message creation
-	// 
-	// 
+	//
+	//
 	// -created_at — by date of message creation in reverse order
-	// 
-	// 
+	//
+	//
 	// updated_at — by message update date
-	// 
-	// 
+	//
+	//
 	// -updated_at — by message update date in reverse order
-	// 
-	// 
+	//
+	//
 	// type — by message type
-	// 
-	// 
+	//
+	//
 	// -type — by message type in reverse order. Default is "importance, type". Maximum limit: 100.
 	OrderBy []string
 	// Page number. Default is 1. Min value is 1.
 	PageNo *int
 	// Message status. Valid values:
-	// 
-	// "active" - Active message 
+	//
+	// "active" - Active message
 	// "deleted" - Deleted message
 	Status *string
 	// Message type. Valid values:
-	// 
-	// "general" - General messages 
-	// "training" - Training messages 
-	// "meeting" - Meeting messages 
+	//
+	// "general" - General messages
+	// "training" - Training messages
+	// "meeting" - Meeting messages
 	// "battle" - Battle messages
 	Type_ *string
 }

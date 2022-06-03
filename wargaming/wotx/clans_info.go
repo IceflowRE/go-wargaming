@@ -7,19 +7,19 @@ import (
 // ClansInfoOptions options.
 type ClansInfoOptions struct {
 	// Extra fields that will be added to the response. Valid values:
-	// 
+	//
 	// "members"
 	Extra []string
 	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 	Fields []string
 	// Localization language. Default is "en". Valid values:
-	// 
+	//
 	// "en" - English (by default)
-	// "ru" - Русский 
-	// "pl" - Polski 
-	// "de" - Deutsch 
-	// "fr" - Français 
-	// "es" - Español 
+	// "ru" - Русский
+	// "pl" - Polski
+	// "de" - Deutsch
+	// "fr" - Français
+	// "es" - Español
 	// "tr" - Türkçe
 	Language *string
 }
@@ -88,7 +88,7 @@ type ClansInfo struct {
 	OldTag *string `json:"old_tag,omitempty"`
 	// Clan recruiting policy.
 	// Valid values:
-	// 
+	//
 	// open - free to join, if statistics completely meet the required threshold values (by default)
 	// restricted - applications to join clan can be sent
 	// closed - applications to join clan cannot be sent

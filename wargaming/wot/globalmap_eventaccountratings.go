@@ -9,8 +9,8 @@ type GlobalmapEventaccountratingsOptions struct {
 	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 	Fields []string
 	// Get data only for accounts with rating. Default is 0. Valid values:
-	// 
-	// "1" - Only with rating 
+	//
+	// "1" - Only with rating
 	// "0" - All (by default)
 	InRating *int
 	// Accounts limit. Default is 20. Min value is 10. Maximum value: 100.

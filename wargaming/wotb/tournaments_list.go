@@ -9,7 +9,7 @@ type TournamentsListOptions struct {
 	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 	Fields []string
 	// Localization language. Default is "ru". Valid values:
-	// 
+	//
 	// "ru" - Русский (by default)
 	Language *string
 	// Page limit. Number of tournaments in one page. Default is 10. Min value is 1. Maximum value: 25.
@@ -19,12 +19,12 @@ type TournamentsListOptions struct {
 	// First letters in tournament name for search. Minimum length: 2 characters. Maximum length: 50 characters.
 	Search *string
 	// Tournament status. Maximum limit: 100. Valid values:
-	// 
-	// "upcoming" - Tournament is planned 
-	// "registration_started" - Players can apply to join the tournament 
-	// "registration_finished" - Registration has finished 
-	// "running" - The first match has started 
-	// "finished" - The last match among all stages has been played 
+	//
+	// "upcoming" - Tournament is planned
+	// "registration_started" - Players can apply to join the tournament
+	// "registration_finished" - Registration has finished
+	// "running" - The first match has started
+	// "finished" - The last match among all stages has been played
 	// "complete" - Tournament has been completed
 	Status []string
 }

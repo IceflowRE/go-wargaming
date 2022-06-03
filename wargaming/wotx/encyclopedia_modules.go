@@ -1,22 +1,21 @@
 package wotx
 
-
 // EncyclopediaModulesOptions options.
 type EncyclopediaModulesOptions struct {
 	// Extra fields that will be added to the response. Valid values:
-	// 
+	//
 	// "default_profile"
 	Extra []string
 	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 	Fields []string
 	// Localization language. Default is "en". Valid values:
-	// 
+	//
 	// "en" - English (by default)
-	// "ru" - Русский 
-	// "pl" - Polski 
-	// "de" - Deutsch 
-	// "fr" - Français 
-	// "es" - Español 
+	// "ru" - Русский
+	// "pl" - Polski
+	// "de" - Deutsch
+	// "fr" - Français
+	// "es" - Español
 	// "tr" - Türkçe
 	Language *string
 	// Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
@@ -28,11 +27,11 @@ type EncyclopediaModulesOptions struct {
 	// Result page number
 	PageNo *int
 	// Module type. Maximum limit: 100. Valid values:
-	// 
-	// "vehicleRadio" - Radio 
-	// "vehicleEngine" - Engines 
-	// "vehicleGun" - Gun 
-	// "vehicleChassis" - Suspension 
+	//
+	// "vehicleRadio" - Radio
+	// "vehicleEngine" - Engines
+	// "vehicleGun" - Gun
+	// "vehicleChassis" - Suspension
 	// "vehicleTurret" - Turret
 	Type_ []string
 }

@@ -1,6 +1,5 @@
 package wot
 
-
 // GlobalmapProvincesOptions options.
 type GlobalmapProvincesOptions struct {
 	// Map ID
@@ -12,24 +11,24 @@ type GlobalmapProvincesOptions struct {
 	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 	Fields []string
 	// Search for provinces by landing type. Valid values:
-	// 
-	// "null" - auctions disabled 
-	// "auction" - auction 
+	//
+	// "null" - auctions disabled
+	// "auction" - auction
 	// "tournament" - landing tournament
 	LandingType *string
 	// Language. Default is "ru". Valid values:
-	// 
+	//
 	// "ru" - Russian (by default)
 	Language *string
 	// Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
 	Limit *int
 	// Sorting. Valid values:
-	// 
-	// "province_id" - by province name 
-	// "-province_id" - by province name in reverse order 
-	// "daily_revenue" - by province income 
-	// "-daily_revenue" - by province income in reverse order 
-	// "prime_hour" - by Prime Time 
+	//
+	// "province_id" - by province name
+	// "-province_id" - by province name in reverse order
+	// "daily_revenue" - by province income
+	// "-daily_revenue" - by province income in reverse order
+	// "prime_hour" - by Prime Time
 	// "-prime_hour" - by Prime Time in reverse order
 	OrderBy *string
 	// Page number. Default is 1. Min value is 1.

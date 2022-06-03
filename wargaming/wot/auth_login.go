@@ -7,8 +7,8 @@ import (
 // AuthLoginOptions options.
 type AuthLoginOptions struct {
 	// Layout for mobile applications. Valid values:
-	// 
-	// "page" - Page 
+	//
+	// "page" - Page
 	// "popup" - Popup window
 	Display *string
 	// Access_token expiration time in UNIX. Delta can also be specified in seconds.

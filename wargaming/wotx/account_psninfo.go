@@ -1,6 +1,5 @@
 package wotx
 
-
 type AccountPsninfo struct {
 	// Account ID
 	AccountId *int `json:"account_id,omitempty"`

@@ -1,6 +1,5 @@
 package wot
 
-
 // GlobalmapEventsOptions options.
 type GlobalmapEventsOptions struct {
 	// Event ID
@@ -8,7 +7,7 @@ type GlobalmapEventsOptions struct {
 	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 	Fields []string
 	// Language. Default is "ru". Valid values:
-	// 
+	//
 	// "ru" - Russian (by default)
 	Language *string
 	// Page limit. Default is 5. Min value is 1. Maximum value: 20.
@@ -16,9 +15,9 @@ type GlobalmapEventsOptions struct {
 	// Page number. Default is 1. Min value is 1.
 	PageNo *int
 	// Response with events filtered by status. Valid values:
-	// 
-	// "PLANNED" - Upcoming event 
-	// "ACTIVE" - Current event 
+	//
+	// "PLANNED" - Upcoming event
+	// "ACTIVE" - Current event
 	// "FINISHED" - Event is over
 	Status *string
 }

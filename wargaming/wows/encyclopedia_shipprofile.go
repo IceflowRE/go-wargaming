@@ -1,6 +1,5 @@
 package wows
 
-
 // EncyclopediaShipprofileOptions options.
 type EncyclopediaShipprofileOptions struct {
 	// Main Battery ID. If the module is not indicated, module of basic configuration is used.
@@ -20,20 +19,20 @@ type EncyclopediaShipprofileOptions struct {
 	// Hull ID. If the module is not indicated, module of basic configuration is used.
 	HullId *int
 	// Localization language. Default is "ru". Valid values:
-	// 
-	// "cs" - Čeština 
-	// "de" - Deutsch 
-	// "en" - English 
-	// "es" - Español 
-	// "fr" - Français 
-	// "ja" - 日本語 
-	// "pl" - Polski 
+	//
+	// "cs" - Čeština
+	// "de" - Deutsch
+	// "en" - English
+	// "es" - Español
+	// "fr" - Français
+	// "ja" - 日本語
+	// "pl" - Polski
 	// "ru" - Русский (by default)
-	// "th" - ไทย 
-	// "zh-tw" - 繁體中文 
-	// "tr" - Türkçe 
-	// "zh-cn" - 中文 
-	// "pt-br" - Português do Brasil 
+	// "th" - ไทย
+	// "zh-tw" - 繁體中文
+	// "tr" - Türkçe
+	// "zh-cn" - 中文
+	// "pt-br" - Português do Brasil
 	// "es-mx" - Español (México)
 	Language *string
 	// Torpedo bombers' ID. If the module is not indicated, module of basic configuration is used.

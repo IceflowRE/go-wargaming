@@ -1,6 +1,5 @@
 package wot
 
-
 // GlobalmapFrontsOptions options.
 type GlobalmapFrontsOptions struct {
 	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
@@ -8,7 +7,7 @@ type GlobalmapFrontsOptions struct {
 	// List of Front IDs, to specify what fronts need to be returned. Maximum limit: 100.
 	FrontId []string
 	// Language. Default is "ru". Valid values:
-	// 
+	//
 	// "ru" - Russian (by default)
 	Language *string
 	// Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).

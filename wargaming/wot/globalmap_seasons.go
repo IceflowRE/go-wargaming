@@ -1,12 +1,11 @@
 package wot
 
-
 // GlobalmapSeasonsOptions options.
 type GlobalmapSeasonsOptions struct {
 	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
 	Fields []string
 	// Language. Default is "ru". Valid values:
-	// 
+	//
 	// "ru" - Russian (by default)
 	Language *string
 	// Page limit. Default is 5. Min value is 1. Maximum value: 20.
@@ -16,9 +15,9 @@ type GlobalmapSeasonsOptions struct {
 	// Season ID
 	SeasonId *string
 	// Response with seasons filtered by status. Valid values:
-	// 
-	// "PLANNED" - Upcoming season 
-	// "ACTIVE" - Current season 
+	//
+	// "PLANNED" - Upcoming season
+	// "ACTIVE" - Current season
 	// "FINISHED" - Season is over
 	Status *string
 }

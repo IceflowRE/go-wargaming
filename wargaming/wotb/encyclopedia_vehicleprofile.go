@@ -1,6 +1,5 @@
 package wotb
 
-
 // EncyclopediaVehicleprofileOptions options.
 type EncyclopediaVehicleprofileOptions struct {
 	// Engine ID. If module is not specified, standard module is used by default.
@@ -10,19 +9,19 @@ type EncyclopediaVehicleprofileOptions struct {
 	// Gun ID. If module is not specified, standard module is used by default.
 	GunId *int
 	// Localization language. Default is "ru". Valid values:
-	// 
-	// "en" - English 
+	//
+	// "en" - English
 	// "ru" - Русский (by default)
-	// "pl" - Polski 
-	// "de" - Deutsch 
-	// "fr" - Français 
-	// "es" - Español 
-	// "zh-cn" - 简体中文 
-	// "zh-tw" - 繁體中文 
-	// "tr" - Türkçe 
-	// "cs" - Čeština 
-	// "th" - ไทย 
-	// "vi" - Tiếng Việt 
+	// "pl" - Polski
+	// "de" - Deutsch
+	// "fr" - Français
+	// "es" - Español
+	// "zh-cn" - 简体中文
+	// "zh-tw" - 繁體中文
+	// "tr" - Türkçe
+	// "cs" - Čeština
+	// "th" - ไทย
+	// "vi" - Tiếng Việt
 	// "ko" - 한국어
 	Language *string
 	// Configuration ID. If specified, parameters of IDs of separate modules are ignored.

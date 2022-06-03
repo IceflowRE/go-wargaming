@@ -1,6 +1,5 @@
 package wgn
 
-
 // WargagCategoriesOptions options.
 type WargagCategoriesOptions struct {
 	// Content category ID
