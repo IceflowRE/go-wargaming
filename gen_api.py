@@ -618,11 +618,11 @@ def gen_api(output: Path, games: dict):
     client: str = output.joinpath(f"client.go").read_text(encoding='utf-8')
     tmp_text: str = '\n'.join(service_fields)
     delimiter = ["// AUTO GENERATION START FIELDS\n", "\n\t// AUTO GENERATION END FIELDS"]
-    client = re.sub(f'{delimiter[0]}.*{delimiter[1]}', f"{delimiter[0]}{tmp_text}{delimiter[1]}", client,
+    client = re.sub(f'{delimiter[0]}.*{delimiter[1]}', f"{delimiter[0]}\n{tmp_text}{delimiter[1]}", client,
                     flags=re.DOTALL)
     tmp_text: str = '\n'.join(service_init)
     delimiter = ["// AUTO GENERATION START INIT\n", "\n\t// AUTO GENERATION END INIT"]
-    client = re.sub(f'{delimiter[0]}.*{delimiter[1]}', f"{delimiter[0]}{tmp_text}{delimiter[1]}", client,
+    client = re.sub(f'{delimiter[0]}.*{delimiter[1]}', f"{delimiter[0]}\n{tmp_text}{delimiter[1]}", client,
                     flags=re.DOTALL)
     output.joinpath(f"client.go").write_text(client, encoding='utf-8')
 

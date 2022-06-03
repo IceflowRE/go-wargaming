@@ -45,9 +45,10 @@ type Client struct {
 	// Wargaming.net application ID.
 	applicationId string
 
-	// / Reuse a single struct instead of allocating one for each service on the heap.
+	// Reuse a single struct instead of allocating one for each service on the heap.
 	common service
 	// AUTO GENERATION START FIELDS
+
 	// Wargaming.NET
 	Wgn *WgnService
 	// World Of Tanks
@@ -83,6 +84,7 @@ func NewClient(applicationId string, options *ClientOptions) *Client {
 	client.common.client = client
 
 	// AUTO GENERATION START INIT
+
 	client.Wgn = (*WgnService)(&client.common)
 	client.Wot = (*WotService)(&client.common)
 	client.Wotb = (*WotbService)(&client.common)
