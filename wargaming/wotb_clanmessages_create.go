@@ -2,8 +2,8 @@ package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/wargaming/wgnTime"
-	"github.com/IceflowRE/go-wargaming/wargaming/wotb"
+	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v2/wargaming/wotb"
 	"strconv"
 )
 

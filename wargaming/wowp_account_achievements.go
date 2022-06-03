@@ -2,8 +2,8 @@ package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/wargaming/internal"
-	"github.com/IceflowRE/go-wargaming/wargaming/wowp"
+	"github.com/IceflowRE/go-wargaming/v2/wargaming/internal"
+	"github.com/IceflowRE/go-wargaming/v2/wargaming/wowp"
 	"strings"
 )
 

@@ -3,9 +3,9 @@ package wargaming
 import (
 	"context"
 	"errors"
-	"github.com/IceflowRE/go-wargaming/wargaming/wgn"
-	"github.com/IceflowRE/go-wargaming/wargaming/wot"
-	"github.com/IceflowRE/go-wargaming/wargaming/wotx"
+	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgn"
+	"github.com/IceflowRE/go-wargaming/v2/wargaming/wot"
+	"github.com/IceflowRE/go-wargaming/v2/wargaming/wotx"
 	"net/http"
 	"os"
 	"testing"

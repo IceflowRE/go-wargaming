@@ -1,7 +1,7 @@
 package wotb
 
 import (
-	"github.com/IceflowRE/go-wargaming/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
 )
 
 // TanksStatsOptions options.

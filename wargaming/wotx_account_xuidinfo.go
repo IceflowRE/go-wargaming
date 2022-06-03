@@ -2,8 +2,8 @@ package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/wargaming/internal"
-	"github.com/IceflowRE/go-wargaming/wargaming/wotx"
+	"github.com/IceflowRE/go-wargaming/v2/wargaming/internal"
+	"github.com/IceflowRE/go-wargaming/v2/wargaming/wotx"
 )
 
 // AccountXuidinfo Method returns player details based on the player Microsoft XUID.

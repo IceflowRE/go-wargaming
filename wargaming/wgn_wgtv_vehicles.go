@@ -2,8 +2,8 @@ package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/wargaming/internal"
-	"github.com/IceflowRE/go-wargaming/wargaming/wgn"
+	"github.com/IceflowRE/go-wargaming/v2/wargaming/internal"
+	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgn"
 )
 
 // WgtvVehicles Method returns list of vehicles sorted by games and covered by videos.

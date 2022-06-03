@@ -165,12 +165,12 @@ class Parameters:
                 case "int":
                     imports.add('"strconv"')
                 case "[]int":
-                    imports.add('"github.com/IceflowRE/go-wargaming/wargaming/internal"')
+                    imports.add(f'"{LIB_IMPORT}/wargaming/internal"')
                 case "[]string":
                     imports.add('"strings"')
                 case "wgnTime.UnixTime":
                     imports.add('"strconv"')
-                    imports.add('"github.com/IceflowRE/go-wargaming/wargaming/wgnTime"')
+                    imports.add(f'"{LIB_IMPORT}/wargaming/wgnTime"')
         return imports
 
     def req_map(self) -> str:
@@ -292,7 +292,7 @@ class Struct:
     def to_code(self, is_root: bool = False) -> tuple[set[str], str]:
         imports = set()
         if "wgnTime.UnixTime" in self.typ:
-            imports.add('"github.com/IceflowRE/go-wargaming/wargaming/wgnTime"')
+            imports.add(f'"{LIB_IMPORT}/wargaming/wgnTime"')
         lines = []
         if self.description:
             documentation = self.description.replace('\n', "\n// ")
@@ -368,14 +368,14 @@ class GoApi:
         imports = self.params.imports()
         imports.update(self.service_method.imports)
         if not self.response_struct.empty():
-            imports.add(f'"github.com/IceflowRE/go-wargaming/wargaming/{self.game}"')
+            imports.add(f'"{LIB_IMPORT}/wargaming/{self.game}"')
         success = False
         for param in self.params.params:
             if param.typ == "wgnTime.UnixTime" and param.required:
                 success = True
                 break
         if not success:
-            imports.discard('"github.com/IceflowRE/go-wargaming/wargaming/wgnTime"')
+            imports.discard(f'"{LIB_IMPORT}/wargaming/wgnTime"')
         return imports
 
     def method_file(self) -> str:
@@ -635,7 +635,16 @@ def gen_api(output: Path, games: dict):
         Path("./codecov.yml").write_text(f"ignore:\n{ignore}\n")
 
 
+LIB_IMPORT: str = ""
+
+
+def get_library_import_path():
+    global LIB_IMPORT
+    LIB_IMPORT = Path("go.mod").read_text(encoding='utf-8').split('\n')[0][len("module "):]
+
+
 if __name__ == '__main__':
+    get_library_import_path()
     output = Path("./wargaming/")
 
     games = get('methods')['data']

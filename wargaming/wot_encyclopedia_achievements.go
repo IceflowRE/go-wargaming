@@ -2,7 +2,7 @@ package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/wargaming/wot"
+	"github.com/IceflowRE/go-wargaming/v2/wargaming/wot"
 	"strings"
 )
 
