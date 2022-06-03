@@ -13,7 +13,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmEu, RealmNa, RealmRu
-func (service *wowpService) ClansList(ctx context.Context, realm Realm, options *wowp.ClansListOptions) ([]*wowp.ClansList, error) {
+func (service *WowpService) ClansList(ctx context.Context, realm Realm, options *wowp.ClansListOptions) ([]*wowp.ClansList, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

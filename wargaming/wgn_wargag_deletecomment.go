@@ -15,7 +15,7 @@ import (
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 // commentId:
 //     Comment ID
-func (service *wgnService) WargagDeletecomment(ctx context.Context, realm Realm, accessToken string, commentId int) error {
+func (service *WgnService) WargagDeletecomment(ctx context.Context, realm Realm, accessToken string, commentId int) error {
 	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil
 	}

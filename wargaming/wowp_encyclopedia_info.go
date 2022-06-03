@@ -11,7 +11,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmEu, RealmNa, RealmRu
-func (service *wowpService) EncyclopediaInfo(ctx context.Context, realm Realm) (*wowp.EncyclopediaInfo, error) {
+func (service *WowpService) EncyclopediaInfo(ctx context.Context, realm Realm) (*wowp.EncyclopediaInfo, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

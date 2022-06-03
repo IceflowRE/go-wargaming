@@ -28,7 +28,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmWgcb
-func (service *wotxService) AuthLogin(ctx context.Context, realm Realm, options *wotx.AuthLoginOptions) (*wotx.AuthLogin, error) {
+func (service *WotxService) AuthLogin(ctx context.Context, realm Realm, options *wotx.AuthLoginOptions) (*wotx.AuthLogin, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}

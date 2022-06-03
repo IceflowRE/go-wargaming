@@ -12,7 +12,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
-func (service *wotbService) EncyclopediaAchievements(ctx context.Context, realm Realm, options *wotb.EncyclopediaAchievementsOptions) (*wotb.EncyclopediaAchievements, error) {
+func (service *WotbService) EncyclopediaAchievements(ctx context.Context, realm Realm, options *wotb.EncyclopediaAchievementsOptions) (*wotb.EncyclopediaAchievements, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

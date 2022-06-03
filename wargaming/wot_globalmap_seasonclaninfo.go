@@ -23,7 +23,7 @@ import (
 //     "6" - Vehicles of Tier 6
 //     "8" - Vehicles of Tier 8
 //     "10" - Vehicles of Tier 10
-func (service *wotService) GlobalmapSeasonclaninfo(ctx context.Context, realm Realm, clanId int, seasonId string, vehicleLevel []string, options *wot.GlobalmapSeasonclaninfoOptions) (*wot.GlobalmapSeasonclaninfo, error) {
+func (service *WotService) GlobalmapSeasonclaninfo(ctx context.Context, realm Realm, clanId int, seasonId string, vehicleLevel []string, options *wot.GlobalmapSeasonclaninfoOptions) (*wot.GlobalmapSeasonclaninfo, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

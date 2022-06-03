@@ -13,7 +13,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
-func (service *wotService) GlobalmapFronts(ctx context.Context, realm Realm, options *wot.GlobalmapFrontsOptions) ([]*wot.GlobalmapFronts, error) {
+func (service *WotService) GlobalmapFronts(ctx context.Context, realm Realm, options *wot.GlobalmapFrontsOptions) ([]*wot.GlobalmapFronts, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

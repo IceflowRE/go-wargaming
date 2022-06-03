@@ -17,7 +17,7 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
 // clanId:
 //     Clan ID. Maximum limit: 100.
-func (service *wgnService) ClansInfo(ctx context.Context, realm Realm, clanId []int, options *wgn.ClansInfoOptions) (*wgn.ClansInfo, error) {
+func (service *WgnService) ClansInfo(ctx context.Context, realm Realm, clanId []int, options *wgn.ClansInfoOptions) (*wgn.ClansInfo, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

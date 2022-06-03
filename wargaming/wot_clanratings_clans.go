@@ -16,7 +16,7 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
 // clanId:
 //     Clan IDs. Maximum limit: 100.
-func (service *wotService) ClanratingsClans(ctx context.Context, realm Realm, clanId []int, options *wot.ClanratingsClansOptions) (*wot.ClanratingsClans, error) {
+func (service *WotService) ClanratingsClans(ctx context.Context, realm Realm, clanId []int, options *wot.ClanratingsClansOptions) (*wot.ClanratingsClans, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

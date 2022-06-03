@@ -21,7 +21,7 @@ import (
 //     Valid realms: RealmWgcb
 // accountId:
 //     Player account ID. Min value is 0.
-func (service *wotxService) TanksAchievements(ctx context.Context, realm Realm, accountId int, options *wotx.TanksAchievementsOptions) (*wotx.TanksAchievements, error) {
+func (service *WotxService) TanksAchievements(ctx context.Context, realm Realm, accountId int, options *wotx.TanksAchievementsOptions) (*wotx.TanksAchievements, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}

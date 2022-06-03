@@ -21,7 +21,7 @@ import (
 //
 //     "up" - Rate content positively
 //     "down" - Rate content negatively
-func (service *wgnService) WargagRate(ctx context.Context, realm Realm, accessToken string, contentId int, rating string) (*wgn.WargagRate, error) {
+func (service *WgnService) WargagRate(ctx context.Context, realm Realm, accessToken string, contentId int, rating string) (*wgn.WargagRate, error) {
 	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil, err
 	}

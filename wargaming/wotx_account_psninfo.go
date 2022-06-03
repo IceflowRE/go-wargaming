@@ -14,7 +14,7 @@ import (
 //     Valid realms: RealmWgcb
 // psnid:
 //     Play Station UID. Maximum limit: 100.
-func (service *wotxService) AccountPsninfo(ctx context.Context, realm Realm, psnid []string) ([]*wotx.AccountPsninfo, error) {
+func (service *WotxService) AccountPsninfo(ctx context.Context, realm Realm, psnid []string) ([]*wotx.AccountPsninfo, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}

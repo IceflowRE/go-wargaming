@@ -1,19 +1,19 @@
 package wargaming
 
 // Wargaming.NET service.
-type wgnService service
+type WgnService service
 
 // World Of Tanks Blitz service.
-type wotbService service
+type WotbService service
 
 // World Of Tanks Console service.
-type wotxService service
+type WotxService service
 
 // World Of Tanks service.
-type wotService service
+type WotService service
 
 // World Of Warplanes service.
-type wowpService service
+type WowpService service
 
 // World Of Warships service.
-type wowsService service
+type WowsService service

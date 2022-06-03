@@ -14,7 +14,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
-func (service *wotService) EncyclopediaTanks(ctx context.Context, realm Realm, options *wot.EncyclopediaTanksOptions) (*wot.EncyclopediaTanks, error) {
+func (service *WotService) EncyclopediaTanks(ctx context.Context, realm Realm, options *wot.EncyclopediaTanksOptions) (*wot.EncyclopediaTanks, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

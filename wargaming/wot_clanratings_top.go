@@ -15,7 +15,7 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
 // rankField:
 //     Rating category
-func (service *wotService) ClanratingsTop(ctx context.Context, realm Realm, rankField string, options *wot.ClanratingsTopOptions) ([]*wot.ClanratingsTop, error) {
+func (service *WotService) ClanratingsTop(ctx context.Context, realm Realm, rankField string, options *wot.ClanratingsTopOptions) ([]*wot.ClanratingsTop, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

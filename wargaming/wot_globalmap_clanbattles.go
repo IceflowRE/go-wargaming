@@ -15,7 +15,7 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
 // clanId:
 //     Clan ID. To get a clan ID, use the Clans method.
-func (service *wotService) GlobalmapClanbattles(ctx context.Context, realm Realm, clanId int, options *wot.GlobalmapClanbattlesOptions) ([]*wot.GlobalmapClanbattles, error) {
+func (service *WotService) GlobalmapClanbattles(ctx context.Context, realm Realm, clanId int, options *wot.GlobalmapClanbattlesOptions) ([]*wot.GlobalmapClanbattles, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

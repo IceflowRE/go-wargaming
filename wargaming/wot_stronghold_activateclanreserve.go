@@ -19,7 +19,7 @@ import (
 //     Level of clan Reserve to be activated
 // reserveType:
 //     Type of clan Reserve to be activated
-func (service *wotService) StrongholdActivateclanreserve(ctx context.Context, realm Realm, accessToken string, reserveLevel int, reserveType string, options *wot.StrongholdActivateclanreserveOptions) (*wot.StrongholdActivateclanreserve, error) {
+func (service *WotService) StrongholdActivateclanreserve(ctx context.Context, realm Realm, accessToken string, reserveLevel int, reserveType string, options *wot.StrongholdActivateclanreserveOptions) (*wot.StrongholdActivateclanreserve, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

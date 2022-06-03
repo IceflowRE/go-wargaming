@@ -15,7 +15,7 @@ import (
 //     Valid realms: RealmRu
 // contentId:
 //     Publication ID
-func (service *wgnService) WargagComments(ctx context.Context, realm Realm, contentId int, options *wgn.WargagCommentsOptions) (*wgn.WargagComments, error) {
+func (service *WgnService) WargagComments(ctx context.Context, realm Realm, contentId int, options *wgn.WargagCommentsOptions) (*wgn.WargagComments, error) {
 	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil, err
 	}

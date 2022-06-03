@@ -15,7 +15,7 @@ import (
 //     Valid realms: RealmEu, RealmNa, RealmRu
 // accountId:
 //     Player ID. Maximum limit: 100.
-func (service *wgnService) AccountInfo(ctx context.Context, realm Realm, accountId []int, options *wgn.AccountInfoOptions) (*wgn.AccountInfo, error) {
+func (service *WgnService) AccountInfo(ctx context.Context, realm Realm, accountId []int, options *wgn.AccountInfoOptions) (*wgn.AccountInfo, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

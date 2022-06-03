@@ -12,7 +12,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
-func (service *wowsService) EncyclopediaCollections(ctx context.Context, realm Realm, options *wows.EncyclopediaCollectionsOptions) (*wows.EncyclopediaCollections, error) {
+func (service *WowsService) EncyclopediaCollections(ctx context.Context, realm Realm, options *wows.EncyclopediaCollectionsOptions) (*wows.EncyclopediaCollections, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

@@ -18,7 +18,7 @@ import (
 //     Player account ID. Maximum limit: 100.
 // type_:
 //     Rating period. For valid values, check the Types of ratings method.
-func (service *wowpService) RatingsAccounts(ctx context.Context, realm Realm, accountId []int, type_ string, options *wowp.RatingsAccountsOptions) (*wowp.RatingsAccounts, error) {
+func (service *WowpService) RatingsAccounts(ctx context.Context, realm Realm, accountId []int, type_ string, options *wowp.RatingsAccountsOptions) (*wowp.RatingsAccounts, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

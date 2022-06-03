@@ -12,7 +12,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
-func (service *wgnService) ServersInfo(ctx context.Context, realm Realm, options *wgn.ServersInfoOptions) (*wgn.ServersInfo, error) {
+func (service *WgnService) ServersInfo(ctx context.Context, realm Realm, options *wgn.ServersInfoOptions) (*wgn.ServersInfo, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

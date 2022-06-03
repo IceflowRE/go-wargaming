@@ -14,7 +14,7 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
 // accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
-func (service *wotService) StrongholdClanreserves(ctx context.Context, realm Realm, accessToken string, options *wot.StrongholdClanreservesOptions) ([]*wot.StrongholdClanreserves, error) {
+func (service *WotService) StrongholdClanreserves(ctx context.Context, realm Realm, accessToken string, options *wot.StrongholdClanreservesOptions) ([]*wot.StrongholdClanreserves, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

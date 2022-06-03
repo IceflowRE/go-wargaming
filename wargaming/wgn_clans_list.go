@@ -24,7 +24,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
-func (service *wgnService) ClansList(ctx context.Context, realm Realm, options *wgn.ClansListOptions) (*wgn.ClansList, error) {
+func (service *WgnService) ClansList(ctx context.Context, realm Realm, options *wgn.ClansListOptions) (*wgn.ClansList, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

@@ -19,7 +19,7 @@ import (
 //     Rating category
 // type_:
 //     Rating period. For valid values, check the Types of ratings method.
-func (service *wotService) RatingsTop(ctx context.Context, realm Realm, rankField string, type_ string, options *wot.RatingsTopOptions) (*wot.RatingsTop, error) {
+func (service *WotService) RatingsTop(ctx context.Context, realm Realm, rankField string, type_ string, options *wot.RatingsTopOptions) (*wot.RatingsTop, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

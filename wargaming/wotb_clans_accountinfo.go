@@ -15,7 +15,7 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
 // accountId:
 //     Account ID. Maximum limit: 100. Min value is 1.
-func (service *wotbService) ClansAccountinfo(ctx context.Context, realm Realm, accountId []int, options *wotb.ClansAccountinfoOptions) (*wotb.ClansAccountinfo, error) {
+func (service *WotbService) ClansAccountinfo(ctx context.Context, realm Realm, accountId []int, options *wotb.ClansAccountinfoOptions) (*wotb.ClansAccountinfo, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

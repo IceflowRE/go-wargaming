@@ -15,7 +15,7 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
 // accountId:
 //     Player account ID. Maximum limit: 100. Min value is 1.
-func (service *wowsService) SeasonsAccountinfo(ctx context.Context, realm Realm, accountId []int, options *wows.SeasonsAccountinfoOptions) (*wows.SeasonsAccountinfo, error) {
+func (service *WowsService) SeasonsAccountinfo(ctx context.Context, realm Realm, accountId []int, options *wows.SeasonsAccountinfoOptions) (*wows.SeasonsAccountinfo, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

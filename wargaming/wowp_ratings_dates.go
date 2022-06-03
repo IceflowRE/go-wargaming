@@ -15,7 +15,7 @@ import (
 //     Valid realms: RealmEu, RealmNa, RealmRu
 // type_:
 //     Rating period. For valid values, check the Types of ratings method.
-func (service *wowpService) RatingsDates(ctx context.Context, realm Realm, type_ string, options *wowp.RatingsDatesOptions) (*wowp.RatingsDates, error) {
+func (service *WowpService) RatingsDates(ctx context.Context, realm Realm, type_ string, options *wowp.RatingsDatesOptions) (*wowp.RatingsDates, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

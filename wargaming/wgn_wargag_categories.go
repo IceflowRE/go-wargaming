@@ -18,7 +18,7 @@ import (
 //
 //     "video" - Video content type
 //     "picture" - Image content type
-func (service *wgnService) WargagCategories(ctx context.Context, realm Realm, type_ string, options *wgn.WargagCategoriesOptions) (*wgn.WargagCategories, error) {
+func (service *WgnService) WargagCategories(ctx context.Context, realm Realm, type_ string, options *wgn.WargagCategoriesOptions) (*wgn.WargagCategories, error) {
 	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil, err
 	}

@@ -13,7 +13,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
-func (service *wotbService) EncyclopediaProvisions(ctx context.Context, realm Realm, options *wotb.EncyclopediaProvisionsOptions) (*wotb.EncyclopediaProvisions, error) {
+func (service *WotbService) EncyclopediaProvisions(ctx context.Context, realm Realm, options *wotb.EncyclopediaProvisionsOptions) (*wotb.EncyclopediaProvisions, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

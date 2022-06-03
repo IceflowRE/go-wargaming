@@ -16,7 +16,7 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
 // tournamentId:
 //     Tournament ID that can be retrieved from the Tournaments list method.
-func (service *wotbService) TournamentsStandings(ctx context.Context, realm Realm, tournamentId int, options *wotb.TournamentsStandingsOptions) ([]*wotb.TournamentsStandings, error) {
+func (service *WotbService) TournamentsStandings(ctx context.Context, realm Realm, tournamentId int, options *wotb.TournamentsStandingsOptions) ([]*wotb.TournamentsStandings, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

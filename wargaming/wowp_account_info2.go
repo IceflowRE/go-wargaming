@@ -15,7 +15,7 @@ import (
 //     Valid realms: RealmEu, RealmNa, RealmRu
 // accountId:
 //     Player account ID. Maximum limit: 100.
-func (service *wowpService) AccountInfo2(ctx context.Context, realm Realm, accountId []int, options *wowp.AccountInfo2Options) (*wowp.AccountInfo2, error) {
+func (service *WowpService) AccountInfo2(ctx context.Context, realm Realm, accountId []int, options *wowp.AccountInfo2Options) (*wowp.AccountInfo2, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

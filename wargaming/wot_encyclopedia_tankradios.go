@@ -15,7 +15,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
-func (service *wotService) EncyclopediaTankradios(ctx context.Context, realm Realm, options *wot.EncyclopediaTankradiosOptions) (*wot.EncyclopediaTankradios, error) {
+func (service *WotService) EncyclopediaTankradios(ctx context.Context, realm Realm, options *wot.EncyclopediaTankradiosOptions) (*wot.EncyclopediaTankradios, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

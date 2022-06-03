@@ -12,7 +12,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
-func (service *wowsService) ClansGlossary(ctx context.Context, realm Realm, options *wows.ClansGlossaryOptions) (*wows.ClansGlossary, error) {
+func (service *WowsService) ClansGlossary(ctx context.Context, realm Realm, options *wows.ClansGlossaryOptions) (*wows.ClansGlossary, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

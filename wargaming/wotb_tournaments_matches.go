@@ -18,7 +18,7 @@ import (
 //     Stage ID that can be retrieved from the Tournaments Stages method.
 // tournamentId:
 //     Tournament ID that can be retrieved from the Tournaments list method.
-func (service *wotbService) TournamentsMatches(ctx context.Context, realm Realm, stageId int, tournamentId int, options *wotb.TournamentsMatchesOptions) (*wotb.TournamentsMatches, error) {
+func (service *WotbService) TournamentsMatches(ctx context.Context, realm Realm, stageId int, tournamentId int, options *wotb.TournamentsMatchesOptions) (*wotb.TournamentsMatches, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

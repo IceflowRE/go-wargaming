@@ -13,7 +13,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmRu
-func (service *wgnService) WargagTags(ctx context.Context, realm Realm, options *wgn.WargagTagsOptions) (*wgn.WargagTags, error) {
+func (service *WgnService) WargagTags(ctx context.Context, realm Realm, options *wgn.WargagTagsOptions) (*wgn.WargagTags, error) {
 	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil, err
 	}

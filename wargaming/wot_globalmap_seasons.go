@@ -13,7 +13,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
-func (service *wotService) GlobalmapSeasons(ctx context.Context, realm Realm, options *wot.GlobalmapSeasonsOptions) ([]*wot.GlobalmapSeasons, error) {
+func (service *WotService) GlobalmapSeasons(ctx context.Context, realm Realm, options *wot.GlobalmapSeasonsOptions) ([]*wot.GlobalmapSeasons, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

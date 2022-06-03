@@ -16,7 +16,7 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
 // accountId:
 //     Player account ID
-func (service *wotbService) TanksStats(ctx context.Context, realm Realm, accountId int, options *wotb.TanksStatsOptions) (*wotb.TanksStats, error) {
+func (service *WotbService) TanksStats(ctx context.Context, realm Realm, accountId int, options *wotb.TanksStatsOptions) (*wotb.TanksStats, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

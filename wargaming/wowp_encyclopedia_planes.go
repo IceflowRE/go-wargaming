@@ -12,7 +12,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmEu, RealmNa, RealmRu
-func (service *wowpService) EncyclopediaPlanes(ctx context.Context, realm Realm, options *wowp.EncyclopediaPlanesOptions) (map[string]*wowp.EncyclopediaPlanes, error) {
+func (service *WowpService) EncyclopediaPlanes(ctx context.Context, realm Realm, options *wowp.EncyclopediaPlanesOptions) (map[string]*wowp.EncyclopediaPlanes, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

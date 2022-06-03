@@ -13,7 +13,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
-func (service *wotbService) ClansList(ctx context.Context, realm Realm, options *wotb.ClansListOptions) ([]*wotb.ClansList, error) {
+func (service *WotbService) ClansList(ctx context.Context, realm Realm, options *wotb.ClansListOptions) ([]*wotb.ClansList, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

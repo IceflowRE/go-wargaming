@@ -18,7 +18,7 @@ import (
 //     Publication ID
 // text:
 //     Comment text. Maximum length: 1000 symbols. Maximum length: 1000.
-func (service *wgnService) WargagNewcomment(ctx context.Context, realm Realm, accessToken string, contentId int, text string) (*wgn.WargagNewcomment, error) {
+func (service *WgnService) WargagNewcomment(ctx context.Context, realm Realm, accessToken string, contentId int, text string) (*wgn.WargagNewcomment, error) {
 	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil, err
 	}

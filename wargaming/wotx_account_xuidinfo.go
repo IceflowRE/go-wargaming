@@ -14,7 +14,7 @@ import (
 //     Valid realms: RealmWgcb
 // xuid:
 //     Player Microsoft XUID. Maximum limit: 100.
-func (service *wotxService) AccountXuidinfo(ctx context.Context, realm Realm, xuid []int) ([]*wotx.AccountXuidinfo, error) {
+func (service *WotxService) AccountXuidinfo(ctx context.Context, realm Realm, xuid []int) ([]*wotx.AccountXuidinfo, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}

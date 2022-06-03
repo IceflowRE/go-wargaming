@@ -17,7 +17,7 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
 // accountId:
 //     Account ID. Min value is 1.
-func (service *wgnService) ClansMemberhistory(ctx context.Context, realm Realm, accountId int, options *wgn.ClansMemberhistoryOptions) (*wgn.ClansMemberhistory, error) {
+func (service *WgnService) ClansMemberhistory(ctx context.Context, realm Realm, accountId int, options *wgn.ClansMemberhistoryOptions) (*wgn.ClansMemberhistory, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

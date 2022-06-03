@@ -13,7 +13,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmRu
-func (service *wgnService) WargagContent(ctx context.Context, realm Realm, options *wgn.WargagContentOptions) (*wgn.WargagContent, error) {
+func (service *WgnService) WargagContent(ctx context.Context, realm Realm, options *wgn.WargagContentOptions) (*wgn.WargagContent, error) {
 	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil, err
 	}

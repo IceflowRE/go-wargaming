@@ -15,7 +15,7 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
 // frontId:
 //     Front ID. To get a front ID, use the Fronts method.
-func (service *wotService) GlobalmapProvinces(ctx context.Context, realm Realm, frontId string, options *wot.GlobalmapProvincesOptions) ([]*wot.GlobalmapProvinces, error) {
+func (service *WotService) GlobalmapProvinces(ctx context.Context, realm Realm, frontId string, options *wot.GlobalmapProvincesOptions) ([]*wot.GlobalmapProvinces, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

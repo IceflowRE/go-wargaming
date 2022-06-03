@@ -20,7 +20,7 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
 // accountId:
 //     Player account ID. Maximum limit: 100.
-func (service *wotService) AccountAchievements(ctx context.Context, realm Realm, accountId []int, options *wot.AccountAchievementsOptions) (*wot.AccountAchievements, error) {
+func (service *WotService) AccountAchievements(ctx context.Context, realm Realm, accountId []int, options *wot.AccountAchievementsOptions) (*wot.AccountAchievements, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

@@ -12,7 +12,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmWgcb
-func (service *wotxService) ClansGlossary(ctx context.Context, realm Realm, options *wotx.ClansGlossaryOptions) (*wotx.ClansGlossary, error) {
+func (service *WotxService) ClansGlossary(ctx context.Context, realm Realm, options *wotx.ClansGlossaryOptions) (*wotx.ClansGlossary, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}

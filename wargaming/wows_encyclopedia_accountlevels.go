@@ -12,7 +12,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
-func (service *wowsService) EncyclopediaAccountlevels(ctx context.Context, realm Realm, options *wows.EncyclopediaAccountlevelsOptions) (*wows.EncyclopediaAccountlevels, error) {
+func (service *WowsService) EncyclopediaAccountlevels(ctx context.Context, realm Realm, options *wows.EncyclopediaAccountlevelsOptions) (*wows.EncyclopediaAccountlevels, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

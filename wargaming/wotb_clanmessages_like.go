@@ -20,7 +20,7 @@ import (
 //     "remove" - Remove a like for message
 // messageId:
 //     Message ID
-func (service *wotbService) ClanmessagesLike(ctx context.Context, realm Realm, accessToken string, action string, messageId int) error {
+func (service *WotbService) ClanmessagesLike(ctx context.Context, realm Realm, accessToken string, action string, messageId int) error {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil
 	}

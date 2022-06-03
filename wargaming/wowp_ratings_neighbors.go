@@ -19,7 +19,7 @@ import (
 //     Rating category
 // type_:
 //     Rating period. For valid values, check the Types of ratings method.
-func (service *wowpService) RatingsNeighbors(ctx context.Context, realm Realm, accountId int, rankField string, type_ string, options *wowp.RatingsNeighborsOptions) ([]*wowp.RatingsNeighbors, error) {
+func (service *WowpService) RatingsNeighbors(ctx context.Context, realm Realm, accountId int, rankField string, type_ string, options *wowp.RatingsNeighborsOptions) ([]*wowp.RatingsNeighbors, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

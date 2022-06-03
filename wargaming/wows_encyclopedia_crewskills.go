@@ -13,7 +13,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
-func (service *wowsService) EncyclopediaCrewskills(ctx context.Context, realm Realm, options *wows.EncyclopediaCrewskillsOptions) (*wows.EncyclopediaCrewskills, error) {
+func (service *WowsService) EncyclopediaCrewskills(ctx context.Context, realm Realm, options *wows.EncyclopediaCrewskillsOptions) (*wows.EncyclopediaCrewskills, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

@@ -15,7 +15,7 @@ import (
 //     Valid realms: RealmEu, RealmNa, RealmRu
 // search:
 //     Player name search string. Parameter "type" defines minimum length and type of search. Using the exact search type, you can enter several names, separated with commas. Maximum length: 24.
-func (service *wowpService) AccountList(ctx context.Context, realm Realm, search string, options *wowp.AccountListOptions) ([]*wowp.AccountList, error) {
+func (service *WowpService) AccountList(ctx context.Context, realm Realm, search string, options *wowp.AccountListOptions) ([]*wowp.AccountList, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

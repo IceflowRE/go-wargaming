@@ -20,7 +20,7 @@ import (
 //     IDs of player accounts. Maximum limit: 100.
 // type_:
 //     Rating period. For valid values, check the Types of ratings method.
-func (service *wotService) RatingsAccounts(ctx context.Context, realm Realm, accountId []int, type_ string, options *wot.RatingsAccountsOptions) (*wot.RatingsAccounts, error) {
+func (service *WotService) RatingsAccounts(ctx context.Context, realm Realm, accountId []int, type_ string, options *wot.RatingsAccountsOptions) (*wot.RatingsAccounts, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

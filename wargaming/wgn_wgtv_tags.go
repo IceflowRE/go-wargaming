@@ -12,7 +12,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
-func (service *wgnService) WgtvTags(ctx context.Context, realm Realm, options *wgn.WgtvTagsOptions) (*wgn.WgtvTags, error) {
+func (service *WgnService) WgtvTags(ctx context.Context, realm Realm, options *wgn.WgtvTagsOptions) (*wgn.WgtvTags, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

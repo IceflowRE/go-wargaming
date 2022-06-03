@@ -19,7 +19,7 @@ import (
 //     Event ID. To get an event ID, use the Events method.
 // frontId:
 //     Front ID. To get a front ID, use the Fronts method. Maximum limit: 10.
-func (service *wotService) GlobalmapEventclaninfo(ctx context.Context, realm Realm, clanId int, eventId string, frontId []string, options *wot.GlobalmapEventclaninfoOptions) (*wot.GlobalmapEventclaninfo, error) {
+func (service *WotService) GlobalmapEventclaninfo(ctx context.Context, realm Realm, clanId int, eventId string, frontId []string, options *wot.GlobalmapEventclaninfoOptions) (*wot.GlobalmapEventclaninfo, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

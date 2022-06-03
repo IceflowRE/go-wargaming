@@ -16,7 +16,7 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
 // accountId:
 //     Player account ID
-func (service *wowsService) ShipsStats(ctx context.Context, realm Realm, accountId int, options *wows.ShipsStatsOptions) (*wows.ShipsStats, error) {
+func (service *WowsService) ShipsStats(ctx context.Context, realm Realm, accountId int, options *wows.ShipsStatsOptions) (*wows.ShipsStats, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

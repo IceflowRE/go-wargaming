@@ -13,7 +13,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
-func (service *wowsService) SeasonsInfo(ctx context.Context, realm Realm, options *wows.SeasonsInfoOptions) (*wows.SeasonsInfo, error) {
+func (service *WowsService) SeasonsInfo(ctx context.Context, realm Realm, options *wows.SeasonsInfoOptions) (*wows.SeasonsInfo, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

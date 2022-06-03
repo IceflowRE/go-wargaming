@@ -15,7 +15,7 @@ import (
 //     Valid realms: RealmRu
 // q:
 //     Search text. Minimum length: 3 characters. Case insensitive.
-func (service *wgnService) WargagSearch(ctx context.Context, realm Realm, q string, options *wgn.WargagSearchOptions) (*wgn.WargagSearch, error) {
+func (service *WgnService) WargagSearch(ctx context.Context, realm Realm, q string, options *wgn.WargagSearchOptions) (*wgn.WargagSearch, error) {
 	if err := validateRealm(realm, []Realm{RealmRu}); err != nil {
 		return nil, err
 	}

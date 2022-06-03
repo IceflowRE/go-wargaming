@@ -16,7 +16,7 @@ import (
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 // messageId:
 //     Message ID
-func (service *wotbService) ClanmessagesUpdate(ctx context.Context, realm Realm, accessToken string, messageId int, options *wotb.ClanmessagesUpdateOptions) (*wotb.ClanmessagesUpdate, error) {
+func (service *WotbService) ClanmessagesUpdate(ctx context.Context, realm Realm, accessToken string, messageId int, options *wotb.ClanmessagesUpdateOptions) (*wotb.ClanmessagesUpdate, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

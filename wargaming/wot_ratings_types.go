@@ -14,7 +14,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
-func (service *wotService) RatingsTypes(ctx context.Context, realm Realm, options *wot.RatingsTypesOptions) (*wot.RatingsTypes, error) {
+func (service *WotService) RatingsTypes(ctx context.Context, realm Realm, options *wot.RatingsTypesOptions) (*wot.RatingsTypes, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

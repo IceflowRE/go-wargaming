@@ -15,7 +15,7 @@ import (
 //     Valid realms: RealmWgcb
 // clanId:
 //     Clan ID. Maximum limit: 100. Min value is 1.
-func (service *wotxService) ClansInfo(ctx context.Context, realm Realm, clanId []int, options *wotx.ClansInfoOptions) (*wotx.ClansInfo, error) {
+func (service *WotxService) ClansInfo(ctx context.Context, realm Realm, clanId []int, options *wotx.ClansInfoOptions) (*wotx.ClansInfo, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}

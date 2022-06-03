@@ -15,7 +15,7 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
 // tankId:
 //     Vehicle ID
-func (service *wotService) EncyclopediaVehicleprofile(ctx context.Context, realm Realm, tankId int, options *wot.EncyclopediaVehicleprofileOptions) (*wot.EncyclopediaVehicleprofile, error) {
+func (service *WotService) EncyclopediaVehicleprofile(ctx context.Context, realm Realm, tankId int, options *wot.EncyclopediaVehicleprofileOptions) (*wot.EncyclopediaVehicleprofile, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

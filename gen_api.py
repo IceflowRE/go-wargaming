@@ -425,7 +425,7 @@ class GoApi:
 
 {go_imports(self.method_imports())}
 {documentation}
-func (service *{self.game}Service) {self.service_method.name}(ctx context.Context, realm Realm{self.params.filter(True).method_params()}{param_options}) {meth_return_type} {{
+func (service *{name_to_camel(self.game)}Service) {self.service_method.name}(ctx context.Context, realm Realm{self.params.filter(True).method_params()}{param_options}) {meth_return_type} {{
 \tif err := validateRealm(realm, []Realm{{{allowed_realms}}}); err != nil {{
 \t\t{'return nil' if self.response_struct.empty() else 'return nil, err'}
 \t}}
@@ -604,9 +604,9 @@ def gen_api(output: Path, games: dict):
     service_init: list[str] = []
     for game in games:
         game_name = name_to_camel(game['slug'])
-        service_name: str = f"{name_to_camel_lower(game['slug'])}Service"
+        service_name: str = f"{name_to_camel(game['slug'])}Service"
         service_types.append(f"// {game['name']} service.\ntype {service_name} service\n")
-        service_fields.append(f"\t{game_name} *{service_name}")
+        service_fields.append(f"\t// {game['name']}\n\t{game_name} *{service_name}")
         service_init.append(f"\tclient.{game_name} = (*{service_name})(&client.common)")
     service_types.sort()
     service_fields.sort()

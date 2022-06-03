@@ -17,7 +17,7 @@ import (
 //     Event ID. To get an event ID, use the Events method.
 // frontId:
 //     Front ID. To get a front ID, use the Fronts method.
-func (service *wotService) GlobalmapEventaccountratings(ctx context.Context, realm Realm, eventId string, frontId string, options *wot.GlobalmapEventaccountratingsOptions) ([]*wot.GlobalmapEventaccountratings, error) {
+func (service *WotService) GlobalmapEventaccountratings(ctx context.Context, realm Realm, eventId string, frontId string, options *wot.GlobalmapEventaccountratingsOptions) ([]*wot.GlobalmapEventaccountratings, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

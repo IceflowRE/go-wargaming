@@ -29,7 +29,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
-func (service *wotService) AuthLogin(ctx context.Context, realm Realm, options *wot.AuthLoginOptions) (*wot.AuthLogin, error) {
+func (service *WotService) AuthLogin(ctx context.Context, realm Realm, options *wot.AuthLoginOptions) (*wot.AuthLogin, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

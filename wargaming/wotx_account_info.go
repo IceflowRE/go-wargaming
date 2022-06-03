@@ -15,7 +15,7 @@ import (
 //     Valid realms: RealmWgcb
 // accountId:
 //     Player account ID. Maximum limit: 100.
-func (service *wotxService) AccountInfo(ctx context.Context, realm Realm, accountId []int, options *wotx.AccountInfoOptions) (*wotx.AccountInfo, error) {
+func (service *WotxService) AccountInfo(ctx context.Context, realm Realm, accountId []int, options *wotx.AccountInfoOptions) (*wotx.AccountInfo, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err
 	}

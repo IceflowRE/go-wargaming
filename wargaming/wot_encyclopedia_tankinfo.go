@@ -17,7 +17,7 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
 // tankId:
 //     Vehicle ID. Maximum limit: 1000.
-func (service *wotService) EncyclopediaTankinfo(ctx context.Context, realm Realm, tankId []int, options *wot.EncyclopediaTankinfoOptions) (*wot.EncyclopediaTankinfo, error) {
+func (service *WotService) EncyclopediaTankinfo(ctx context.Context, realm Realm, tankId []int, options *wot.EncyclopediaTankinfoOptions) (*wot.EncyclopediaTankinfo, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}

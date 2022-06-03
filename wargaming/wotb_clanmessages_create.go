@@ -33,7 +33,7 @@ import (
 //     "training" - Training messages
 //     "meeting" - Meeting messages
 //     "battle" - Battle messages
-func (service *wotbService) ClanmessagesCreate(ctx context.Context, realm Realm, accessToken string, expiresAt wgnTime.UnixTime, importance string, text string, title string, type_ string) (*wotb.ClanmessagesCreate, error) {
+func (service *WotbService) ClanmessagesCreate(ctx context.Context, realm Realm, accessToken string, expiresAt wgnTime.UnixTime, importance string, text string, title string, type_ string) (*wotb.ClanmessagesCreate, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
 		return nil, err
 	}
