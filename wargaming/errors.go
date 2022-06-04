@@ -34,7 +34,7 @@ var apiErrorMessages = map[string]string{
 	"SEARCH_NOT_SPECIFIED":       "Search parameter not specified with no account_id",                             // 402
 }
 
-// Description will return an detailed description about the error, will return "" if nothing description can be provided.
+// Description will return a detailed description about the error, will return "" if no description can be provided.
 func (err ResponseError) Description() string {
 	if val, ok := apiErrorMessages[err.Message]; ok {
 		return val
