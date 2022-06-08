@@ -72,14 +72,18 @@ type ClientOptions struct {
 	HTTPClient *http.Client
 }
 
+// NewClient creates a new API client.
+// Pass nil as options if you want to use none.
 func NewClient(applicationId string, options *ClientOptions) *Client {
 	client := &Client{
 		applicationId: applicationId,
 	}
-	if options.HTTPClient != nil {
-		client.httpClient = options.HTTPClient
-	} else {
-		client.httpClient = &http.Client{}
+	if options != nil {
+		if options.HTTPClient != nil {
+			client.httpClient = options.HTTPClient
+		} else {
+			client.httpClient = &http.Client{}
+		}
 	}
 	client.common.client = client
 
