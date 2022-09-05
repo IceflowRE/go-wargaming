@@ -42,6 +42,8 @@ type TanksStats struct {
 		DamageAssistedRadio *int `json:"damage_assisted_radio,omitempty"`
 		// Average damage upon your destroying a track. Value is calculated starting from version 1.3.
 		DamageAssistedTrack *int `json:"damage_assisted_track,omitempty"`
+		// Average damage upon your shooting the wheel.
+		DamageAssistedWheel *int `json:"damage_assisted_wheel,omitempty"`
 		// Damage caused
 		DamageDealt *int `json:"damage_dealt,omitempty"`
 		// Damage received
@@ -91,6 +93,8 @@ type TanksStats struct {
 		DamageAssistedRadio *int `json:"damage_assisted_radio,omitempty"`
 		// Average damage upon your destroying a track. Value is calculated starting from version 1.3.
 		DamageAssistedTrack *int `json:"damage_assisted_track,omitempty"`
+		// Average damage upon your shooting the wheel.
+		DamageAssistedWheel *int `json:"damage_assisted_wheel,omitempty"`
 		// Damage caused
 		DamageDealt *int `json:"damage_dealt,omitempty"`
 		// Damage received
@@ -144,6 +148,12 @@ type TanksStats struct {
 	// 3 — 1st Class
 	// 4 — Ace Tanker
 	MarkOfMastery *int `json:"mark_of_mastery,omitempty"`
+	// Number of battles for markOfMastery achievement
+	MarkOfMasteryBattlesCount *int `json:"mark_of_mastery_battles_count,omitempty"`
+	// Marks on gun
+	MarksOnGun *int `json:"marks_on_gun,omitempty"`
+	// Number of battles for marksOnGun achievement
+	MarksOnGunBattlesCount *int `json:"marks_on_gun_battles_count,omitempty"`
 	// Maximum destroyed in battle
 	MaxFrags *int `json:"max_frags,omitempty"`
 	// Maximum experience per battle

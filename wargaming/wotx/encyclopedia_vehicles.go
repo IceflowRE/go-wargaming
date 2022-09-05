@@ -14,8 +14,12 @@ type EncyclopediaVehiclesOptions struct {
 	// "es" - Español
 	// "tr" - Türkçe
 	Language *string
+	// Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
+	Limit *int
 	// Nation. Maximum limit: 100.
 	Nation []string
+	// Result page number
+	PageNo *int
 	// Vehicle ID. Maximum limit: 100.
 	TankId []int
 	// Tier. Maximum limit: 100.
@@ -27,13 +31,34 @@ type EncyclopediaVehicles struct {
 	Description *string `json:"description,omitempty"`
 	// Era
 	Era *string `json:"era,omitempty"`
+	// Vehicle has multiple weapons
+	HasMultiWeapon *bool `json:"has_multi_weapon,omitempty"`
 	// Image links
 	Images *struct {
-		// URL to 160 x 100 px image
+		// URL to 160 x 100 px image of vehicle
 		BigIcon *string `json:"big_icon,omitempty"`
 	} `json:"images,omitempty"`
 	// Indicates if the vehicle is Premium vehicle
 	IsPremium *bool `json:"is_premium,omitempty"`
+	// Module research information
+	ModulesTree *struct {
+		// Indicates if the module is basic
+		IsDefault *bool `json:"is_default,omitempty"`
+		// Module ID
+		ModuleId *int `json:"module_id,omitempty"`
+		// Module name
+		Name *string `json:"name,omitempty"`
+		// List of module IDs available after research of the module
+		NextModules []int `json:"next_modules,omitempty"`
+		// List of vehicle IDs available after research of the module
+		NextTanks []int `json:"next_tanks,omitempty"`
+		// Cost in credits
+		PriceCredit *int `json:"price_credit,omitempty"`
+		// Research cost
+		PriceXp *int `json:"price_xp,omitempty"`
+		// Module type
+		Type_ *string `json:"type,omitempty"`
+	} `json:"modules_tree,omitempty"`
 	// Vehicle name
 	Name *string `json:"name,omitempty"`
 	// Nation
@@ -60,6 +85,8 @@ type EncyclopediaVehicles struct {
 	TankId *int `json:"tank_id,omitempty"`
 	// Tier
 	Tier *int `json:"tier,omitempty"`
+	// Number of turrets
+	TotalTurrets *int `json:"total_turrets,omitempty"`
 	// Vehicle type
 	Type_ *string `json:"type,omitempty"`
 }

@@ -125,6 +125,8 @@ type AccountInfo struct {
 		DamageAssistedRadio *int `json:"damage_assisted_radio,omitempty"`
 		// Average damage upon your destroying a track. Value is calculated starting from version 1.3.
 		DamageAssistedTrack *int `json:"damage_assisted_track,omitempty"`
+		// Average damage upon your shooting the wheel.
+		DamageAssistedWheel *int `json:"damage_assisted_wheel,omitempty"`
 		// Direct hits received. Value is calculated starting from version 1.10.
 		DirectHitsReceived *int `json:"direct_hits_received,omitempty"`
 		// Hits on enemy as a result of splash damage. Value is calculated starting from version 1.10.

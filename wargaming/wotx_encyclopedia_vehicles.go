@@ -4,6 +4,7 @@ import (
 	"context"
 	"github.com/IceflowRE/go-wargaming/v2/wargaming/internal"
 	"github.com/IceflowRE/go-wargaming/v2/wargaming/wotx"
+	"strconv"
 	"strings"
 )
 
@@ -26,8 +27,14 @@ func (service *WotxService) EncyclopediaVehicles(ctx context.Context, realm Real
 		if options.TankId != nil {
 			reqParam["tank_id"] = internal.SliceIntToString(options.TankId, ",")
 		}
+		if options.PageNo != nil {
+			reqParam["page_no"] = strconv.Itoa(*options.PageNo)
+		}
 		if options.Nation != nil {
 			reqParam["nation"] = strings.Join(options.Nation, ",")
+		}
+		if options.Limit != nil {
+			reqParam["limit"] = strconv.Itoa(*options.Limit)
 		}
 		if options.Language != nil {
 			reqParam["language"] = *options.Language

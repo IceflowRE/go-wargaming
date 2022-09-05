@@ -36,10 +36,17 @@ type EncyclopediaAchievements struct {
 	Name *string `json:"name,omitempty"`
 	// Award classes (for mastery badges)
 	Options *struct {
+		// Achievement description
+		Description *string `json:"description,omitempty"`
 		// Award image link
 		Image *string `json:"image,omitempty"`
 		// Award name
 		Name *string `json:"name,omitempty"`
+		// Information about nation emblems
+		NationImages *struct {
+			// List of links to 200x200 px emblems
+			X200 map[string]string `json:"x200,omitempty"`
+		} `json:"nation_images,omitempty"`
 	} `json:"options,omitempty"`
 	// Award section
 	Section *string `json:"section,omitempty"`

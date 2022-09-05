@@ -70,6 +70,8 @@ type EncyclopediaModules struct {
 			Dispersion *float32 `json:"dispersion,omitempty"`
 			// Rate of fire (rounds/min)
 			FireRate *float32 `json:"fire_rate,omitempty"`
+			// Grouping number on multi gun turrets
+			GunGroupNumber *int `json:"gun_group_number,omitempty"`
 			// Number of shells
 			MaxAmmo *int `json:"max_ammo,omitempty"`
 			// Depression angle (deg)
@@ -101,12 +103,18 @@ type EncyclopediaModules struct {
 			ArmorRear *int `json:"armor_rear,omitempty"`
 			// Armor: sides (mm)
 			ArmorSides *int `json:"armor_sides,omitempty"`
+			// Number of guns
+			GunsForSlot *int `json:"guns_for_slot,omitempty"`
 			// Hit points
 			Hp *int `json:"hp,omitempty"`
+			// Traverse speed (deg/s)
+			TraverseSpeed *int `json:"traverse_speed,omitempty"`
 			// View range (m)
 			ViewRange *int `json:"view_range,omitempty"`
 		} `json:"turret,omitempty"`
 	} `json:"default_profile,omitempty"`
+	// Era
+	Era *string `json:"era,omitempty"`
 	// Image link
 	Image *string `json:"image,omitempty"`
 	// Module ID

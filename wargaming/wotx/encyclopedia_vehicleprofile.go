@@ -65,6 +65,17 @@ type EncyclopediaVehicleprofile struct {
 			Sides *int `json:"sides,omitempty"`
 		} `json:"turret,omitempty"`
 	} `json:"armor,omitempty"`
+	// Vehicle characteristics in autosiege mode
+	Autosiege *struct {
+		// Switch off speed (km/h)
+		AutoswitchOffSpeed *int `json:"autoswitch_off_speed,omitempty"`
+		// Switch on speed (km/h)
+		AutoswitchOnSpeed *int `json:"autoswitch_on_speed,omitempty"`
+		// Time needed to switch on the Siege mode
+		SwitchOffTime *float32 `json:"switch_off_time,omitempty"`
+		// Time required to switch to Siege mode
+		SwitchOnTime *float32 `json:"switch_on_time,omitempty"`
+	} `json:"autosiege,omitempty"`
 	// Engine characteristics
 	Engine *struct {
 		// Chance of engine fire
@@ -132,6 +143,20 @@ type EncyclopediaVehicleprofile struct {
 		// Turret ID
 		TurretId *int `json:"turret_id,omitempty"`
 	} `json:"modules,omitempty"`
+	// Multi turret vehicle characteristics
+	MultiTurret *struct {
+		// List of vehicle turrets
+		Turrets []int `json:"turrets,omitempty"`
+	} `json:"multi_turret,omitempty"`
+	// Multi weapon vehicle characteristics
+	MultiWeapon *struct {
+		// Grouping number on multi gun turrets
+		GunGroupNumber *int `json:"gun_group_number,omitempty"`
+		// List of turret guns per group number
+		Guns []int `json:"guns,omitempty"`
+		// Turret ID
+		TurretId *int `json:"turret_id,omitempty"`
+	} `json:"multi_weapon,omitempty"`
 	// Vehicle Configuration ID
 	ProfileId *string `json:"profile_id,omitempty"`
 	// Radio characteristics
@@ -159,6 +184,8 @@ type EncyclopediaVehicleprofile struct {
 		SwitchOffTime *float32 `json:"switch_off_time,omitempty"`
 		// Time required to switch to Rapid mode
 		SwitchOnTime *float32 `json:"switch_on_time,omitempty"`
+		// Traverse speed (deg/s)
+		TurretTraverseSpeed *int `json:"turret_traverse_speed,omitempty"`
 	} `json:"rapid,omitempty"`
 	// Vehicle characteristics in Siege mode
 	Siege *struct {
@@ -166,16 +193,10 @@ type EncyclopediaVehicleprofile struct {
 		AimTime *float32 `json:"aim_time,omitempty"`
 		// Dispersion at 100 m (m)
 		Dispersion *float32 `json:"dispersion,omitempty"`
-		// Depression angle (deg)
-		MoveDownArc *int `json:"move_down_arc,omitempty"`
-		// Elevation angle (deg)
-		MoveUpArc *int `json:"move_up_arc,omitempty"`
-		// Reload time (s)
-		ReloadTime *float32 `json:"reload_time,omitempty"`
 		// Top reverse speed (km/h)
 		SpeedBackward *int `json:"speed_backward,omitempty"`
-		// Standard suspension traverse speed
-		SuspensionTraverseSpeed *int `json:"suspension_traverse_speed,omitempty"`
+		// Top speed (km/h)
+		SpeedForward *int `json:"speed_forward,omitempty"`
 		// Time needed to switch on the Siege mode
 		SwitchOffTime *float32 `json:"switch_off_time,omitempty"`
 		// Time required to switch to Siege mode
@@ -204,6 +225,19 @@ type EncyclopediaVehicleprofile struct {
 	} `json:"suspension,omitempty"`
 	// Vehicle ID
 	TankId *int `json:"tank_id,omitempty"`
+	// Vehicle characteristics in turbo mode
+	Turbo *struct {
+		// Aiming time (s)
+		AimTime *float32 `json:"aim_time,omitempty"`
+		// Top reverse speed (km/h)
+		SpeedBackward *int `json:"speed_backward,omitempty"`
+		// Top speed (km/h)
+		SpeedForward *int `json:"speed_forward,omitempty"`
+		// Time needed to switch on the Siege mode
+		SwitchOffTime *float32 `json:"switch_off_time,omitempty"`
+		// Time required to switch to Siege mode
+		SwitchOnTime *float32 `json:"switch_on_time,omitempty"`
+	} `json:"turbo,omitempty"`
 	// Turret characteristics
 	Turret *struct {
 		// Hit points
