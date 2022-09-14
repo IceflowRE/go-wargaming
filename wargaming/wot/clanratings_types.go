@@ -1,3 +1,5 @@
+// Auto generated file!
+
 package wot
 
 type ClanratingsTypes struct {

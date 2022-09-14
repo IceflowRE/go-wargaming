@@ -1,3 +1,5 @@
+// Auto generated file!
+
 package wotb
 
 // EncyclopediaVehicleprofileOptions options.

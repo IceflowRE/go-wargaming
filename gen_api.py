@@ -597,7 +597,7 @@ def gen_api(output: Path, games: dict):
             if not go.response_struct.empty() and not go.options_struct.empty():
                 opt_code += "\n\n"
             output.joinpath(go.game).joinpath(f"{go.method_id[len(f'{go.game}_'):]}.go").write_text(
-                f"package {go.game}\n\n{go_imports(imports)}\n{opt_code}{resp_code}\n",
+                f"// Auto generated file!\n\npackage {go.game}\n\n{go_imports(imports)}\n{opt_code}{resp_code}\n",
                 encoding='utf-8'
             )
         check_unit_test(unit_test, go)

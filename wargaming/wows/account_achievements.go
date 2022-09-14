@@ -1,3 +1,5 @@
+// Auto generated file!
+
 package wows
 
 // AccountAchievementsOptions options.
