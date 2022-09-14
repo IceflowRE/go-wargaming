@@ -176,7 +176,8 @@ class Parameters:
     def req_map(self) -> str:
         lines = []
         for param in self.params:
-            lines.append(f'\t\t"{camel_to_snake(param.name).rstrip("_")}": {go_value_to_string(param.typ, param.name)},')
+            lines.append(
+                f'\t\t"{camel_to_snake(param.name).rstrip("_")}": {go_value_to_string(param.typ, param.name)},')
         return '\n'.join(lines)
 
     def doc(self) -> str:
@@ -600,34 +601,38 @@ def gen_api(output: Path, games: dict):
                 encoding='utf-8'
             )
         check_unit_test(unit_test, go)
-    # service stuff
+    # generate services
     service_types: list[str] = []
     service_fields: list[str] = []
     service_init: list[str] = []
     for game in games:
         game_name = name_to_camel(game['slug'])
         service_name: str = f"{name_to_camel(game['slug'])}Service"
-        service_types.append(f"// {game['name']} service.\ntype {service_name} service\n")
+        service_types.append(f"// {service_name} {game['name']} service.\ntype {service_name} service\n")
         service_fields.append(f"\t// {game['name']}\n\t{game_name} *{service_name}")
         service_init.append(f"\tclient.{game_name} = (*{service_name})(&client.common)")
     service_types.sort()
     service_fields.sort()
     service_init.sort()
-    # write service types
+    # write services.go
     tmp_text: str = '\n'.join(service_types)
-    output.joinpath(f"services.go").write_text(f"package wargaming\n\n{tmp_text}", encoding='utf-8')
+    output.joinpath(f"services.go").write_text(
+        f"// Auto generated file!\n\npackage wargaming\n\n{tmp_text}",
+        encoding='utf-8'
+    )
     # write service fields and initialization
     client: str = output.joinpath(f"client.go").read_text(encoding='utf-8')
-    tmp_text: str = '\n'.join(service_fields)
+    tmp_text = '\n'.join(service_fields)
     delimiter = ["// AUTO GENERATION START FIELDS\n", "\n\t// AUTO GENERATION END FIELDS"]
     client = re.sub(f'{delimiter[0]}.*{delimiter[1]}', f"{delimiter[0]}\n{tmp_text}{delimiter[1]}", client,
                     flags=re.DOTALL)
-    tmp_text: str = '\n'.join(service_init)
+    tmp_text = '\n'.join(service_init)
     delimiter = ["// AUTO GENERATION START INIT\n", "\n\t// AUTO GENERATION END INIT"]
     client = re.sub(f'{delimiter[0]}.*{delimiter[1]}', f"{delimiter[0]}\n{tmp_text}{delimiter[1]}", client,
                     flags=re.DOTALL)
     output.joinpath(f"client.go").write_text(client, encoding='utf-8')
 
+    # deprecated files to be ignored in codecov
     deprecated_files = []
     for go in api:
         if go.deprecated:
