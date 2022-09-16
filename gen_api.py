@@ -11,7 +11,8 @@ import requests
 
 def get(path: str):
     return requests.get(
-        f'https://developers.wargaming.net/api/{path}/?realm=all', headers={'X-Requested-With': 'XMLHttpRequest'}
+        f'https://developers.wargaming.net/api/{path}/?realm=all',
+        headers={'User-Agent': 'go-wargaming-api-generator', 'X-Requested-With': 'XMLHttpRequest'}
     ).json()
 
 

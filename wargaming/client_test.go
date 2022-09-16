@@ -36,6 +36,9 @@ func checkErr(test *testing.T, err error) {
 		if respErr.Code == 504 {
 			test.Skip("Method seems to be deprecated.")
 		}
+		if respErr.Code == 404 {
+			test.Skip("Method seems to be temporarily unavailable.")
+		}
 	}
 	if err != nil {
 		test.Fatal(err.Error())
@@ -99,7 +102,7 @@ func TestApi(test *testing.T) {
 	})
 	delay()
 	test.Run("WotGlobalmapProvinces", func(test *testing.T) {
-		_, err := client.Wot.GlobalmapProvinces(context.Background(), RealmEu, "season_18_bg", nil)
+		_, err := client.Wot.GlobalmapProvinces(context.Background(), RealmEu, "season_19_bg", nil)
 		checkErr(test, err)
 	})
 	delay()
@@ -149,12 +152,12 @@ func TestApi(test *testing.T) {
 	})
 	delay()
 	test.Run("WotGlobalmapEventclaninfo", func(test *testing.T) {
-		_, err := client.Wot.GlobalmapEventclaninfo(context.Background(), RealmEu, wotAccountId, "season_18", []string{"season_18_bg"}, nil)
+		_, err := client.Wot.GlobalmapEventclaninfo(context.Background(), RealmEu, wotAccountId, "season_19", []string{"season_19_bg"}, nil)
 		checkErr(test, err)
 	})
 	delay()
 	test.Run("WotGlobalmapEventaccountinfo_accountId", func(test *testing.T) {
-		_, err := client.Wot.GlobalmapEventaccountinfo(context.Background(), RealmEu, "season_18", []string{"season_18_bg"},
+		_, err := client.Wot.GlobalmapEventaccountinfo(context.Background(), RealmEu, "season_19", []string{"season_19_bg"},
 			&wot.GlobalmapEventaccountinfoOptions{
 				AccountId: Int(wotAccountId),
 			},
@@ -163,7 +166,7 @@ func TestApi(test *testing.T) {
 	})
 	delay()
 	test.Run("WotGlobalmapEventaccountinfo_clan", func(test *testing.T) {
-		_, err := client.Wot.GlobalmapEventaccountinfo(context.Background(), RealmEu, "season_18", []string{"season_18_bg"},
+		_, err := client.Wot.GlobalmapEventaccountinfo(context.Background(), RealmEu, "season_19", []string{"season_19_bg"},
 			&wot.GlobalmapEventaccountinfoOptions{
 				ClanId: Int(wotClanId),
 			},
@@ -172,22 +175,22 @@ func TestApi(test *testing.T) {
 	})
 	delay()
 	test.Run("WotGlobalmapEventaccountratings", func(test *testing.T) {
-		_, err := client.Wot.GlobalmapEventaccountratings(context.Background(), RealmEu, "season_18", "season_18_bg", nil)
+		_, err := client.Wot.GlobalmapEventaccountratings(context.Background(), RealmEu, "season_19", "season_19_bg", nil)
 		checkErr(test, err)
 	})
 	delay()
 	test.Run("WotGlobalmapEventaccountratingneighbors", func(test *testing.T) {
-		_, err := client.Wot.GlobalmapEventaccountratingneighbors(context.Background(), RealmEu, wotAccountId, "season_18", "season_18_bg", nil)
+		_, err := client.Wot.GlobalmapEventaccountratingneighbors(context.Background(), RealmEu, wotAccountId, "season_19", "season_19_bg", nil)
 		checkErr(test, err)
 	})
 	delay()
 	test.Run("WotGlobalmapEventrating", func(test *testing.T) {
-		_, err := client.Wot.GlobalmapEventrating(context.Background(), RealmEu, "season_18", "season_18_bg", nil)
+		_, err := client.Wot.GlobalmapEventrating(context.Background(), RealmEu, "season_19", "season_19_bg", nil)
 		checkErr(test, err)
 	})
 	delay()
 	test.Run("WotGlobalmapEventratingneighbors", func(test *testing.T) {
-		_, err := client.Wot.GlobalmapEventratingneighbors(context.Background(), RealmEu, wotClanId, "season_18", "season_18_bg", nil)
+		_, err := client.Wot.GlobalmapEventratingneighbors(context.Background(), RealmEu, wotClanId, "season_19", "season_19_bg", nil)
 		checkErr(test, err)
 	})
 	delay()
