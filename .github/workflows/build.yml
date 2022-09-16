@@ -14,7 +14,8 @@ permissions:
     contents: read
 
 jobs:
-    test:
+    build:
+        name: "${{ matrix.platform }} - ${{ matrix.go.version }}"
         permissions:
             actions: write  # for styfle/cancel-workflow-action to cancel/stop running workflows
             contents: read  # for actions/checkout to fetch code
