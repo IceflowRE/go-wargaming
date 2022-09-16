@@ -28,7 +28,7 @@ type TournamentsStages struct {
 	// Stage end day and time
 	EndAt *wgnTime.UnixTime `json:"end_at,omitempty"`
 	// Groups info for current stage
-	Groups *struct {
+	Groups []*struct {
 		// Group ID
 		GroupId *int `json:"group_id,omitempty"`
 		// Group order number

@@ -516,6 +516,8 @@ def fix_api(go: GoApi):
             go.response_struct['Fronts'].typ = "[]*struct"
         case "wot_tanks_mastery":
             go.response_struct['Distribution'].typ = "map[string]map[string]int"
+        case "wotb_tournaments_stages":
+            go.response_struct['Groups'].typ = "[]*struct"
         case "wotb_encyclopedia_modules":
             go.response_struct['Engines'].typ = "[]*struct"
             go.response_struct['Guns'].typ = "[]*struct"
