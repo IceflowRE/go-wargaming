@@ -1,0 +1,22 @@
+// Auto generated file!
+
+package wargaming
+{{range .}}
+// {{.Name}}Service {{.LongName}} service.
+type {{.Name}}Service service
+{{- end}}
+
+type wgServices struct {
+{{- range .}}
+	// {{.LongName}}
+    {{.Name}} *{{.Name}}Service
+{{- end}}
+}
+
+func newWgServices(common *service) wgServices {
+	return wgServices{
+{{- range .}}
+    {{.Name}}: (*{{.Name}}Service)(common),
+{{- end}}
+	}
+}

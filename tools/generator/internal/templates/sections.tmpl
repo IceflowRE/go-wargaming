@@ -1,0 +1,11 @@
+// Auto generated file!
+
+package wargaming
+
+var (
+{{- range . }}
+// section{{.Name}} {{.LongName}}.
+section{{.Name}} = sectionS{
+	apiUrlFormat: "https://{{.ApiUrlFormat | formatApiUrl}}",
+}{{end}}
+)

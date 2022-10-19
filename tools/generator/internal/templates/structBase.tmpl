@@ -1,0 +1,11 @@
+// Auto generated file!
+
+package {{.Game}}{{"\n"}}
+{{- if (imports .)}}
+import (
+{{- range (imports .)}}
+	"{{.}}"
+{{- end}}
+){{"\n"}}{{end}}
+{{- if .Options}}{{template "struct" .Options}}{{"\n"}}{{end}}
+{{- if .ReturnType}}{{template "struct" .ReturnType}}{{end}}

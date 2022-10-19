@@ -1,0 +1,13 @@
+// Auto generated file!
+
+package wargaming
+
+var (
+{{- range . }}
+// Realm{{.Index | title}} {{.LongName}}.
+Realm{{.Index | title}} = realmS{
+	name:  "{{.LongName}}",
+	index: "{{.Index}}",
+	tld:   "{{.Tld}}",
+}{{end}}
+)

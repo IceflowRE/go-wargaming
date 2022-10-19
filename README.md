@@ -5,13 +5,12 @@
 
 [![Go report card](https://goreportcard.com/badge/github.com/IceflowRE/go-wargaming/v2)](https://goreportcard.com/report/github.com/IceflowRE/go-wargaming/v2)
 [![Go Reference](https://pkg.go.dev/badge/github.com/IceflowRE/go-wargaming/v2.svg)](https://pkg.go.dev/github.com/IceflowRE/go-wargaming/v2)
-![API Coverage](https://img.shields.io/badge/API%20coverage-188%20%2F%20188-green.svg)
 
 ---
 
 Go client for accessing [Wargaming.net Public API](https://developers.wargaming.net/documentation/guide/getting-started/).
 
-This api client is generated automatically based on the documentation provided by Wargaming.
+This API client is generated automatically based on the documentation provided by Wargaming. All endpoints are available.  
 The documentation is often inaccurate, especially the return types (object, list, map), so manual fixes afterwards are required. If something was not corrected, please open an issue.
 
 ## Installation
@@ -19,7 +18,7 @@ The documentation is often inaccurate, especially the return types (object, list
 go-wargaming is compatible with modern Go releases and modules enabled.
 
 ```shell
-go get github.com/IceflowRE/go-wargaming/v2
+go get github.com/IceflowRE/go-wargaming/v3
 ```
 
 will resolve and add the package to the current development module, along with its dependencies.
@@ -27,7 +26,7 @@ will resolve and add the package to the current development module, along with i
 Or just import it and run `go get` afterwards
 
 ```go
-import "github.com/IceflowRE/go-wargaming/v2/wargaming"
+import "github.com/IceflowRE/go-wargaming/v3/wargaming"
 ```
 
 ## Usage
@@ -83,13 +82,11 @@ NOTE: Using the context package, one can easily pass cancelation signals and dea
 
 ## Development
 
-To run the generation of the API code and check for their unit tests:
-
-It will also edit `wargaming/client.go` and `codecov.yml`.
+To run the generation of the API code:
 
 ```shell
-python ./gen_api.py
-gofmt -l -w -s ./wargaming/
+go build -o generator github.com/IceflowRE/go-wargaming/v3/tools/generator
+./generator
 ```
 
 The client test requires an environment variable `WARGAMING_API_ID` with the API ID.

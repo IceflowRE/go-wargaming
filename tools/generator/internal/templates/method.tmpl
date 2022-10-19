@@ -1,0 +1,42 @@
+// Auto generated file!
+
+package wargaming
+{{- $imports := .MethodImports}}
+{{if $imports}}
+import ({{range $imports}}
+	"{{.}}"
+{{- end}}
+)
+{{end}}
+// {{.Name}} {{.Documentation | summaryDoc}}
+//
+// https://developers.wargaming.net/reference/all/{{replaceAll .Id "_" "/"}}{{if .Deprecated}}
+//
+// Deprecated: Attention! The method is deprecated.{{end}}
+//
+// realm:
+//     Valid realms: {{.AllowedRealms | realmList}}
+{{- range .Parameters}}
+{{if .Description}}{{paramDoc .}}{{end}}
+{{- end}}
+func (service *{{.Game | camelLowerToCamel}}Service) {{.Name}}(ctx context.Context, realm Realm{{range .Parameters}}, {{.Name}} {{.TypeStr}}{{end}}{{if .Options}}, options {{. | optionsType}}{{end}}) {{if .ReturnType}}({{. | methodReturnType}}, error){{else}}error{{end}} {
+	if err := validateRealm(realm, []Realm{{"{"}}{{.AllowedRealms | realmList}}{{"}"}}); err != nil {
+		return {{if .ReturnType}}nil, err{{else}}err{{end}}
+	}
+
+	reqParam := map[string]string{
+{{- range .Parameters}}
+		"{{.JsonTag}}": {{valueToStringConv .TypeStr .Name}},
+{{- end}}
+	}
+{{if .Options}}
+	if options != nil {{"{"}}{{range .Options.Fields}}
+		if options.{{.Name}} != nil {
+			reqParam["{{.JsonTag}}"] = {{valueToStringConvOptions .TypeStr .Name}}
+		}
+	{{- end}}
+	}{{"\n"}}{{end}}
+	{{if .ReturnType}}var data {{. | methodReturnType}}{{end}}
+	err := service.client.{{.HttpMethods | requestMethod}}(ctx, section{{.Game | camelLowerToCamel}}, realm, "{{.Url}}/", reqParam, {{if .ReturnType}}&data{{else}}nil{{end}})
+	return {{if .ReturnType}}data, err{{else}}err{{end}}
+}

@@ -1,0 +1,12 @@
+{{define "field"}}{{$depth := .Depth}}
+{{- if .T.Description}}{{commentIndentDoc .T.Description $depth}}{{end}}
+{{indentation $depth}}{{.T.Name}} {{.T.TypeStr}}{{if .T.IsStruct}} {{"{"}}
+{{- range .T.Fields}}
+{{indentation $depth}}{{template "field" (combine . (inc $depth))}}
+{{- end}}
+{{indentation $depth}}{{"}"}}{{end}}{{if .T.JsonTag}} `json:"{{.T.JsonTag}},omitempty"`{{end}}
+{{- end}}
+{{- if .Description}}// {{.Name}} {{.Description | summaryDoc}}{{end}}
+type {{.Name}} struct {{"{"}}{{range .Fields}}
+{{template "field" (combine . 1)}}{{end}}
+}
