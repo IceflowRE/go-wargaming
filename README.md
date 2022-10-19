@@ -32,7 +32,7 @@ import "github.com/IceflowRE/go-wargaming/v3/wargaming"
 ## Usage
 
 ```go
-import "github.com/IceflowRE/go-wargaming/v2/wargaming" // with go modules
+import "github.com/IceflowRE/go-wargaming/v3/wargaming" // with go modules
 import "github.com/IceflowRE/go-wargaming/wargaming"    // without go modules
 ```
 
@@ -67,14 +67,14 @@ client := wargaming.NewClient("a7f838650dcb008552966db063eeeb35", nil)
 // get World of Tanks EU account named exact "Lichtgeschwindigkeit" and return only the 'account_id' field
 res, err = client.Wot.AccountList(context.Background(), wargaming.RealmEu, "Lichtgeschwindigkeit", &wot.AccountListOptions{
 	Fields: []string{"account_id"},
-	Type_: wargaming.String("exact"),
+	Type: wargaming.String("exact"),
 })
 ```
 
 All structs for Wargaming resources use pointer values for all non-repeated fields. This allows distinguishing between unset fields and those set to a zero-value. Helper functions have been provided to easily create these pointers for string, bool, and int values. For example:
 ```go
 options := &wot.AccountListOptions{
-	Type_: wargaming.String("exact"),
+	Type: wargaming.String("exact"),
 }
 ```
 
