@@ -3,23 +3,22 @@
 package wgn
 
 import (
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
 )
 
-// WgtvVideosOptions options.
 type WgtvVideosOptions struct {
 	// Content category ID. Maximum limit: 100.
-	CategoryId []int
+	CategoryId []int `json:"category_id,omitempty"`
 	// Dated from the specified date
-	DateFrom *wgnTime.UnixTime
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
+	DateFrom *wgnTime.UnixTime `json:"date_from,omitempty"`
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
 	// "Important" mark. Min value is 0. Maximum value: 1.
-	Important *int
-	// Localization language. Default is "ru". Valid values:
+	Important *int `json:"important,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "en" - English
-	// "ru" - Русский (by default)
+	// "en" - English (by default)
+	// "ru" - Русский
 	// "pl" - Polski
 	// "de" - Deutsch
 	// "fr" - Français
@@ -31,21 +30,21 @@ type WgtvVideosOptions struct {
 	// "th" - ไทย
 	// "vi" - Tiếng Việt
 	// "ko" - 한국어
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// Number of returned entries (fewer can be returned, but not more than 1000). If the limit sent exceeds 1000, a limit of 100 is applied (by default).
-	Limit *int
+	Limit *int `json:"limit,omitempty"`
 	// Result page number. Default is 1. Min value is 1.
-	PageNo *int
+	PageNo *int `json:"page_no,omitempty"`
 	// Program ID. Maximum limit: 100.
-	ProgramId []int
+	ProgramId []int `json:"program_id,omitempty"`
 	// Game project ID. Maximum limit: 100.
-	ProjectId []int
+	ProjectId []int `json:"project_id,omitempty"`
 	// Text for search by name
-	Q *string
+	Q *string `json:"q,omitempty"`
 	// Vehicle ID. Maximum limit: 100.
-	VehicleId []int
+	VehicleId []int `json:"vehicle_id,omitempty"`
 	// Youtube ID. Maximum limit: 100.
-	VideoId []string
+	VideoId []string `json:"video_id,omitempty"`
 }
 
 type WgtvVideos struct {

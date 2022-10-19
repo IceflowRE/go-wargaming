@@ -1,8 +1,10 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgn"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgn"
 	"strconv"
 	"strings"
 )
@@ -14,26 +16,27 @@ import (
 // Deprecated: Attention! The method is deprecated.
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
+//     Valid realms: RealmAsia, RealmEu, RealmNa
 // accountId:
 //     Account ID. Min value is 1.
 func (service *WgnService) ClansMemberhistory(ctx context.Context, realm Realm, accountId int, options *wgn.ClansMemberhistoryOptions) (*wgn.ClansMemberhistory, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err
 	}
 
 	reqParam := map[string]string{
 		"account_id": strconv.Itoa(accountId),
 	}
+
 	if options != nil {
-		if options.Language != nil {
-			reqParam["language"] = *options.Language
+		if options.Fields != nil {
+			reqParam["fields"] = strings.Join(options.Fields, ",")
 		}
 		if options.Game != nil {
 			reqParam["game"] = *options.Game
 		}
-		if options.Fields != nil {
-			reqParam["fields"] = strings.Join(options.Fields, ",")
+		if options.Language != nil {
+			reqParam["language"] = *options.Language
 		}
 	}
 

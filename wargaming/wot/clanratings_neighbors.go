@@ -3,19 +3,18 @@
 package wot
 
 import (
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
 )
 
-// ClanratingsNeighborsOptions options.
 type ClanratingsNeighborsOptions struct {
 	// Ratings calculation date. Date in UNIX timestamp or ISO 8601 format. E.g.: 1376542800 or 2013-08-15T00:00:00
-	Date *wgnTime.UnixTime
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Localization language. Default is "ru". Valid values:
+	Date *wgnTime.UnixTime `json:"date,omitempty"`
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "en" - English
-	// "ru" - Русский (by default)
+	// "en" - English (by default)
+	// "ru" - Русский
 	// "pl" - Polski
 	// "de" - Deutsch
 	// "fr" - Français
@@ -27,9 +26,9 @@ type ClanratingsNeighborsOptions struct {
 	// "th" - ไทย
 	// "vi" - Tiếng Việt
 	// "ko" - 한국어
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// Number of returned entries (fewer can be returned, but not more than 50). If the limit sent exceeds 50, a limit of 5 is applied (by default).
-	Limit *int
+	Limit *int `json:"limit,omitempty"`
 }
 
 type ClanratingsNeighbors struct {
@@ -175,7 +174,7 @@ type ClanratingsNeighbors struct {
 		Value *float32 `json:"value,omitempty"`
 	} `json:"rating_fort,omitempty"`
 	// Average number of vehicles of Tier 10 per clan member
-	V10LAvg *struct {
+	V10lAvg *struct {
 		// Position
 		Rank *int `json:"rank,omitempty"`
 		// Change of position in rating

@@ -1,9 +1,11 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/internal"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wot"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/internal"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wot"
 	"strings"
 )
 
@@ -14,29 +16,30 @@ import (
 // Deprecated: Attention! The method is deprecated.
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
-// type_:
+//     Valid realms: RealmAsia, RealmEu, RealmNa
+// typ:
 //     Rating period. For valid values, check the Types of ratings method.
-func (service *WotService) RatingsDates(ctx context.Context, realm Realm, type_ string, options *wot.RatingsDatesOptions) (*wot.RatingsDates, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+func (service *WotService) RatingsDates(ctx context.Context, realm Realm, typ string, options *wot.RatingsDatesOptions) (*wot.RatingsDates, error) {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err
 	}
 
 	reqParam := map[string]string{
-		"type": type_,
+		"type": typ,
 	}
+
 	if options != nil {
-		if options.Language != nil {
-			reqParam["language"] = *options.Language
-		}
-		if options.Fields != nil {
-			reqParam["fields"] = strings.Join(options.Fields, ",")
+		if options.AccountId != nil {
+			reqParam["account_id"] = internal.SliceIntToString(options.AccountId, ",")
 		}
 		if options.BattleType != nil {
 			reqParam["battle_type"] = *options.BattleType
 		}
-		if options.AccountId != nil {
-			reqParam["account_id"] = internal.SliceIntToString(options.AccountId, ",")
+		if options.Fields != nil {
+			reqParam["fields"] = strings.Join(options.Fields, ",")
+		}
+		if options.Language != nil {
+			reqParam["language"] = *options.Language
 		}
 	}
 

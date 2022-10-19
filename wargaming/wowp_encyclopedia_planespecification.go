@@ -1,9 +1,11 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/internal"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wowp"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/internal"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wowp"
 	"strconv"
 	"strings"
 )
@@ -13,29 +15,30 @@ import (
 // https://developers.wargaming.net/reference/all/wowp/encyclopedia/planespecification
 //
 // realm:
-//     Valid realms: RealmEu, RealmNa, RealmRu
+//     Valid realms: RealmEu, RealmNa
 // planeId:
 //     Aircraft ID
 func (service *WowpService) EncyclopediaPlanespecification(ctx context.Context, realm Realm, planeId int, options *wowp.EncyclopediaPlanespecificationOptions) (*wowp.EncyclopediaPlanespecification, error) {
-	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
 		return nil, err
 	}
 
 	reqParam := map[string]string{
 		"plane_id": strconv.Itoa(planeId),
 	}
+
 	if options != nil {
-		if options.ModuleId != nil {
-			reqParam["module_id"] = internal.SliceIntToString(options.ModuleId, ",")
-		}
-		if options.Language != nil {
-			reqParam["language"] = *options.Language
+		if options.BindId != nil {
+			reqParam["bind_id"] = internal.SliceIntToString(options.BindId, ",")
 		}
 		if options.Fields != nil {
 			reqParam["fields"] = strings.Join(options.Fields, ",")
 		}
-		if options.BindId != nil {
-			reqParam["bind_id"] = internal.SliceIntToString(options.BindId, ",")
+		if options.Language != nil {
+			reqParam["language"] = *options.Language
+		}
+		if options.ModuleId != nil {
+			reqParam["module_id"] = internal.SliceIntToString(options.ModuleId, ",")
 		}
 	}
 

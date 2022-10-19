@@ -1,8 +1,10 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wows"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wows"
 	"strconv"
 	"strings"
 )
@@ -12,50 +14,51 @@ import (
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/shipprofile
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
+//     Valid realms: RealmAsia, RealmEu, RealmNa
 // shipId:
 //     Ship ID
 func (service *WowsService) EncyclopediaShipprofile(ctx context.Context, realm Realm, shipId int, options *wows.EncyclopediaShipprofileOptions) (*wows.EncyclopediaShipprofile, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err
 	}
 
 	reqParam := map[string]string{
 		"ship_id": strconv.Itoa(shipId),
 	}
+
 	if options != nil {
-		if options.TorpedoesId != nil {
-			reqParam["torpedoes_id"] = strconv.Itoa(*options.TorpedoesId)
-		}
-		if options.TorpedoBomberId != nil {
-			reqParam["torpedo_bomber_id"] = strconv.Itoa(*options.TorpedoBomberId)
-		}
-		if options.Language != nil {
-			reqParam["language"] = *options.Language
-		}
-		if options.HullId != nil {
-			reqParam["hull_id"] = strconv.Itoa(*options.HullId)
-		}
-		if options.FlightControlId != nil {
-			reqParam["flight_control_id"] = strconv.Itoa(*options.FlightControlId)
-		}
-		if options.FireControlId != nil {
-			reqParam["fire_control_id"] = strconv.Itoa(*options.FireControlId)
-		}
-		if options.FighterId != nil {
-			reqParam["fighter_id"] = strconv.Itoa(*options.FighterId)
-		}
-		if options.Fields != nil {
-			reqParam["fields"] = strings.Join(options.Fields, ",")
-		}
-		if options.EngineId != nil {
-			reqParam["engine_id"] = strconv.Itoa(*options.EngineId)
+		if options.ArtilleryId != nil {
+			reqParam["artillery_id"] = strconv.Itoa(*options.ArtilleryId)
 		}
 		if options.DiveBomberId != nil {
 			reqParam["dive_bomber_id"] = strconv.Itoa(*options.DiveBomberId)
 		}
-		if options.ArtilleryId != nil {
-			reqParam["artillery_id"] = strconv.Itoa(*options.ArtilleryId)
+		if options.EngineId != nil {
+			reqParam["engine_id"] = strconv.Itoa(*options.EngineId)
+		}
+		if options.Fields != nil {
+			reqParam["fields"] = strings.Join(options.Fields, ",")
+		}
+		if options.FighterId != nil {
+			reqParam["fighter_id"] = strconv.Itoa(*options.FighterId)
+		}
+		if options.FireControlId != nil {
+			reqParam["fire_control_id"] = strconv.Itoa(*options.FireControlId)
+		}
+		if options.FlightControlId != nil {
+			reqParam["flight_control_id"] = strconv.Itoa(*options.FlightControlId)
+		}
+		if options.HullId != nil {
+			reqParam["hull_id"] = strconv.Itoa(*options.HullId)
+		}
+		if options.Language != nil {
+			reqParam["language"] = *options.Language
+		}
+		if options.TorpedoBomberId != nil {
+			reqParam["torpedo_bomber_id"] = strconv.Itoa(*options.TorpedoBomberId)
+		}
+		if options.TorpedoesId != nil {
+			reqParam["torpedoes_id"] = strconv.Itoa(*options.TorpedoesId)
 		}
 	}
 

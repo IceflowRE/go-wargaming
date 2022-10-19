@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
@@ -18,6 +18,7 @@ type response struct {
 
 // Client for all api requests.
 // As a quick start:
+//
 //	// create client
 //	client := wargaming.NewClient("a7f838650dcb008552966db063eeeb35", nil)
 //	// get account list
@@ -34,38 +35,22 @@ type response struct {
 //	res, err = client.Wot.AccountList(context.Background(), wargaming.realmEu, "Lichtgeschwindigkeit", &wot.AccountListOptions{
 //		Fields: []string{"nickname"},
 //	})
+//
 // or with a custom http.Client
-//	client := wargaming.NewClient("a7f838650dcb008552966db063eeeb35", &wargaming.ClientOptions{
-//    HTTPClient: &http.Client{
-//        Timeout: 10 * time.Second,
-//    },
-//	})
+//
+//		client := wargaming.NewClient("a7f838650dcb008552966db063eeeb35", &wargaming.ClientOptions{
+//	   HTTPClient: &http.Client{
+//	       Timeout: 10 * time.Second,
+//	   },
+//		})
 type Client struct {
+	wgServices
 	httpClient *http.Client
 	// Wargaming.net application ID.
 	applicationId string
 
 	// Reuse a single struct instead of allocating one for each service on the heap.
 	common service
-	// AUTO GENERATION START FIELDS
-
-	// Wargaming.NET
-	Wgn *WgnService
-	// World Of Tanks
-	Wot *WotService
-	// World Of Tanks Blitz
-	Wotb *WotbService
-	// World Of Tanks Console
-	Wotx *WotxService
-	// World Of Warplanes
-	Wowp *WowpService
-	// World Of Warships
-	Wows *WowsService
-	// AUTO GENERATION END FIELDS
-}
-
-type service struct {
-	client *Client
 }
 
 type ClientOptions struct {
@@ -86,16 +71,7 @@ func NewClient(applicationId string, options *ClientOptions) *Client {
 		}
 	}
 	client.common.client = client
-
-	// AUTO GENERATION START INIT
-
-	client.Wgn = (*WgnService)(&client.common)
-	client.Wot = (*WotService)(&client.common)
-	client.Wotb = (*WotbService)(&client.common)
-	client.Wotx = (*WotxService)(&client.common)
-	client.Wowp = (*WowpService)(&client.common)
-	client.Wows = (*WowsService)(&client.common)
-	// AUTO GENERATION END INIT
+	client.wgServices = newWgServices(&client.common)
 	return client
 }
 
@@ -127,7 +103,7 @@ func (client *Client) request(req *http.Request, returnData any) error {
 		return BadStatusCode(resp.StatusCode)
 	}
 
-	respBytes, err := ioutil.ReadAll(resp.Body)
+	respBytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return err
 	}

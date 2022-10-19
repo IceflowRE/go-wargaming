@@ -1,9 +1,11 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/internal"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wowp"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/internal"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wowp"
 	"strconv"
 	"strings"
 )
@@ -13,29 +15,30 @@ import (
 // https://developers.wargaming.net/reference/all/wowp/ratings/accounts
 //
 // realm:
-//     Valid realms: RealmEu, RealmNa, RealmRu
+//     Valid realms: RealmEu, RealmNa
 // accountId:
 //     Player account ID. Maximum limit: 100.
-// type_:
+// typ:
 //     Rating period. For valid values, check the Types of ratings method.
-func (service *WowpService) RatingsAccounts(ctx context.Context, realm Realm, accountId []int, type_ string, options *wowp.RatingsAccountsOptions) (*wowp.RatingsAccounts, error) {
-	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
+func (service *WowpService) RatingsAccounts(ctx context.Context, realm Realm, accountId []int, typ string, options *wowp.RatingsAccountsOptions) (*wowp.RatingsAccounts, error) {
+	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
 		return nil, err
 	}
 
 	reqParam := map[string]string{
 		"account_id": internal.SliceIntToString(accountId, ","),
-		"type":       type_,
+		"type":       typ,
 	}
+
 	if options != nil {
-		if options.Language != nil {
-			reqParam["language"] = *options.Language
+		if options.Date != nil {
+			reqParam["date"] = strconv.FormatInt(options.Date.Unix(), 10)
 		}
 		if options.Fields != nil {
 			reqParam["fields"] = strings.Join(options.Fields, ",")
 		}
-		if options.Date != nil {
-			reqParam["date"] = strconv.FormatInt(options.Date.Unix(), 10)
+		if options.Language != nil {
+			reqParam["language"] = *options.Language
 		}
 	}
 

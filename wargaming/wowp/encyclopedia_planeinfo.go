@@ -2,14 +2,13 @@
 
 package wowp
 
-// EncyclopediaPlaneinfoOptions options.
 type EncyclopediaPlaneinfoOptions struct {
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Localization language. Default is "ru". Valid values:
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "en" - English
-	// "ru" - Русский (by default)
+	// "en" - English (by default)
+	// "ru" - Русский
 	// "pl" - Polski
 	// "de" - Deutsch
 	// "fr" - Français
@@ -20,7 +19,7 @@ type EncyclopediaPlaneinfoOptions struct {
 	// "th" - ไทย
 	// "vi" - Tiếng Việt
 	// "ko" - 한국어
-	Language *string
+	Language *string `json:"language,omitempty"`
 }
 
 type EncyclopediaPlaneinfo struct {
@@ -31,7 +30,7 @@ type EncyclopediaPlaneinfo struct {
 		// Qualification of crew member
 		Role *string `json:"role,omitempty"`
 		// Localized role field
-		RoleI18N *string `json:"role_i18n,omitempty"`
+		RoleI18n *string `json:"role_i18n,omitempty"`
 	} `json:"crew,omitempty"`
 	// Localized description of aircraft
 	Description *string `json:"description,omitempty"`
@@ -88,11 +87,11 @@ type EncyclopediaPlaneinfo struct {
 	// Name
 	Name *string `json:"name,omitempty"`
 	// Localized name field
-	NameI18N *string `json:"name_i18n,omitempty"`
+	NameI18n *string `json:"name_i18n,omitempty"`
 	// Nation
 	Nation *string `json:"nation,omitempty"`
 	// Localized nation field
-	NationI18N *string `json:"nation_i18n,omitempty"`
+	NationI18n *string `json:"nation_i18n,omitempty"`
 	// Descendants of the vehicle first generation
 	NextPlanes []int `json:"next_planes,omitempty"`
 	// Aircraft ID
@@ -104,9 +103,9 @@ type EncyclopediaPlaneinfo struct {
 	// Purchase cost in gold
 	PriceGold *int `json:"price_gold,omitempty"`
 	// Localized short name of aircraft
-	ShortName18N *string `json:"short_name_18n,omitempty"`
+	ShortName18n *string `json:"short_name_18n,omitempty"`
 	// Localized short name of aircraft
-	ShortNameI18N *string `json:"short_name_i18n,omitempty"`
+	ShortNameI18n *string `json:"short_name_i18n,omitempty"`
 	// Type
-	Type_ *string `json:"type,omitempty"`
+	Type *string `json:"type,omitempty"`
 }

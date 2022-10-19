@@ -1,9 +1,11 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/internal"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wotx"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/internal"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wotx"
 	"strconv"
 	"strings"
 )
@@ -24,21 +26,22 @@ func (service *WotxService) TanksStats(ctx context.Context, realm Realm, account
 	reqParam := map[string]string{
 		"account_id": strconv.Itoa(accountId),
 	}
+
 	if options != nil {
-		if options.TankId != nil {
-			reqParam["tank_id"] = internal.SliceIntToString(options.TankId, ",")
-		}
-		if options.Language != nil {
-			reqParam["language"] = *options.Language
-		}
-		if options.InGarage != nil {
-			reqParam["in_garage"] = *options.InGarage
+		if options.AccessToken != nil {
+			reqParam["access_token"] = *options.AccessToken
 		}
 		if options.Fields != nil {
 			reqParam["fields"] = strings.Join(options.Fields, ",")
 		}
-		if options.AccessToken != nil {
-			reqParam["access_token"] = *options.AccessToken
+		if options.InGarage != nil {
+			reqParam["in_garage"] = *options.InGarage
+		}
+		if options.Language != nil {
+			reqParam["language"] = *options.Language
+		}
+		if options.TankId != nil {
+			reqParam["tank_id"] = internal.SliceIntToString(options.TankId, ",")
 		}
 	}
 

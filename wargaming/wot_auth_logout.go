@@ -1,3 +1,5 @@
+// Auto generated file!
+
 package wargaming
 
 import (
@@ -10,12 +12,12 @@ import (
 // https://developers.wargaming.net/reference/all/wot/auth/logout
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
+//     Valid realms: RealmAsia, RealmEu, RealmNa
 // accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 func (service *WotService) AuthLogout(ctx context.Context, realm Realm, accessToken string) error {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
-		return nil
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
+		return err
 	}
 
 	reqParam := map[string]string{

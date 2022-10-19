@@ -2,29 +2,28 @@
 
 package wows
 
-// EncyclopediaCrewsOptions options.
 type EncyclopediaCrewsOptions struct {
 	// Commander ID. Maximum limit: 100.
-	CommanderId []int
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Localization language. Default is "ru". Valid values:
+	CommanderId []int `json:"commander_id,omitempty"`
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
 	// "cs" - Čeština
 	// "de" - Deutsch
-	// "en" - English
+	// "en" - English (by default)
 	// "es" - Español
 	// "fr" - Français
 	// "ja" - 日本語
 	// "pl" - Polski
-	// "ru" - Русский (by default)
+	// "ru" - Русский
 	// "th" - ไทย
 	// "zh-tw" - 繁體中文
 	// "tr" - Türkçe
 	// "zh-cn" - 中文
 	// "pt-br" - Português do Brasil
 	// "es-mx" - Español (México)
-	Language *string
+	Language *string `json:"language,omitempty"`
 }
 
 type EncyclopediaCrews struct {
@@ -42,9 +41,9 @@ type EncyclopediaCrews struct {
 	GoldTrainingLevel *int `json:"gold_training_level,omitempty"`
 	// The list of the Commander images:
 	//
-	// 1—URL to the image of the Commander with 1–7 skill points;
-	// 8—URL to the image of the Commander with 8–13 skill points;
-	// 14—URL to the image of the Commander with 14–20 skill points;.
+	// 1-URL to the image of the Commander with 1–7 skill points;
+	// 8-URL to the image of the Commander with 8–13 skill points;
+	// 14-URL to the image of the Commander with 14–20 skill points;.
 	//
 	// If only the value for the key 1 is specified, the Commander has not earned skill points yet.
 	Icons map[string]string `json:"icons,omitempty"`

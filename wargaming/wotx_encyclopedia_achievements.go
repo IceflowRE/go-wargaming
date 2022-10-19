@@ -1,8 +1,10 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wotx"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wotx"
 	"strings"
 )
 
@@ -18,15 +20,16 @@ func (service *WotxService) EncyclopediaAchievements(ctx context.Context, realm 
 	}
 
 	reqParam := map[string]string{}
+
 	if options != nil {
-		if options.Language != nil {
-			reqParam["language"] = *options.Language
+		if options.Category != nil {
+			reqParam["category"] = strings.Join(options.Category, ",")
 		}
 		if options.Fields != nil {
 			reqParam["fields"] = strings.Join(options.Fields, ",")
 		}
-		if options.Category != nil {
-			reqParam["category"] = strings.Join(options.Category, ",")
+		if options.Language != nil {
+			reqParam["language"] = *options.Language
 		}
 	}
 

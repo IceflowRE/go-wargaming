@@ -26,39 +26,6 @@ func (realm realmS) TLD() string {
 	return realm.tld
 }
 
-var (
-	// RealmAsia Asia.
-	RealmAsia = realmS{
-		name:  "Asia",
-		index: "asia",
-		tld:   "asia",
-	}
-	// RealmEu Europe.
-	RealmEu = realmS{
-		name:  "Europe",
-		index: "eu",
-		tld:   "eu",
-	}
-	// RealmNa North America.
-	RealmNa = realmS{
-		name:  "North America",
-		index: "na",
-		tld:   "com",
-	}
-	// RealmRu CIS.
-	RealmRu = realmS{
-		name:  "CIS",
-		index: "ru",
-		tld:   "ru",
-	}
-	// RealmWgcb Wgcb.
-	RealmWgcb = realmS{
-		name:  "Wgcb",
-		index: "wgcb",
-		tld:   "com",
-	}
-)
-
 type InvalidRealm struct {
 	Realm Realm
 }

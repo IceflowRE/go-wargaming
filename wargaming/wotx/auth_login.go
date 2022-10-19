@@ -3,20 +3,19 @@
 package wotx
 
 import (
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
 )
 
-// AuthLoginOptions options.
 type AuthLoginOptions struct {
 	// Layout for mobile applications. Valid values:
 	//
 	// "page" - Page
 	// "popup" - Popup window
 	// "touch" - Mobile view
-	Display *string
+	Display *string `json:"display,omitempty"`
 	// Access_token expiration time in UNIX. Delta can also be specified in seconds.
 	// Expiration time and delta must not exceed two weeks from the current time.
-	ExpiresAt *wgnTime.UnixTime
+	ExpiresAt *wgnTime.UnixTime `json:"expires_at,omitempty"`
 	// Authentication form localization language. Default is "en". Valid values:
 	//
 	// "cs" - Czech
@@ -34,12 +33,12 @@ type AuthLoginOptions struct {
 	// "vi" - Vietnamese
 	// "zh-tw" - Traditional Chinese
 	// "zh-cn" - Simplified Chinese
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// If parameter nofollow=1 is passed in, the user is not redirected. URL is returned in response. Default is 0. Min value is 0. Maximum value: 1.
-	Nofollow *int
+	Nofollow *int `json:"nofollow,omitempty"`
 	// URL where user is redirected after authentication.
-	// By default: api-console.worldoftanks.com/wotx//blank/
-	RedirectUri *string
+	// By default: api-console.worldoftanks.com/wotx	//blank/
+	RedirectUri *string `json:"redirect_uri,omitempty"`
 }
 
 type AuthLogin struct {

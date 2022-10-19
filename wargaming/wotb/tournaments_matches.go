@@ -3,27 +3,32 @@
 package wotb
 
 import (
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
 )
 
-// TournamentsMatchesOptions options.
 type TournamentsMatchesOptions struct {
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
 	// Group ID that can be retrieved from the Tournaments Stages method. Maximum limit: 10.
-	GroupId []int
-	// Localization language. Default is "ru". Valid values:
+	GroupId []int `json:"group_id,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "ru" - Русский (by default)
-	Language *string
+	// "en" - English (by default)
+	// "cs" - Čeština
+	// "de" - Deutsch
+	// "es" - Español
+	// "fr" - Français
+	// "pl" - Polski
+	// "tr" - Türkçe
+	Language *string `json:"language,omitempty"`
 	// Number of returned entries. Default is 10. Min value is 1. Maximum value: 25.
-	Limit *int
+	Limit *int `json:"limit,omitempty"`
 	// Result page number. Default is 1. Min value is 1.
-	PageNo *int
+	PageNo *int `json:"page_no,omitempty"`
 	// Tour number. Maximum limit: 10.
-	RoundNumber []int
+	RoundNumber []int `json:"round_number,omitempty"`
 	// Team ID. Maximum limit: 10.
-	TeamId []int
+	TeamId []int `json:"team_id,omitempty"`
 }
 
 type TournamentsMatches struct {

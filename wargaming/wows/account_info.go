@@ -3,13 +3,12 @@
 package wows
 
 import (
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
 )
 
-// AccountInfoOptions options.
 type AccountInfoOptions struct {
 	// Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
-	AccessToken *string
+	AccessToken *string `json:"access_token,omitempty"`
 	// Extra fields that will be added to the response. Valid values:
 	//
 	// "private.grouped_contacts"
@@ -28,26 +27,26 @@ type AccountInfoOptions struct {
 	// "statistics.rank_div2"
 	// "statistics.rank_div3"
 	// "statistics.rank_solo"
-	Extra []string
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Localization language. Default is "ru". Valid values:
+	Extra []string `json:"extra,omitempty"`
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
 	// "cs" - Čeština
 	// "de" - Deutsch
-	// "en" - English
+	// "en" - English (by default)
 	// "es" - Español
 	// "fr" - Français
 	// "ja" - 日本語
 	// "pl" - Polski
-	// "ru" - Русский (by default)
+	// "ru" - Русский
 	// "th" - ไทย
 	// "zh-tw" - 繁體中文
 	// "tr" - Türkçe
 	// "zh-cn" - 中文
 	// "pt-br" - Português do Brasil
 	// "es-mx" - Español (México)
-	Language *string
+	Language *string `json:"language,omitempty"`
 }
 
 type AccountInfo struct {

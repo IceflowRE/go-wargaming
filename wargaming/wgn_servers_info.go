@@ -1,8 +1,10 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgn"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgn"
 	"strings"
 )
 
@@ -11,22 +13,23 @@ import (
 // https://developers.wargaming.net/reference/all/wgn/servers/info
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
+//     Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WgnService) ServersInfo(ctx context.Context, realm Realm, options *wgn.ServersInfoOptions) (*wgn.ServersInfo, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err
 	}
 
 	reqParam := map[string]string{}
+
 	if options != nil {
-		if options.Language != nil {
-			reqParam["language"] = *options.Language
+		if options.Fields != nil {
+			reqParam["fields"] = strings.Join(options.Fields, ",")
 		}
 		if options.Game != nil {
 			reqParam["game"] = strings.Join(options.Game, ",")
 		}
-		if options.Fields != nil {
-			reqParam["fields"] = strings.Join(options.Fields, ",")
+		if options.Language != nil {
+			reqParam["language"] = *options.Language
 		}
 	}
 

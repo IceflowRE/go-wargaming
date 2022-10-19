@@ -2,33 +2,32 @@
 
 package wows
 
-// EncyclopediaConsumablesOptions options.
 type EncyclopediaConsumablesOptions struct {
 	// Consumable ID. Maximum limit: 100.
-	ConsumableId []int
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Localization language. Default is "ru". Valid values:
+	ConsumableId []int `json:"consumable_id,omitempty"`
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
 	// "cs" - Čeština
 	// "de" - Deutsch
-	// "en" - English
+	// "en" - English (by default)
 	// "es" - Español
 	// "fr" - Français
 	// "ja" - 日本語
 	// "pl" - Polski
-	// "ru" - Русский (by default)
+	// "ru" - Русский
 	// "th" - ไทย
 	// "zh-tw" - 繁體中文
 	// "tr" - Türkçe
 	// "zh-cn" - 中文
 	// "pt-br" - Português do Brasil
 	// "es-mx" - Español (México)
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
-	Limit *int
+	Limit *int `json:"limit,omitempty"`
 	// Page limit. Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default). Default is 1.
-	PageNo *int
+	PageNo *int `json:"page_no,omitempty"`
 	// Consumable type. Valid values:
 	//
 	// "Camouflage" - Camouflages
@@ -36,7 +35,7 @@ type EncyclopediaConsumablesOptions struct {
 	// "Permoflage" - Permanent camouflages
 	// "Modernization" - Upgrades
 	// "Skin" - Ship camouflages
-	Type_ *string
+	Type *string `json:"type,omitempty"`
 }
 
 type EncyclopediaConsumables struct {
@@ -60,5 +59,5 @@ type EncyclopediaConsumables struct {
 		Value *float32 `json:"value,omitempty"`
 	} `json:"profile,omitempty"`
 	// Consumable type
-	Type_ *string `json:"type,omitempty"`
+	Type *string `json:"type,omitempty"`
 }

@@ -3,21 +3,26 @@
 package wotb
 
 import (
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
 )
 
-// TournamentsStagesOptions options.
 type TournamentsStagesOptions struct {
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Localization language. Default is "ru". Valid values:
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "ru" - Русский (by default)
-	Language *string
+	// "en" - English (by default)
+	// "cs" - Čeština
+	// "de" - Deutsch
+	// "es" - Español
+	// "fr" - Français
+	// "pl" - Polski
+	// "tr" - Türkçe
+	Language *string `json:"language,omitempty"`
 	// Number of returned entries. Default is 10. Min value is 1. Maximum value: 25.
-	Limit *int
+	Limit *int `json:"limit,omitempty"`
 	// Result page number. Default is 1. Min value is 1.
-	PageNo *int
+	PageNo *int `json:"page_no,omitempty"`
 }
 
 type TournamentsStages struct {
@@ -51,16 +56,17 @@ type TournamentsStages struct {
 	// Stage state. Valid values:
 	//
 	//
-	// draft — stage created as draft
+	// draft - stage created as draft
 	//
 	//
-	// groups_ready —  stage has completed groups
+	// groups_ready -  stage has completed groups
 	//
 	//
-	// schedule_ready — stage has a finalized schedule
+	// schedule_ready - stage has a finalized schedule
 	//
 	//
-	// complete — stage completed
+	// complete - stage completed
+	//
 	State *string `json:"state,omitempty"`
 	// Stage name
 	Title *string `json:"title,omitempty"`
@@ -69,14 +75,15 @@ type TournamentsStages struct {
 	// Bracket type of the stage. Valid values:
 	//
 	//
-	// RR — round robin
+	// RR - round robin
 	//
 	//
-	// SE — single elimination
+	// SE - single elimination
 	//
 	//
-	// DE — double elimination
-	Type_ *string `json:"type,omitempty"`
+	// DE - double elimination
+	//
+	Type *string `json:"type,omitempty"`
 	// Number of victories to win the match
 	VictoryLimit *int `json:"victory_limit,omitempty"`
 }

@@ -3,23 +3,28 @@
 package wotb
 
 import (
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
 )
 
-// TournamentsListOptions options.
 type TournamentsListOptions struct {
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Localization language. Default is "ru". Valid values:
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "ru" - Русский (by default)
-	Language *string
+	// "en" - English (by default)
+	// "cs" - Čeština
+	// "de" - Deutsch
+	// "es" - Español
+	// "fr" - Français
+	// "pl" - Polski
+	// "tr" - Türkçe
+	Language *string `json:"language,omitempty"`
 	// Page limit. Number of tournaments in one page. Default is 10. Min value is 1. Maximum value: 25.
-	Limit *int
+	Limit *int `json:"limit,omitempty"`
 	// Result page number. Default is 1. Min value is 1.
-	PageNo *int
+	PageNo *int `json:"page_no,omitempty"`
 	// First letters in tournament name for search. Minimum length: 2 characters. Maximum length: 50 characters.
-	Search *string
+	Search *string `json:"search,omitempty"`
 	// Tournament status. Maximum limit: 100. Valid values:
 	//
 	// "upcoming" - Tournament is planned
@@ -28,7 +33,7 @@ type TournamentsListOptions struct {
 	// "running" - The first match has started
 	// "finished" - The last match among all stages has been played
 	// "complete" - Tournament has been completed
-	Status []string
+	Status []string `json:"status,omitempty"`
 }
 
 type TournamentsList struct {

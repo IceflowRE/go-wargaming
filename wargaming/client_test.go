@@ -1,11 +1,13 @@
+// This file only checks if the API endpoint responds and unmarshalling. It does not check the content.
+
 package wargaming
 
 import (
 	"context"
 	"errors"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgn"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wot"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wotx"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgn"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wot"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wotx"
 	"net/http"
 	"os"
 	"testing"
@@ -802,31 +804,6 @@ func TestApi(test *testing.T) {
 	delay()
 	test.Run("WgnAccountInfo", func(test *testing.T) {
 		_, err := client.Wgn.AccountInfo(context.Background(), RealmEu, []int{wotAccountId}, nil)
-		checkErr(test, err)
-	})
-	delay()
-	test.Run("WgnWargagContent", func(test *testing.T) {
-		_, err := client.Wgn.WargagContent(context.Background(), RealmRu, nil)
-		checkErr(test, err)
-	})
-	delay()
-	test.Run("WgnWargagSearch", func(test *testing.T) {
-		_, err := client.Wgn.WargagSearch(context.Background(), RealmRu, "wot", nil)
-		checkErr(test, err)
-	})
-	delay()
-	test.Run("WgnWargagComments", func(test *testing.T) {
-		_, err := client.Wgn.WargagComments(context.Background(), RealmRu, 581891, nil)
-		checkErr(test, err)
-	})
-	delay()
-	test.Run("WgnWargagCategories", func(test *testing.T) {
-		_, err := client.Wgn.WargagCategories(context.Background(), RealmRu, "picture", nil)
-		checkErr(test, err)
-	})
-	delay()
-	test.Run("WgnWargagTags", func(test *testing.T) {
-		_, err := client.Wgn.WargagTags(context.Background(), RealmRu, nil)
 		checkErr(test, err)
 	})
 	delay()

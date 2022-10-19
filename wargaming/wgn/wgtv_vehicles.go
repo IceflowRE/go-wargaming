@@ -2,14 +2,13 @@
 
 package wgn
 
-// WgtvVehiclesOptions options.
 type WgtvVehiclesOptions struct {
 	// Content category ID. Maximum limit: 100.
-	CategoryId []int
+	CategoryId []int `json:"category_id,omitempty"`
 	// Program ID. Maximum limit: 100.
-	ProgramId []int
+	ProgramId []int `json:"program_id,omitempty"`
 	// Game project ID. Maximum limit: 100.
-	ProjectId []int
+	ProjectId []int `json:"project_id,omitempty"`
 }
 
 type WgtvVehicles struct {

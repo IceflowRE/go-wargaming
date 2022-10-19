@@ -2,14 +2,13 @@
 
 package wot
 
-// EncyclopediaTankenginesOptions options.
 type EncyclopediaTankenginesOptions struct {
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Localization language. Default is "ru". Valid values:
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "en" - English
-	// "ru" - Русский (by default)
+	// "en" - English (by default)
+	// "ru" - Русский
 	// "pl" - Polski
 	// "de" - Deutsch
 	// "fr" - Français
@@ -21,11 +20,11 @@ type EncyclopediaTankenginesOptions struct {
 	// "th" - ไทย
 	// "vi" - Tiếng Việt
 	// "ko" - 한국어
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// Module ID. Maximum limit: 1000.
-	ModuleId []int
+	ModuleId []int `json:"module_id,omitempty"`
 	// Nation. Maximum limit: 100.
-	Nation []string
+	Nation []string `json:"nation,omitempty"`
 }
 
 type EncyclopediaTankengines struct {
@@ -38,11 +37,11 @@ type EncyclopediaTankengines struct {
 	// Vehicle name
 	Name *string `json:"name,omitempty"`
 	// Localized name field
-	NameI18N *string `json:"name_i18n,omitempty"`
+	NameI18n *string `json:"name_i18n,omitempty"`
 	// Nation
 	Nation *string `json:"nation,omitempty"`
 	// Localized nation field
-	NationI18N *string `json:"nation_i18n,omitempty"`
+	NationI18n *string `json:"nation_i18n,omitempty"`
 	// Power
 	Power *int `json:"power,omitempty"`
 	// Purchase cost in credits

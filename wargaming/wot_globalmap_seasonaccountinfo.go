@@ -1,8 +1,10 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wot"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wot"
 	"strconv"
 	"strings"
 )
@@ -12,7 +14,7 @@ import (
 // https://developers.wargaming.net/reference/all/wot/globalmap/seasonaccountinfo
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
+//     Valid realms: RealmAsia, RealmEu, RealmNa
 // accountId:
 //     Account ID. Min value is 1.
 // seasonId:
@@ -24,7 +26,7 @@ import (
 //     "8" - Vehicles of Tier 8
 //     "10" - Vehicles of Tier 10
 func (service *WotService) GlobalmapSeasonaccountinfo(ctx context.Context, realm Realm, accountId int, seasonId string, vehicleLevel []string, options *wot.GlobalmapSeasonaccountinfoOptions) (*wot.GlobalmapSeasonaccountinfo, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err
 	}
 
@@ -33,6 +35,7 @@ func (service *WotService) GlobalmapSeasonaccountinfo(ctx context.Context, realm
 		"season_id":     seasonId,
 		"vehicle_level": strings.Join(vehicleLevel, ","),
 	}
+
 	if options != nil {
 		if options.Fields != nil {
 			reqParam["fields"] = strings.Join(options.Fields, ",")

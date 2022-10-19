@@ -1,9 +1,11 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/internal"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wotb"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/internal"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wotb"
 	"strings"
 )
 
@@ -12,26 +14,27 @@ import (
 // https://developers.wargaming.net/reference/all/wotb/clans/accountinfo
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
+//     Valid realms: RealmAsia, RealmEu, RealmNa
 // accountId:
 //     Account ID. Maximum limit: 100. Min value is 1.
 func (service *WotbService) ClansAccountinfo(ctx context.Context, realm Realm, accountId []int, options *wotb.ClansAccountinfoOptions) (*wotb.ClansAccountinfo, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err
 	}
 
 	reqParam := map[string]string{
 		"account_id": internal.SliceIntToString(accountId, ","),
 	}
+
 	if options != nil {
-		if options.Language != nil {
-			reqParam["language"] = *options.Language
+		if options.Extra != nil {
+			reqParam["extra"] = strings.Join(options.Extra, ",")
 		}
 		if options.Fields != nil {
 			reqParam["fields"] = strings.Join(options.Fields, ",")
 		}
-		if options.Extra != nil {
-			reqParam["extra"] = strings.Join(options.Extra, ",")
+		if options.Language != nil {
+			reqParam["language"] = *options.Language
 		}
 	}
 

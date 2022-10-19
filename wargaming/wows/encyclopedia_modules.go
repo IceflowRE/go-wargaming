@@ -2,33 +2,32 @@
 
 package wows
 
-// EncyclopediaModulesOptions options.
 type EncyclopediaModulesOptions struct {
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Localization language. Default is "ru". Valid values:
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
 	// "cs" - Čeština
 	// "de" - Deutsch
-	// "en" - English
+	// "en" - English (by default)
 	// "es" - Español
 	// "fr" - Français
 	// "ja" - 日本語
 	// "pl" - Polski
-	// "ru" - Русский (by default)
+	// "ru" - Русский
 	// "th" - ไทย
 	// "zh-tw" - 繁體中文
 	// "tr" - Türkçe
 	// "zh-cn" - 中文
 	// "pt-br" - Português do Brasil
 	// "es-mx" - Español (México)
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
-	Limit *int
+	Limit *int `json:"limit,omitempty"`
 	// Module ID. Maximum limit: 100.
-	ModuleId []int
+	ModuleId []int `json:"module_id,omitempty"`
 	// Result page number. Default is 1. Min value is 1.
-	PageNo *int
+	PageNo *int `json:"page_no,omitempty"`
 	// Module type. Valid values:
 	//
 	// "Artillery" - Main battery
@@ -40,7 +39,7 @@ type EncyclopediaModulesOptions struct {
 	// "Fighter" - Fighters
 	// "TorpedoBomber" - Torpedo Bombers
 	// "DiveBomber" - Dive bombers
-	Type_ *string
+	Type *string `json:"type,omitempty"`
 }
 
 type EncyclopediaModules struct {
@@ -61,9 +60,9 @@ type EncyclopediaModules struct {
 			// Rate of fire (rounds / min)
 			GunRate *float32 `json:"gun_rate,omitempty"`
 			// Maximum Damage caused by Armor Piercing Shells
-			MaxDamageAp *int `json:"max_damage_AP,omitempty"`
+			MaxDamageAP *int `json:"max_damage_AP,omitempty"`
 			// Maximum Damage caused by High Explosive Shells
-			MaxDamageHe *int `json:"max_damage_HE,omitempty"`
+			MaxDamageHE *int `json:"max_damage_HE,omitempty"`
 			// 180 Degree Turn Time (sec)
 			RotationTime *float32 `json:"rotation_time,omitempty"`
 		} `json:"artillery,omitempty"`
@@ -171,5 +170,5 @@ type EncyclopediaModules struct {
 	// Tag
 	Tag *string `json:"tag,omitempty"`
 	// Module type
-	Type_ *string `json:"type,omitempty"`
+	Type *string `json:"type,omitempty"`
 }

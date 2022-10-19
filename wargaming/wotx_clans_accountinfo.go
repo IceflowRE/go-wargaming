@@ -1,9 +1,11 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/internal"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wotx"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/internal"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wotx"
 	"strings"
 )
 
@@ -23,15 +25,16 @@ func (service *WotxService) ClansAccountinfo(ctx context.Context, realm Realm, a
 	reqParam := map[string]string{
 		"account_id": internal.SliceIntToString(accountId, ","),
 	}
+
 	if options != nil {
-		if options.Language != nil {
-			reqParam["language"] = *options.Language
+		if options.Extra != nil {
+			reqParam["extra"] = strings.Join(options.Extra, ",")
 		}
 		if options.Fields != nil {
 			reqParam["fields"] = strings.Join(options.Fields, ",")
 		}
-		if options.Extra != nil {
-			reqParam["extra"] = strings.Join(options.Extra, ",")
+		if options.Language != nil {
+			reqParam["language"] = *options.Language
 		}
 	}
 

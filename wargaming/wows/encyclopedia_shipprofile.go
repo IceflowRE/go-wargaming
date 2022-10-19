@@ -2,45 +2,44 @@
 
 package wows
 
-// EncyclopediaShipprofileOptions options.
 type EncyclopediaShipprofileOptions struct {
 	// Main Battery ID. If the module is not indicated, module of basic configuration is used.
-	ArtilleryId *int
+	ArtilleryId *int `json:"artillery_id,omitempty"`
 	// Dive bombers' ID. If the module is not indicated, module of basic configuration is used.
-	DiveBomberId *int
+	DiveBomberId *int `json:"dive_bomber_id,omitempty"`
 	// Engine ID. If the module is not indicated, module of basic configuration is used.
-	EngineId *int
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
+	EngineId *int `json:"engine_id,omitempty"`
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
 	// Fighters' ID. If the module is not indicated, module of basic configuration is used.
-	FighterId *int
+	FighterId *int `json:"fighter_id,omitempty"`
 	// ID of Gun Fire Control System. If the module is not indicated, module of basic configuration is used.
-	FireControlId *int
+	FireControlId *int `json:"fire_control_id,omitempty"`
 	// ID of Flight Control System. If the module is not indicated, module of basic configuration is used.
-	FlightControlId *int
+	FlightControlId *int `json:"flight_control_id,omitempty"`
 	// Hull ID. If the module is not indicated, module of basic configuration is used.
-	HullId *int
-	// Localization language. Default is "ru". Valid values:
+	HullId *int `json:"hull_id,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
 	// "cs" - Čeština
 	// "de" - Deutsch
-	// "en" - English
+	// "en" - English (by default)
 	// "es" - Español
 	// "fr" - Français
 	// "ja" - 日本語
 	// "pl" - Polski
-	// "ru" - Русский (by default)
+	// "ru" - Русский
 	// "th" - ไทย
 	// "zh-tw" - 繁體中文
 	// "tr" - Türkçe
 	// "zh-cn" - 中文
 	// "pt-br" - Português do Brasil
 	// "es-mx" - Español (México)
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// Torpedo bombers' ID. If the module is not indicated, module of basic configuration is used.
-	TorpedoBomberId *int
+	TorpedoBomberId *int `json:"torpedo_bomber_id,omitempty"`
 	// Torpedo tubes' ID. If the module is not indicated, module of basic configuration is used.
-	TorpedoesId *int
+	TorpedoesId *int `json:"torpedoes_id,omitempty"`
 }
 
 type EncyclopediaShipprofile struct {
@@ -135,7 +134,7 @@ type EncyclopediaShipprofile struct {
 			// Shell name
 			Name *string `json:"name,omitempty"`
 			// Shell type
-			Type_ *string `json:"type,omitempty"`
+			Type *string `json:"type,omitempty"`
 		} `json:"shells,omitempty"`
 		// Main battery reload time (s)
 		ShotDelay *float32 `json:"shot_delay,omitempty"`
@@ -170,7 +169,7 @@ type EncyclopediaShipprofile struct {
 			// Reload time (s)
 			ShotDelay *float32 `json:"shot_delay,omitempty"`
 			// Shell type
-			Type_ *string `json:"type,omitempty"`
+			Type *string `json:"type,omitempty"`
 		} `json:"slots,omitempty"`
 	} `json:"atbas,omitempty"`
 	// Maximum battle tier for a random battle

@@ -2,42 +2,41 @@
 
 package wows
 
-// EncyclopediaShipsOptions options.
 type EncyclopediaShipsOptions struct {
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Localization language. Default is "ru". Valid values:
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
 	// "cs" - Čeština
 	// "de" - Deutsch
-	// "en" - English
+	// "en" - English (by default)
 	// "es" - Español
 	// "fr" - Français
 	// "ja" - 日本語
 	// "pl" - Polski
-	// "ru" - Русский (by default)
+	// "ru" - Русский
 	// "th" - ไทย
 	// "zh-tw" - 繁體中文
 	// "tr" - Türkçe
 	// "zh-cn" - 中文
 	// "pt-br" - Português do Brasil
 	// "es-mx" - Español (México)
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
-	Limit *int
+	Limit *int `json:"limit,omitempty"`
 	// Nation. Maximum limit: 100.
-	Nation []string
+	Nation []string `json:"nation,omitempty"`
 	// Result page number. Default is 1. Min value is 1.
-	PageNo *int
+	PageNo *int `json:"page_no,omitempty"`
 	// Ship ID. Maximum limit: 100.
-	ShipId []int
+	ShipId []int `json:"ship_id,omitempty"`
 	// Ship type. Maximum limit: 100. Valid values:
 	//
 	// "AirCarrier" - Aircraft carrier
 	// "Battleship" - Battleship
 	// "Destroyer" - Destroyer
 	// "Cruiser" - Cruiser
-	Type_ []string
+	Type []string `json:"type,omitempty"`
 }
 
 type EncyclopediaShips struct {
@@ -134,7 +133,7 @@ type EncyclopediaShips struct {
 				// Shell name
 				Name *string `json:"name,omitempty"`
 				// Shell type
-				Type_ *string `json:"type,omitempty"`
+				Type *string `json:"type,omitempty"`
 			} `json:"shells,omitempty"`
 			// Main battery reload time (s)
 			ShotDelay *float32 `json:"shot_delay,omitempty"`
@@ -169,7 +168,7 @@ type EncyclopediaShips struct {
 				// Reload time (s)
 				ShotDelay *float32 `json:"shot_delay,omitempty"`
 				// Shell type
-				Type_ *string `json:"type,omitempty"`
+				Type *string `json:"type,omitempty"`
 			} `json:"slots,omitempty"`
 		} `json:"atbas,omitempty"`
 		// Maximum battle tier for a random battle
@@ -475,7 +474,7 @@ type EncyclopediaShips struct {
 		// Research cost
 		PriceXp *int `json:"price_xp,omitempty"`
 		// Module type
-		Type_ *string `json:"type,omitempty"`
+		Type *string `json:"type,omitempty"`
 	} `json:"modules_tree,omitempty"`
 	// Ship name
 	Name *string `json:"name,omitempty"`
@@ -494,7 +493,7 @@ type EncyclopediaShips struct {
 	// Tier
 	Tier *int `json:"tier,omitempty"`
 	// Type of ship
-	Type_ *string `json:"type,omitempty"`
+	Type *string `json:"type,omitempty"`
 	// List of compatible Modifications
 	Upgrades []int `json:"upgrades,omitempty"`
 }

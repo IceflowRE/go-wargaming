@@ -1,9 +1,11 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wotb"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wotb"
 	"strconv"
 )
 
@@ -12,7 +14,7 @@ import (
 // https://developers.wargaming.net/reference/all/wotb/clanmessages/create
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
+//     Valid realms: RealmAsia, RealmEu, RealmNa
 // accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 // expiresAt:
@@ -26,15 +28,15 @@ import (
 //     Message text. Max. length: 1000. Maximum length: 1000.
 // title:
 //     Message title. Max. length: 100. Maximum length: 100.
-// type_:
+// typ:
 //     Message type. Valid values:
 //
 //     "general" - General messages
 //     "training" - Training messages
 //     "meeting" - Meeting messages
 //     "battle" - Battle messages
-func (service *WotbService) ClanmessagesCreate(ctx context.Context, realm Realm, accessToken string, expiresAt wgnTime.UnixTime, importance string, text string, title string, type_ string) (*wotb.ClanmessagesCreate, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+func (service *WotbService) ClanmessagesCreate(ctx context.Context, realm Realm, accessToken string, expiresAt wgnTime.UnixTime, importance string, text string, title string, typ string) (*wotb.ClanmessagesCreate, error) {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err
 	}
 
@@ -44,7 +46,7 @@ func (service *WotbService) ClanmessagesCreate(ctx context.Context, realm Realm,
 		"importance":   importance,
 		"text":         text,
 		"title":        title,
-		"type":         type_,
+		"type":         typ,
 	}
 
 	var data *wotb.ClanmessagesCreate

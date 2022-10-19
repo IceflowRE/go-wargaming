@@ -3,17 +3,16 @@
 package wotb
 
 import (
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
 )
 
-// AccountTankstatsOptions options.
 type AccountTankstatsOptions struct {
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Localization language. Default is "ru". Valid values:
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "en" - English
-	// "ru" - Русский (by default)
+	// "en" - English (by default)
+	// "ru" - Русский
 	// "pl" - Polski
 	// "de" - Deutsch
 	// "fr" - Français
@@ -25,7 +24,7 @@ type AccountTankstatsOptions struct {
 	// "th" - ไทย
 	// "vi" - Tiếng Việt
 	// "ko" - 한국어
-	Language *string
+	Language *string `json:"language,omitempty"`
 }
 
 type AccountTankstats struct {
@@ -45,8 +44,8 @@ type AccountTankstats struct {
 		DroppedCapturePoints *int `json:"dropped_capture_points,omitempty"`
 		// Vehicles destroyed
 		Frags *int `json:"frags,omitempty"`
-		// Vehicles destroyed (Tier &gt;= 8)
-		Frags8P *int `json:"frags8p,omitempty"`
+		// Vehicles destroyed (Tier >= 8)
+		Frags8p *int `json:"frags8p,omitempty"`
 		// Number of hits
 		Hits *int `json:"hits,omitempty"`
 		// Defeats
@@ -74,11 +73,11 @@ type AccountTankstats struct {
 	LastBattleTime *wgnTime.UnixTime `json:"last_battle_time,omitempty"`
 	// Mastery Badges:
 	//
-	// 0 — None
-	// 1 — 3rd Class
-	// 2 — 2nd Class
-	// 3 — 1st Class
-	// 4 — Ace Tanker
+	// 0 - None
+	// 1 - 3rd Class
+	// 2 - 2nd Class
+	// 3 - 1st Class
+	// 4 - Ace Tanker
 	MarkOfMastery *int `json:"mark_of_mastery,omitempty"`
 	// Vehicle ID
 	TankId *int `json:"tank_id,omitempty"`

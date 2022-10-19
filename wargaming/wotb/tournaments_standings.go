@@ -2,24 +2,29 @@
 
 package wotb
 
-// TournamentsStandingsOptions options.
 type TournamentsStandingsOptions struct {
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
 	// Allows to get all team standings starting from a specific place, including this place
-	FromPosition *int
-	// Localization language. Default is "ru". Valid values:
+	FromPosition *int `json:"from_position,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "ru" - Русский (by default)
-	Language *string
+	// "en" - English (by default)
+	// "cs" - Čeština
+	// "de" - Deutsch
+	// "es" - Español
+	// "fr" - Français
+	// "pl" - Polski
+	// "tr" - Türkçe
+	Language *string `json:"language,omitempty"`
 	// Number of returned entries. Default is 10. Min value is 1. Maximum value: 25.
-	Limit *int
+	Limit *int `json:"limit,omitempty"`
 	// Result page number. Default is 1. Min value is 1.
-	PageNo *int
+	PageNo *int `json:"page_no,omitempty"`
 	// Team ID. Maximum limit: 10.
-	TeamId []int
+	TeamId []int `json:"team_id,omitempty"`
 	// Allows to get all team standings up to a specific place, including this place
-	ToPosition *int
+	ToPosition *int `json:"to_position,omitempty"`
 }
 
 type TournamentsStandings struct {

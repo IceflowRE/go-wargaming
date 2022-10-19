@@ -3,21 +3,25 @@
 package wot
 
 import (
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
 )
 
-// GlobalmapClanbattlesOptions options.
 type GlobalmapClanbattlesOptions struct {
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Language. Default is "ru". Valid values:
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Language. Default is "en". Valid values:
 	//
-	// "ru" - Russian (by default)
-	Language *string
+	// "en" - English (by default)
+	// "de" - German
+	// "fr" - French
+	// "es" - Spanish
+	// "pl" - Polish
+	// "tr" - Turkish
+	Language *string `json:"language,omitempty"`
 	// Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
-	Limit *int
+	Limit *int `json:"limit,omitempty"`
 	// Page number. Default is 1. Min value is 1.
-	PageNo *int
+	PageNo *int `json:"page_no,omitempty"`
 }
 
 type GlobalmapClanbattles struct {
@@ -36,7 +40,7 @@ type GlobalmapClanbattles struct {
 	// Battle date and time
 	Time *wgnTime.UnixTime `json:"time,omitempty"`
 	// Battle type: attack or defense
-	Type_ *string `json:"type,omitempty"`
+	Type *string `json:"type,omitempty"`
 	// Vehicle Tier
 	VehicleLevel *int `json:"vehicle_level,omitempty"`
 }

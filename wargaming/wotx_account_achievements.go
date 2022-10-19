@@ -1,9 +1,11 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/internal"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wotx"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/internal"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wotx"
 	"strings"
 )
 
@@ -28,12 +30,13 @@ func (service *WotxService) AccountAchievements(ctx context.Context, realm Realm
 	reqParam := map[string]string{
 		"account_id": internal.SliceIntToString(accountId, ","),
 	}
+
 	if options != nil {
-		if options.Language != nil {
-			reqParam["language"] = *options.Language
-		}
 		if options.Fields != nil {
 			reqParam["fields"] = strings.Join(options.Fields, ",")
+		}
+		if options.Language != nil {
+			reqParam["language"] = *options.Language
 		}
 	}
 

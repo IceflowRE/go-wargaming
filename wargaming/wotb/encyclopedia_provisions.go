@@ -2,14 +2,13 @@
 
 package wotb
 
-// EncyclopediaProvisionsOptions options.
 type EncyclopediaProvisionsOptions struct {
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Localization language. Default is "ru". Valid values:
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "en" - English
-	// "ru" - Русский (by default)
+	// "en" - English (by default)
+	// "ru" - Русский
 	// "pl" - Polski
 	// "de" - Deutsch
 	// "fr" - Français
@@ -21,23 +20,23 @@ type EncyclopediaProvisionsOptions struct {
 	// "th" - ไทย
 	// "vi" - Tiếng Việt
 	// "ko" - 한국어
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// Equipment or consumable ID. Maximum limit: 100.
-	ProvisionId []int
+	ProvisionId []int `json:"provision_id,omitempty"`
 	// Vehicle ID. Maximum limit: 100.
-	TankId []int
+	TankId []int `json:"tank_id,omitempty"`
 	// Type. Valid values:
 	//
 	// "equipment" - Consumables
 	// "optionalDevice" - Equipment
-	Type_ *string
+	Type *string `json:"type,omitempty"`
 }
 
 type EncyclopediaProvisions struct {
 	// Localized description
-	DescriptionI18N *string `json:"description_i18n,omitempty"`
+	DescriptionI18n *string `json:"description_i18n,omitempty"`
 	// Localized name
-	NameI18N *string `json:"name_i18n,omitempty"`
+	NameI18n *string `json:"name_i18n,omitempty"`
 	// Cost in credits
 	PriceCredit *int `json:"price_credit,omitempty"`
 	// Purchase cost in gold
@@ -47,5 +46,5 @@ type EncyclopediaProvisions struct {
 	// List of compatible vehicle IDs
 	Tanks []int `json:"tanks,omitempty"`
 	// Type
-	Type_ *string `json:"type,omitempty"`
+	Type *string `json:"type,omitempty"`
 }

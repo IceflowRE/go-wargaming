@@ -2,14 +2,13 @@
 
 package wot
 
-// EncyclopediaAchievementsOptions options.
 type EncyclopediaAchievementsOptions struct {
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Localization language. Default is "ru". Valid values:
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "en" - English
-	// "ru" - Русский (by default)
+	// "en" - English (by default)
+	// "ru" - Русский
 	// "pl" - Polski
 	// "de" - Deutsch
 	// "fr" - Français
@@ -21,7 +20,7 @@ type EncyclopediaAchievementsOptions struct {
 	// "th" - ไทย
 	// "vi" - Tiếng Việt
 	// "ko" - 한국어
-	Language *string
+	Language *string `json:"language,omitempty"`
 }
 
 type EncyclopediaAchievements struct {
@@ -38,7 +37,7 @@ type EncyclopediaAchievements struct {
 	// Achievement name
 	Name *string `json:"name,omitempty"`
 	// Localized name field
-	NameI18N *string `json:"name_i18n,omitempty"`
+	NameI18n *string `json:"name_i18n,omitempty"`
 	// Service Record
 	Options *struct {
 		// Achievement description
@@ -48,7 +47,7 @@ type EncyclopediaAchievements struct {
 		// 180x180px image
 		ImageBig *string `json:"image_big,omitempty"`
 		// Localized name field
-		NameI18N *string `json:"name_i18n,omitempty"`
+		NameI18n *string `json:"name_i18n,omitempty"`
 		// Information about nation emblems
 		NationImages *struct {
 			// List of links to 180x180 px emblems
@@ -68,5 +67,5 @@ type EncyclopediaAchievements struct {
 	// Section order. Sections with a lesser value of the Section order field are displayed above sections with a greater value.
 	SectionOrder *int `json:"section_order,omitempty"`
 	// Type
-	Type_ *string `json:"type,omitempty"`
+	Type *string `json:"type,omitempty"`
 }

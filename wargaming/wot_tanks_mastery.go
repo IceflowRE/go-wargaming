@@ -1,9 +1,11 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/internal"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wot"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/internal"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wot"
 	"strings"
 )
 
@@ -12,7 +14,7 @@ import (
 // https://developers.wargaming.net/reference/all/wot/tanks/mastery
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
+//     Valid realms: RealmAsia, RealmEu, RealmNa
 // distribution:
 //     Type of data. Valid values:
 //
@@ -21,7 +23,7 @@ import (
 // percentile:
 //     A list of percentiles to be included in the response. Maximum limit: 10. Min value is 1. Maximum value: 100.
 func (service *WotService) TanksMastery(ctx context.Context, realm Realm, distribution string, percentile []int, options *wot.TanksMasteryOptions) (*wot.TanksMastery, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err
 	}
 
@@ -29,15 +31,16 @@ func (service *WotService) TanksMastery(ctx context.Context, realm Realm, distri
 		"distribution": distribution,
 		"percentile":   internal.SliceIntToString(percentile, ","),
 	}
+
 	if options != nil {
-		if options.TankId != nil {
-			reqParam["tank_id"] = internal.SliceIntToString(options.TankId, ",")
+		if options.Fields != nil {
+			reqParam["fields"] = strings.Join(options.Fields, ",")
 		}
 		if options.Language != nil {
 			reqParam["language"] = *options.Language
 		}
-		if options.Fields != nil {
-			reqParam["fields"] = strings.Join(options.Fields, ",")
+		if options.TankId != nil {
+			reqParam["tank_id"] = internal.SliceIntToString(options.TankId, ",")
 		}
 	}
 

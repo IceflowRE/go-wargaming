@@ -3,7 +3,7 @@
 package wowp
 
 import (
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
 )
 
 type EncyclopediaInfo struct {

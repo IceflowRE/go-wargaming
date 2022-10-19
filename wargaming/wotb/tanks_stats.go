@@ -3,24 +3,23 @@
 package wotb
 
 import (
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
 )
 
-// TanksStatsOptions options.
 type TanksStatsOptions struct {
 	// Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
-	AccessToken *string
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
+	AccessToken *string `json:"access_token,omitempty"`
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
 	// Filter by vehicle availability in the Garage. If the parameter is not specified, all vehicles are returned. Parameter processing requires a valid access_token for the specified account_id. Valid values:
 	//
 	// "1" - Return vehicles available in the Garage.
 	// "0" - Return vehicles that are no longer in the Garage.
-	InGarage *string
-	// Localization language. Default is "ru". Valid values:
+	InGarage *string `json:"in_garage,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "en" - English
-	// "ru" - Русский (by default)
+	// "en" - English (by default)
+	// "ru" - Русский
 	// "pl" - Polski
 	// "de" - Deutsch
 	// "fr" - Français
@@ -32,9 +31,9 @@ type TanksStatsOptions struct {
 	// "th" - ไทย
 	// "vi" - Tiếng Việt
 	// "ko" - 한국어
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// Player's vehicle ID. Maximum limit: 100.
-	TankId []int
+	TankId []int `json:"tank_id,omitempty"`
 }
 
 type TanksStats struct {
@@ -54,8 +53,8 @@ type TanksStats struct {
 		DroppedCapturePoints *int `json:"dropped_capture_points,omitempty"`
 		// Vehicles destroyed
 		Frags *int `json:"frags,omitempty"`
-		// Vehicles destroyed (Tier &gt;= 8)
-		Frags8P *int `json:"frags8p,omitempty"`
+		// Vehicles destroyed (Tier >= 8)
+		Frags8p *int `json:"frags8p,omitempty"`
 		// Number of hits
 		Hits *int `json:"hits,omitempty"`
 		// Defeats
@@ -89,11 +88,11 @@ type TanksStats struct {
 	LastBattleTime *wgnTime.UnixTime `json:"last_battle_time,omitempty"`
 	// Mastery Badges:
 	//
-	// 0 — None
-	// 1 — 3rd Class
-	// 2 — 2nd Class
-	// 3 — 1st Class
-	// 4 — Ace Tanker
+	// 0 - None
+	// 1 - 3rd Class
+	// 2 - 2nd Class
+	// 3 - 1st Class
+	// 4 - Ace Tanker
 	MarkOfMastery *int `json:"mark_of_mastery,omitempty"`
 	// Maximum destroyed in battle
 	MaxFrags *int `json:"max_frags,omitempty"`

@@ -1,8 +1,10 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wotx"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wotx"
 	"strconv"
 	"strings"
 )
@@ -23,18 +25,19 @@ func (service *WotxService) AccountList(ctx context.Context, realm Realm, search
 	reqParam := map[string]string{
 		"search": search,
 	}
+
 	if options != nil {
-		if options.Type_ != nil {
-			reqParam["type"] = *options.Type_
-		}
-		if options.Limit != nil {
-			reqParam["limit"] = strconv.Itoa(*options.Limit)
+		if options.Fields != nil {
+			reqParam["fields"] = strings.Join(options.Fields, ",")
 		}
 		if options.Language != nil {
 			reqParam["language"] = *options.Language
 		}
-		if options.Fields != nil {
-			reqParam["fields"] = strings.Join(options.Fields, ",")
+		if options.Limit != nil {
+			reqParam["limit"] = strconv.Itoa(*options.Limit)
+		}
+		if options.Type != nil {
+			reqParam["type"] = *options.Type
 		}
 	}
 

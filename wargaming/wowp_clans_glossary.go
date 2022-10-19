@@ -1,8 +1,10 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wowp"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wowp"
 	"strings"
 )
 
@@ -11,19 +13,20 @@ import (
 // https://developers.wargaming.net/reference/all/wowp/clans/glossary
 //
 // realm:
-//     Valid realms: RealmEu, RealmNa, RealmRu
+//     Valid realms: RealmEu, RealmNa
 func (service *WowpService) ClansGlossary(ctx context.Context, realm Realm, options *wowp.ClansGlossaryOptions) (*wowp.ClansGlossary, error) {
-	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
 		return nil, err
 	}
 
 	reqParam := map[string]string{}
+
 	if options != nil {
-		if options.Language != nil {
-			reqParam["language"] = *options.Language
-		}
 		if options.Fields != nil {
 			reqParam["fields"] = strings.Join(options.Fields, ",")
+		}
+		if options.Language != nil {
+			reqParam["language"] = *options.Language
 		}
 	}
 

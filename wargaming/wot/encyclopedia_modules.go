@@ -2,18 +2,17 @@
 
 package wot
 
-// EncyclopediaModulesOptions options.
 type EncyclopediaModulesOptions struct {
 	// Extra fields that will be added to the response. Valid values:
 	//
 	// "default_profile"
-	Extra []string
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Localization language. Default is "ru". Valid values:
+	Extra []string `json:"extra,omitempty"`
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "en" - English
-	// "ru" - Русский (by default)
+	// "en" - English (by default)
+	// "ru" - Русский
 	// "pl" - Polski
 	// "de" - Deutsch
 	// "fr" - Français
@@ -25,15 +24,15 @@ type EncyclopediaModulesOptions struct {
 	// "th" - ไทย
 	// "vi" - Tiếng Việt
 	// "ko" - 한국어
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
-	Limit *int
+	Limit *int `json:"limit,omitempty"`
 	// Module ID. Maximum limit: 100.
-	ModuleId []int
+	ModuleId []int `json:"module_id,omitempty"`
 	// Nation. Maximum limit: 100.
-	Nation []string
+	Nation []string `json:"nation,omitempty"`
 	// Result page number
-	PageNo *int
+	PageNo *int `json:"page_no,omitempty"`
 	// Module type. Maximum limit: 100. Valid values:
 	//
 	// "vehicleRadio" - Radio
@@ -41,7 +40,7 @@ type EncyclopediaModulesOptions struct {
 	// "vehicleGun" - Gun
 	// "vehicleChassis" - Suspension
 	// "vehicleTurret" - Turret
-	Type_ []string
+	Type []string `json:"type,omitempty"`
 }
 
 type EncyclopediaModules struct {
@@ -72,7 +71,7 @@ type EncyclopediaModules struct {
 					} `json:"duration,omitempty"`
 				} `json:"stun,omitempty"`
 				// Shell type
-				Type_ *string `json:"type,omitempty"`
+				Type *string `json:"type,omitempty"`
 			} `json:"ammo,omitempty"`
 			// Dispersion at 100 m (m)
 			Dispersion *float32 `json:"dispersion,omitempty"`
@@ -132,7 +131,7 @@ type EncyclopediaModules struct {
 	// Tier
 	Tier *int `json:"tier,omitempty"`
 	// Module type
-	Type_ *string `json:"type,omitempty"`
+	Type *string `json:"type,omitempty"`
 	// Weight (kg)
 	Weight *int `json:"weight,omitempty"`
 }

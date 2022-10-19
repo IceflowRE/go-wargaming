@@ -3,22 +3,21 @@
 package wot
 
 import (
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
 )
 
-// GlobalmapEventaccountratingsOptions options.
 type GlobalmapEventaccountratingsOptions struct {
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
 	// Get data only for accounts with rating. Default is 0. Valid values:
 	//
 	// "1" - Only with rating
 	// "0" - All (by default)
-	InRating *int
+	InRating *int `json:"in_rating,omitempty"`
 	// Accounts limit. Default is 20. Min value is 10. Maximum value: 100.
-	Limit *int
+	Limit *int `json:"limit,omitempty"`
 	// Page number. Default is 1. Min value is 1.
-	PageNo *int
+	PageNo *int `json:"page_no,omitempty"`
 }
 
 type GlobalmapEventaccountratings struct {

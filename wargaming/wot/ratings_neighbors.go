@@ -3,10 +3,9 @@
 package wot
 
 import (
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
 )
 
-// RatingsNeighborsOptions options.
 type RatingsNeighborsOptions struct {
 	// Battle types. Default is "default". Valid values:
 	//
@@ -14,15 +13,15 @@ type RatingsNeighborsOptions struct {
 	// "random" - Random Battles
 	// "team" - Team Battles
 	// "default" - any battle type (by default)
-	BattleType *string
+	BattleType *string `json:"battle_type,omitempty"`
 	// Ratings calculation date. Up to 7 days before the current date; default value: yesterday. Date in UNIX timestamp or ISO 8601 format. E.g.: 1376542800 or 2013-08-15T00:00:00
-	Date *wgnTime.UnixTime
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Localization language. Default is "ru". Valid values:
+	Date *wgnTime.UnixTime `json:"date,omitempty"`
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "en" - English
-	// "ru" - Русский (by default)
+	// "en" - English (by default)
+	// "ru" - Русский
 	// "pl" - Polski
 	// "de" - Deutsch
 	// "fr" - Français
@@ -34,9 +33,9 @@ type RatingsNeighborsOptions struct {
 	// "th" - ไทย
 	// "vi" - Tiếng Việt
 	// "ko" - 한국어
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// Number of returned entries. Default is 5. Min value is 1. Maximum value: 50.
-	Limit *int
+	Limit *int `json:"limit,omitempty"`
 }
 
 type RatingsNeighbors struct {

@@ -2,16 +2,15 @@
 
 package wowp
 
-// EncyclopediaPlanespecificationOptions options.
 type EncyclopediaPlanespecificationOptions struct {
 	// ID of unique bind of slot and module. Maximum limit: 100.
-	BindId []int
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Localization language. Default is "ru". Valid values:
+	BindId []int `json:"bind_id,omitempty"`
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "en" - English
-	// "ru" - Русский (by default)
+	// "en" - English (by default)
+	// "ru" - Русский
 	// "pl" - Polski
 	// "de" - Deutsch
 	// "fr" - Français
@@ -22,9 +21,9 @@ type EncyclopediaPlanespecificationOptions struct {
 	// "th" - ไทย
 	// "vi" - Tiếng Việt
 	// "ko" - 한국어
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// Module ID. Maximum limit: 100.
-	ModuleId []int
+	ModuleId []int `json:"module_id,omitempty"`
 }
 
 type EncyclopediaPlanespecification struct {
@@ -39,7 +38,7 @@ type EncyclopediaPlanespecification struct {
 		// Slot name
 		SlotName *string `json:"slot_name,omitempty"`
 		// Localized slot_name field
-		SlotNameI18N *string `json:"slot_name_i18n,omitempty"`
+		SlotNameI18n *string `json:"slot_name_i18n,omitempty"`
 	} `json:"slots,omitempty"`
 	// Aircraft specifications
 	Specification *struct {

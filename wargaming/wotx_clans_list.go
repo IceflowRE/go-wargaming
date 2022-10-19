@@ -1,8 +1,10 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wotx"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wotx"
 	"strconv"
 	"strings"
 )
@@ -19,21 +21,22 @@ func (service *WotxService) ClansList(ctx context.Context, realm Realm, options 
 	}
 
 	reqParam := map[string]string{}
+
 	if options != nil {
-		if options.Search != nil {
-			reqParam["search"] = *options.Search
-		}
-		if options.PageNo != nil {
-			reqParam["page_no"] = strconv.Itoa(*options.PageNo)
-		}
-		if options.Limit != nil {
-			reqParam["limit"] = strconv.Itoa(*options.Limit)
+		if options.Fields != nil {
+			reqParam["fields"] = strings.Join(options.Fields, ",")
 		}
 		if options.Language != nil {
 			reqParam["language"] = *options.Language
 		}
-		if options.Fields != nil {
-			reqParam["fields"] = strings.Join(options.Fields, ",")
+		if options.Limit != nil {
+			reqParam["limit"] = strconv.Itoa(*options.Limit)
+		}
+		if options.PageNo != nil {
+			reqParam["page_no"] = strconv.Itoa(*options.PageNo)
+		}
+		if options.Search != nil {
+			reqParam["search"] = *options.Search
 		}
 	}
 

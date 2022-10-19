@@ -1,9 +1,11 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/internal"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wotx"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/internal"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wotx"
 	"strconv"
 	"strings"
 )
@@ -20,30 +22,31 @@ func (service *WotxService) EncyclopediaModules(ctx context.Context, realm Realm
 	}
 
 	reqParam := map[string]string{}
+
 	if options != nil {
-		if options.Type_ != nil {
-			reqParam["type"] = strings.Join(options.Type_, ",")
-		}
-		if options.PageNo != nil {
-			reqParam["page_no"] = strconv.Itoa(*options.PageNo)
-		}
-		if options.Nation != nil {
-			reqParam["nation"] = strings.Join(options.Nation, ",")
-		}
-		if options.ModuleId != nil {
-			reqParam["module_id"] = internal.SliceIntToString(options.ModuleId, ",")
-		}
-		if options.Limit != nil {
-			reqParam["limit"] = strconv.Itoa(*options.Limit)
-		}
-		if options.Language != nil {
-			reqParam["language"] = *options.Language
+		if options.Extra != nil {
+			reqParam["extra"] = strings.Join(options.Extra, ",")
 		}
 		if options.Fields != nil {
 			reqParam["fields"] = strings.Join(options.Fields, ",")
 		}
-		if options.Extra != nil {
-			reqParam["extra"] = strings.Join(options.Extra, ",")
+		if options.Language != nil {
+			reqParam["language"] = *options.Language
+		}
+		if options.Limit != nil {
+			reqParam["limit"] = strconv.Itoa(*options.Limit)
+		}
+		if options.ModuleId != nil {
+			reqParam["module_id"] = internal.SliceIntToString(options.ModuleId, ",")
+		}
+		if options.Nation != nil {
+			reqParam["nation"] = strings.Join(options.Nation, ",")
+		}
+		if options.PageNo != nil {
+			reqParam["page_no"] = strconv.Itoa(*options.PageNo)
+		}
+		if options.Type != nil {
+			reqParam["type"] = strings.Join(options.Type, ",")
 		}
 	}
 

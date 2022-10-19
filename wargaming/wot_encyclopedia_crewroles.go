@@ -1,8 +1,10 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wot"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wot"
 	"strings"
 )
 
@@ -11,22 +13,23 @@ import (
 // https://developers.wargaming.net/reference/all/wot/encyclopedia/crewroles
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
+//     Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotService) EncyclopediaCrewroles(ctx context.Context, realm Realm, options *wot.EncyclopediaCrewrolesOptions) (*wot.EncyclopediaCrewroles, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err
 	}
 
 	reqParam := map[string]string{}
+
 	if options != nil {
-		if options.Role != nil {
-			reqParam["role"] = strings.Join(options.Role, ",")
+		if options.Fields != nil {
+			reqParam["fields"] = strings.Join(options.Fields, ",")
 		}
 		if options.Language != nil {
 			reqParam["language"] = *options.Language
 		}
-		if options.Fields != nil {
-			reqParam["fields"] = strings.Join(options.Fields, ",")
+		if options.Role != nil {
+			reqParam["role"] = strings.Join(options.Role, ",")
 		}
 	}
 

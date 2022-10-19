@@ -1,8 +1,10 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wot"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wot"
 	"strconv"
 )
 
@@ -12,17 +14,18 @@ import (
 // https://developers.wargaming.net/reference/all/wot/auth/prolongate
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
+//     Valid realms: RealmAsia, RealmEu, RealmNa
 // accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 func (service *WotService) AuthProlongate(ctx context.Context, realm Realm, accessToken string, options *wot.AuthProlongateOptions) (*wot.AuthProlongate, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err
 	}
 
 	reqParam := map[string]string{
 		"access_token": accessToken,
 	}
+
 	if options != nil {
 		if options.ExpiresAt != nil {
 			reqParam["expires_at"] = strconv.FormatInt(options.ExpiresAt.Unix(), 10)

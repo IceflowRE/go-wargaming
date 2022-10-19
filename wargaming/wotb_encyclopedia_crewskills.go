@@ -1,8 +1,10 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wotb"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wotb"
 	"strings"
 )
 
@@ -11,25 +13,26 @@ import (
 // https://developers.wargaming.net/reference/all/wotb/encyclopedia/crewskills
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
+//     Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotbService) EncyclopediaCrewskills(ctx context.Context, realm Realm, options *wotb.EncyclopediaCrewskillsOptions) (*wotb.EncyclopediaCrewskills, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err
 	}
 
 	reqParam := map[string]string{}
+
 	if options != nil {
-		if options.VehicleType != nil {
-			reqParam["vehicle_type"] = strings.Join(options.VehicleType, ",")
-		}
-		if options.SkillId != nil {
-			reqParam["skill_id"] = strings.Join(options.SkillId, ",")
+		if options.Fields != nil {
+			reqParam["fields"] = strings.Join(options.Fields, ",")
 		}
 		if options.Language != nil {
 			reqParam["language"] = *options.Language
 		}
-		if options.Fields != nil {
-			reqParam["fields"] = strings.Join(options.Fields, ",")
+		if options.SkillId != nil {
+			reqParam["skill_id"] = strings.Join(options.SkillId, ",")
+		}
+		if options.VehicleType != nil {
+			reqParam["vehicle_type"] = strings.Join(options.VehicleType, ",")
 		}
 	}
 

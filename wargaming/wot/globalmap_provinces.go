@@ -2,28 +2,32 @@
 
 package wot
 
-// GlobalmapProvincesOptions options.
 type GlobalmapProvincesOptions struct {
 	// Map ID
-	ArenaId *string
+	ArenaId *string `json:"arena_id,omitempty"`
 	// Search for provinces with daily income equal to or more than the value
-	DailyRevenueGte *int
+	DailyRevenueGte *int `json:"daily_revenue_gte,omitempty"`
 	// Search for provinces with daily income equal to or less than the value
-	DailyRevenueLte *int
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
+	DailyRevenueLte *int `json:"daily_revenue_lte,omitempty"`
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
 	// Search for provinces by landing type. Valid values:
 	//
 	// "null" - auctions disabled
 	// "auction" - auction
 	// "tournament" - landing tournament
-	LandingType *string
-	// Language. Default is "ru". Valid values:
+	LandingType *string `json:"landing_type,omitempty"`
+	// Language. Default is "en". Valid values:
 	//
-	// "ru" - Russian (by default)
-	Language *string
+	// "en" - English (by default)
+	// "de" - German
+	// "fr" - French
+	// "es" - Spanish
+	// "pl" - Polish
+	// "tr" - Turkish
+	Language *string `json:"language,omitempty"`
 	// Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
-	Limit *int
+	Limit *int `json:"limit,omitempty"`
 	// Sorting. Valid values:
 	//
 	// "province_id" - by province name
@@ -32,13 +36,13 @@ type GlobalmapProvincesOptions struct {
 	// "-daily_revenue" - by province income in reverse order
 	// "prime_hour" - by Prime Time
 	// "-prime_hour" - by Prime Time in reverse order
-	OrderBy *string
+	OrderBy *string `json:"order_by,omitempty"`
 	// Page number. Default is 1. Min value is 1.
-	PageNo *int
+	PageNo *int `json:"page_no,omitempty"`
 	// Search for provinces with the value of Prime Time start hour. Values available: from 0 to 23. Maximum value: 23.
-	PrimeHour *int
+	PrimeHour *int `json:"prime_hour,omitempty"`
 	// Filter by the list of province IDs. Maximum limit: 100.
-	ProvinceId []string
+	ProvinceId []string `json:"province_id,omitempty"`
 }
 
 type GlobalmapProvinces struct {

@@ -2,10 +2,9 @@
 
 package wotx
 
-// EncyclopediaVehiclesOptions options.
 type EncyclopediaVehiclesOptions struct {
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
 	// Localization language. Default is "en". Valid values:
 	//
 	// "en" - English (by default)
@@ -15,17 +14,17 @@ type EncyclopediaVehiclesOptions struct {
 	// "fr" - Français
 	// "es" - Español
 	// "tr" - Türkçe
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, a limit of 100 is applied (by default).
-	Limit *int
+	Limit *int `json:"limit,omitempty"`
 	// Nation. Maximum limit: 100.
-	Nation []string
+	Nation []string `json:"nation,omitempty"`
 	// Result page number
-	PageNo *int
+	PageNo *int `json:"page_no,omitempty"`
 	// Vehicle ID. Maximum limit: 100.
-	TankId []int
+	TankId []int `json:"tank_id,omitempty"`
 	// Tier. Maximum limit: 100.
-	Tier []int
+	Tier []int `json:"tier,omitempty"`
 }
 
 type EncyclopediaVehicles struct {
@@ -59,7 +58,7 @@ type EncyclopediaVehicles struct {
 		// Research cost
 		PriceXp *int `json:"price_xp,omitempty"`
 		// Module type
-		Type_ *string `json:"type,omitempty"`
+		Type *string `json:"type,omitempty"`
 	} `json:"modules_tree,omitempty"`
 	// Vehicle name
 	Name *string `json:"name,omitempty"`
@@ -90,5 +89,5 @@ type EncyclopediaVehicles struct {
 	// Number of turrets
 	TotalTurrets *int `json:"total_turrets,omitempty"`
 	// Vehicle type
-	Type_ *string `json:"type,omitempty"`
+	Type *string `json:"type,omitempty"`
 }

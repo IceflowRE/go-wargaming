@@ -2,18 +2,17 @@
 
 package wotb
 
-// EncyclopediaVehicleprofileOptions options.
 type EncyclopediaVehicleprofileOptions struct {
 	// Engine ID. If module is not specified, standard module is used by default.
-	EngineId *int
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
+	EngineId *int `json:"engine_id,omitempty"`
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
 	// Gun ID. If module is not specified, standard module is used by default.
-	GunId *int
-	// Localization language. Default is "ru". Valid values:
+	GunId *int `json:"gun_id,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "en" - English
-	// "ru" - Русский (by default)
+	// "en" - English (by default)
+	// "ru" - Русский
 	// "pl" - Polski
 	// "de" - Deutsch
 	// "fr" - Français
@@ -25,13 +24,13 @@ type EncyclopediaVehicleprofileOptions struct {
 	// "th" - ไทย
 	// "vi" - Tiếng Việt
 	// "ko" - 한국어
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// Configuration ID. If specified, parameters of IDs of separate modules are ignored.
-	ProfileId *string
+	ProfileId *string `json:"profile_id,omitempty"`
 	// Suspension ID. If module is not specified, standard module is used by default.
-	SuspensionId *int
+	SuspensionId *int `json:"suspension_id,omitempty"`
 	// Turret ID. If module is not specified, standard module is used by default.
-	TurretId *int
+	TurretId *int `json:"turret_id,omitempty"`
 }
 
 type EncyclopediaVehicleprofile struct {
@@ -133,7 +132,7 @@ type EncyclopediaVehicleprofile struct {
 		// Average penetration (mm)
 		Penetration *int `json:"penetration,omitempty"`
 		// Type
-		Type_ *string `json:"type,omitempty"`
+		Type *string `json:"type,omitempty"`
 	} `json:"shells,omitempty"`
 	// Shot efficiency (%)
 	ShotEfficiency *int `json:"shot_efficiency,omitempty"`

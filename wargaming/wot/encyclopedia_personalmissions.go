@@ -2,16 +2,15 @@
 
 package wot
 
-// EncyclopediaPersonalmissionsOptions options.
 type EncyclopediaPersonalmissionsOptions struct {
 	// Campaign ID. Maximum limit: 100.
-	CampaignId []int
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Localization language. Default is "ru". Valid values:
+	CampaignId []int `json:"campaign_id,omitempty"`
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "en" - English
-	// "ru" - Русский (by default)
+	// "en" - English (by default)
+	// "ru" - Русский
 	// "pl" - Polski
 	// "de" - Deutsch
 	// "fr" - Français
@@ -23,13 +22,13 @@ type EncyclopediaPersonalmissionsOptions struct {
 	// "th" - ไทย
 	// "vi" - Tiếng Việt
 	// "ko" - 한국어
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// Operation ID. Maximum limit: 100.
-	OperationId []int
+	OperationId []int `json:"operation_id,omitempty"`
 	// Mission branch ID. Maximum limit: 100.
-	SetId []int
+	SetId []int `json:"set_id,omitempty"`
 	// Mission tag. Maximum limit: 100.
-	Tag []string
+	Tag []string `json:"tag,omitempty"`
 }
 
 type EncyclopediaPersonalmissions struct {

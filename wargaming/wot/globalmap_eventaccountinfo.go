@@ -3,17 +3,16 @@
 package wot
 
 import (
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
 )
 
-// GlobalmapEventaccountinfoOptions options.
 type GlobalmapEventaccountinfoOptions struct {
-	// Account ID. Min value is 1.
-	AccountId *int
 	// Clan ID. To get a clan ID, use the Clans method. Min value is 1.
-	ClanId *int
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
+	ClanId *int `json:"clan_id,omitempty"`
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Account ID. Min value is 1.
+	AccountId *int `json:"account_id,omitempty"`
 }
 
 type GlobalmapEventaccountinfo struct {

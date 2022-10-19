@@ -1,3 +1,3 @@
-module github.com/IceflowRE/go-wargaming/v2
+module github.com/IceflowRE/go-wargaming/v3
 
 go 1.19

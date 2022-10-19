@@ -1,8 +1,10 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wot"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wot"
 	"strconv"
 )
 
@@ -13,40 +15,41 @@ import (
 // Information on authorization status is sent to URL specified in redirect_uri parameter.
 // If authentication is successful, the following parameters are sent to redirect_uri:
 //
-// status: ok — successful authentication
-// access_token — access token is passed in to all methods that require authentication
-// expires_at — expiration date of access_token
-// account_id — user ID
-// nickname — user name.
+// status: ok - successful authentication
+// access_token - access token is passed in to all methods that require authentication
+// expires_at - expiration date of access_token
+// account_id - user ID
+// nickname - user name.
 //
 // If authentication fails, the following parameters are sent to redirect_uri:
 //
-// status: error — authentication error
-// code — error code
-// message — error message.
+// status: error - authentication error
+// code - error code
+// message - error message.
 //
 // https://developers.wargaming.net/reference/all/wot/auth/login
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
+//     Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotService) AuthLogin(ctx context.Context, realm Realm, options *wot.AuthLoginOptions) (*wot.AuthLogin, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err
 	}
 
 	reqParam := map[string]string{}
+
 	if options != nil {
-		if options.RedirectUri != nil {
-			reqParam["redirect_uri"] = *options.RedirectUri
-		}
-		if options.Nofollow != nil {
-			reqParam["nofollow"] = strconv.Itoa(*options.Nofollow)
+		if options.Display != nil {
+			reqParam["display"] = *options.Display
 		}
 		if options.ExpiresAt != nil {
 			reqParam["expires_at"] = strconv.FormatInt(options.ExpiresAt.Unix(), 10)
 		}
-		if options.Display != nil {
-			reqParam["display"] = *options.Display
+		if options.Nofollow != nil {
+			reqParam["nofollow"] = strconv.Itoa(*options.Nofollow)
+		}
+		if options.RedirectUri != nil {
+			reqParam["redirect_uri"] = *options.RedirectUri
 		}
 	}
 

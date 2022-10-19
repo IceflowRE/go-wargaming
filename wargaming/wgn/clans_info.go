@@ -3,28 +3,27 @@
 package wgn
 
 import (
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
 )
 
-// ClansInfoOptions options.
 type ClansInfoOptions struct {
 	// Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
-	AccessToken *string
+	AccessToken *string `json:"access_token,omitempty"`
 	// Extra fields that will be added to the response. Valid values:
 	//
 	// "private.online_members"
-	Extra []string
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
+	Extra []string `json:"extra,omitempty"`
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
 	// Name of the game to perform the clan search in. If the parameter is not specified, search will be executed across World of Tanks. Default is "wot". Valid values:
 	//
 	// "wot" - World of Tanks (by default)
 	// "wowp" - World of Warplanes
-	Game *string
-	// Localization language. Default is "ru". Valid values:
+	Game *string `json:"game,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "en" - English
-	// "ru" - Русский (by default)
+	// "en" - English (by default)
+	// "ru" - Русский
 	// "pl" - Polski
 	// "de" - Deutsch
 	// "fr" - Français
@@ -36,11 +35,11 @@ type ClansInfoOptions struct {
 	// "th" - ไทย
 	// "vi" - Tiếng Việt
 	// "ko" - 한국어
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// This parameter changes members field type. Valid values:
 	//
 	// "id" - Members field will contain associative array with account_id indexing in response
-	MembersKey *string
+	MembersKey *string `json:"members_key,omitempty"`
 }
 
 type ClansInfo struct {
@@ -92,7 +91,7 @@ type ClansInfo struct {
 		// Technical position name
 		Role *string `json:"role,omitempty"`
 		// Position
-		RoleI18N *string `json:"role_i18n,omitempty"`
+		RoleI18n *string `json:"role_i18n,omitempty"`
 	} `json:"members,omitempty"`
 	// Number of clan members
 	MembersCount *int `json:"members_count,omitempty"`

@@ -1,3 +1,5 @@
+// Auto generated file!
+
 package wargaming
 
 import (
@@ -15,7 +17,7 @@ import (
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 func (service *WotxService) AuthLogout(ctx context.Context, realm Realm, accessToken string) error {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
-		return nil
+		return err
 	}
 
 	reqParam := map[string]string{

@@ -1,8 +1,10 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wot"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wot"
 	"strconv"
 	"strings"
 )
@@ -12,7 +14,7 @@ import (
 // https://developers.wargaming.net/reference/all/wot/stronghold/activateclanreserve
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
+//     Valid realms: RealmAsia, RealmEu, RealmNa
 // accessToken:
 //     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 // reserveLevel:
@@ -20,7 +22,7 @@ import (
 // reserveType:
 //     Type of clan Reserve to be activated
 func (service *WotService) StrongholdActivateclanreserve(ctx context.Context, realm Realm, accessToken string, reserveLevel int, reserveType string, options *wot.StrongholdActivateclanreserveOptions) (*wot.StrongholdActivateclanreserve, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err
 	}
 
@@ -29,12 +31,13 @@ func (service *WotService) StrongholdActivateclanreserve(ctx context.Context, re
 		"reserve_level": strconv.Itoa(reserveLevel),
 		"reserve_type":  reserveType,
 	}
+
 	if options != nil {
-		if options.Language != nil {
-			reqParam["language"] = *options.Language
-		}
 		if options.Fields != nil {
 			reqParam["fields"] = strings.Join(options.Fields, ",")
+		}
+		if options.Language != nil {
+			reqParam["language"] = *options.Language
 		}
 	}
 

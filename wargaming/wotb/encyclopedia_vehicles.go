@@ -2,14 +2,13 @@
 
 package wotb
 
-// EncyclopediaVehiclesOptions options.
 type EncyclopediaVehiclesOptions struct {
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Localization language. Default is "ru". Valid values:
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "en" - English
-	// "ru" - Русский (by default)
+	// "en" - English (by default)
+	// "ru" - Русский
 	// "pl" - Polski
 	// "de" - Deutsch
 	// "fr" - Français
@@ -21,11 +20,11 @@ type EncyclopediaVehiclesOptions struct {
 	// "th" - ไทย
 	// "vi" - Tiếng Việt
 	// "ko" - 한국어
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// Nation. Maximum limit: 100.
-	Nation []string
+	Nation []string `json:"nation,omitempty"`
 	// Vehicle ID. Maximum limit: 100.
-	TankId []int
+	TankId []int `json:"tank_id,omitempty"`
 }
 
 type EncyclopediaVehicles struct {
@@ -136,7 +135,7 @@ type EncyclopediaVehicles struct {
 			// Average penetration (mm)
 			Penetration *int `json:"penetration,omitempty"`
 			// Type
-			Type_ *string `json:"type,omitempty"`
+			Type *string `json:"type,omitempty"`
 		} `json:"shells,omitempty"`
 		// Shot efficiency (%)
 		ShotEfficiency *int `json:"shot_efficiency,omitempty"`
@@ -217,7 +216,7 @@ type EncyclopediaVehicles struct {
 		// Research cost
 		PriceXp *int `json:"price_xp,omitempty"`
 		// Module type
-		Type_ *string `json:"type,omitempty"`
+		Type *string `json:"type,omitempty"`
 	} `json:"modules_tree,omitempty"`
 	// Vehicle name
 	Name *string `json:"name,omitempty"`
@@ -242,5 +241,5 @@ type EncyclopediaVehicles struct {
 	// List of compatible turret IDs
 	Turrets []int `json:"turrets,omitempty"`
 	// Vehicle type
-	Type_ *string `json:"type,omitempty"`
+	Type *string `json:"type,omitempty"`
 }

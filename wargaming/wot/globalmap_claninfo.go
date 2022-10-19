@@ -3,15 +3,14 @@
 package wot
 
 import (
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
 )
 
-// GlobalmapClaninfoOptions options.
 type GlobalmapClaninfoOptions struct {
 	// Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
-	AccessToken *string
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
+	AccessToken *string `json:"access_token,omitempty"`
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
 }
 
 type GlobalmapClaninfo struct {

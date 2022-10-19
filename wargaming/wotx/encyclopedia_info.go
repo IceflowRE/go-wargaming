@@ -2,10 +2,9 @@
 
 package wotx
 
-// EncyclopediaInfoOptions options.
 type EncyclopediaInfoOptions struct {
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
 	// Localization language. Default is "en". Valid values:
 	//
 	// "en" - English (by default)
@@ -15,7 +14,7 @@ type EncyclopediaInfoOptions struct {
 	// "fr" - Français
 	// "es" - Español
 	// "tr" - Türkçe
-	Language *string
+	Language *string `json:"language,omitempty"`
 }
 
 type EncyclopediaInfo struct {

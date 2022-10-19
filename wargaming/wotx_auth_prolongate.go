@@ -1,8 +1,10 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wotx"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wotx"
 	"strconv"
 )
 
@@ -23,6 +25,7 @@ func (service *WotxService) AuthProlongate(ctx context.Context, realm Realm, acc
 	reqParam := map[string]string{
 		"access_token": accessToken,
 	}
+
 	if options != nil {
 		if options.ExpiresAt != nil {
 			reqParam["expires_at"] = strconv.FormatInt(options.ExpiresAt.Unix(), 10)

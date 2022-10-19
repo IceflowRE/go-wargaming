@@ -3,13 +3,12 @@
 package wows
 
 import (
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
 )
 
-// ShipsStatsOptions options.
 type ShipsStatsOptions struct {
 	// Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
-	AccessToken *string
+	AccessToken *string `json:"access_token,omitempty"`
 	// Extra fields that will be added to the response. Valid values:
 	//
 	// "club"
@@ -26,33 +25,33 @@ type ShipsStatsOptions struct {
 	// "rank_div2"
 	// "rank_div3"
 	// "rank_solo"
-	Extra []string
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
+	Extra []string `json:"extra,omitempty"`
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
 	// Filter by ship availability in the Port. If the parameter is not specified, all ships are returned. Parameter processing requires a valid access_token for the specified account_id. Valid values:
 	//
 	// "1" - Return ships available in the Port.
 	// "0" - Return ships that are no longer in the Port.
-	InGarage *string
-	// Localization language. Default is "ru". Valid values:
+	InGarage *string `json:"in_garage,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
 	// "cs" - Čeština
 	// "de" - Deutsch
-	// "en" - English
+	// "en" - English (by default)
 	// "es" - Español
 	// "fr" - Français
 	// "ja" - 日本語
 	// "pl" - Polski
-	// "ru" - Русский (by default)
+	// "ru" - Русский
 	// "th" - ไทย
 	// "zh-tw" - 繁體中文
 	// "tr" - Türkçe
 	// "zh-cn" - 中文
 	// "pt-br" - Português do Brasil
 	// "es-mx" - Español (México)
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// Player's ship ID. Maximum limit: 100.
-	ShipId []int
+	ShipId []int `json:"ship_id,omitempty"`
 }
 
 type ShipsStats struct {

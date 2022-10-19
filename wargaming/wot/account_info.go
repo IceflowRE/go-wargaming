@@ -3,13 +3,12 @@
 package wot
 
 import (
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
 )
 
-// AccountInfoOptions options.
 type AccountInfoOptions struct {
 	// Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
-	AccessToken *string
+	AccessToken *string `json:"access_token,omitempty"`
 	// Extra fields that will be added to the response. Valid values:
 	//
 	// "private.boosters"
@@ -31,13 +30,13 @@ type AccountInfoOptions struct {
 	// "statistics.ranked_season_1"
 	// "statistics.ranked_season_2"
 	// "statistics.ranked_season_3"
-	Extra []string
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Localization language. Default is "ru". Valid values:
+	Extra []string `json:"extra,omitempty"`
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "en" - English
-	// "ru" - Русский (by default)
+	// "en" - English (by default)
+	// "ru" - Русский
 	// "pl" - Polski
 	// "de" - Deutsch
 	// "fr" - Français
@@ -49,7 +48,7 @@ type AccountInfoOptions struct {
 	// "th" - ไทย
 	// "vi" - Tiếng Việt
 	// "ko" - 한국어
-	Language *string
+	Language *string `json:"language,omitempty"`
 }
 
 type AccountInfo struct {
@@ -893,7 +892,7 @@ type AccountInfo struct {
 		} `json:"random,omitempty"`
 		// Archive of statistics for ranked 10x10 battles.
 		// An extra field.
-		Ranked10X10 *struct {
+		Ranked10x10 *struct {
 			// Average damage caused with your assistance
 			AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
 			// Average damage upon your spotting
@@ -971,7 +970,7 @@ type AccountInfo struct {
 		} `json:"ranked_10x10,omitempty"`
 		// Archive of statistics for ranked 15x15 battles.
 		// An extra field.
-		Ranked15X15 *struct {
+		Ranked15x15 *struct {
 			// Average damage caused with your assistance
 			AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
 			// Average damage upon your spotting

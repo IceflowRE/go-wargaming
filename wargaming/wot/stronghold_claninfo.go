@@ -3,20 +3,22 @@
 package wot
 
 import (
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
 )
 
-// StrongholdClaninfoOptions options.
 type StrongholdClaninfoOptions struct {
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Localization language. Default is "ru". Valid values:
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "ru" - Russian (by default)
-	// "be" - Belarusian
-	// "uk" - Ukrainian
-	// "kk" - Kazakh
-	Language *string
+	// "en" - English (by default)
+	// "de" - German
+	// "pl" - Polish
+	// "fr" - French
+	// "es" - Spanish
+	// "cs" - Czech
+	// "tr" - Turkish
+	Language *string `json:"language,omitempty"`
 }
 
 type StrongholdClaninfo struct {
@@ -29,11 +31,11 @@ type StrongholdClaninfo struct {
 		// Total number of battles on Tier X vehicles
 		Total10 *int `json:"total_10,omitempty"`
 		// Total number of battles on Tier X vehicles within the last 28 days
-		Total10In28D *int `json:"total_10_in_28d,omitempty"`
+		Total10In28d *int `json:"total_10_in_28d,omitempty"`
 		// Number of victories on Tier X vehicles
 		Win10 *int `json:"win_10,omitempty"`
 		// Number of victories on Tier X vehicles within the last 28 days
-		Win10In28D *int `json:"win_10_in_28d,omitempty"`
+		Win10In28d *int `json:"win_10_in_28d,omitempty"`
 	} `json:"battles_for_strongholds_statistics,omitempty"`
 	// Statistics for skirmishes against the clan's Stronghold
 	BattlesSeriesForStrongholdsStatistics *struct {
@@ -42,11 +44,11 @@ type StrongholdClaninfo struct {
 		// Total number of battles on Tier X vehicles
 		Total10 *int `json:"total_10,omitempty"`
 		// Total number of battles on Tier X vehicles within the last 28 days
-		Total10In28D *int `json:"total_10_in_28d,omitempty"`
+		Total10In28d *int `json:"total_10_in_28d,omitempty"`
 		// Number of victories on Tier X vehicles
 		Win10 *int `json:"win_10,omitempty"`
 		// Number of victories on Tier X vehicles within the last 28 days
-		Win10In28D *int `json:"win_10_in_28d,omitempty"`
+		Win10In28d *int `json:"win_10_in_28d,omitempty"`
 	} `json:"battles_series_for_strongholds_statistics,omitempty"`
 	// Information about the Stronghold's construction sites
 	BuildingSlots *struct {
@@ -88,27 +90,27 @@ type StrongholdClaninfo struct {
 		// Total number of battles on Tier X vehicles
 		Total10 *int `json:"total_10,omitempty"`
 		// Total number of battles on Tier X vehicles within the last 28 days
-		Total10In28D *int `json:"total_10_in_28d,omitempty"`
+		Total10In28d *int `json:"total_10_in_28d,omitempty"`
 		// Total number of battles on Tier VI vehicles
 		Total6 *int `json:"total_6,omitempty"`
 		// Total number of battles on Tier VI vehicles within the last 28 days
-		Total6In28D *int `json:"total_6_in_28d,omitempty"`
+		Total6In28d *int `json:"total_6_in_28d,omitempty"`
 		// Total number of battles on Tier VIII vehicles
 		Total8 *int `json:"total_8,omitempty"`
 		// Total number of battles on Tier VIII vehicles within the last 28 days
-		Total8In28D *int `json:"total_8_in_28d,omitempty"`
+		Total8In28d *int `json:"total_8_in_28d,omitempty"`
 		// Number of victories on Tier X vehicles
 		Win10 *int `json:"win_10,omitempty"`
 		// Number of victories on Tier X vehicles within the last 28 days
-		Win10In28D *int `json:"win_10_in_28d,omitempty"`
+		Win10In28d *int `json:"win_10_in_28d,omitempty"`
 		// Number of victories on Tier VI vehicles
 		Win6 *int `json:"win_6,omitempty"`
 		// Number of victories on Tier VI vehicles within the last 28 days
-		Win6In28D *int `json:"win_6_in_28d,omitempty"`
+		Win6In28d *int `json:"win_6_in_28d,omitempty"`
 		// Number of victories on Tier VIII vehicles
 		Win8 *int `json:"win_8,omitempty"`
 		// Number of victories on Tier VIII vehicles within the last 28 days
-		Win8In28D *int `json:"win_8_in_28d,omitempty"`
+		Win8In28d *int `json:"win_8_in_28d,omitempty"`
 	} `json:"skirmish_statistics,omitempty"`
 	// Total level of the Stronghold's structures
 	StrongholdBuildingsLevel *int `json:"stronghold_buildings_level,omitempty"`

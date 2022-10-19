@@ -1,8 +1,10 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wot"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wot"
 	"strconv"
 	"strings"
 )
@@ -12,7 +14,7 @@ import (
 // https://developers.wargaming.net/reference/all/wot/globalmap/eventaccountratingneighbors
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
+//     Valid realms: RealmAsia, RealmEu, RealmNa
 // accountId:
 //     Account ID. Min value is 1.
 // eventId:
@@ -20,7 +22,7 @@ import (
 // frontId:
 //     Front ID. To get a front ID, use the Fronts method.
 func (service *WotService) GlobalmapEventaccountratingneighbors(ctx context.Context, realm Realm, accountId int, eventId string, frontId string, options *wot.GlobalmapEventaccountratingneighborsOptions) ([]*wot.GlobalmapEventaccountratingneighbors, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err
 	}
 
@@ -29,18 +31,19 @@ func (service *WotService) GlobalmapEventaccountratingneighbors(ctx context.Cont
 		"event_id":   eventId,
 		"front_id":   frontId,
 	}
+
 	if options != nil {
-		if options.PageNo != nil {
-			reqParam["page_no"] = strconv.Itoa(*options.PageNo)
-		}
-		if options.NeighboursCount != nil {
-			reqParam["neighbours_count"] = strconv.Itoa(*options.NeighboursCount)
+		if options.Fields != nil {
+			reqParam["fields"] = strings.Join(options.Fields, ",")
 		}
 		if options.Limit != nil {
 			reqParam["limit"] = strconv.Itoa(*options.Limit)
 		}
-		if options.Fields != nil {
-			reqParam["fields"] = strings.Join(options.Fields, ",")
+		if options.NeighboursCount != nil {
+			reqParam["neighbours_count"] = strconv.Itoa(*options.NeighboursCount)
+		}
+		if options.PageNo != nil {
+			reqParam["page_no"] = strconv.Itoa(*options.PageNo)
 		}
 	}
 

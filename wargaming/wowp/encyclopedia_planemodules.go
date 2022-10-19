@@ -2,14 +2,13 @@
 
 package wowp
 
-// EncyclopediaPlanemodulesOptions options.
 type EncyclopediaPlanemodulesOptions struct {
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
-	// Localization language. Default is "ru". Valid values:
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "en" - English
-	// "ru" - Русский (by default)
+	// "en" - English (by default)
+	// "ru" - Русский
 	// "pl" - Polski
 	// "de" - Deutsch
 	// "fr" - Français
@@ -20,7 +19,7 @@ type EncyclopediaPlanemodulesOptions struct {
 	// "th" - ไทย
 	// "vi" - Tiếng Việt
 	// "ko" - 한국어
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// Configuration. Default is "engine, bomb, rocket, turret, turretfront, turretupper, turretlower, gun, construction". Maximum limit: 100. Valid values:
 	//
 	// "engine" - engine
@@ -32,7 +31,7 @@ type EncyclopediaPlanemodulesOptions struct {
 	// "turretlower" - Нижняя турель
 	// "gun" - autocannon
 	// "construction" - airframe
-	Type_ []string
+	Type []string `json:"type,omitempty"`
 }
 
 type EncyclopediaPlanemodules struct {
@@ -57,7 +56,7 @@ type EncyclopediaPlanemodules struct {
 		// Name
 		Name *string `json:"name,omitempty"`
 		// Localized name field
-		NameI18N *string `json:"name_i18n,omitempty"`
+		NameI18n *string `json:"name_i18n,omitempty"`
 		// Purchase cost in credits
 		PriceCredit *int `json:"price_credit,omitempty"`
 		// Research cost
@@ -82,7 +81,7 @@ type EncyclopediaPlanemodules struct {
 		// Name
 		Name *string `json:"name,omitempty"`
 		// Localized name field
-		NameI18N *string `json:"name_i18n,omitempty"`
+		NameI18n *string `json:"name_i18n,omitempty"`
 		// Purchase cost in credits
 		PriceCredit *int `json:"price_credit,omitempty"`
 		// Research cost
@@ -97,7 +96,7 @@ type EncyclopediaPlanemodules struct {
 		// Type
 		EquipmentType *string `json:"equipment_type,omitempty"`
 		// Localized equipment_type field
-		EquipmentTypeI18N *string `json:"equipment_type_i18n,omitempty"`
+		EquipmentTypeI18n *string `json:"equipment_type_i18n,omitempty"`
 		// URL to image
 		Image *string `json:"image,omitempty"`
 		// Indicates if the module is standard
@@ -109,7 +108,7 @@ type EncyclopediaPlanemodules struct {
 		// Name
 		Name *string `json:"name,omitempty"`
 		// Localized name field
-		NameI18N *string `json:"name_i18n,omitempty"`
+		NameI18n *string `json:"name_i18n,omitempty"`
 		// Power
 		Power *int `json:"power,omitempty"`
 		// Purchase cost in credits
@@ -142,17 +141,17 @@ type EncyclopediaPlanemodules struct {
 		// Name
 		Name *string `json:"name,omitempty"`
 		// Localized name field
-		NameI18N *string `json:"name_i18n,omitempty"`
+		NameI18n *string `json:"name_i18n,omitempty"`
 		// Purchase cost in credits
 		PriceCredit *int `json:"price_credit,omitempty"`
 		// Research cost
 		PriceXp *int `json:"price_xp,omitempty"`
 		// Rate of fire
 		Rpm *int `json:"rpm,omitempty"`
-		// Localized type field
-		TypeI18N *string `json:"type_i18n,omitempty"`
 		// Type
-		Type_ *string `json:"type,omitempty"`
+		Type *string `json:"type,omitempty"`
+		// Localized type field
+		TypeI18n *string `json:"type_i18n,omitempty"`
 	} `json:"gun,omitempty"`
 	// Rocket
 	Rocket *struct {
@@ -173,7 +172,7 @@ type EncyclopediaPlanemodules struct {
 		// Name
 		Name *string `json:"name,omitempty"`
 		// Localized name field
-		NameI18N *string `json:"name_i18n,omitempty"`
+		NameI18n *string `json:"name_i18n,omitempty"`
 		// Purchase cost in credits
 		PriceCredit *int `json:"price_credit,omitempty"`
 		// Research cost
@@ -202,7 +201,7 @@ type EncyclopediaPlanemodules struct {
 		// Name
 		Name *string `json:"name,omitempty"`
 		// Localized name field
-		NameI18N *string `json:"name_i18n,omitempty"`
+		NameI18n *string `json:"name_i18n,omitempty"`
 		// Purchase cost in credits
 		PriceCredit *int `json:"price_credit,omitempty"`
 		// Research cost

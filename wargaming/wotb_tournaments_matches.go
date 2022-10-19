@@ -1,9 +1,11 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/internal"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wotb"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/internal"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wotb"
 	"strconv"
 	"strings"
 )
@@ -13,13 +15,13 @@ import (
 // https://developers.wargaming.net/reference/all/wotb/tournaments/matches
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa, RealmRu
+//     Valid realms: RealmAsia, RealmEu, RealmNa
 // stageId:
 //     Stage ID that can be retrieved from the Tournaments Stages method.
 // tournamentId:
 //     Tournament ID that can be retrieved from the Tournaments list method.
 func (service *WotbService) TournamentsMatches(ctx context.Context, realm Realm, stageId int, tournamentId int, options *wotb.TournamentsMatchesOptions) (*wotb.TournamentsMatches, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err
 	}
 
@@ -27,27 +29,28 @@ func (service *WotbService) TournamentsMatches(ctx context.Context, realm Realm,
 		"stage_id":      strconv.Itoa(stageId),
 		"tournament_id": strconv.Itoa(tournamentId),
 	}
+
 	if options != nil {
-		if options.TeamId != nil {
-			reqParam["team_id"] = internal.SliceIntToString(options.TeamId, ",")
-		}
-		if options.RoundNumber != nil {
-			reqParam["round_number"] = internal.SliceIntToString(options.RoundNumber, ",")
-		}
-		if options.PageNo != nil {
-			reqParam["page_no"] = strconv.Itoa(*options.PageNo)
-		}
-		if options.Limit != nil {
-			reqParam["limit"] = strconv.Itoa(*options.Limit)
-		}
-		if options.Language != nil {
-			reqParam["language"] = *options.Language
+		if options.Fields != nil {
+			reqParam["fields"] = strings.Join(options.Fields, ",")
 		}
 		if options.GroupId != nil {
 			reqParam["group_id"] = internal.SliceIntToString(options.GroupId, ",")
 		}
-		if options.Fields != nil {
-			reqParam["fields"] = strings.Join(options.Fields, ",")
+		if options.Language != nil {
+			reqParam["language"] = *options.Language
+		}
+		if options.Limit != nil {
+			reqParam["limit"] = strconv.Itoa(*options.Limit)
+		}
+		if options.PageNo != nil {
+			reqParam["page_no"] = strconv.Itoa(*options.PageNo)
+		}
+		if options.RoundNumber != nil {
+			reqParam["round_number"] = internal.SliceIntToString(options.RoundNumber, ",")
+		}
+		if options.TeamId != nil {
+			reqParam["team_id"] = internal.SliceIntToString(options.TeamId, ",")
 		}
 	}
 

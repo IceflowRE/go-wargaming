@@ -3,15 +3,14 @@
 package wotx
 
 import (
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
 )
 
-// AccountInfoOptions options.
 type AccountInfoOptions struct {
 	// Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
-	AccessToken *string
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
+	AccessToken *string `json:"access_token,omitempty"`
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
 	// Localization language. Default is "en". Valid values:
 	//
 	// "en" - English (by default)
@@ -21,7 +20,7 @@ type AccountInfoOptions struct {
 	// "fr" - Français
 	// "es" - Español
 	// "tr" - Türkçe
-	Language *string
+	Language *string `json:"language,omitempty"`
 }
 
 type AccountInfo struct {

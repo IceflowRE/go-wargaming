@@ -2,10 +2,9 @@
 
 package wot
 
-// TanksStatsOptions options.
 type TanksStatsOptions struct {
 	// Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
-	AccessToken *string
+	AccessToken *string `json:"access_token,omitempty"`
 	// Extra fields that will be added to the response. Valid values:
 	//
 	// "epic"
@@ -13,18 +12,18 @@ type TanksStatsOptions struct {
 	// "random"
 	// "ranked_10x10"
 	// "ranked_battles"
-	Extra []string
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
+	Extra []string `json:"extra,omitempty"`
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
 	// Filter by vehicle availability in the Garage. If the parameter is not specified, all vehicles are returned. Parameter processing requires a valid access_token for the specified account_id. Valid values:
 	//
 	// "1" - Return vehicles available in the Garage.
 	// "0" - Return vehicles that are no longer in the Garage.
-	InGarage *string
-	// Localization language. Default is "ru". Valid values:
+	InGarage *string `json:"in_garage,omitempty"`
+	// Localization language. Default is "en". Valid values:
 	//
-	// "en" - English
-	// "ru" - Русский (by default)
+	// "en" - English (by default)
+	// "ru" - Русский
 	// "pl" - Polski
 	// "de" - Deutsch
 	// "fr" - Français
@@ -36,9 +35,9 @@ type TanksStatsOptions struct {
 	// "th" - ไทย
 	// "vi" - Tiếng Việt
 	// "ko" - 한국어
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// Player's vehicle ID. Maximum limit: 100.
-	TankId []int
+	TankId []int `json:"tank_id,omitempty"`
 }
 
 type TanksStats struct {
@@ -402,11 +401,11 @@ type TanksStats struct {
 	InGarage *bool `json:"in_garage,omitempty"`
 	// Mastery Badges:
 	//
-	// 0 — None
-	// 1 — 3rd Class
-	// 2 — 2nd Class
-	// 3 — 1st Class
-	// 4 — Ace Tanker
+	// 0 - None
+	// 1 - 3rd Class
+	// 2 - 2nd Class
+	// 3 - 1st Class
+	// 4 - Ace Tanker
 	MarkOfMastery *int `json:"mark_of_mastery,omitempty"`
 	// Maximum destroyed in battle
 	MaxFrags *int `json:"max_frags,omitempty"`
@@ -462,7 +461,7 @@ type TanksStats struct {
 	} `json:"random,omitempty"`
 	// Archive of statistics for ranked 10x10 battles.
 	// An extra field.
-	Ranked10X10 *struct {
+	Ranked10x10 *struct {
 		// Average experience per battle
 		BattleAvgXp *int `json:"battle_avg_xp,omitempty"`
 		// Battles fought

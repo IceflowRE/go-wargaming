@@ -3,20 +3,19 @@
 package wotx
 
 import (
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
 )
 
-// TanksStatsOptions options.
 type TanksStatsOptions struct {
 	// Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
-	AccessToken *string
-	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
-	Fields []string
+	AccessToken *string `json:"access_token,omitempty"`
+	// Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is not defined, the method returns all fields. Maximum limit: 100.
+	Fields []string `json:"fields,omitempty"`
 	// Filter by vehicle availability in the Garage. If the parameter is not specified, all vehicles are returned. Parameter processing requires a valid access_token for the specified account_id. Valid values:
 	//
 	// "1" - Return vehicles available in the Garage.
 	// "0" - Return vehicles that are no longer in the Garage.
-	InGarage *string
+	InGarage *string `json:"in_garage,omitempty"`
 	// Localization language. Default is "en". Valid values:
 	//
 	// "en" - English (by default)
@@ -26,9 +25,9 @@ type TanksStatsOptions struct {
 	// "fr" - Français
 	// "es" - Español
 	// "tr" - Türkçe
-	Language *string
+	Language *string `json:"language,omitempty"`
 	// Player's vehicle ID. Maximum limit: 100.
-	TankId []int
+	TankId []int `json:"tank_id,omitempty"`
 }
 
 type TanksStats struct {
@@ -144,11 +143,11 @@ type TanksStats struct {
 	LastBattleTime *wgnTime.UnixTime `json:"last_battle_time,omitempty"`
 	// Mastery Badges:
 	//
-	// 0 — None
-	// 1 — 3rd Class
-	// 2 — 2nd Class
-	// 3 — 1st Class
-	// 4 — Ace Tanker
+	// 0 - None
+	// 1 - 3rd Class
+	// 2 - 2nd Class
+	// 3 - 1st Class
+	// 4 - Ace Tanker
 	MarkOfMastery *int `json:"mark_of_mastery,omitempty"`
 	// Number of battles for markOfMastery achievement
 	MarkOfMasteryBattlesCount *int `json:"mark_of_mastery_battles_count,omitempty"`

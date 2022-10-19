@@ -1,8 +1,10 @@
+// Auto generated file!
+
 package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v2/wargaming/wowp"
+	"github.com/IceflowRE/go-wargaming/v3/wargaming/wowp"
 )
 
 // EncyclopediaInfo returns information about Encyclopedia.
@@ -10,9 +12,9 @@ import (
 // https://developers.wargaming.net/reference/all/wowp/encyclopedia/info
 //
 // realm:
-//     Valid realms: RealmEu, RealmNa, RealmRu
+//     Valid realms: RealmEu, RealmNa
 func (service *WowpService) EncyclopediaInfo(ctx context.Context, realm Realm) (*wowp.EncyclopediaInfo, error) {
-	if err := validateRealm(realm, []Realm{RealmEu, RealmNa, RealmRu}); err != nil {
+	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
 		return nil, err
 	}
 
