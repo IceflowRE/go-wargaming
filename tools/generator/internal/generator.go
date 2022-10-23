@@ -161,6 +161,9 @@ func collectRealms(realmIdcs map[string]string, realmDocs []*realmDoc) ([]*realm
 		}
 		realms = append(realms, realm)
 	}
+	sort.Slice(realms, func(i, k int) bool {
+		return realms[i].Index < realms[k].Index
+	})
 	return realms, nil
 }
 
