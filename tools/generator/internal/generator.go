@@ -32,7 +32,8 @@ func (gen *Generator) Generate() (err error) {
 	// method id to deprecated
 	methodIds := map[string]bool{}
 
-	if gen.removeFiles(methodsDocs) != nil {
+	err = gen.removeFiles(methodsDocs)
+	if err != nil {
 		return err
 	}
 
