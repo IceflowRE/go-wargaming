@@ -1,4 +1,0 @@
-// Auto generated file!
-
-package {{.Game}}
-{{template "structTempl" .}}{{end}}
