@@ -18,7 +18,7 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa
 // accountId:
 //     Player account ID
-func (service *WowsService) ShipsStats(ctx context.Context, realm Realm, accountId int, options *wows.ShipsStatsOptions) (*wows.ShipsStats, error) {
+func (service *WowsService) ShipsStats(ctx context.Context, realm Realm, accountId int, options *wows.ShipsStatsOptions) (map[int][]*wows.ShipsStats, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err
 	}
@@ -48,7 +48,7 @@ func (service *WowsService) ShipsStats(ctx context.Context, realm Realm, account
 		}
 	}
 
-	var data *wows.ShipsStats
+	var data map[int][]*wows.ShipsStats
 	err := service.client.getRequest(ctx, sectionWows, realm, "/ships/stats/", reqParam, &data)
 	return data, err
 }

@@ -16,7 +16,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa
-func (service *WowsService) EncyclopediaShips(ctx context.Context, realm Realm, options *wows.EncyclopediaShipsOptions) (*wows.EncyclopediaShips, error) {
+func (service *WowsService) EncyclopediaShips(ctx context.Context, realm Realm, options *wows.EncyclopediaShipsOptions) (map[int]*wows.EncyclopediaShips, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func (service *WowsService) EncyclopediaShips(ctx context.Context, realm Realm, 
 		}
 	}
 
-	var data *wows.EncyclopediaShips
+	var data map[int]*wows.EncyclopediaShips
 	err := service.client.getRequest(ctx, sectionWows, realm, "/encyclopedia/ships/", reqParam, &data)
 	return data, err
 }

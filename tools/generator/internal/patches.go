@@ -69,6 +69,10 @@ func patchEndpoint(ep *endpoint) {
 		ep.ReturnType.TypeStr = "map[string][]" + ep.ReturnType.TypeStr
 	case "wotb_tournaments_teams":
 		ep.ReturnType.F("Players").TypeStr = "[]*struct"
+	case "wows_encyclopedia_ships":
+		ep.ReturnType.TypeStr = "map[int]" + ep.ReturnType.TypeStr
+	case "wows_ships_stats":
+		ep.ReturnType.TypeStr = "map[int][]" + ep.ReturnType.TypeStr
 	}
 	if contains([]string{
 		"wgn_account_list", "wgn_wgtv_videos",
