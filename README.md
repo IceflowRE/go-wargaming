@@ -11,7 +11,7 @@
 Go client for accessing [Wargaming.net Public API](https://developers.wargaming.net/documentation/guide/getting-started/).
 
 This API client is generated automatically based on the documentation provided by Wargaming. All endpoints are available.  
-The documentation is often inaccurate, especially the return types (object, list, map), so manual fixes afterwards are required. If something was not corrected, please open an issue.
+The documentation is often inaccurate, especially the return types (object, list, map), so fixes afterwards are required. If something was not corrected, please open an issue.
 
 ## Installation
 
@@ -42,17 +42,15 @@ The services of a client are the same as the Wargaming API sections in their doc
 client := wargaming.NewClient("a7f838650dcb008552966db063eeeb35", nil)
 // get World of Tanks EU accounts starting with "Yzne"
 res, err := client.Wot.AccountList(context.Background(), wargaming.RealmEu, "Yzne", nil)
-// print them to console
-if err != nil {
-	fmt.Println(err.Error())
-} else {
+if err == nil {
+    // print them to console
 	for _, value := range res {
 		fmt.Println(value)
 	}
 }
 ```
 
-Also, the client can be customized.
+Also, the http client can be customized.
 ```go
 client := wargaming.NewClient("a7f838650dcb008552966db063eeeb35", &wargaming.ClientOptions{
 	HTTPClient: &http.Client{
@@ -78,18 +76,44 @@ options := &wot.AccountListOptions{
 }
 ```
 
-NOTE: Using the context package, one can easily pass cancelation signals and deadlines to various services of the client for handling a request. In case there is no context available, then `context.Background()` can be used as a starting point.
+To retrieve the error returned by the Wargaming API, use `errors.As`.
+
+```go
+_, err := client.Wot.AccountList(context.Background(), wargaming.RealmEu, "Yzne", nil)
+if err != nil {
+	// handle a Wargaming Response Error, returned by the API itself
+	var respErr *wargaming.ResponseError
+	if errors.As(err, &respErr) {
+		fmt.Println(respErr.Error())
+	} else {
+		// handle client or other errors
+		fmt.Println(err.Error())
+	}
+}
+```
+
+NOTE: Using the context package, one can easily pass cancellation signals and deadlines to various services of the client for handling a request. In case there is no context available, then `context.Background()` can be used as a starting point.
 
 ## Development
 
-To run the generation of the API code:
+The client library is generated automatically. The generator is located in [tools/generator/main.go](tools/generator/main.go).
 
+Endpoint patches can be found in [patches.go](tools/generator/internal/patches.go).
+
+To update the library just run the generator from project root.
 ```shell
 go build -o generator github.com/IceflowRE/go-wargaming/v3/tools/generator
 ./generator
 ```
 
-The client test requires an environment variable `WARGAMING_API_ID` with the API ID.
+### Testing
+
+Client tests require an environment variable `WARGAMING_API_ID` with the API ID as value.
+
+Not all endpoints are tested either they are complicated to test or method who required a clan membership, etc.
+Those tests are explicitly skipped.
+
+Also, the tests are not covering edge cases or all possibilities, only the availability of the endpoint is tested and if the default return data can be parsed.
 
 ## Contributing
 

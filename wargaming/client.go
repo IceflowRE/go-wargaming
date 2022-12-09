@@ -9,7 +9,7 @@ import (
 	"net/url"
 )
 
-// If getting valid data it always fits into this struct.
+// response Wargaming response body fits always in this struct.
 type response struct {
 	Status string         `json:"status"`
 	Error  *ResponseError `json:"error,omitempty"`
@@ -25,7 +25,14 @@ type response struct {
 //	res, err := client.Wot.AccountList(context.Background(), wargaming.realmEu, "Yzne", nil)
 //	// print out
 //	if err != nil {
-//		fmt.Println(err.Error())
+//		// handle a Wargaming Response Error, returned by the API itself
+//		var respErr *wargaming.ResponseError
+//		if errors.As(err, &respErr) {
+//			fmt.Println(respErr.Error())
+//		} else {
+//			// handle client or other error
+//			fmt.Println(err.Error())
+//		}
 //	} else {
 //		for _, value := range res {
 //			fmt.Println(value)

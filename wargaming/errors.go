@@ -7,6 +7,15 @@ import (
 	"strings"
 )
 
+// ResponseError contains the fields returned by the Wargaming API.
+// https://developers.wargaming.net/documentation/guide/getting-started/
+//
+//		_, err := client.Wot.AccountList(context.Background(), RealmEu, "Licht", nil)
+//			var respErr *ResponseError
+//			if errors.As(err, &respErr) {
+//				fmt.Println(respErr.Error())
+//			}
+//		}
 type ResponseError struct {
 	Field   string `json:"field"`
 	Message string `json:"message"`
