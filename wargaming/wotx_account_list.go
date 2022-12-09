@@ -42,6 +42,6 @@ func (service *WotxService) AccountList(ctx context.Context, realm Realm, search
 	}
 
 	var data []*wotx.AccountList
-	err := service.client.getRequest(ctx, sectionWotx, realm, "/account/list/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWotx, realm, "/account/list/", reqParam, &data, nil)
 	return data, err
 }

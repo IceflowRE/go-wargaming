@@ -32,6 +32,6 @@ func (service *WotService) ClansMessageboard(ctx context.Context, realm Realm, a
 	}
 
 	var data map[string][]*wot.ClansMessageboard
-	err := service.client.getRequest(ctx, sectionWot, realm, "/clans/messageboard/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/clans/messageboard/", reqParam, &data, nil)
 	return data, err
 }

@@ -22,7 +22,6 @@ type EncyclopediaTanksOptions struct {
 	// "ko" - 한국어
 	Language *string `json:"language,omitempty"`
 }
-
 type EncyclopediaTanks struct {
 	// URL to outline image of vehicle
 	ContourImage *string `json:"contour_image,omitempty"`

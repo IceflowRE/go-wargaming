@@ -41,6 +41,6 @@ func (service *WgnService) ClansMembersinfo(ctx context.Context, realm Realm, ac
 	}
 
 	var data *wgn.ClansMembersinfo
-	err := service.client.getRequest(ctx, sectionWgn, realm, "/clans/membersinfo/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWgn, realm, "/clans/membersinfo/", reqParam, &data, nil)
 	return data, err
 }

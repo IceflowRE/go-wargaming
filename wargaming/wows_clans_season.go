@@ -31,6 +31,6 @@ func (service *WowsService) ClansSeason(ctx context.Context, realm Realm, option
 	}
 
 	var data *wows.ClansSeason
-	err := service.client.getRequest(ctx, sectionWows, realm, "/clans/season/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWows, realm, "/clans/season/", reqParam, &data, nil)
 	return data, err
 }

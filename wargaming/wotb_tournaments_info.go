@@ -36,6 +36,6 @@ func (service *WotbService) TournamentsInfo(ctx context.Context, realm Realm, to
 	}
 
 	var data *wotb.TournamentsInfo
-	err := service.client.getRequest(ctx, sectionWotb, realm, "/tournaments/info/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWotb, realm, "/tournaments/info/", reqParam, &data, nil)
 	return data, err
 }

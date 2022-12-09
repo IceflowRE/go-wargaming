@@ -45,6 +45,6 @@ func (service *WowsService) AccountStatsbydate(ctx context.Context, realm Realm,
 	}
 
 	var data *wows.AccountStatsbydate
-	err := service.client.getRequest(ctx, sectionWows, realm, "/account/statsbydate/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWows, realm, "/account/statsbydate/", reqParam, &data, nil)
 	return data, err
 }

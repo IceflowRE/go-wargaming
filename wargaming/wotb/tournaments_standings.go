@@ -26,7 +26,6 @@ type TournamentsStandingsOptions struct {
 	// Allows to get all team standings up to a specific place, including this place
 	ToPosition *int `json:"to_position,omitempty"`
 }
-
 type TournamentsStandings struct {
 	// Number of battles played by a team
 	BattlePlayed *int `json:"battle_played,omitempty"`

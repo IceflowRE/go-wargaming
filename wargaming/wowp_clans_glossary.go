@@ -31,6 +31,6 @@ func (service *WowpService) ClansGlossary(ctx context.Context, realm Realm, opti
 	}
 
 	var data *wowp.ClansGlossary
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/clans/glossary/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/clans/glossary/", reqParam, &data, nil)
 	return data, err
 }

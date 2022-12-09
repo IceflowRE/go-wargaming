@@ -42,6 +42,6 @@ func (service *WotService) GlobalmapEventaccountinfo(ctx context.Context, realm 
 	}
 
 	var data *wot.GlobalmapEventaccountinfo
-	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/eventaccountinfo/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/eventaccountinfo/", reqParam, &data, nil)
 	return data, err
 }

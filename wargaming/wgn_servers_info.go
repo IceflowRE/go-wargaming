@@ -34,6 +34,6 @@ func (service *WgnService) ServersInfo(ctx context.Context, realm Realm, options
 	}
 
 	var data *wgn.ServersInfo
-	err := service.client.getRequest(ctx, sectionWgn, realm, "/servers/info/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWgn, realm, "/servers/info/", reqParam, &data, nil)
 	return data, err
 }

@@ -15,8 +15,8 @@ func patchTimeTypes(t *goType) {
 }
 
 func patchEndpoint(ep *endpoint) {
-	patchTimeTypes(ep.ReturnType)
-	patchTimeTypes(ep.Options)
+	patchTimeTypes(ep.DataType)
+	patchTimeTypes(ep.OptionsType)
 	for _, param := range ep.Parameters {
 		if param.Name == "type" {
 			param.Name = "typ"
@@ -29,12 +29,12 @@ func patchEndpoint(ep *endpoint) {
 
 	switch ep.Id {
 	case "wot_account_info":
-		ep.ReturnType.F("Statistics").F("Frags").TypeStr = "map[string]int"
-		ep.ReturnType.F("Private").F("Boosters").TypeStr = "map[string]*struct"
+		ep.DataType.F("Statistics").F("Frags").TypeStr = "map[string]int"
+		ep.DataType.F("Private").F("Boosters").TypeStr = "map[string]*struct"
 	case "wot_encyclopedia_vehicles":
-		ep.ReturnType.F("DefaultProfile").F("Ammo").F("Stun").F("Duration").TypeStr = "[]int"
+		ep.DataType.F("DefaultProfile").F("Ammo").F("Stun").F("Duration").TypeStr = "[]int"
 	case "wot_globalmap_events":
-		ep.ReturnType.F("Fronts").TypeStr = "[]*struct"
+		ep.DataType.F("Fronts").TypeStr = "[]*struct"
 	case "wot_globalmap_eventaccountinfo":
 		// account_id OR clan_id is required
 		for idx, param := range ep.Parameters {
@@ -43,37 +43,97 @@ func patchEndpoint(ep *endpoint) {
 			}
 			param.TypeStr = toPointerType(param.TypeStr)
 			param.Name = camelLowerToCamel(param.Name)
-			ep.Options.Fields = append(ep.Options.Fields, param)
+			ep.OptionsType.Fields = append(ep.OptionsType.Fields, param)
 			ep.Parameters = append(ep.Parameters[:idx], ep.Parameters[idx+1:]...)
 			break
 		}
 	case "wot_globalmap_fronts":
-		ep.ReturnType.F("AvailableExtensions").TypeStr = "[]*struct"
+		ep.DataType.F("AvailableExtensions").TypeStr = "[]*struct"
 	case "wot_globalmap_seasons":
-		ep.ReturnType.F("Fronts").TypeStr = "[]*struct"
+		ep.DataType.F("Fronts").TypeStr = "[]*struct"
 	case "wot_tanks_mastery":
-		ep.ReturnType.F("Distribution").TypeStr = "map[string]map[string]int"
+		ep.DataType.F("Distribution").TypeStr = "map[string]map[string]int"
 	case "wotb_tournaments_stages":
-		ep.ReturnType.F("Groups").TypeStr = "[]*struct"
+		ep.DataType.F("Groups").TypeStr = "[]*struct"
 	case "wotb_encyclopedia_modules":
-		ep.ReturnType.F("Engines").TypeStr = "[]*struct"
-		ep.ReturnType.F("Guns").TypeStr = "[]*struct"
-		ep.ReturnType.F("Guns").F("Shells").TypeStr = "[]*struct"
-		ep.ReturnType.F("Suspensions").TypeStr = "[]*struct"
-		ep.ReturnType.F("Turrets").TypeStr = "[]*struct"
+		ep.DataType.F("Engines").TypeStr = "[]*struct"
+		ep.DataType.F("Guns").TypeStr = "[]*struct"
+		ep.DataType.F("Guns").F("Shells").TypeStr = "[]*struct"
+		ep.DataType.F("Suspensions").TypeStr = "[]*struct"
+		ep.DataType.F("Turrets").TypeStr = "[]*struct"
 	case "wgn_wgtv_tags":
-		ep.ReturnType.F("Categories").TypeStr = "[]*struct"
-		ep.ReturnType.F("Projects").TypeStr = "[]*struct"
-		ep.ReturnType.F("Programs").TypeStr = "[]*struct"
+		ep.DataType.F("Categories").TypeStr = "[]*struct"
+		ep.DataType.F("Projects").TypeStr = "[]*struct"
+		ep.DataType.F("Programs").TypeStr = "[]*struct"
 	case "wot_clans_messageboard", "wotb_clanmessages_messages":
-		ep.ReturnType.TypeStr = "map[string][]" + ep.ReturnType.TypeStr
+		ep.DataType.TypeStr = "map[string][]" + ep.DataType.TypeStr
 	case "wotb_tournaments_teams":
-		ep.ReturnType.F("Players").TypeStr = "[]*struct"
+		ep.DataType.F("Players").TypeStr = "[]*struct"
 	case "wows_encyclopedia_ships":
-		ep.ReturnType.TypeStr = "map[int]" + ep.ReturnType.TypeStr
+		ep.DataType.TypeStr = "map[int]" + ep.DataType.TypeStr
 	case "wows_ships_stats":
-		ep.ReturnType.TypeStr = "map[int][]" + ep.ReturnType.TypeStr
+		ep.DataType.TypeStr = "map[int][]" + ep.DataType.TypeStr
 	}
+
+	if contains([]string{
+		"wows_encyclopedia_ships",
+	}, ep.Id) {
+		ep.MetaType = &goType{
+			Name:    ep.Name + "Meta",
+			TypeStr: "struct",
+			Fields: []*goType{
+				{
+					Name:    "Count",
+					TypeStr: "int",
+					JsonTag: "count",
+					Imports: make(map[string]struct{}),
+				},
+				{
+					Name:    "Limit",
+					TypeStr: "int",
+					JsonTag: "limit",
+					Imports: make(map[string]struct{}),
+				},
+				{
+					Name:    "Page",
+					TypeStr: "int",
+					JsonTag: "page",
+					Imports: make(map[string]struct{}),
+				},
+				{
+					Name:    "PageTotal",
+					TypeStr: "int",
+					JsonTag: "page_total",
+					Imports: make(map[string]struct{}),
+				},
+				{
+					Name:    "Total",
+					TypeStr: "int",
+					JsonTag: "total",
+					Imports: make(map[string]struct{}),
+				},
+			},
+		}
+	}
+
+	if contains([]string{
+		"wows_account_achievements", "wows_seasons_accountinfo", "wows_seasons_shipstats", "wows_ships_stats",
+	}, ep.Id) {
+		ep.MetaType = &goType{
+			Name:    ep.Name + "Meta",
+			TypeStr: "struct",
+			Fields: []*goType{
+				{
+					Name:        "Hidden",
+					TypeStr:     "[]int",
+					Description: "Hidden profiles.",
+					JsonTag:     "hidden",
+					Imports:     make(map[string]struct{}),
+				},
+			},
+		}
+	}
+
 	if contains([]string{
 		"wgn_account_list", "wgn_wgtv_videos",
 		"wot_account_list", "wot_clans_list",
@@ -90,6 +150,6 @@ func patchEndpoint(ep *endpoint) {
 		"wowp_ratings_top",
 		"wows_account_list", "wows_clans_list",
 	}, ep.Id) {
-		ep.ReturnType.TypeStr = "[]" + ep.ReturnType.TypeStr
+		ep.DataType.TypeStr = "[]" + ep.DataType.TypeStr
 	}
 }

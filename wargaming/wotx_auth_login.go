@@ -56,6 +56,6 @@ func (service *WotxService) AuthLogin(ctx context.Context, realm Realm, options 
 	}
 
 	var data *wotx.AuthLogin
-	err := service.client.getRequest(ctx, sectionWotx, realm, "/auth/login/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWotx, realm, "/auth/login/", reqParam, &data, nil)
 	return data, err
 }

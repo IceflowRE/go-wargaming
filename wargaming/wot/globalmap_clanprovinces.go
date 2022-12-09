@@ -17,7 +17,6 @@ type GlobalmapClanprovincesOptions struct {
 	// "tr" - Turkish
 	Language *string `json:"language,omitempty"`
 }
-
 type GlobalmapClanprovinces struct {
 	// Map ID
 	ArenaId *string `json:"arena_id,omitempty"`

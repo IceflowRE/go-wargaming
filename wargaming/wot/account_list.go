@@ -29,7 +29,6 @@ type AccountListOptions struct {
 	// "exact" - Search by exact match of player name. Case insensitive. You can enter several names, separated with commas (up to 100).
 	Type *string `json:"type,omitempty"`
 }
-
 type AccountList struct {
 	// Player ID
 	AccountId *int `json:"account_id,omitempty"`

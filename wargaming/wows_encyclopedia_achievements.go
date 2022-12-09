@@ -31,6 +31,6 @@ func (service *WowsService) EncyclopediaAchievements(ctx context.Context, realm 
 	}
 
 	var data *wows.EncyclopediaAchievements
-	err := service.client.getRequest(ctx, sectionWows, realm, "/encyclopedia/achievements/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWows, realm, "/encyclopedia/achievements/", reqParam, &data, nil)
 	return data, err
 }

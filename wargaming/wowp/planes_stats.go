@@ -34,7 +34,6 @@ type PlanesStatsOptions struct {
 	// Aircraft ID. Maximum limit: 100.
 	PlaneId []int `json:"plane_id,omitempty"`
 }
-
 type PlanesStats struct {
 	// Player account ID
 	AccountId *int `json:"account_id,omitempty"`

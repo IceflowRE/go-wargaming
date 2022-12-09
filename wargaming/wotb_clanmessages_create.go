@@ -50,6 +50,6 @@ func (service *WotbService) ClanmessagesCreate(ctx context.Context, realm Realm,
 	}
 
 	var data *wotb.ClanmessagesCreate
-	err := service.client.postRequest(ctx, sectionWotb, realm, "/clanmessages/create/", reqParam, &data)
+	err := service.client.postRequest(ctx, sectionWotb, realm, "/clanmessages/create/", reqParam, &data, nil)
 	return data, err
 }

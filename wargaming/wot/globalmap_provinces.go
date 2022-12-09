@@ -44,7 +44,6 @@ type GlobalmapProvincesOptions struct {
 	// Filter by the list of province IDs. Maximum limit: 100.
 	ProvinceId []string `json:"province_id,omitempty"`
 }
-
 type GlobalmapProvinces struct {
 	// Current battles
 	ActiveBattles *struct {

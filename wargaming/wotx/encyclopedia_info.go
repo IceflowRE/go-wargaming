@@ -16,7 +16,6 @@ type EncyclopediaInfoOptions struct {
 	// "tr" - Türkçe
 	Language *string `json:"language,omitempty"`
 }
-
 type EncyclopediaInfo struct {
 	// Award sections
 	AchievementSections *struct {

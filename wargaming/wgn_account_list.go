@@ -45,6 +45,6 @@ func (service *WgnService) AccountList(ctx context.Context, realm Realm, search 
 	}
 
 	var data []*wgn.AccountList
-	err := service.client.getRequest(ctx, sectionWgn, realm, "/account/list/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWgn, realm, "/account/list/", reqParam, &data, nil)
 	return data, err
 }

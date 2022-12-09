@@ -36,6 +36,6 @@ func (service *WotService) StrongholdClaninfo(ctx context.Context, realm Realm, 
 	}
 
 	var data *wot.StrongholdClaninfo
-	err := service.client.getRequest(ctx, sectionWot, realm, "/stronghold/claninfo/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/stronghold/claninfo/", reqParam, &data, nil)
 	return data, err
 }

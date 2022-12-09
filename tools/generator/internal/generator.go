@@ -86,14 +86,13 @@ func (gen *Generator) Generate() (err error) {
 				if err != nil {
 					return err
 				}
-				if ep.Options != nil || ep.ReturnType != nil && ep.ReturnType.IsStruct() {
+				if ep.OptionsType != nil || ep.MetaType != nil || ep.DataType != nil && ep.DataType.IsStruct() {
 					gen.print("    create struct file")
 					err = genStructs(ep, gen.outputPath)
 					if err != nil {
 						return err
 					}
 				}
-				//return nil
 			}
 		}
 	}

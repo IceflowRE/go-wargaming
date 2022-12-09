@@ -28,7 +28,6 @@ type TanksMasteryOptions struct {
 	// Player's vehicle ID. Maximum limit: 100.
 	TankId []int `json:"tank_id,omitempty"`
 }
-
 type TanksMastery struct {
 	// Values of these percentiles for each piece of equipment
 	Distribution map[string]map[string]int `json:"distribution,omitempty"`

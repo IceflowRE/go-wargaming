@@ -30,7 +30,6 @@ type ClanratingsNeighborsOptions struct {
 	// Number of returned entries (fewer can be returned, but not more than 50). If the limit sent exceeds 50, a limit of 5 is applied (by default).
 	Limit *int `json:"limit,omitempty"`
 }
-
 type ClanratingsNeighbors struct {
 	// Average number of battles
 	BattlesCountAvg *struct {

@@ -16,7 +16,6 @@ type ClansGlossaryOptions struct {
 	// "tr" - Türkçe
 	Language *string `json:"language,omitempty"`
 }
-
 type ClansGlossary struct {
 	// Available clan positions
 	ClansRoles map[string]string `json:"clans_roles,omitempty"`

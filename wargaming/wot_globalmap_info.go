@@ -28,6 +28,6 @@ func (service *WotService) GlobalmapInfo(ctx context.Context, realm Realm, optio
 	}
 
 	var data *wot.GlobalmapInfo
-	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/info/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/info/", reqParam, &data, nil)
 	return data, err
 }

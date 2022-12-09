@@ -24,7 +24,6 @@ type TournamentsStagesOptions struct {
 	// Result page number. Default is 1. Min value is 1.
 	PageNo *int `json:"page_no,omitempty"`
 }
-
 type TournamentsStages struct {
 	// Number of battles in match
 	BattleLimit *int `json:"battle_limit,omitempty"`

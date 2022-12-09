@@ -31,6 +31,6 @@ func (service *WotService) EncyclopediaBadges(ctx context.Context, realm Realm, 
 	}
 
 	var data *wot.EncyclopediaBadges
-	err := service.client.getRequest(ctx, sectionWot, realm, "/encyclopedia/badges/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/encyclopedia/badges/", reqParam, &data, nil)
 	return data, err
 }

@@ -46,6 +46,6 @@ func (service *WowpService) PlanesStats(ctx context.Context, realm Realm, accoun
 	}
 
 	var data *wowp.PlanesStats
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/planes/stats/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/planes/stats/", reqParam, &data, nil)
 	return data, err
 }

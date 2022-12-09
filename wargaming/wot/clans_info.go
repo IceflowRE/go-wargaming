@@ -36,7 +36,6 @@ type ClansInfoOptions struct {
 	// "id" - Members field will contain associative array with account_id indexing in response
 	MembersKey *string `json:"members_key,omitempty"`
 }
-
 type ClansInfo struct {
 	// Clan can invite players
 	AcceptsJoinRequests *bool `json:"accepts_join_requests,omitempty"`

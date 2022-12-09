@@ -37,7 +37,6 @@ type EncyclopediaConsumablesOptions struct {
 	// "Skin" - Ship camouflages
 	Type *string `json:"type,omitempty"`
 }
-
 type EncyclopediaConsumables struct {
 	// Consumable ID
 	ConsumableId *int `json:"consumable_id,omitempty"`

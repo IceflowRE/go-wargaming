@@ -48,6 +48,6 @@ func (service *WotService) RatingsAccounts(ctx context.Context, realm Realm, acc
 	}
 
 	var data *wot.RatingsAccounts
-	err := service.client.getRequest(ctx, sectionWot, realm, "/ratings/accounts/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/ratings/accounts/", reqParam, &data, nil)
 	return data, err
 }

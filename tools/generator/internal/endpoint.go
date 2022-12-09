@@ -10,10 +10,12 @@ type endpoint struct {
 	Game string
 	Url  string
 
-	Name          string
-	Parameters    []*goType
-	Options       *goType
-	ReturnType    *goType
+	Name        string
+	Parameters  []*goType
+	OptionsType *goType
+	DataType    *goType
+	// has to be added via patches, not retrievable from the api documentation
+	MetaType      *goType
 	AllowedRealms []string
 	Documentation string
 	Deprecated    bool
@@ -31,11 +33,12 @@ func newEndpointFromDoc(doc *wgMethodDoc, game string, id string) (*endpoint, er
 		Url:  doc.Url,
 
 		Name:          snakeToCamel(id),
+		MetaType:      nil,
 		Documentation: strings.TrimPrefix(cleanDocumentation(doc.Description), "Method "),
 		Deprecated:    doc.Deprecated,
 		HttpMethods:   doc.AllowedHttpMethods,
 		OtherImports:  map[string]struct{}{"context": {}},
-		Options:       nil,
+		OptionsType:   nil,
 	}
 	if !strings.HasPrefix(ep.Url, "/") {
 		ep.Url = "/" + ep.Url
@@ -48,7 +51,7 @@ func newEndpointFromDoc(doc *wgMethodDoc, game string, id string) (*endpoint, er
 	}
 	ep.AllowedRealms = doc.AvailableDisplayIndices
 	sort.Strings(ep.AllowedRealms)
-	ep.ReturnType = wgDocToGoReturnType(strings.TrimPrefix(ep.Id, ep.Game+"_"), doc.Fields)
+	ep.DataType = wgDocToGoDataType(strings.TrimPrefix(ep.Id, ep.Game+"_"), doc.Fields)
 	// created required Parameters
 	// create optional struct from not required once
 	optionsStruct := &goType{
@@ -78,7 +81,7 @@ func newEndpointFromDoc(doc *wgMethodDoc, game string, id string) (*endpoint, er
 	sortParameters(ep.Parameters)
 	if len(optionsStruct.Fields) > 0 {
 		sortFields(optionsStruct)
-		ep.Options = optionsStruct
+		ep.OptionsType = optionsStruct
 	}
 
 	return &ep, nil
@@ -95,8 +98,8 @@ func (ep *endpoint) MethodImports() []string {
 			tmp[imp] = struct{}{}
 		}
 	}
-	if ep.Options != nil {
-		for _, field := range ep.Options.Fields {
+	if ep.OptionsType != nil {
+		for _, field := range ep.OptionsType.Fields {
 			imps := valueConvImports(field.TypeStr)
 			for _, imp := range imps {
 				tmp[imp] = struct{}{}
@@ -111,7 +114,7 @@ func (ep *endpoint) MethodImports() []string {
 	for imp := range tmp {
 		imports = append(imports, imp)
 	}
-	if ep.Options != nil || ep.ReturnType != nil && ep.ReturnType.IsStruct() {
+	if ep.OptionsType != nil || ep.DataType != nil && ep.DataType.IsStruct() {
 		imports = append(imports, wgModuleName+"/wargaming/"+ep.Game)
 	}
 	sort.Strings(imports)
@@ -141,7 +144,7 @@ func wgToGoType(name string) *goType {
 	}[name]
 }
 
-func wgDocToGoReturnType(idWoPkg string, docFields []*wgFieldDoc) *goType {
+func wgDocToGoDataType(idWoPkg string, docFields []*wgFieldDoc) *goType {
 	if len(docFields) == 0 {
 		return nil
 	}

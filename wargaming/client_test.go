@@ -673,7 +673,7 @@ func TestApi(test *testing.T) {
 	})
 	delay()
 	test.Run("WowsAccountAchievements", func(test *testing.T) {
-		_, err := client.Wows.AccountAchievements(context.Background(), RealmEu, []int{wowsAccountId}, nil)
+		_, _, err := client.Wows.AccountAchievements(context.Background(), RealmEu, []int{wowsAccountId}, nil)
 		checkErr(test, err)
 	})
 	delay()
@@ -688,7 +688,7 @@ func TestApi(test *testing.T) {
 	})
 	delay()
 	test.Run("WowsEncyclopediaShips", func(test *testing.T) {
-		_, err := client.Wows.EncyclopediaShips(context.Background(), RealmEu, nil)
+		_, _, err := client.Wows.EncyclopediaShips(context.Background(), RealmEu, nil)
 		checkErr(test, err)
 	})
 	delay()
@@ -753,7 +753,7 @@ func TestApi(test *testing.T) {
 	})
 	delay()
 	test.Run("WowsShipsStats", func(test *testing.T) {
-		_, err := client.Wows.ShipsStats(context.Background(), RealmEu, wowsAccountId, nil)
+		_, _, err := client.Wows.ShipsStats(context.Background(), RealmEu, wowsAccountId, nil)
 		checkErr(test, err)
 	})
 	delay()
@@ -763,12 +763,12 @@ func TestApi(test *testing.T) {
 	})
 	delay()
 	test.Run("WowsSeasonsShipstats", func(test *testing.T) {
-		_, err := client.Wows.SeasonsShipstats(context.Background(), RealmEu, wowsAccountId, nil)
+		_, _, err := client.Wows.SeasonsShipstats(context.Background(), RealmEu, wowsAccountId, nil)
 		checkErr(test, err)
 	})
 	delay()
 	test.Run("WowsSeasonsAccountinfo", func(test *testing.T) {
-		_, err := client.Wows.SeasonsAccountinfo(context.Background(), RealmEu, []int{wowsAccountId}, nil)
+		_, _, err := client.Wows.SeasonsAccountinfo(context.Background(), RealmEu, []int{wowsAccountId}, nil)
 		checkErr(test, err)
 	})
 	delay()

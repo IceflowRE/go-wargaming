@@ -45,6 +45,6 @@ func (service *WotService) ClanratingsTop(ctx context.Context, realm Realm, rank
 	}
 
 	var data []*wot.ClanratingsTop
-	err := service.client.getRequest(ctx, sectionWot, realm, "/clanratings/top/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/clanratings/top/", reqParam, &data, nil)
 	return data, err
 }

@@ -40,7 +40,6 @@ type EncyclopediaVehiclesOptions struct {
 	// "SPG" - SPG
 	Type []string `json:"type,omitempty"`
 }
-
 type EncyclopediaVehicles struct {
 	// Crew
 	Crew *struct {

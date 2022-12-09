@@ -31,6 +31,6 @@ func (service *WowsService) EncyclopediaCollectioncards(ctx context.Context, rea
 	}
 
 	var data *wows.EncyclopediaCollectioncards
-	err := service.client.getRequest(ctx, sectionWows, realm, "/encyclopedia/collectioncards/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWows, realm, "/encyclopedia/collectioncards/", reqParam, &data, nil)
 	return data, err
 }

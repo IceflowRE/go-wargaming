@@ -31,6 +31,6 @@ func (service *WotxService) EncyclopediaInfo(ctx context.Context, realm Realm, o
 	}
 
 	var data *wotx.EncyclopediaInfo
-	err := service.client.getRequest(ctx, sectionWotx, realm, "/encyclopedia/info/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWotx, realm, "/encyclopedia/info/", reqParam, &data, nil)
 	return data, err
 }

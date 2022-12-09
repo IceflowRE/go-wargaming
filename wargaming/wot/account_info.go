@@ -50,7 +50,6 @@ type AccountInfoOptions struct {
 	// "ko" - 한국어
 	Language *string `json:"language,omitempty"`
 }
-
 type AccountInfo struct {
 	// Player account ID
 	AccountId *int `json:"account_id,omitempty"`

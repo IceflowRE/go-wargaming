@@ -22,7 +22,6 @@ type TournamentsTablesOptions struct {
 	// Result page number. Default is 1. Min value is 1.
 	PageNo *int `json:"page_no,omitempty"`
 }
-
 type TournamentsTables struct {
 	// ID of a default clan emblem
 	ClanEmblemPresetId *int `json:"clan_emblem_preset_id,omitempty"`

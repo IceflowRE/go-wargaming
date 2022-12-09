@@ -21,6 +21,6 @@ func (service *WowpService) EncyclopediaInfo(ctx context.Context, realm Realm) (
 	reqParam := map[string]string{}
 
 	var data *wowp.EncyclopediaInfo
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/encyclopedia/info/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/encyclopedia/info/", reqParam, &data, nil)
 	return data, err
 }

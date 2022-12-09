@@ -26,7 +26,6 @@ type AccountTanksOptions struct {
 	// Player's vehicle ID. Maximum limit: 100.
 	TankId []int `json:"tank_id,omitempty"`
 }
-
 type AccountTanks struct {
 	// Mastery Badges:
 	//

@@ -20,7 +20,6 @@ type StrongholdActivateclanreserveOptions struct {
 	// "tr" - Turkish
 	Language *string `json:"language,omitempty"`
 }
-
 type StrongholdActivateclanreserve struct {
 	// Activation time of a clan Reserve
 	ActivatedAt *wgnTime.UnixTime `json:"activated_at,omitempty"`

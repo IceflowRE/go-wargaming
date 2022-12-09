@@ -37,6 +37,6 @@ func (service *WgnService) ClansMessageboard(ctx context.Context, realm Realm, a
 	}
 
 	var data *wgn.ClansMessageboard
-	err := service.client.getRequest(ctx, sectionWgn, realm, "/clans/messageboard/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWgn, realm, "/clans/messageboard/", reqParam, &data, nil)
 	return data, err
 }

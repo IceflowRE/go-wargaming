@@ -23,7 +23,6 @@ type EncyclopediaBattlearenasOptions struct {
 	// "es-mx" - Español (México)
 	Language *string `json:"language,omitempty"`
 }
-
 type EncyclopediaBattlearenas struct {
 	// Map ID
 	BattleArenaId *int `json:"battle_arena_id,omitempty"`

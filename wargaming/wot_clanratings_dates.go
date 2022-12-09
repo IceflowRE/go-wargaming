@@ -28,6 +28,6 @@ func (service *WotService) ClanratingsDates(ctx context.Context, realm Realm, op
 	}
 
 	var data *wot.ClanratingsDates
-	err := service.client.getRequest(ctx, sectionWot, realm, "/clanratings/dates/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/clanratings/dates/", reqParam, &data, nil)
 	return data, err
 }

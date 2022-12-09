@@ -44,6 +44,6 @@ func (service *WotService) EncyclopediaPersonalmissions(ctx context.Context, rea
 	}
 
 	var data *wot.EncyclopediaPersonalmissions
-	err := service.client.getRequest(ctx, sectionWot, realm, "/encyclopedia/personalmissions/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/encyclopedia/personalmissions/", reqParam, &data, nil)
 	return data, err
 }

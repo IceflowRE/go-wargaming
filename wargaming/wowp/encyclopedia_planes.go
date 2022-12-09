@@ -39,7 +39,6 @@ type EncyclopediaPlanesOptions struct {
 	// "bomber" - Bomber
 	Type []string `json:"type,omitempty"`
 }
-
 type EncyclopediaPlanes struct {
 	// Aircraft images
 	Images *struct {

@@ -39,6 +39,6 @@ func (service *WowpService) ClansAccountinfo(ctx context.Context, realm Realm, a
 	}
 
 	var data *wowp.ClansAccountinfo
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/clans/accountinfo/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/clans/accountinfo/", reqParam, &data, nil)
 	return data, err
 }

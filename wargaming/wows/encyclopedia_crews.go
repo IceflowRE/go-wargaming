@@ -25,7 +25,6 @@ type EncyclopediaCrewsOptions struct {
 	// "es-mx" - Español (México)
 	Language *string `json:"language,omitempty"`
 }
-
 type EncyclopediaCrews struct {
 	// Basic training cost
 	BaseTrainingHirePrice *int `json:"base_training_hire_price,omitempty"`

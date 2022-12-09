@@ -26,7 +26,6 @@ type EncyclopediaTankenginesOptions struct {
 	// Nation. Maximum limit: 100.
 	Nation []string `json:"nation,omitempty"`
 }
-
 type EncyclopediaTankengines struct {
 	// Chance of fire on impact
 	FireStartingChance *int `json:"fire_starting_chance,omitempty"`

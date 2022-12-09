@@ -10,7 +10,6 @@ type WgtvVehiclesOptions struct {
 	// Game project ID. Maximum limit: 100.
 	ProjectId []int `json:"project_id,omitempty"`
 }
-
 type WgtvVehicles struct {
 	// Vehicle IDs by games
 	Vehicles map[string]string `json:"vehicles,omitempty"`

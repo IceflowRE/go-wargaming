@@ -46,6 +46,6 @@ func (service *WotService) GlobalmapSeasonratingneighbors(ctx context.Context, r
 	}
 
 	var data []*wot.GlobalmapSeasonratingneighbors
-	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/seasonratingneighbors/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/seasonratingneighbors/", reqParam, &data, nil)
 	return data, err
 }

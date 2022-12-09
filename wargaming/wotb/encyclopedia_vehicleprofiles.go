@@ -27,7 +27,6 @@ type EncyclopediaVehicleprofilesOptions struct {
 	// "-price_credit" - by cost in credits, in reverse order
 	OrderBy *string `json:"order_by,omitempty"`
 }
-
 type EncyclopediaVehicleprofiles struct {
 	// Armor
 	Armor *struct {

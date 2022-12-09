@@ -35,6 +35,6 @@ func (service *WotService) StrongholdClanreserves(ctx context.Context, realm Rea
 	}
 
 	var data []*wot.StrongholdClanreserves
-	err := service.client.getRequest(ctx, sectionWot, realm, "/stronghold/clanreserves/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/stronghold/clanreserves/", reqParam, &data, nil)
 	return data, err
 }

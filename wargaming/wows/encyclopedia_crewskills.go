@@ -25,7 +25,6 @@ type EncyclopediaCrewskillsOptions struct {
 	// Skill ID. Maximum limit: 100.
 	SkillId []int `json:"skill_id,omitempty"`
 }
-
 type EncyclopediaCrewskills struct {
 	// URL to skill icon
 	Icon *string `json:"icon,omitempty"`

@@ -63,6 +63,6 @@ func (service *WgnService) WgtvVideos(ctx context.Context, realm Realm, options 
 	}
 
 	var data []*wgn.WgtvVideos
-	err := service.client.getRequest(ctx, sectionWgn, realm, "/wgtv/videos/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWgn, realm, "/wgtv/videos/", reqParam, &data, nil)
 	return data, err
 }

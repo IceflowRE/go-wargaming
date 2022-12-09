@@ -34,6 +34,6 @@ func (service *WgnService) WgtvVehicles(ctx context.Context, realm Realm, option
 	}
 
 	var data *wgn.WgtvVehicles
-	err := service.client.getRequest(ctx, sectionWgn, realm, "/wgtv/vehicles/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWgn, realm, "/wgtv/vehicles/", reqParam, &data, nil)
 	return data, err
 }

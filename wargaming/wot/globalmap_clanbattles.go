@@ -23,7 +23,6 @@ type GlobalmapClanbattlesOptions struct {
 	// Page number. Default is 1. Min value is 1.
 	PageNo *int `json:"page_no,omitempty"`
 }
-
 type GlobalmapClanbattles struct {
 	// Attack Type: ground, auction, tournament
 	AttackType *string `json:"attack_type,omitempty"`

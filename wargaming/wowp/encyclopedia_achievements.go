@@ -21,7 +21,6 @@ type EncyclopediaAchievementsOptions struct {
 	// "ko" - 한국어
 	Language *string `json:"language,omitempty"`
 }
-
 type EncyclopediaAchievements struct {
 	// Achievement ID
 	AchievementId *int `json:"achievement_id,omitempty"`

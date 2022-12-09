@@ -38,6 +38,6 @@ func (service *WotService) EncyclopediaTankinfo(ctx context.Context, realm Realm
 	}
 
 	var data *wot.EncyclopediaTankinfo
-	err := service.client.getRequest(ctx, sectionWot, realm, "/encyclopedia/tankinfo/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/encyclopedia/tankinfo/", reqParam, &data, nil)
 	return data, err
 }

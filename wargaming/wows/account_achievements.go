@@ -25,7 +25,10 @@ type AccountAchievementsOptions struct {
 	// "es-mx" - Español (México)
 	Language *string `json:"language,omitempty"`
 }
-
+type AccountAchievementsMeta struct {
+	// Hidden profiles.
+	Hidden []int `json:"hidden,omitempty"`
+}
 type AccountAchievements struct {
 	// Battle achievements earned
 	Battle map[string]string `json:"battle,omitempty"`

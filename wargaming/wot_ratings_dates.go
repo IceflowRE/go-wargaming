@@ -44,6 +44,6 @@ func (service *WotService) RatingsDates(ctx context.Context, realm Realm, typ st
 	}
 
 	var data *wot.RatingsDates
-	err := service.client.getRequest(ctx, sectionWot, realm, "/ratings/dates/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/ratings/dates/", reqParam, &data, nil)
 	return data, err
 }

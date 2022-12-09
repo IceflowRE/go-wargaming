@@ -24,6 +24,6 @@ func (service *WotService) AuthLogout(ctx context.Context, realm Realm, accessTo
 		"access_token": accessToken,
 	}
 
-	err := service.client.postRequest(ctx, sectionWot, realm, "/auth/logout/", reqParam, nil)
+	err := service.client.postRequest(ctx, sectionWot, realm, "/auth/logout/", reqParam, nil, nil)
 	return err
 }

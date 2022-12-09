@@ -27,7 +27,6 @@ type RatingsAccountsOptions struct {
 	// "ko" - 한국어
 	Language *string `json:"language,omitempty"`
 }
-
 type RatingsAccounts struct {
 	// Player account ID
 	AccountId *int `json:"account_id,omitempty"`

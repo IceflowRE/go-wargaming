@@ -21,6 +21,6 @@ func (service *WotService) ClanratingsTypes(ctx context.Context, realm Realm) (*
 	reqParam := map[string]string{}
 
 	var data *wot.ClanratingsTypes
-	err := service.client.getRequest(ctx, sectionWot, realm, "/clanratings/types/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/clanratings/types/", reqParam, &data, nil)
 	return data, err
 }

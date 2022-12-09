@@ -40,6 +40,6 @@ func (service *WowpService) PlanesAchievements(ctx context.Context, realm Realm,
 	}
 
 	var data *wowp.PlanesAchievements
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/planes/achievements/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/planes/achievements/", reqParam, &data, nil)
 	return data, err
 }

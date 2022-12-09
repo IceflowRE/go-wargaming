@@ -48,6 +48,6 @@ func (service *WowpService) RatingsTop(ctx context.Context, realm Realm, rankFie
 	}
 
 	var data []*wowp.RatingsTop
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/ratings/top/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/ratings/top/", reqParam, &data, nil)
 	return data, err
 }

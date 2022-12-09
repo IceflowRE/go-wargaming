@@ -25,7 +25,6 @@ type EncyclopediaCrewranksOptions struct {
 	// Nation
 	Nation *string `json:"nation,omitempty"`
 }
-
 type EncyclopediaCrewranks struct {
 	// Experience
 	Experience *int `json:"experience,omitempty"`

@@ -27,7 +27,6 @@ type RatingsDatesOptions struct {
 	// "ko" - 한국어
 	Language *string `json:"language,omitempty"`
 }
-
 type RatingsDates struct {
 	// Dates with available ratings
 	Dates []wgnTime.UnixTime `json:"dates,omitempty"`

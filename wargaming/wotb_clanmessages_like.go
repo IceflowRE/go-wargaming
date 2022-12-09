@@ -33,6 +33,6 @@ func (service *WotbService) ClanmessagesLike(ctx context.Context, realm Realm, a
 		"message_id":   strconv.Itoa(messageId),
 	}
 
-	err := service.client.postRequest(ctx, sectionWotb, realm, "/clanmessages/like/", reqParam, nil)
+	err := service.client.postRequest(ctx, sectionWotb, realm, "/clanmessages/like/", reqParam, nil, nil)
 	return err
 }

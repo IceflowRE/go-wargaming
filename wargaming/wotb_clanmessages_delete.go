@@ -27,6 +27,6 @@ func (service *WotbService) ClanmessagesDelete(ctx context.Context, realm Realm,
 		"message_id":   strconv.Itoa(messageId),
 	}
 
-	err := service.client.postRequest(ctx, sectionWotb, realm, "/clanmessages/delete/", reqParam, nil)
+	err := service.client.postRequest(ctx, sectionWotb, realm, "/clanmessages/delete/", reqParam, nil, nil)
 	return err
 }

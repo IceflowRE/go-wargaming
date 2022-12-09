@@ -46,7 +46,6 @@ type WgtvVideosOptions struct {
 	// Youtube ID. Maximum limit: 100.
 	VideoId []string `json:"video_id,omitempty"`
 }
-
 type WgtvVideos struct {
 	// List of category IDs
 	CategoryId []int `json:"category_id,omitempty"`

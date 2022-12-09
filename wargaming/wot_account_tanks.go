@@ -42,6 +42,6 @@ func (service *WotService) AccountTanks(ctx context.Context, realm Realm, accoun
 	}
 
 	var data *wot.AccountTanks
-	err := service.client.getRequest(ctx, sectionWot, realm, "/account/tanks/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/account/tanks/", reqParam, &data, nil)
 	return data, err
 }

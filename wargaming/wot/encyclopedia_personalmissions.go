@@ -30,7 +30,6 @@ type EncyclopediaPersonalmissionsOptions struct {
 	// Mission tag. Maximum limit: 100.
 	Tag []string `json:"tag,omitempty"`
 }
-
 type EncyclopediaPersonalmissions struct {
 	// Campaign ID
 	CampaignId *int `json:"campaign_id,omitempty"`

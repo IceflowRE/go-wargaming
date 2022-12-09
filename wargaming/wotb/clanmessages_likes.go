@@ -26,7 +26,6 @@ type ClanmessagesLikesOptions struct {
 	// "ko" - 한국어
 	Language *string `json:"language,omitempty"`
 }
-
 type ClanmessagesLikes struct {
 	// Liker Account ID
 	AccountId *int `json:"account_id,omitempty"`

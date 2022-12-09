@@ -24,7 +24,6 @@ type ClansAccountinfoOptions struct {
 	// "tr" - Türkçe
 	Language *string `json:"language,omitempty"`
 }
-
 type ClansAccountinfo struct {
 	// User ID
 	AccountId *int `json:"account_id,omitempty"`

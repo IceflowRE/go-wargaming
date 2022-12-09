@@ -41,7 +41,6 @@ type EncyclopediaModulesOptions struct {
 	// "DiveBomber" - Dive bombers
 	Type *string `json:"type,omitempty"`
 }
-
 type EncyclopediaModules struct {
 	// Image link
 	Image *string `json:"image,omitempty"`

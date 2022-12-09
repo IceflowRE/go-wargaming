@@ -54,6 +54,6 @@ func (service *WotxService) EncyclopediaVehicleprofile(ctx context.Context, real
 	}
 
 	var data *wotx.EncyclopediaVehicleprofile
-	err := service.client.getRequest(ctx, sectionWotx, realm, "/encyclopedia/vehicleprofile/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWotx, realm, "/encyclopedia/vehicleprofile/", reqParam, &data, nil)
 	return data, err
 }

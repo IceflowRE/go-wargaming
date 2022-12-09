@@ -27,7 +27,10 @@ type SeasonsAccountinfoOptions struct {
 	// Season ID. Maximum limit: 100.
 	SeasonId []int `json:"season_id,omitempty"`
 }
-
+type SeasonsAccountinfoMeta struct {
+	// Hidden profiles.
+	Hidden []int `json:"hidden,omitempty"`
+}
 type SeasonsAccountinfo struct {
 	// User ID
 	AccountId *int `json:"account_id,omitempty"`

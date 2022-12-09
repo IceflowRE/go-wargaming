@@ -23,7 +23,6 @@ type ClansSeasonOptions struct {
 	// "es-mx" - Español (México)
 	Language *string `json:"language,omitempty"`
 }
-
 type ClansSeason struct {
 	// Number of the Rating points required for progression to the next league
 	DivisionPoints *int `json:"division_points,omitempty"`

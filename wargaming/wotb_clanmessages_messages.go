@@ -63,6 +63,6 @@ func (service *WotbService) ClanmessagesMessages(ctx context.Context, realm Real
 	}
 
 	var data map[string][]*wotb.ClanmessagesMessages
-	err := service.client.getRequest(ctx, sectionWotb, realm, "/clanmessages/messages/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWotb, realm, "/clanmessages/messages/", reqParam, &data, nil)
 	return data, err
 }

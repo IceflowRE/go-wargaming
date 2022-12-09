@@ -26,6 +26,6 @@ func (service *WotxService) AccountPsninfo(ctx context.Context, realm Realm, psn
 	}
 
 	var data []*wotx.AccountPsninfo
-	err := service.client.getRequest(ctx, sectionWotx, realm, "/account/psninfo/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWotx, realm, "/account/psninfo/", reqParam, &data, nil)
 	return data, err
 }

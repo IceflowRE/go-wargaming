@@ -16,7 +16,6 @@ type EncyclopediaCrewrolesOptions struct {
 	// "tr" - Türkçe
 	Language *string `json:"language,omitempty"`
 }
-
 type EncyclopediaCrewroles struct {
 	// Crew member qualification
 	Name *string `json:"name,omitempty"`

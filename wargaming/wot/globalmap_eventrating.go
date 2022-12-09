@@ -14,7 +14,6 @@ type GlobalmapEventratingOptions struct {
 	// Page number. Default is 1. Min value is 1.
 	PageNo *int `json:"page_no,omitempty"`
 }
-
 type GlobalmapEventrating struct {
 	// Award level
 	AwardLevel *string `json:"award_level,omitempty"`

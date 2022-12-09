@@ -19,9 +19,10 @@ import ({{range $imports}}
 {{- range .Parameters}}
 {{if .Description}}{{paramDoc .}}{{end}}
 {{- end}}
-func (service *{{.Game | camelLowerToCamel}}Service) {{.Name}}(ctx context.Context, realm Realm{{range .Parameters}}, {{.Name}} {{.TypeStr}}{{end}}{{if .Options}}, options {{. | optionsType}}{{end}}) {{if .ReturnType}}({{. | methodReturnType}}, error){{else}}error{{end}} {
+{{- define "methodReturns"}}{{if or .DataType .MetaType}}({{end}}{{if .DataType}}{{. | dataReturnType}}, {{end}}{{if .MetaType}}{{. | metaReturnType}}, {{end}}error{{if or .DataType .MetaType -}} ) {{- end}}{{end}}
+func (service *{{.Game | camelLowerToCamel}}Service) {{.Name}}(ctx context.Context, realm Realm{{range .Parameters}}, {{.Name}} {{.TypeStr}}{{end}}{{if .OptionsType}}, options {{. | optionsType}}{{end}}) {{template "methodReturns" .}} {
 	if err := validateRealm(realm, []Realm{{"{"}}{{.AllowedRealms | realmList}}{{"}"}}); err != nil {
-		return {{if .ReturnType}}nil, err{{else}}err{{end}}
+		return {{if .DataType}}nil, {{end}}{{if .MetaType}}nil, {{end}}err
 	}
 
 	reqParam := map[string]string{
@@ -29,14 +30,15 @@ func (service *{{.Game | camelLowerToCamel}}Service) {{.Name}}(ctx context.Conte
 		"{{.JsonTag}}": {{valueToStringConv .TypeStr .Name}},
 {{- end}}
 	}
-{{if .Options}}
-	if options != nil {{"{"}}{{range .Options.Fields}}
+{{if .OptionsType}}
+	if options != nil {{"{"}}{{range .OptionsType.Fields}}
 		if options.{{.Name}} != nil {
 			reqParam["{{.JsonTag}}"] = {{valueToStringConvOptions .TypeStr .Name}}
 		}
 	{{- end}}
 	}{{"\n"}}{{end}}
-	{{if .ReturnType}}var data {{. | methodReturnType}}{{end}}
-	err := service.client.{{.HttpMethods | requestMethod}}(ctx, section{{.Game | camelLowerToCamel}}, realm, "{{.Url}}/", reqParam, {{if .ReturnType}}&data{{else}}nil{{end}})
-	return {{if .ReturnType}}data, err{{else}}err{{end}}
+	{{if .DataType}}var data {{. | dataReturnType}}{{end}}
+	{{- if .MetaType}}{{"\n\t\t"}}var metaData {{. | metaReturnType}}{{end}}
+	err := service.client.{{.HttpMethods | requestMethod}}(ctx, section{{.Game | camelLowerToCamel}}, realm, "{{.Url}}/", reqParam, {{if .DataType}}&data{{else}}nil{{end}}, {{if .MetaType}}&metaData{{else}}nil{{end}})
+	return {{if .DataType}}data, {{end}}{{if .MetaType}}metaData, {{end}}err
 }

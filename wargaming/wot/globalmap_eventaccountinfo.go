@@ -14,7 +14,6 @@ type GlobalmapEventaccountinfoOptions struct {
 	// Account ID. Min value is 1.
 	AccountId *int `json:"account_id,omitempty"`
 }
-
 type GlobalmapEventaccountinfo struct {
 	// Account information by events and Fronts
 	Events *struct {

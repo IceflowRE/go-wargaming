@@ -39,6 +39,6 @@ func (service *WowpService) RatingsDates(ctx context.Context, realm Realm, typ s
 	}
 
 	var data *wowp.RatingsDates
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/ratings/dates/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/ratings/dates/", reqParam, &data, nil)
 	return data, err
 }

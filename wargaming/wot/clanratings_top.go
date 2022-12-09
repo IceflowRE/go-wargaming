@@ -32,7 +32,6 @@ type ClanratingsTopOptions struct {
 	// Page number. Default is 1. Min value is 1.
 	PageNo *int `json:"page_no,omitempty"`
 }
-
 type ClanratingsTop struct {
 	// Average number of battles
 	BattlesCountAvg *struct {

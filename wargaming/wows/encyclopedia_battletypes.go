@@ -23,7 +23,6 @@ type EncyclopediaBattletypesOptions struct {
 	// "es-mx" - Español (México)
 	Language *string `json:"language,omitempty"`
 }
-
 type EncyclopediaBattletypes struct {
 	// Battle type description
 	Description *string `json:"description,omitempty"`

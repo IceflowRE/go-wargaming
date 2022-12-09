@@ -42,6 +42,6 @@ func (service *WotService) StrongholdActivateclanreserve(ctx context.Context, re
 	}
 
 	var data *wot.StrongholdActivateclanreserve
-	err := service.client.postRequest(ctx, sectionWot, realm, "/stronghold/activateclanreserve/", reqParam, &data)
+	err := service.client.postRequest(ctx, sectionWot, realm, "/stronghold/activateclanreserve/", reqParam, &data, nil)
 	return data, err
 }

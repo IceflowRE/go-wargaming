@@ -63,6 +63,6 @@ func (service *WotService) GlobalmapProvinces(ctx context.Context, realm Realm, 
 	}
 
 	var data []*wot.GlobalmapProvinces
-	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/provinces/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/provinces/", reqParam, &data, nil)
 	return data, err
 }

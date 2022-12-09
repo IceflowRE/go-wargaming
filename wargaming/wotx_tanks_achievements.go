@@ -51,6 +51,6 @@ func (service *WotxService) TanksAchievements(ctx context.Context, realm Realm, 
 	}
 
 	var data *wotx.TanksAchievements
-	err := service.client.getRequest(ctx, sectionWotx, realm, "/tanks/achievements/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWotx, realm, "/tanks/achievements/", reqParam, &data, nil)
 	return data, err
 }

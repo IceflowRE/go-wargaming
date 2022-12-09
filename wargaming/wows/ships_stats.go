@@ -53,7 +53,10 @@ type ShipsStatsOptions struct {
 	// Player's ship ID. Maximum limit: 100.
 	ShipId []int `json:"ship_id,omitempty"`
 }
-
+type ShipsStatsMeta struct {
+	// Hidden profiles.
+	Hidden []int `json:"hidden,omitempty"`
+}
 type ShipsStats struct {
 	// User ID
 	AccountId *int `json:"account_id,omitempty"`

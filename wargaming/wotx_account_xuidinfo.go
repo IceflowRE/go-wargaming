@@ -26,6 +26,6 @@ func (service *WotxService) AccountXuidinfo(ctx context.Context, realm Realm, xu
 	}
 
 	var data []*wotx.AccountXuidinfo
-	err := service.client.getRequest(ctx, sectionWotx, realm, "/account/xuidinfo/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWotx, realm, "/account/xuidinfo/", reqParam, &data, nil)
 	return data, err
 }

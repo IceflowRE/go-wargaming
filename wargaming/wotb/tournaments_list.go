@@ -35,7 +35,6 @@ type TournamentsListOptions struct {
 	// "complete" - Tournament has been completed
 	Status []string `json:"status,omitempty"`
 }
-
 type TournamentsList struct {
 	// Award for participating in tournament
 	Award *struct {

@@ -34,8 +34,8 @@ func (t *goType) IsStruct() bool {
 	return strings.Contains(t.TypeStr, "struct")
 }
 
-// ToStructName returns type string with "struct" replaced by pkgName.Name
-func (t *goType) ToStructName(pkgName string) string {
+// ToPkgAccessName returns type string with "struct" replaced by pkgName.Name
+func (t *goType) ToPkgAccessName(pkgName string) string {
 	var name string
 	if pkgName == "" {
 		name = t.Name

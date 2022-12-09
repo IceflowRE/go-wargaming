@@ -27,7 +27,6 @@ type GlobalmapEventsOptions struct {
 	// "FINISHED" - Event is over
 	Status *string `json:"status,omitempty"`
 }
-
 type GlobalmapEvents struct {
 	// Finishing time
 	End *string `json:"end,omitempty"`

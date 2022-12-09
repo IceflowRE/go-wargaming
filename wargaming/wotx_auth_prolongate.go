@@ -33,6 +33,6 @@ func (service *WotxService) AuthProlongate(ctx context.Context, realm Realm, acc
 	}
 
 	var data *wotx.AuthProlongate
-	err := service.client.postRequest(ctx, sectionWotx, realm, "/auth/prolongate/", reqParam, &data)
+	err := service.client.postRequest(ctx, sectionWotx, realm, "/auth/prolongate/", reqParam, &data, nil)
 	return data, err
 }

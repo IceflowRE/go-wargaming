@@ -41,6 +41,6 @@ func (service *WotbService) ClansList(ctx context.Context, realm Realm, options 
 	}
 
 	var data []*wotb.ClansList
-	err := service.client.getRequest(ctx, sectionWotb, realm, "/clans/list/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWotb, realm, "/clans/list/", reqParam, &data, nil)
 	return data, err
 }

@@ -30,7 +30,6 @@ type TournamentsMatchesOptions struct {
 	// Team ID. Maximum limit: 10.
 	TeamId []int `json:"team_id,omitempty"`
 }
-
 type TournamentsMatches struct {
 	// Group ID
 	GroupId *int `json:"group_id,omitempty"`

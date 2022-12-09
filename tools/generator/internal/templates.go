@@ -42,8 +42,11 @@ func genMethod(ep *endpoint, outputPath string) error {
 			}
 			return "postRequest"
 		},
-		"methodReturnType": func(ep *endpoint) string {
-			return toPointerType(ep.ReturnType.ToStructName(ep.Game))
+		"metaReturnType": func(ep *endpoint) string {
+			return toPointerType(ep.MetaType.ToPkgAccessName(ep.Game))
+		},
+		"dataReturnType": func(ep *endpoint) string {
+			return toPointerType(ep.DataType.ToPkgAccessName(ep.Game))
 		},
 		"realmList": func(realmIdcs []string) string {
 			realms := make([]string, 0, len(realmIdcs))
@@ -63,7 +66,7 @@ func genMethod(ep *endpoint, outputPath string) error {
 			return commentDocumentation(res)
 		},
 		"optionsType": func(ep *endpoint) string {
-			return toPointerType(ep.Options.ToStructName(ep.Game))
+			return toPointerType(ep.OptionsType.ToPkgAccessName(ep.Game))
 		},
 		"valueToStringConv": valueToStringConv,
 		"valueToStringConvOptions": func(typ string, value string) string {
@@ -90,13 +93,18 @@ func genStructs(ep *endpoint, outputPath string) error {
 	templ, err := template.New("struct").Funcs(template.FuncMap{
 		"imports": func(ep *endpoint) []string {
 			tmp := map[string]struct{}{}
-			if ep.Options != nil {
-				for imp := range ep.Options.AllImports() {
+			if ep.OptionsType != nil {
+				for imp := range ep.OptionsType.AllImports() {
 					tmp[imp] = struct{}{}
 				}
 			}
-			if ep.ReturnType != nil {
-				for imp := range ep.ReturnType.AllImports() {
+			if ep.MetaType != nil {
+				for imp := range ep.MetaType.AllImports() {
+					tmp[imp] = struct{}{}
+				}
+			}
+			if ep.DataType != nil {
+				for imp := range ep.DataType.AllImports() {
 					tmp[imp] = struct{}{}
 				}
 			}

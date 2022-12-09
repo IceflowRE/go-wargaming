@@ -31,6 +31,6 @@ func (service *WowpService) RatingsTypes(ctx context.Context, realm Realm, optio
 	}
 
 	var data *wowp.RatingsTypes
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/ratings/types/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/ratings/types/", reqParam, &data, nil)
 	return data, err
 }

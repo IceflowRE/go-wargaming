@@ -33,7 +33,6 @@ type ClansListOptions struct {
 	// Part of name or tag for clan search. Minimum 2 characters
 	Search *string `json:"search,omitempty"`
 }
-
 type ClansList struct {
 	// Clan ID
 	ClanId *int `json:"clan_id,omitempty"`

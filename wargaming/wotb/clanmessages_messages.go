@@ -80,7 +80,6 @@ type ClanmessagesMessagesOptions struct {
 	// "battle" - Battle messages
 	Type *string `json:"type,omitempty"`
 }
-
 type ClanmessagesMessages struct {
 	// Message author ID
 	AuthorId *int `json:"author_id,omitempty"`

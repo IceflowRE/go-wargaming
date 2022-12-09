@@ -33,7 +33,6 @@ type EncyclopediaModulesOptions struct {
 	// "vehicleTurret" - Turret
 	Type *string `json:"type,omitempty"`
 }
-
 type EncyclopediaModules struct {
 	// Engine characteristics
 	Engines []*struct {

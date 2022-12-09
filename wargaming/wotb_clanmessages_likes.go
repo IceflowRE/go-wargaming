@@ -39,6 +39,6 @@ func (service *WotbService) ClanmessagesLikes(ctx context.Context, realm Realm, 
 	}
 
 	var data []*wotb.ClanmessagesLikes
-	err := service.client.getRequest(ctx, sectionWotb, realm, "/clanmessages/likes/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWotb, realm, "/clanmessages/likes/", reqParam, &data, nil)
 	return data, err
 }

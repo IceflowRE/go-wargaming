@@ -11,7 +11,6 @@ type AuthProlongateOptions struct {
 	// Expiration time and delta must not exceed two weeks from the current time.
 	ExpiresAt *wgnTime.UnixTime `json:"expires_at,omitempty"`
 }
-
 type AuthProlongate struct {
 	// Access token is passed to all methods requiring authorization.
 	AccessToken *string `json:"access_token,omitempty"`

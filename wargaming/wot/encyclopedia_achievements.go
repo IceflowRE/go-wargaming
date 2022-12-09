@@ -22,7 +22,6 @@ type EncyclopediaAchievementsOptions struct {
 	// "ko" - 한국어
 	Language *string `json:"language,omitempty"`
 }
-
 type EncyclopediaAchievements struct {
 	// Condition
 	Condition *string `json:"condition,omitempty"`

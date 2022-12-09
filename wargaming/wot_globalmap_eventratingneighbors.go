@@ -42,6 +42,6 @@ func (service *WotService) GlobalmapEventratingneighbors(ctx context.Context, re
 	}
 
 	var data []*wot.GlobalmapEventratingneighbors
-	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/eventratingneighbors/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/eventratingneighbors/", reqParam, &data, nil)
 	return data, err
 }

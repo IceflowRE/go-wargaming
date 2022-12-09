@@ -53,6 +53,6 @@ func (service *WotService) RatingsTop(ctx context.Context, realm Realm, rankFiel
 	}
 
 	var data *wot.RatingsTop
-	err := service.client.getRequest(ctx, sectionWot, realm, "/ratings/top/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/ratings/top/", reqParam, &data, nil)
 	return data, err
 }

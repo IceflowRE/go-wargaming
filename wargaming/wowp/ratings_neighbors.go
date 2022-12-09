@@ -29,7 +29,6 @@ type RatingsNeighborsOptions struct {
 	// Maximum number of adjacent positions in rating. Default is 5. Min value is 1. Maximum value: 50.
 	Limit *int `json:"limit,omitempty"`
 }
-
 type RatingsNeighbors struct {
 	// Player account ID
 	AccountId *int `json:"account_id,omitempty"`

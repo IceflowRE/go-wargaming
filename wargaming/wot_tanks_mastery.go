@@ -45,6 +45,6 @@ func (service *WotService) TanksMastery(ctx context.Context, realm Realm, distri
 	}
 
 	var data *wot.TanksMastery
-	err := service.client.getRequest(ctx, sectionWot, realm, "/tanks/mastery/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/tanks/mastery/", reqParam, &data, nil)
 	return data, err
 }

@@ -21,7 +21,6 @@ type RatingsTypesOptions struct {
 	// "ko" - 한국어
 	Language *string `json:"language,omitempty"`
 }
-
 type RatingsTypes struct {
 	// Rating categories
 	RankFields []string `json:"rank_fields,omitempty"`

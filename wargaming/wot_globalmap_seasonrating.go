@@ -46,6 +46,6 @@ func (service *WotService) GlobalmapSeasonrating(ctx context.Context, realm Real
 	}
 
 	var data []*wot.GlobalmapSeasonrating
-	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/seasonrating/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/seasonrating/", reqParam, &data, nil)
 	return data, err
 }

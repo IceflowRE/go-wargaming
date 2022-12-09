@@ -36,6 +36,6 @@ func (service *WowpService) AccountAchievements(ctx context.Context, realm Realm
 	}
 
 	var data *wowp.AccountAchievements
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/account/achievements/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/account/achievements/", reqParam, &data, nil)
 	return data, err
 }

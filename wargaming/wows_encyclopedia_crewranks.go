@@ -34,6 +34,6 @@ func (service *WowsService) EncyclopediaCrewranks(ctx context.Context, realm Rea
 	}
 
 	var data *wows.EncyclopediaCrewranks
-	err := service.client.getRequest(ctx, sectionWows, realm, "/encyclopedia/crewranks/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWows, realm, "/encyclopedia/crewranks/", reqParam, &data, nil)
 	return data, err
 }

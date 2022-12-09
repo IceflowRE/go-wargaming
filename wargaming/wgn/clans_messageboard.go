@@ -15,7 +15,6 @@ type ClansMessageboardOptions struct {
 	// "wowp" - World of Warplanes
 	Game *string `json:"game,omitempty"`
 }
-
 type ClansMessageboard struct {
 	// Message author ID
 	AuthorId *int `json:"author_id,omitempty"`

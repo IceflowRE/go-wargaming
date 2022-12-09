@@ -21,7 +21,6 @@ type EncyclopediaAchievementsOptions struct {
 	// "tr" - Türkçe
 	Language *string `json:"language,omitempty"`
 }
-
 type EncyclopediaAchievements struct {
 	// Award category
 	Category *string `json:"category,omitempty"`

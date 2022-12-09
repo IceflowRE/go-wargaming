@@ -30,7 +30,6 @@ type ClansAccountinfoOptions struct {
 	// "ko" - 한국어
 	Language *string `json:"language,omitempty"`
 }
-
 type ClansAccountinfo struct {
 	// User ID
 	AccountId *int `json:"account_id,omitempty"`

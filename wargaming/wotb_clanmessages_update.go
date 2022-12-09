@@ -47,6 +47,6 @@ func (service *WotbService) ClanmessagesUpdate(ctx context.Context, realm Realm,
 	}
 
 	var data *wotb.ClanmessagesUpdate
-	err := service.client.postRequest(ctx, sectionWotb, realm, "/clanmessages/update/", reqParam, &data)
+	err := service.client.postRequest(ctx, sectionWotb, realm, "/clanmessages/update/", reqParam, &data, nil)
 	return data, err
 }

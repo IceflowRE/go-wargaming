@@ -7,5 +7,6 @@ import (
 	"{{.}}"
 {{- end}}
 ){{"\n"}}{{end}}
-{{- if .Options}}{{template "struct" .Options}}{{"\n"}}{{end}}
-{{- if .ReturnType}}{{template "struct" .ReturnType}}{{end}}
+{{- if .OptionsType}}{{template "struct" .OptionsType}}{{"\n"}}{{end}}
+{{- if .MetaType}}{{template "struct" .MetaType}}{{"\n"}}{{end}}
+{{- if .DataType}}{{template "struct" .DataType}}{{"\n"}}{{end}}

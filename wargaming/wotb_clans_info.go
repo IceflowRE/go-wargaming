@@ -39,6 +39,6 @@ func (service *WotbService) ClansInfo(ctx context.Context, realm Realm, clanId [
 	}
 
 	var data *wotb.ClansInfo
-	err := service.client.getRequest(ctx, sectionWotb, realm, "/clans/info/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWotb, realm, "/clans/info/", reqParam, &data, nil)
 	return data, err
 }

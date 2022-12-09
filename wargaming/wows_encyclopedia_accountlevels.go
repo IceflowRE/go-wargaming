@@ -28,6 +28,6 @@ func (service *WowsService) EncyclopediaAccountlevels(ctx context.Context, realm
 	}
 
 	var data *wows.EncyclopediaAccountlevels
-	err := service.client.getRequest(ctx, sectionWows, realm, "/encyclopedia/accountlevels/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWows, realm, "/encyclopedia/accountlevels/", reqParam, &data, nil)
 	return data, err
 }

@@ -25,7 +25,6 @@ type EncyclopediaPlanespecificationOptions struct {
 	// Module ID. Maximum limit: 100.
 	ModuleId []int `json:"module_id,omitempty"`
 }
-
 type EncyclopediaPlanespecification struct {
 	// Slots and modules
 	Slots *struct {

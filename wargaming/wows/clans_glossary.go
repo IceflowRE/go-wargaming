@@ -23,7 +23,6 @@ type ClansGlossaryOptions struct {
 	// "es-mx" - Español (México)
 	Language *string `json:"language,omitempty"`
 }
-
 type ClansGlossary struct {
 	// Installation type
 	BuildingTypes *struct {

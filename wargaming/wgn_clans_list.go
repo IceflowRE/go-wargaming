@@ -55,6 +55,6 @@ func (service *WgnService) ClansList(ctx context.Context, realm Realm, options *
 	}
 
 	var data *wgn.ClansList
-	err := service.client.getRequest(ctx, sectionWgn, realm, "/clans/list/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWgn, realm, "/clans/list/", reqParam, &data, nil)
 	return data, err
 }

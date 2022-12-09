@@ -29,7 +29,6 @@ type SeasonsInfoOptions struct {
 	// Season ID. Maximum limit: 100.
 	SeasonId []int `json:"season_id,omitempty"`
 }
-
 type SeasonsInfo struct {
 	// Minimum Service Record Level to join a season
 	AccountTier *int `json:"account_tier,omitempty"`

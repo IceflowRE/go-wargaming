@@ -45,6 +45,6 @@ func (service *WotService) GlobalmapEventaccountratings(ctx context.Context, rea
 	}
 
 	var data []*wot.GlobalmapEventaccountratings
-	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/eventaccountratings/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/eventaccountratings/", reqParam, &data, nil)
 	return data, err
 }

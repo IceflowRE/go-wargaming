@@ -31,7 +31,6 @@ type ClansInfoOptions struct {
 	// "es-mx" - Español (México)
 	Language *string `json:"language,omitempty"`
 }
-
 type ClansInfo struct {
 	// Clan ID
 	ClanId *int `json:"clan_id,omitempty"`

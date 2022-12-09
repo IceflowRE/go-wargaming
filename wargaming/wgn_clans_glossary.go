@@ -36,6 +36,6 @@ func (service *WgnService) ClansGlossary(ctx context.Context, realm Realm, optio
 	}
 
 	var data *wgn.ClansGlossary
-	err := service.client.getRequest(ctx, sectionWgn, realm, "/clans/glossary/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWgn, realm, "/clans/glossary/", reqParam, &data, nil)
 	return data, err
 }

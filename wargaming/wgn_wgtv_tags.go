@@ -31,6 +31,6 @@ func (service *WgnService) WgtvTags(ctx context.Context, realm Realm, options *w
 	}
 
 	var data *wgn.WgtvTags
-	err := service.client.getRequest(ctx, sectionWgn, realm, "/wgtv/tags/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWgn, realm, "/wgtv/tags/", reqParam, &data, nil)
 	return data, err
 }

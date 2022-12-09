@@ -28,7 +28,6 @@ type EncyclopediaVehicleprofileOptions struct {
 	// Turret ID. If module is not specified, standard module is used by default.
 	TurretId *int `json:"turret_id,omitempty"`
 }
-
 type EncyclopediaVehicleprofile struct {
 	// Gun shells characteristics
 	Ammo *struct {

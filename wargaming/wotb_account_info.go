@@ -42,6 +42,6 @@ func (service *WotbService) AccountInfo(ctx context.Context, realm Realm, accoun
 	}
 
 	var data *wotb.AccountInfo
-	err := service.client.getRequest(ctx, sectionWotb, realm, "/account/info/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWotb, realm, "/account/info/", reqParam, &data, nil)
 	return data, err
 }

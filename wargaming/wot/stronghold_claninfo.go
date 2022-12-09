@@ -20,7 +20,6 @@ type StrongholdClaninfoOptions struct {
 	// "tr" - Turkish
 	Language *string `json:"language,omitempty"`
 }
-
 type StrongholdClaninfo struct {
 	// Statistics for the clan's battles in the Stronghold mode
 	BattlesForStrongholdsStatistics *struct {

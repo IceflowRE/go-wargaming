@@ -45,6 +45,6 @@ func (service *WotService) ClanratingsNeighbors(ctx context.Context, realm Realm
 	}
 
 	var data []*wot.ClanratingsNeighbors
-	err := service.client.getRequest(ctx, sectionWot, realm, "/clanratings/neighbors/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWot, realm, "/clanratings/neighbors/", reqParam, &data, nil)
 	return data, err
 }

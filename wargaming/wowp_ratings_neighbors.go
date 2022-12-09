@@ -48,6 +48,6 @@ func (service *WowpService) RatingsNeighbors(ctx context.Context, realm Realm, a
 	}
 
 	var data []*wowp.RatingsNeighbors
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/ratings/neighbors/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/ratings/neighbors/", reqParam, &data, nil)
 	return data, err
 }

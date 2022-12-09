@@ -43,6 +43,6 @@ func (service *WowpService) EncyclopediaPlanespecification(ctx context.Context, 
 	}
 
 	var data *wowp.EncyclopediaPlanespecification
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/encyclopedia/planespecification/", reqParam, &data)
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/encyclopedia/planespecification/", reqParam, &data, nil)
 	return data, err
 }

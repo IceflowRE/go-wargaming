@@ -23,7 +23,6 @@ type EncyclopediaCollectionsOptions struct {
 	// "es-mx" - Español (México)
 	Language *string `json:"language,omitempty"`
 }
-
 type EncyclopediaCollections struct {
 	// Collection item cost in duplicates
 	CardCost *int `json:"card_cost,omitempty"`
