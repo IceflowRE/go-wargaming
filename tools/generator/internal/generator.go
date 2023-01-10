@@ -48,7 +48,7 @@ func (gen *Generator) Generate() (err error) {
 		// init section
 		sectionsMap[snakeToCamel(game.Slug)] = &sectionData{Name: snakeToCamel(game.Slug), LongName: game.Name}
 
-		err = os.MkdirAll(filepath.Join(gen.outputPath, game.Slug), 0664)
+		err = os.MkdirAll(filepath.Join(gen.outputPath, game.Slug), 0755)
 		if err != nil {
 			return err
 		}
