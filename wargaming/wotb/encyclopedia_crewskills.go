@@ -26,6 +26,7 @@ type EncyclopediaCrewskillsOptions struct {
 	// Vehicle types. Maximum limit: 100.
 	VehicleType []string `json:"vehicle_type,omitempty"`
 }
+
 type EncyclopediaCrewskills struct {
 	// Skill effect
 	Effect *string `json:"effect,omitempty"`

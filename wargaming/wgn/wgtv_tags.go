@@ -22,6 +22,7 @@ type WgtvTagsOptions struct {
 	// "ko" - 한국어
 	Language *string `json:"language,omitempty"`
 }
+
 type WgtvTags struct {
 	// List of categories
 	Categories []*struct {

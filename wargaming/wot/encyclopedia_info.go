@@ -26,6 +26,7 @@ type EncyclopediaInfoOptions struct {
 	// "ko" - 한국어
 	Language *string `json:"language,omitempty"`
 }
+
 type EncyclopediaInfo struct {
 	// Award sections
 	AchievementSections *struct {

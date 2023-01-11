@@ -26,6 +26,7 @@ type EncyclopediaVehiclesOptions struct {
 	// Tier. Maximum limit: 100.
 	Tier []int `json:"tier,omitempty"`
 }
+
 type EncyclopediaVehicles struct {
 	// Vehicle description
 	Description *string `json:"description,omitempty"`

@@ -21,6 +21,7 @@ type AuthLoginOptions struct {
 	// By default: api.worldoftanks.eu/wot	//blank/
 	RedirectUri *string `json:"redirect_uri,omitempty"`
 }
+
 type AuthLogin struct {
 	// URL where user is redirected for authentication.
 	// This URL is returned only if parameter nofollow=1 is passed in.

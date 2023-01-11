@@ -16,6 +16,7 @@ type EncyclopediaArenasOptions struct {
 	// "tr" - Türkçe
 	Language *string `json:"language,omitempty"`
 }
+
 type EncyclopediaArenas struct {
 	// Map ID
 	ArenaId *string `json:"arena_id,omitempty"`

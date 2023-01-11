@@ -28,6 +28,7 @@ type ClanratingsClansOptions struct {
 	// "ko" - 한국어
 	Language *string `json:"language,omitempty"`
 }
+
 type ClanratingsClans struct {
 	// Average number of battles
 	BattlesCountAvg *struct {

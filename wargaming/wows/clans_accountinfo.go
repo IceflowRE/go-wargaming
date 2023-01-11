@@ -31,6 +31,7 @@ type ClansAccountinfoOptions struct {
 	// "es-mx" - Español (México)
 	Language *string `json:"language,omitempty"`
 }
+
 type ClansAccountinfo struct {
 	// User ID
 	AccountId *int `json:"account_id,omitempty"`

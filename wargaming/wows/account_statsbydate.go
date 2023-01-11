@@ -31,6 +31,7 @@ type AccountStatsbydateOptions struct {
 	// "es-mx" - Español (México)
 	Language *string `json:"language,omitempty"`
 }
+
 type AccountStatsbydate struct {
 	// Statistics in Co-op Battles.
 	// An extra field.

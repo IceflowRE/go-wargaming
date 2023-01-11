@@ -23,6 +23,7 @@ type EncyclopediaCollectioncardsOptions struct {
 	// "es-mx" - Español (México)
 	Language *string `json:"language,omitempty"`
 }
+
 type EncyclopediaCollectioncards struct {
 	// Item ID
 	CardId *int `json:"card_id,omitempty"`

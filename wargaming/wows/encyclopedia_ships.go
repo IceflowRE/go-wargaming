@@ -38,6 +38,7 @@ type EncyclopediaShipsOptions struct {
 	// "Cruiser" - Cruiser
 	Type []string `json:"type,omitempty"`
 }
+
 type EncyclopediaShipsMeta struct {
 	Count int `json:"count,omitempty"`
 
@@ -49,6 +50,7 @@ type EncyclopediaShipsMeta struct {
 
 	Total int `json:"total,omitempty"`
 }
+
 type EncyclopediaShips struct {
 	// Parameters of basic configuration
 	DefaultProfile *struct {

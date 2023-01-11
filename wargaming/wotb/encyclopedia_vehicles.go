@@ -26,6 +26,7 @@ type EncyclopediaVehiclesOptions struct {
 	// Vehicle ID. Maximum limit: 100.
 	TankId []int `json:"tank_id,omitempty"`
 }
+
 type EncyclopediaVehicles struct {
 	// Cost
 	Cost *struct {

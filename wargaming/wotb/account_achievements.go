@@ -22,6 +22,7 @@ type AccountAchievementsOptions struct {
 	// "ko" - 한국어
 	Language *string `json:"language,omitempty"`
 }
+
 type AccountAchievements struct {
 	// Achievements earned
 	Achievements map[string]string `json:"achievements,omitempty"`

@@ -22,6 +22,7 @@ type EncyclopediaArenasOptions struct {
 	// "ko" - 한국어
 	Language *string `json:"language,omitempty"`
 }
+
 type EncyclopediaArenas struct {
 	// Map ID
 	ArenaId *string `json:"arena_id,omitempty"`

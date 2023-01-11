@@ -33,6 +33,7 @@ type EncyclopediaProvisionsOptions struct {
 	// "optionalDevice" - Equipment
 	Type []string `json:"type,omitempty"`
 }
+
 type EncyclopediaProvisions struct {
 	// Achievement description
 	Description *string `json:"description,omitempty"`

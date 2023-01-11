@@ -20,6 +20,7 @@ type TournamentsInfoOptions struct {
 	// "tr" - Türkçe
 	Language *string `json:"language,omitempty"`
 }
+
 type TournamentsInfo struct {
 	// Award for participating in tournament
 	Award *struct {

@@ -31,6 +31,7 @@ type EncyclopediaProvisionsOptions struct {
 	// "optionalDevice" - Equipment
 	Type *string `json:"type,omitempty"`
 }
+
 type EncyclopediaProvisions struct {
 	// Localized description
 	DescriptionI18n *string `json:"description_i18n,omitempty"`

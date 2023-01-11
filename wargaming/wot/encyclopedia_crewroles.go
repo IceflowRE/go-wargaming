@@ -24,6 +24,7 @@ type EncyclopediaCrewrolesOptions struct {
 	// Сrew qualification ID. Maximum limit: 100.
 	Role []string `json:"role,omitempty"`
 }
+
 type EncyclopediaCrewroles struct {
 	// Сrew qualification name
 	Name *string `json:"name,omitempty"`

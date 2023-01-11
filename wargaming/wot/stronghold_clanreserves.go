@@ -16,6 +16,7 @@ type StrongholdClanreservesOptions struct {
 	// "tr" - Turkish
 	Language *string `json:"language,omitempty"`
 }
+
 type StrongholdClanreserves struct {
 	// Reserve efficiency type
 	BonusType *string `json:"bonus_type,omitempty"`

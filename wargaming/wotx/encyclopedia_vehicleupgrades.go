@@ -16,6 +16,7 @@ type EncyclopediaVehicleupgradesOptions struct {
 	// "tr" - Türkçe
 	Language *string `json:"language,omitempty"`
 }
+
 type EncyclopediaVehicleupgrades struct {
 	// List of compatible consumables
 	Consumables *struct {

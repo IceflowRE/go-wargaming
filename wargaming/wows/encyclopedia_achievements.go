@@ -23,6 +23,7 @@ type EncyclopediaAchievementsOptions struct {
 	// "es-mx" - Español (México)
 	Language *string `json:"language,omitempty"`
 }
+
 type EncyclopediaAchievements struct {
 	// Battle achievements
 	Battle *struct {

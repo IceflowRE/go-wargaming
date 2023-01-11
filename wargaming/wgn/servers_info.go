@@ -28,6 +28,7 @@ type ServersInfoOptions struct {
 	// "ko" - 한국어
 	Language *string `json:"language,omitempty"`
 }
+
 type ServersInfo struct {
 	// Number of online players
 	PlayersOnline *int `json:"players_online,omitempty"`

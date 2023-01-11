@@ -42,6 +42,7 @@ type EncyclopediaModulesOptions struct {
 	// "vehicleTurret" - Turret
 	Type []string `json:"type,omitempty"`
 }
+
 type EncyclopediaModules struct {
 	// Basic technical characteristics of module.
 	// An extra field.

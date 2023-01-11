@@ -26,6 +26,7 @@ type EncyclopediaTankchassisOptions struct {
 	// Nation. Maximum limit: 100.
 	Nation []string `json:"nation,omitempty"`
 }
+
 type EncyclopediaTankchassis struct {
 	// Tier
 	Level *int `json:"level,omitempty"`

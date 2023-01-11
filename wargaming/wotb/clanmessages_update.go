@@ -26,6 +26,7 @@ type ClanmessagesUpdateOptions struct {
 	// "battle" - Battle messages
 	Type *string `json:"type,omitempty"`
 }
+
 type ClanmessagesUpdate struct {
 	// Message ID
 	MessageId *int `json:"message_id,omitempty"`

@@ -26,6 +26,7 @@ type EncyclopediaBoostersOptions struct {
 	// "ko" - 한국어
 	Language *string `json:"language,omitempty"`
 }
+
 type EncyclopediaBoosters struct {
 	// Personal Reserve ID
 	BoosterId *int `json:"booster_id,omitempty"`

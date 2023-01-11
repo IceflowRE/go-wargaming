@@ -41,6 +41,7 @@ type EncyclopediaShipprofileOptions struct {
 	// Torpedo tubes' ID. If the module is not indicated, module of basic configuration is used.
 	TorpedoesId *int `json:"torpedoes_id,omitempty"`
 }
+
 type EncyclopediaShipprofile struct {
 	// Anti-aircraft guns. If the module is absent on the ship, field value is null.
 	AntiAircraft *struct {

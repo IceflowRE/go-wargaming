@@ -26,6 +26,7 @@ type EncyclopediaTankturretsOptions struct {
 	// Nation. Maximum limit: 100.
 	Nation []string `json:"nation,omitempty"`
 }
+
 type EncyclopediaTankturrets struct {
 	// Armor: sides
 	ArmorBoard *int `json:"armor_board,omitempty"`

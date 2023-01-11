@@ -48,6 +48,7 @@ type AccountInfoOptions struct {
 	// "es-mx" - Español (México)
 	Language *string `json:"language,omitempty"`
 }
+
 type AccountInfo struct {
 	// User ID
 	AccountId *int `json:"account_id,omitempty"`

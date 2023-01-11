@@ -21,6 +21,7 @@ type EncyclopediaPlaneinfoOptions struct {
 	// "ko" - 한국어
 	Language *string `json:"language,omitempty"`
 }
+
 type EncyclopediaPlaneinfo struct {
 	// Crew
 	Crew *struct {

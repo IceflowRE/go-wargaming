@@ -27,6 +27,7 @@ type EncyclopediaInfoOptions struct {
 	// "es-mx" - Español (México)
 	Language *string `json:"language,omitempty"`
 }
+
 type EncyclopediaInfo struct {
 	// Game client version
 	GameVersion *string `json:"game_version,omitempty"`

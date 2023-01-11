@@ -12,6 +12,7 @@ type GlobalmapSeasonratingneighborsOptions struct {
 	// Neighbors limit. Default is 10. Min value is 1. Maximum value: 99.
 	Limit *int `json:"limit,omitempty"`
 }
+
 type GlobalmapSeasonratingneighbors struct {
 	// Award level
 	AwardLevel *string `json:"award_level,omitempty"`

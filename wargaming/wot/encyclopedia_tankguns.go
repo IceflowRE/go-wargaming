@@ -30,6 +30,7 @@ type EncyclopediaTankgunsOptions struct {
 	// Compatible turret ID
 	TurretId *int `json:"turret_id,omitempty"`
 }
+
 type EncyclopediaTankguns struct {
 	// Damage
 	Damage []int `json:"damage,omitempty"`

@@ -33,6 +33,7 @@ type EncyclopediaPlanemodulesOptions struct {
 	// "construction" - airframe
 	Type []string `json:"type,omitempty"`
 }
+
 type EncyclopediaPlanemodules struct {
 	// Bomb
 	Bomb *struct {

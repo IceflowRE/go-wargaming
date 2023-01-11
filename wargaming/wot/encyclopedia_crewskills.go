@@ -26,6 +26,7 @@ type EncyclopediaCrewskillsOptions struct {
 	// Skill ID. Maximum limit: 100.
 	Skill []string `json:"skill,omitempty"`
 }
+
 type EncyclopediaCrewskills struct {
 	// Skill description
 	Description *string `json:"description,omitempty"`

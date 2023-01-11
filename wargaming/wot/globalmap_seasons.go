@@ -27,6 +27,7 @@ type GlobalmapSeasonsOptions struct {
 	// "FINISHED" - Season is over
 	Status *string `json:"status,omitempty"`
 }
+
 type GlobalmapSeasons struct {
 	// Finishing time
 	End *string `json:"end,omitempty"`

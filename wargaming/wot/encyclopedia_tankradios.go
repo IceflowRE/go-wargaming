@@ -26,6 +26,7 @@ type EncyclopediaTankradiosOptions struct {
 	// Nation. Maximum limit: 100.
 	Nation []string `json:"nation,omitempty"`
 }
+
 type EncyclopediaTankradios struct {
 	// Signal range
 	Distance *int `json:"distance,omitempty"`
