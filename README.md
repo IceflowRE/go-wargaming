@@ -94,7 +94,9 @@ if err != nil {
 
 NOTE: Using the context package, one can easily pass cancellation signals and deadlines to various services of the client for handling a request. In case there is no context available, then `context.Background()` can be used as a starting point.
 
-## Development
+## Contributing
+
+Every contribution and talk about the structure and organization of the project are always welcome.
 
 The client library is generated automatically. The generator is located in [tools/generator/main.go](tools/generator/main.go).
 
@@ -106,6 +108,8 @@ go build -o generator github.com/IceflowRE/go-wargaming/v3/tools/generator
 ./generator
 ```
 
+Commit titles must follow this pattern `[<category>] <Good Description>` e.g. `[gen] Fix file permissions`.
+
 ### Testing
 
 Client tests require an environment variable `WARGAMING_API_ID` with the API ID as value.
@@ -114,10 +118,6 @@ Not all endpoints are tested either they are complicated to test or method who r
 Those tests are explicitly skipped.
 
 Also, the tests are not covering edge cases or all possibilities, only the availability of the endpoint is tested and if the default return data can be parsed.
-
-## Contributing
-
-Every contribution and talk about the structure and organization of the project are always welcome.
 
 ## Thanks
 
