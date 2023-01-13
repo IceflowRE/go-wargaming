@@ -73,6 +73,8 @@ func patchEndpoint(ep *endpoint) {
 		ep.DataType.TypeStr = "map[int]" + ep.DataType.TypeStr
 	case "wows_ships_stats":
 		ep.DataType.TypeStr = "map[int][]" + ep.DataType.TypeStr
+	case "wows_clans_info":
+		ep.DataType.TypeStr = "map[int]" + ep.DataType.TypeStr
 	}
 
 	if contains([]string{
