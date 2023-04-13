@@ -71,12 +71,10 @@ func NewClient(applicationId string, options *ClientOptions) *Client {
 	client := &Client{
 		applicationId: applicationId,
 	}
-	if options != nil {
-		if options.HTTPClient != nil {
-			client.httpClient = options.HTTPClient
-		} else {
-			client.httpClient = &http.Client{}
-		}
+	if options != nil && options.HTTPClient != nil {
+		client.httpClient = options.HTTPClient
+	} else {
+		client.httpClient = &http.Client{}
 	}
 	client.common.client = client
 	client.wgServices = newWgServices(&client.common)
