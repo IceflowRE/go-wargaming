@@ -4,8 +4,8 @@ package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/internal"
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/wot"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/internal"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/wot"
 	"strings"
 )
 
@@ -16,7 +16,8 @@ import (
 // Deprecated: Attention! The method is deprecated.
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotService) EncyclopediaTankradios(ctx context.Context, realm Realm, options *wot.EncyclopediaTankradiosOptions) (*wot.EncyclopediaTankradios, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err

@@ -3,7 +3,7 @@
 package wotx
 
 import (
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgnTime"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/wgnTime"
 )
 
 type TanksStatsOptions struct {

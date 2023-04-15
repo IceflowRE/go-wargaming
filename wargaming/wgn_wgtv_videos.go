@@ -4,8 +4,8 @@ package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/internal"
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgn"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/internal"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/wgn"
 	"strconv"
 	"strings"
 )
@@ -15,7 +15,8 @@ import (
 // https://developers.wargaming.net/reference/all/wgn/wgtv/videos
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WgnService) WgtvVideos(ctx context.Context, realm Realm, options *wgn.WgtvVideosOptions) ([]*wgn.WgtvVideos, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

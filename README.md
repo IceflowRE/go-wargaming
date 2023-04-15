@@ -3,8 +3,8 @@
 ![Programming Language](https://img.shields.io/badge/language-Go-orange.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/IceflowRE/go-wargaming/blob/master/LICENSE.md)
 
-[![Go report card](https://goreportcard.com/badge/github.com/IceflowRE/go-wargaming/v2)](https://goreportcard.com/report/github.com/IceflowRE/go-wargaming/v2)
-[![Go Reference](https://pkg.go.dev/badge/github.com/IceflowRE/go-wargaming/v2.svg)](https://pkg.go.dev/github.com/IceflowRE/go-wargaming/v2)
+[![Go report card](https://goreportcard.com/badge/github.com/IceflowRE/go-wargaming/v4)](https://goreportcard.com/report/github.com/IceflowRE/go-wargaming/v4)
+[![Go Reference](https://pkg.go.dev/badge/github.com/IceflowRE/go-wargaming/v4.svg)](https://pkg.go.dev/github.com/IceflowRE/go-wargaming/v4)
 
 ---
 
@@ -18,7 +18,7 @@ The documentation is often inaccurate, especially the return types (object, list
 go-wargaming is compatible with modern Go releases and modules enabled.
 
 ```shell
-go get github.com/IceflowRE/go-wargaming/v3
+go get github.com/IceflowRE/go-wargaming/v4
 ```
 
 will resolve and add the package to the current development module, along with its dependencies.
@@ -26,13 +26,13 @@ will resolve and add the package to the current development module, along with i
 Or just import it and run `go get` afterwards
 
 ```go
-import "github.com/IceflowRE/go-wargaming/v3/wargaming"
+import "github.com/IceflowRE/go-wargaming/v4/wargaming"
 ```
 
 ## Usage
 
 ```go
-import "github.com/IceflowRE/go-wargaming/v3/wargaming" // with go modules
+import "github.com/IceflowRE/go-wargaming/v4/wargaming" // with go modules
 import "github.com/IceflowRE/go-wargaming/wargaming"    // without go modules
 ```
 
@@ -107,7 +107,7 @@ Endpoint patches can be found in [patches.go](tools/generator/internal/patches.g
 
 To update the library just run the generator from project root.
 ```shell
-go build -o generator github.com/IceflowRE/go-wargaming/v3/tools/generator
+go build -o generator github.com/IceflowRE/go-wargaming/v4/tools/generator
 ./generator
 ```
 

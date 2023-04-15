@@ -4,7 +4,7 @@ package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/wot"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/wot"
 	"strconv"
 	"strings"
 )
@@ -14,11 +14,16 @@ import (
 // https://developers.wargaming.net/reference/all/wot/globalmap/eventaccountratings
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // eventId:
-//     Event ID. To get an event ID, use the Events method.
+//
+//	Event ID. To get an event ID, use the Events method.
+//
 // frontId:
-//     Front ID. To get a front ID, use the Fronts method.
+//
+//	Front ID. To get a front ID, use the Fronts method.
 func (service *WotService) GlobalmapEventaccountratings(ctx context.Context, realm Realm, eventId string, frontId string, options *wot.GlobalmapEventaccountratingsOptions) ([]*wot.GlobalmapEventaccountratings, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err

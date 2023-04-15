@@ -4,8 +4,8 @@ package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/internal"
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/wotx"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/internal"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/wotx"
 	"strings"
 )
 
@@ -14,9 +14,12 @@ import (
 // https://developers.wargaming.net/reference/all/wotx/clans/accountinfo
 //
 // realm:
-//     Valid realms: RealmWgcb
+//
+//	Valid realms: RealmWgcb
+//
 // accountId:
-//     Account ID. Maximum limit: 100. Min value is 1.
+//
+//	Account ID. Maximum limit: 100. Min value is 1.
 func (service *WotxService) ClansAccountinfo(ctx context.Context, realm Realm, accountId []int, options *wotx.ClansAccountinfoOptions) (*wotx.ClansAccountinfo, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, nil, err

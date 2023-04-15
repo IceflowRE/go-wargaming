@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/IceflowRE/go-wargaming/v3/tools/generator/internal"
+	"github.com/IceflowRE/go-wargaming/v4/tools/generator/internal"
 	"os"
 )
 

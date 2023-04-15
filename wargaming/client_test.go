@@ -5,9 +5,9 @@ package wargaming
 import (
 	"context"
 	"errors"
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgn"
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/wot"
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/wotx"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/wgn"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/wot"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/wotx"
 	"net/http"
 	"os"
 	"strings"
@@ -18,7 +18,7 @@ import (
 var apiId = os.Getenv("WARGAMING_API_ID")
 var client = NewClient(apiId, &ClientOptions{
 	HTTPClient: &http.Client{
-		Timeout: 5 * time.Second,
+		Timeout: 10 * time.Second,
 	},
 })
 
@@ -64,6 +64,31 @@ const (
 	wowsAccountId = 543737361
 	wowsClanId    = 500195107
 )
+
+func ToSnake(camel string) (snake string) {
+	var b strings.Builder
+	diff := 'a' - 'A'
+	l := len(camel)
+	for i, v := range camel {
+		// A is 65, a is 97
+		if v >= 'a' {
+			b.WriteRune(v)
+			continue
+		}
+		// v is capital letter here
+		// irregard first letter
+		// add underscore if last letter is capital letter
+		// add underscore when previous letter is lowercase
+		// add underscore when next letter is lowercase
+		if (i != 0 || i == l-1) && (          // head and tail
+		(i > 0 && rune(camel[i-1]) >= 'a') || // pre
+			(i < l-1 && rune(camel[i+1]) >= 'a')) { //next
+			b.WriteRune('_')
+		}
+		b.WriteRune(v + diff)
+	}
+	return b.String()
+}
 
 func TestApi(test *testing.T) {
 	if apiId == "" {

@@ -6,6 +6,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_ and this project adheres to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
+4.0.0
+=====
+
+Added
+-----
+
+- Introduced a ``GenericMeta`` struct which will be returned for specific endpoints. If some endpoints were overlooked, they will be added in a minor version.
+Thanks at `@kakwa <https://github.com/kakwa>`_ for pointing this out.
+
+Fixed
+-----
+
+- Fixed a nil pointer dereference if a nil value was passed at client creation.
+
 3.0.0
 =====
 

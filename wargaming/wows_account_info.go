@@ -4,8 +4,8 @@ package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/internal"
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/wows"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/internal"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/wows"
 	"strings"
 )
 
@@ -14,9 +14,12 @@ import (
 // https://developers.wargaming.net/reference/all/wows/account/info
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // accountId:
-//     Player account ID. Maximum limit: 100. Min value is 1.
+//
+//	Player account ID. Maximum limit: 100. Min value is 1.
 func (service *WowsService) AccountInfo(ctx context.Context, realm Realm, accountId []int, options *wows.AccountInfoOptions) (*wows.AccountInfo, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

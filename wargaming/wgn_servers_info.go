@@ -4,7 +4,7 @@ package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/wgn"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/wgn"
 	"strings"
 )
 
@@ -13,7 +13,8 @@ import (
 // https://developers.wargaming.net/reference/all/wgn/servers/info
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WgnService) ServersInfo(ctx context.Context, realm Realm, options *wgn.ServersInfoOptions) (*wgn.ServersInfo, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err

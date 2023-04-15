@@ -4,7 +4,7 @@ package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/wot"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/wot"
 	"strconv"
 	"strings"
 )
@@ -14,13 +14,20 @@ import (
 // https://developers.wargaming.net/reference/all/wot/stronghold/activateclanreserve
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // accessToken:
-//     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
+//
+//	Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
+//
 // reserveLevel:
-//     Level of clan Reserve to be activated
+//
+//	Level of clan Reserve to be activated
+//
 // reserveType:
-//     Type of clan Reserve to be activated
+//
+//	Type of clan Reserve to be activated
 func (service *WotService) StrongholdActivateclanreserve(ctx context.Context, realm Realm, accessToken string, reserveLevel int, reserveType string, options *wot.StrongholdActivateclanreserveOptions) (*wot.StrongholdActivateclanreserve, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err

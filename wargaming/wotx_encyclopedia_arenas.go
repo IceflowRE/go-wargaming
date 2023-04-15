@@ -4,7 +4,7 @@ package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/wotx"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/wotx"
 	"strings"
 )
 
@@ -13,7 +13,8 @@ import (
 // https://developers.wargaming.net/reference/all/wotx/encyclopedia/arenas
 //
 // realm:
-//     Valid realms: RealmWgcb
+//
+//	Valid realms: RealmWgcb
 func (service *WotxService) EncyclopediaArenas(ctx context.Context, realm Realm, options *wotx.EncyclopediaArenasOptions) (*wotx.EncyclopediaArenas, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, nil, err

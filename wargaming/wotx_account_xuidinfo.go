@@ -4,8 +4,8 @@ package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/internal"
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/wotx"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/internal"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/wotx"
 )
 
 // AccountXuidinfo returns player details based on the player Microsoft XUID.
@@ -13,9 +13,12 @@ import (
 // https://developers.wargaming.net/reference/all/wotx/account/xuidinfo
 //
 // realm:
-//     Valid realms: RealmWgcb
+//
+//	Valid realms: RealmWgcb
+//
 // xuid:
-//     Player Microsoft XUID. Maximum limit: 100.
+//
+//	Player Microsoft XUID. Maximum limit: 100.
 func (service *WotxService) AccountXuidinfo(ctx context.Context, realm Realm, xuid []int) ([]*wotx.AccountXuidinfo, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err

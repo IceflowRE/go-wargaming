@@ -4,7 +4,7 @@ package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/wot"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/wot"
 	"strconv"
 	"strings"
 )
@@ -14,13 +14,20 @@ import (
 // https://developers.wargaming.net/reference/all/wot/globalmap/eventratingneighbors
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // clanId:
-//     Clan ID. To get a clan ID, use the Clans method. Min value is 1.
+//
+//	Clan ID. To get a clan ID, use the Clans method. Min value is 1.
+//
 // eventId:
-//     Event ID. To get an event ID, use the Events method.
+//
+//	Event ID. To get an event ID, use the Events method.
+//
 // frontId:
-//     Front ID. To get a front ID, use the Fronts method.
+//
+//	Front ID. To get a front ID, use the Fronts method.
 func (service *WotService) GlobalmapEventratingneighbors(ctx context.Context, realm Realm, clanId int, eventId string, frontId string, options *wot.GlobalmapEventratingneighborsOptions) ([]*wot.GlobalmapEventratingneighbors, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err

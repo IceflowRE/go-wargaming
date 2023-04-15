@@ -4,7 +4,7 @@ package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/wotx"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/wotx"
 	"strconv"
 )
 
@@ -29,7 +29,8 @@ import (
 // https://developers.wargaming.net/reference/all/wotx/auth/login
 //
 // realm:
-//     Valid realms: RealmWgcb
+//
+//	Valid realms: RealmWgcb
 func (service *WotxService) AuthLogin(ctx context.Context, realm Realm, options *wotx.AuthLoginOptions) (*wotx.AuthLogin, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err

@@ -4,8 +4,8 @@ package wargaming
 
 import (
 	"context"
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/internal"
-	"github.com/IceflowRE/go-wargaming/v3/wargaming/wows"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/internal"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/wows"
 	"strconv"
 	"strings"
 )
@@ -15,9 +15,12 @@ import (
 // https://developers.wargaming.net/reference/all/wows/ships/stats
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // accountId:
-//     Player account ID
+//
+//	Player account ID
 func (service *WowsService) ShipsStats(ctx context.Context, realm Realm, accountId int, options *wows.ShipsStatsOptions) (map[int][]*wows.ShipsStats, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err
