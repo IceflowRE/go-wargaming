@@ -13,14 +13,15 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa
-func (service *WotService) ClanratingsTypes(ctx context.Context, realm Realm) (*wot.ClanratingsTypes, error) {
+func (service *WotService) ClanratingsTypes(ctx context.Context, realm Realm) (*wot.ClanratingsTypes, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{}
 
 	var data *wot.ClanratingsTypes
-	err := service.client.getRequest(ctx, sectionWot, realm, "/clanratings/types/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWot, realm, "/clanratings/types/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

@@ -17,9 +17,9 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa
 // clanId:
 //     Clan ID. To get a clan ID, use the Clans method. Maximum limit: 10.
-func (service *WotService) GlobalmapClaninfo(ctx context.Context, realm Realm, clanId []int, options *wot.GlobalmapClaninfoOptions) (*wot.GlobalmapClaninfo, error) {
+func (service *WotService) GlobalmapClaninfo(ctx context.Context, realm Realm, clanId []int, options *wot.GlobalmapClaninfoOptions) (*wot.GlobalmapClaninfo, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -36,6 +36,7 @@ func (service *WotService) GlobalmapClaninfo(ctx context.Context, realm Realm, c
 	}
 
 	var data *wot.GlobalmapClaninfo
-	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/claninfo/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/claninfo/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

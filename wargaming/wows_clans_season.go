@@ -14,9 +14,9 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa
-func (service *WowsService) ClansSeason(ctx context.Context, realm Realm, options *wows.ClansSeasonOptions) (*wows.ClansSeason, error) {
+func (service *WowsService) ClansSeason(ctx context.Context, realm Realm, options *wows.ClansSeasonOptions) (*wows.ClansSeason, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{}
@@ -31,6 +31,7 @@ func (service *WowsService) ClansSeason(ctx context.Context, realm Realm, option
 	}
 
 	var data *wows.ClansSeason
-	err := service.client.getRequest(ctx, sectionWows, realm, "/clans/season/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWows, realm, "/clans/season/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

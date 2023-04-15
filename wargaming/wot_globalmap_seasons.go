@@ -15,9 +15,9 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa
-func (service *WotService) GlobalmapSeasons(ctx context.Context, realm Realm, options *wot.GlobalmapSeasonsOptions) ([]*wot.GlobalmapSeasons, error) {
+func (service *WotService) GlobalmapSeasons(ctx context.Context, realm Realm, options *wot.GlobalmapSeasonsOptions) ([]*wot.GlobalmapSeasons, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{}
@@ -44,6 +44,7 @@ func (service *WotService) GlobalmapSeasons(ctx context.Context, realm Realm, op
 	}
 
 	var data []*wot.GlobalmapSeasons
-	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/seasons/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/seasons/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

@@ -17,9 +17,9 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa
 // accountId:
 //     Player account ID
-func (service *WowsService) AccountStatsbydate(ctx context.Context, realm Realm, accountId int, options *wows.AccountStatsbydateOptions) (*wows.AccountStatsbydate, error) {
+func (service *WowsService) AccountStatsbydate(ctx context.Context, realm Realm, accountId int, options *wows.AccountStatsbydateOptions) (*wows.AccountStatsbydate, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -45,6 +45,7 @@ func (service *WowsService) AccountStatsbydate(ctx context.Context, realm Realm,
 	}
 
 	var data *wows.AccountStatsbydate
-	err := service.client.getRequest(ctx, sectionWows, realm, "/account/statsbydate/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWows, realm, "/account/statsbydate/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

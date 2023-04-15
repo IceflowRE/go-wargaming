@@ -17,9 +17,9 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa
 // accountId:
 //     Player account ID. Maximum limit: 100.
-func (service *WotService) AccountInfo(ctx context.Context, realm Realm, accountId []int, options *wot.AccountInfoOptions) (*wot.AccountInfo, error) {
+func (service *WotService) AccountInfo(ctx context.Context, realm Realm, accountId []int, options *wot.AccountInfoOptions) (*wot.AccountInfo, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -42,6 +42,7 @@ func (service *WotService) AccountInfo(ctx context.Context, realm Realm, account
 	}
 
 	var data *wot.AccountInfo
-	err := service.client.getRequest(ctx, sectionWot, realm, "/account/info/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWot, realm, "/account/info/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

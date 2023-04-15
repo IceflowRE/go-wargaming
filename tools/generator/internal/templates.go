@@ -43,7 +43,7 @@ func genMethod(ep *endpoint, outputPath string) error {
 			return "postRequest"
 		},
 		"metaReturnType": func(ep *endpoint) string {
-			return toPointerType(ep.MetaType.ToPkgAccessName(ep.Game))
+			return "*GenericMeta"
 		},
 		"dataReturnType": func(ep *endpoint) string {
 			return toPointerType(ep.DataType.ToPkgAccessName(ep.Game))

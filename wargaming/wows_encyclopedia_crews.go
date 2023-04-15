@@ -15,9 +15,9 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa
-func (service *WowsService) EncyclopediaCrews(ctx context.Context, realm Realm, options *wows.EncyclopediaCrewsOptions) (*wows.EncyclopediaCrews, error) {
+func (service *WowsService) EncyclopediaCrews(ctx context.Context, realm Realm, options *wows.EncyclopediaCrewsOptions) (*wows.EncyclopediaCrews, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{}
@@ -35,6 +35,7 @@ func (service *WowsService) EncyclopediaCrews(ctx context.Context, realm Realm, 
 	}
 
 	var data *wows.EncyclopediaCrews
-	err := service.client.getRequest(ctx, sectionWows, realm, "/encyclopedia/crews/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWows, realm, "/encyclopedia/crews/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

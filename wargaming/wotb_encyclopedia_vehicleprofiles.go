@@ -17,9 +17,9 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa
 // tankId:
 //     Vehicle ID. Maximum limit: 25.
-func (service *WotbService) EncyclopediaVehicleprofiles(ctx context.Context, realm Realm, tankId []int, options *wotb.EncyclopediaVehicleprofilesOptions) (*wotb.EncyclopediaVehicleprofiles, error) {
+func (service *WotbService) EncyclopediaVehicleprofiles(ctx context.Context, realm Realm, tankId []int, options *wotb.EncyclopediaVehicleprofilesOptions) (*wotb.EncyclopediaVehicleprofiles, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -39,6 +39,7 @@ func (service *WotbService) EncyclopediaVehicleprofiles(ctx context.Context, rea
 	}
 
 	var data *wotb.EncyclopediaVehicleprofiles
-	err := service.client.getRequest(ctx, sectionWotb, realm, "/encyclopedia/vehicleprofiles/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWotb, realm, "/encyclopedia/vehicleprofiles/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

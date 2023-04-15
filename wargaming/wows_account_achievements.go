@@ -17,7 +17,7 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa
 // accountId:
 //     Player account ID. Maximum limit: 100. Min value is 1.
-func (service *WowsService) AccountAchievements(ctx context.Context, realm Realm, accountId []int, options *wows.AccountAchievementsOptions) (*wows.AccountAchievements, *wows.AccountAchievementsMeta, error) {
+func (service *WowsService) AccountAchievements(ctx context.Context, realm Realm, accountId []int, options *wows.AccountAchievementsOptions) (*wows.AccountAchievements, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err
 	}
@@ -39,7 +39,7 @@ func (service *WowsService) AccountAchievements(ctx context.Context, realm Realm
 	}
 
 	var data *wows.AccountAchievements
-	var metaData *wows.AccountAchievementsMeta
+	var metaData *GenericMeta
 	err := service.client.getRequest(ctx, sectionWows, realm, "/account/achievements/", reqParam, &data, &metaData)
 	return data, metaData, err
 }

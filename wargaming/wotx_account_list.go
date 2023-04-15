@@ -17,9 +17,9 @@ import (
 //     Valid realms: RealmWgcb
 // search:
 //     Player name search string. Parameter "type" defines minimum length and type of search. Using the exact search type, you can enter several names, separated with commas. Maximum length: 24.
-func (service *WotxService) AccountList(ctx context.Context, realm Realm, search string, options *wotx.AccountListOptions) ([]*wotx.AccountList, error) {
+func (service *WotxService) AccountList(ctx context.Context, realm Realm, search string, options *wotx.AccountListOptions) ([]*wotx.AccountList, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -42,6 +42,7 @@ func (service *WotxService) AccountList(ctx context.Context, realm Realm, search
 	}
 
 	var data []*wotx.AccountList
-	err := service.client.getRequest(ctx, sectionWotx, realm, "/account/list/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWotx, realm, "/account/list/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

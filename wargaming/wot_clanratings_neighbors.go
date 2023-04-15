@@ -19,9 +19,9 @@ import (
 //     Clan ID
 // rankField:
 //     Rating category
-func (service *WotService) ClanratingsNeighbors(ctx context.Context, realm Realm, clanId int, rankField string, options *wot.ClanratingsNeighborsOptions) ([]*wot.ClanratingsNeighbors, error) {
+func (service *WotService) ClanratingsNeighbors(ctx context.Context, realm Realm, clanId int, rankField string, options *wot.ClanratingsNeighborsOptions) ([]*wot.ClanratingsNeighbors, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -45,6 +45,7 @@ func (service *WotService) ClanratingsNeighbors(ctx context.Context, realm Realm
 	}
 
 	var data []*wot.ClanratingsNeighbors
-	err := service.client.getRequest(ctx, sectionWot, realm, "/clanratings/neighbors/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWot, realm, "/clanratings/neighbors/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

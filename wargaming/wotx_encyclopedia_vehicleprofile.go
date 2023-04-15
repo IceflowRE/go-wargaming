@@ -17,9 +17,9 @@ import (
 //     Valid realms: RealmWgcb
 // tankId:
 //     Vehicle ID
-func (service *WotxService) EncyclopediaVehicleprofile(ctx context.Context, realm Realm, tankId int, options *wotx.EncyclopediaVehicleprofileOptions) (*wotx.EncyclopediaVehicleprofile, error) {
+func (service *WotxService) EncyclopediaVehicleprofile(ctx context.Context, realm Realm, tankId int, options *wotx.EncyclopediaVehicleprofileOptions) (*wotx.EncyclopediaVehicleprofile, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -54,6 +54,7 @@ func (service *WotxService) EncyclopediaVehicleprofile(ctx context.Context, real
 	}
 
 	var data *wotx.EncyclopediaVehicleprofile
-	err := service.client.getRequest(ctx, sectionWotx, realm, "/encyclopedia/vehicleprofile/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWotx, realm, "/encyclopedia/vehicleprofile/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

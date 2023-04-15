@@ -20,9 +20,9 @@ import (
 //     Player account ID. Maximum limit: 100.
 // tankId:
 //     Player's vehicle ID
-func (service *WotbService) AccountTankstats(ctx context.Context, realm Realm, accountId []int, tankId int, options *wotb.AccountTankstatsOptions) (*wotb.AccountTankstats, error) {
+func (service *WotbService) AccountTankstats(ctx context.Context, realm Realm, accountId []int, tankId int, options *wotb.AccountTankstatsOptions) (*wotb.AccountTankstats, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -40,6 +40,7 @@ func (service *WotbService) AccountTankstats(ctx context.Context, realm Realm, a
 	}
 
 	var data *wotb.AccountTankstats
-	err := service.client.getRequest(ctx, sectionWotb, realm, "/account/tankstats/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWotb, realm, "/account/tankstats/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

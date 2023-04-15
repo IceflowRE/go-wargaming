@@ -39,18 +39,6 @@ type EncyclopediaShipsOptions struct {
 	Type []string `json:"type,omitempty"`
 }
 
-type EncyclopediaShipsMeta struct {
-	Count int `json:"count,omitempty"`
-
-	Limit int `json:"limit,omitempty"`
-
-	Page int `json:"page,omitempty"`
-
-	PageTotal int `json:"page_total,omitempty"`
-
-	Total int `json:"total,omitempty"`
-}
-
 type EncyclopediaShips struct {
 	// Parameters of basic configuration
 	DefaultProfile *struct {

@@ -14,9 +14,9 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa
-func (service *WotService) ClanratingsDates(ctx context.Context, realm Realm, options *wot.ClanratingsDatesOptions) (*wot.ClanratingsDates, error) {
+func (service *WotService) ClanratingsDates(ctx context.Context, realm Realm, options *wot.ClanratingsDatesOptions) (*wot.ClanratingsDates, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{}
@@ -28,6 +28,7 @@ func (service *WotService) ClanratingsDates(ctx context.Context, realm Realm, op
 	}
 
 	var data *wot.ClanratingsDates
-	err := service.client.getRequest(ctx, sectionWot, realm, "/clanratings/dates/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWot, realm, "/clanratings/dates/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

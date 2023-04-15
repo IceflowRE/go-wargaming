@@ -14,9 +14,9 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa
-func (service *WotService) EncyclopediaBoosters(ctx context.Context, realm Realm, options *wot.EncyclopediaBoostersOptions) (*wot.EncyclopediaBoosters, error) {
+func (service *WotService) EncyclopediaBoosters(ctx context.Context, realm Realm, options *wot.EncyclopediaBoostersOptions) (*wot.EncyclopediaBoosters, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{}
@@ -31,6 +31,7 @@ func (service *WotService) EncyclopediaBoosters(ctx context.Context, realm Realm
 	}
 
 	var data *wot.EncyclopediaBoosters
-	err := service.client.getRequest(ctx, sectionWot, realm, "/encyclopedia/boosters/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWot, realm, "/encyclopedia/boosters/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

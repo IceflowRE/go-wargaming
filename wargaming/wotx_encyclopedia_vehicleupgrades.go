@@ -17,9 +17,9 @@ import (
 //     Valid realms: RealmWgcb
 // tankId:
 //     Vehicle ID. Maximum limit: 100.
-func (service *WotxService) EncyclopediaVehicleupgrades(ctx context.Context, realm Realm, tankId []int, options *wotx.EncyclopediaVehicleupgradesOptions) (*wotx.EncyclopediaVehicleupgrades, error) {
+func (service *WotxService) EncyclopediaVehicleupgrades(ctx context.Context, realm Realm, tankId []int, options *wotx.EncyclopediaVehicleupgradesOptions) (*wotx.EncyclopediaVehicleupgrades, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -36,6 +36,7 @@ func (service *WotxService) EncyclopediaVehicleupgrades(ctx context.Context, rea
 	}
 
 	var data *wotx.EncyclopediaVehicleupgrades
-	err := service.client.getRequest(ctx, sectionWotx, realm, "/encyclopedia/vehicleupgrades/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWotx, realm, "/encyclopedia/vehicleupgrades/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

@@ -18,9 +18,9 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa
 // clanId:
 //     Clan IDs. Maximum limit: 100.
-func (service *WotService) ClanratingsClans(ctx context.Context, realm Realm, clanId []int, options *wot.ClanratingsClansOptions) (*wot.ClanratingsClans, error) {
+func (service *WotService) ClanratingsClans(ctx context.Context, realm Realm, clanId []int, options *wot.ClanratingsClansOptions) (*wot.ClanratingsClans, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -40,6 +40,7 @@ func (service *WotService) ClanratingsClans(ctx context.Context, realm Realm, cl
 	}
 
 	var data *wot.ClanratingsClans
-	err := service.client.getRequest(ctx, sectionWot, realm, "/clanratings/clans/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWot, realm, "/clanratings/clans/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

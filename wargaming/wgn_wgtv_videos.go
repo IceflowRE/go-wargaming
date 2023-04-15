@@ -16,9 +16,9 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa
-func (service *WgnService) WgtvVideos(ctx context.Context, realm Realm, options *wgn.WgtvVideosOptions) ([]*wgn.WgtvVideos, error) {
+func (service *WgnService) WgtvVideos(ctx context.Context, realm Realm, options *wgn.WgtvVideosOptions) ([]*wgn.WgtvVideos, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{}
@@ -63,6 +63,7 @@ func (service *WgnService) WgtvVideos(ctx context.Context, realm Realm, options 
 	}
 
 	var data []*wgn.WgtvVideos
-	err := service.client.getRequest(ctx, sectionWgn, realm, "/wgtv/videos/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWgn, realm, "/wgtv/videos/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

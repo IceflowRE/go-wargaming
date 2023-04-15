@@ -18,9 +18,9 @@ import (
 //     Valid realms: RealmEu, RealmNa
 // planeId:
 //     Aircraft ID
-func (service *WowpService) EncyclopediaPlanespecification(ctx context.Context, realm Realm, planeId int, options *wowp.EncyclopediaPlanespecificationOptions) (*wowp.EncyclopediaPlanespecification, error) {
+func (service *WowpService) EncyclopediaPlanespecification(ctx context.Context, realm Realm, planeId int, options *wowp.EncyclopediaPlanespecificationOptions) (*wowp.EncyclopediaPlanespecification, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -43,6 +43,7 @@ func (service *WowpService) EncyclopediaPlanespecification(ctx context.Context, 
 	}
 
 	var data *wowp.EncyclopediaPlanespecification
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/encyclopedia/planespecification/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/encyclopedia/planespecification/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

@@ -17,9 +17,9 @@ import (
 //     Valid realms: RealmEu, RealmNa
 // accountId:
 //     Player account ID. Maximum limit: 100.
-func (service *WowpService) AccountInfo2(ctx context.Context, realm Realm, accountId []int, options *wowp.AccountInfo2Options) (*wowp.AccountInfo2, error) {
+func (service *WowpService) AccountInfo2(ctx context.Context, realm Realm, accountId []int, options *wowp.AccountInfo2Options) (*wowp.AccountInfo2, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -39,6 +39,7 @@ func (service *WowpService) AccountInfo2(ctx context.Context, realm Realm, accou
 	}
 
 	var data *wowp.AccountInfo2
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/account/info2/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/account/info2/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

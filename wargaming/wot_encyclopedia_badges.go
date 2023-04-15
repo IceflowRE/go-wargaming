@@ -14,9 +14,9 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa
-func (service *WotService) EncyclopediaBadges(ctx context.Context, realm Realm, options *wot.EncyclopediaBadgesOptions) (*wot.EncyclopediaBadges, error) {
+func (service *WotService) EncyclopediaBadges(ctx context.Context, realm Realm, options *wot.EncyclopediaBadgesOptions) (*wot.EncyclopediaBadges, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{}
@@ -31,6 +31,7 @@ func (service *WotService) EncyclopediaBadges(ctx context.Context, realm Realm, 
 	}
 
 	var data *wot.EncyclopediaBadges
-	err := service.client.getRequest(ctx, sectionWot, realm, "/encyclopedia/badges/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWot, realm, "/encyclopedia/badges/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

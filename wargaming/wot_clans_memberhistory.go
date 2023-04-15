@@ -17,9 +17,9 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa
 // accountId:
 //     Account ID. Min value is 1.
-func (service *WotService) ClansMemberhistory(ctx context.Context, realm Realm, accountId int, options *wot.ClansMemberhistoryOptions) (*wot.ClansMemberhistory, error) {
+func (service *WotService) ClansMemberhistory(ctx context.Context, realm Realm, accountId int, options *wot.ClansMemberhistoryOptions) (*wot.ClansMemberhistory, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -36,6 +36,7 @@ func (service *WotService) ClansMemberhistory(ctx context.Context, realm Realm, 
 	}
 
 	var data *wot.ClansMemberhistory
-	err := service.client.getRequest(ctx, sectionWot, realm, "/clans/memberhistory/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWot, realm, "/clans/memberhistory/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

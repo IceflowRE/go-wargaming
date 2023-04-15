@@ -14,9 +14,9 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa
-func (service *WgnService) WgtvVehicles(ctx context.Context, realm Realm, options *wgn.WgtvVehiclesOptions) (*wgn.WgtvVehicles, error) {
+func (service *WgnService) WgtvVehicles(ctx context.Context, realm Realm, options *wgn.WgtvVehiclesOptions) (*wgn.WgtvVehicles, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{}
@@ -34,6 +34,7 @@ func (service *WgnService) WgtvVehicles(ctx context.Context, realm Realm, option
 	}
 
 	var data *wgn.WgtvVehicles
-	err := service.client.getRequest(ctx, sectionWgn, realm, "/wgtv/vehicles/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWgn, realm, "/wgtv/vehicles/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

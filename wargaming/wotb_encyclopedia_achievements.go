@@ -14,9 +14,9 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa
-func (service *WotbService) EncyclopediaAchievements(ctx context.Context, realm Realm, options *wotb.EncyclopediaAchievementsOptions) (*wotb.EncyclopediaAchievements, error) {
+func (service *WotbService) EncyclopediaAchievements(ctx context.Context, realm Realm, options *wotb.EncyclopediaAchievementsOptions) (*wotb.EncyclopediaAchievements, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{}
@@ -31,6 +31,7 @@ func (service *WotbService) EncyclopediaAchievements(ctx context.Context, realm 
 	}
 
 	var data *wotb.EncyclopediaAchievements
-	err := service.client.getRequest(ctx, sectionWotb, realm, "/encyclopedia/achievements/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWotb, realm, "/encyclopedia/achievements/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

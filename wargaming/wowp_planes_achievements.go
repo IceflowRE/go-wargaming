@@ -18,9 +18,9 @@ import (
 //     Valid realms: RealmEu, RealmNa
 // accountId:
 //     Player account ID
-func (service *WowpService) PlanesAchievements(ctx context.Context, realm Realm, accountId int, options *wowp.PlanesAchievementsOptions) (*wowp.PlanesAchievements, error) {
+func (service *WowpService) PlanesAchievements(ctx context.Context, realm Realm, accountId int, options *wowp.PlanesAchievementsOptions) (*wowp.PlanesAchievements, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -40,6 +40,7 @@ func (service *WowpService) PlanesAchievements(ctx context.Context, realm Realm,
 	}
 
 	var data *wowp.PlanesAchievements
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/planes/achievements/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/planes/achievements/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

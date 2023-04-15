@@ -15,9 +15,9 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa
-func (service *WotbService) TournamentsList(ctx context.Context, realm Realm, options *wotb.TournamentsListOptions) ([]*wotb.TournamentsList, error) {
+func (service *WotbService) TournamentsList(ctx context.Context, realm Realm, options *wotb.TournamentsListOptions) ([]*wotb.TournamentsList, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{}
@@ -44,6 +44,7 @@ func (service *WotbService) TournamentsList(ctx context.Context, realm Realm, op
 	}
 
 	var data []*wotb.TournamentsList
-	err := service.client.getRequest(ctx, sectionWotb, realm, "/tournaments/list/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWotb, realm, "/tournaments/list/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

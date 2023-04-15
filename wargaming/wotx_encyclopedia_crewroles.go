@@ -14,9 +14,9 @@ import (
 //
 // realm:
 //     Valid realms: RealmWgcb
-func (service *WotxService) EncyclopediaCrewroles(ctx context.Context, realm Realm, options *wotx.EncyclopediaCrewrolesOptions) (*wotx.EncyclopediaCrewroles, error) {
+func (service *WotxService) EncyclopediaCrewroles(ctx context.Context, realm Realm, options *wotx.EncyclopediaCrewrolesOptions) (*wotx.EncyclopediaCrewroles, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{}
@@ -31,6 +31,7 @@ func (service *WotxService) EncyclopediaCrewroles(ctx context.Context, realm Rea
 	}
 
 	var data *wotx.EncyclopediaCrewroles
-	err := service.client.getRequest(ctx, sectionWotx, realm, "/encyclopedia/crewroles/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWotx, realm, "/encyclopedia/crewroles/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

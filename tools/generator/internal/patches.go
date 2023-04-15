@@ -78,65 +78,6 @@ func patchEndpoint(ep *endpoint) {
 	}
 
 	if contains([]string{
-		"wows_encyclopedia_ships",
-	}, ep.Id) {
-		ep.MetaType = &goType{
-			Name:    ep.Name + "Meta",
-			TypeStr: "struct",
-			Fields: []*goType{
-				{
-					Name:    "Count",
-					TypeStr: "int",
-					JsonTag: "count",
-					Imports: make(map[string]struct{}),
-				},
-				{
-					Name:    "Limit",
-					TypeStr: "int",
-					JsonTag: "limit",
-					Imports: make(map[string]struct{}),
-				},
-				{
-					Name:    "Page",
-					TypeStr: "int",
-					JsonTag: "page",
-					Imports: make(map[string]struct{}),
-				},
-				{
-					Name:    "PageTotal",
-					TypeStr: "int",
-					JsonTag: "page_total",
-					Imports: make(map[string]struct{}),
-				},
-				{
-					Name:    "Total",
-					TypeStr: "int",
-					JsonTag: "total",
-					Imports: make(map[string]struct{}),
-				},
-			},
-		}
-	}
-
-	if contains([]string{
-		"wows_account_achievements", "wows_seasons_accountinfo", "wows_seasons_shipstats", "wows_ships_stats",
-	}, ep.Id) {
-		ep.MetaType = &goType{
-			Name:    ep.Name + "Meta",
-			TypeStr: "struct",
-			Fields: []*goType{
-				{
-					Name:        "Hidden",
-					TypeStr:     "[]int",
-					Description: "Hidden profiles.",
-					JsonTag:     "hidden",
-					Imports:     make(map[string]struct{}),
-				},
-			},
-		}
-	}
-
-	if contains([]string{
 		"wgn_account_list", "wgn_wgtv_videos",
 		"wot_account_list", "wot_clans_list",
 		"wot_clanratings_neighbors", "wot_clanratings_top", "wot_globalmap_clanbattles",
@@ -153,5 +94,58 @@ func patchEndpoint(ep *endpoint) {
 		"wows_account_list", "wows_clans_list",
 	}, ep.Id) {
 		ep.DataType.TypeStr = "[]" + ep.DataType.TypeStr
+	}
+	patchMeta(ep)
+}
+
+func patchMeta(ep *endpoint) {
+	if contains([]string{
+		"wot_account_list", "wot_account_info", "wot_account_tanks", "wot_account_achievements", "wot_stronghold_claninfo",
+		"wot_globalmap_fronts", "wot_globalmap_provinces", "wot_globalmap_claninfo", "wot_globalmap_clanprovinces",
+		"wot_globalmap_clanbattles", "wot_globalmap_seasonclaninfo", "wot_globalmap_seasonaccountinfo",
+		"wot_globalmap_seasonratingneighbors", "wot_globalmap_eventclaninfo", "wot_globalmap_eventaccountinfo",
+		"wot_globalmap_eventaccountinfo", "wot_encyclopedia_vehicleprofile", "wot_encyclopedia_achievements",
+		"wot_encyclopedia_info", "wot_encyclopedia_arenas", "wot_encyclopedia_personalmissions", "wot_encyclopedia_boosters",
+		"wot_encyclopedia_vehicleprofiles", "wot_encyclopedia_badges", "wot_encyclopedia_crewroles",
+		"wot_encyclopedia_crewskills", "wot_clanratings_types", "wot_clanratings_dates", "wot_clanratings_clans",
+		"wot_clanratings_neighbors", "wot_clanratings_top", "wot_tanks_stats", "wot_tanks_achievements",
+		"wot_tanks_mastery", "wot_clans_info", "wot_clans_accountinfo", "wot_clans_memberhistory",
+		"wotb_account_list", "wotb_account_info", "wotb_account_achievements", "wotb_account_tankstats",
+		"wotb_encyclopedia_vehicles", "wotb_encyclopedia_vehicleprofile", "wotb_encyclopedia_provisions",
+		"wotb_encyclopedia_achievements", "wotb_encyclopedia_vehicleprofiles", "wotb_clans_info",
+		"wotb_clans_accountinfo", "wotb_tanks_stats", "wotb_tanks_achievements", "wotb_tournaments_info",
+		"wotx_account_list", "wotx_account_info", "wotx_account_achievements", "wotx_clans_info",
+		"wotx_clans_accountinfo", "wotx_encyclopedia_crewroles", "wotx_encyclopedia_vehicleupgrades",
+		"wotx_encyclopedia_achievements", "wotx_encyclopedia_arenas", "wotx_encyclopedia_vehicleprofile",
+		"wotx_tanks_stats", "wotx_tanks_achievements", "wowp_account_list", "wowp_account_info2",
+		"wowp_account_achievements", "wowp_encyclopedia_planes", "wowp_encyclopedia_planeinfo",
+		"wowp_encyclopedia_planemodules", "wowp_encyclopedia_planeupgrades", "wowp_encyclopedia_planespecification",
+		"wowp_encyclopedia_achievements", "wowp_encyclopedia_info", "wowp_ratings_types", "wowp_ratings_accounts",
+		"wowp_ratings_neighbors", "wowp_ratings_top", "wowp_ratings_dates", "wowp_planes_stats",
+		"wowp_planes_achievements", "wowp_clans_info", "wowp_clans_accountinfo", "wows_account_list",
+		"wows_encyclopedia_info", "wows_encyclopedia_achievements", "wows_encyclopedia_shipprofile",
+		"wows_encyclopedia_accountlevels", "wows_encyclopedia_crews", "wows_encyclopedia_crewranks",
+		"wows_encyclopedia_battletypes", "wows_encyclopedia_collections", "wows_encyclopedia_collectioncards",
+		"wows_encyclopedia_battlearenas", "wows_clans_info", "wows_clans_accountinfo", "wows_clans_season",
+		"wgn_account_list", "wgn_account_info", "wgn_wgtv_tags", "wgn_wgtv_vehicles",
+
+		"wows_account_info", "wows_account_achievements", "wows_account_statsbydate", "wows_ships_stats",
+		"wows_seasons_shipstats", "wows_seasons_accountinfo",
+
+		"wot_clans_list", "wotb_clans_list", "wotx_clans_list",
+
+		"wot_globalmap_seasons", "wot_globalmap_seasonrating", "wot_globalmap_events", "wot_globalmap_info",
+		"wotb_tournaments_teams", "wotb_tournaments_stages", "wotx_encyclopedia_modules",
+
+		"wotb_tournaments_list", "wowp_clans_list", "wows_clans_list",
+
+		"wot_encyclopedia_vehicles", "wot_encyclopedia_provisions", "wot_encyclopedia_modules",
+		"wotx_encyclopedia_vehicles", "wows_encyclopedia_ships", "wows_encyclopedia_modules",
+		"wows_encyclopedia_consumables", "wgn_wgtv_videos",
+	}, ep.Id) {
+		ep.MetaType = &goType{
+			Name:    "",
+			TypeStr: "*GenericMeta",
+		}
 	}
 }

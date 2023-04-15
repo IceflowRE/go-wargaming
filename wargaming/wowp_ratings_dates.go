@@ -17,9 +17,9 @@ import (
 //     Valid realms: RealmEu, RealmNa
 // typ:
 //     Rating period. For valid values, check the Types of ratings method.
-func (service *WowpService) RatingsDates(ctx context.Context, realm Realm, typ string, options *wowp.RatingsDatesOptions) (*wowp.RatingsDates, error) {
+func (service *WowpService) RatingsDates(ctx context.Context, realm Realm, typ string, options *wowp.RatingsDatesOptions) (*wowp.RatingsDates, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -39,6 +39,7 @@ func (service *WowpService) RatingsDates(ctx context.Context, realm Realm, typ s
 	}
 
 	var data *wowp.RatingsDates
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/ratings/dates/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/ratings/dates/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

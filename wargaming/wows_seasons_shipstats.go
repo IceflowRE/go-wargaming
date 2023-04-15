@@ -18,7 +18,7 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa
 // accountId:
 //     Player account ID
-func (service *WowsService) SeasonsShipstats(ctx context.Context, realm Realm, accountId int, options *wows.SeasonsShipstatsOptions) (*wows.SeasonsShipstats, *wows.SeasonsShipstatsMeta, error) {
+func (service *WowsService) SeasonsShipstats(ctx context.Context, realm Realm, accountId int, options *wows.SeasonsShipstatsOptions) (*wows.SeasonsShipstats, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err
 	}
@@ -46,7 +46,7 @@ func (service *WowsService) SeasonsShipstats(ctx context.Context, realm Realm, a
 	}
 
 	var data *wows.SeasonsShipstats
-	var metaData *wows.SeasonsShipstatsMeta
+	var metaData *GenericMeta
 	err := service.client.getRequest(ctx, sectionWows, realm, "/seasons/shipstats/", reqParam, &data, &metaData)
 	return data, metaData, err
 }

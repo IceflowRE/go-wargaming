@@ -23,9 +23,9 @@ import (
 //     Valid realms: RealmWgcb
 // accountId:
 //     Player account ID. Min value is 0.
-func (service *WotxService) TanksAchievements(ctx context.Context, realm Realm, accountId int, options *wotx.TanksAchievementsOptions) (*wotx.TanksAchievements, error) {
+func (service *WotxService) TanksAchievements(ctx context.Context, realm Realm, accountId int, options *wotx.TanksAchievementsOptions) (*wotx.TanksAchievements, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -51,6 +51,7 @@ func (service *WotxService) TanksAchievements(ctx context.Context, realm Realm, 
 	}
 
 	var data *wotx.TanksAchievements
-	err := service.client.getRequest(ctx, sectionWotx, realm, "/tanks/achievements/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWotx, realm, "/tanks/achievements/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

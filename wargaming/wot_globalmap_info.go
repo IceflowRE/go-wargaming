@@ -14,9 +14,9 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa
-func (service *WotService) GlobalmapInfo(ctx context.Context, realm Realm, options *wot.GlobalmapInfoOptions) (*wot.GlobalmapInfo, error) {
+func (service *WotService) GlobalmapInfo(ctx context.Context, realm Realm, options *wot.GlobalmapInfoOptions) (*wot.GlobalmapInfo, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{}
@@ -28,6 +28,7 @@ func (service *WotService) GlobalmapInfo(ctx context.Context, realm Realm, optio
 	}
 
 	var data *wot.GlobalmapInfo
-	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/info/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/info/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

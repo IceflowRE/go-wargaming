@@ -14,9 +14,9 @@ import (
 //
 // realm:
 //     Valid realms: RealmEu, RealmNa
-func (service *WowpService) RatingsTypes(ctx context.Context, realm Realm, options *wowp.RatingsTypesOptions) (*wowp.RatingsTypes, error) {
+func (service *WowpService) RatingsTypes(ctx context.Context, realm Realm, options *wowp.RatingsTypesOptions) (*wowp.RatingsTypes, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{}
@@ -31,6 +31,7 @@ func (service *WowpService) RatingsTypes(ctx context.Context, realm Realm, optio
 	}
 
 	var data *wowp.RatingsTypes
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/ratings/types/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/ratings/types/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

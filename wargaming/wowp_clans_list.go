@@ -15,9 +15,9 @@ import (
 //
 // realm:
 //     Valid realms: RealmEu, RealmNa
-func (service *WowpService) ClansList(ctx context.Context, realm Realm, options *wowp.ClansListOptions) ([]*wowp.ClansList, error) {
+func (service *WowpService) ClansList(ctx context.Context, realm Realm, options *wowp.ClansListOptions) ([]*wowp.ClansList, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{}
@@ -41,6 +41,7 @@ func (service *WowpService) ClansList(ctx context.Context, realm Realm, options 
 	}
 
 	var data []*wowp.ClansList
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/clans/list/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/clans/list/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

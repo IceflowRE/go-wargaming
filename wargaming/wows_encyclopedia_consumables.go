@@ -16,9 +16,9 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa
-func (service *WowsService) EncyclopediaConsumables(ctx context.Context, realm Realm, options *wows.EncyclopediaConsumablesOptions) (*wows.EncyclopediaConsumables, error) {
+func (service *WowsService) EncyclopediaConsumables(ctx context.Context, realm Realm, options *wows.EncyclopediaConsumablesOptions) (*wows.EncyclopediaConsumables, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{}
@@ -45,6 +45,7 @@ func (service *WowsService) EncyclopediaConsumables(ctx context.Context, realm R
 	}
 
 	var data *wows.EncyclopediaConsumables
-	err := service.client.getRequest(ctx, sectionWows, realm, "/encyclopedia/consumables/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWows, realm, "/encyclopedia/consumables/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

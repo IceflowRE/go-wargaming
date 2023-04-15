@@ -14,9 +14,9 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa
-func (service *WowsService) EncyclopediaInfo(ctx context.Context, realm Realm, options *wows.EncyclopediaInfoOptions) (*wows.EncyclopediaInfo, error) {
+func (service *WowsService) EncyclopediaInfo(ctx context.Context, realm Realm, options *wows.EncyclopediaInfoOptions) (*wows.EncyclopediaInfo, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{}
@@ -31,6 +31,7 @@ func (service *WowsService) EncyclopediaInfo(ctx context.Context, realm Realm, o
 	}
 
 	var data *wows.EncyclopediaInfo
-	err := service.client.getRequest(ctx, sectionWows, realm, "/encyclopedia/info/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWows, realm, "/encyclopedia/info/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

@@ -21,9 +21,9 @@ import (
 //     Event ID. To get an event ID, use the Events method.
 // frontId:
 //     Front ID. To get a front ID, use the Fronts method. Maximum limit: 10.
-func (service *WotService) GlobalmapEventclaninfo(ctx context.Context, realm Realm, clanId int, eventId string, frontId []string, options *wot.GlobalmapEventclaninfoOptions) (*wot.GlobalmapEventclaninfo, error) {
+func (service *WotService) GlobalmapEventclaninfo(ctx context.Context, realm Realm, clanId int, eventId string, frontId []string, options *wot.GlobalmapEventclaninfoOptions) (*wot.GlobalmapEventclaninfo, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -39,6 +39,7 @@ func (service *WotService) GlobalmapEventclaninfo(ctx context.Context, realm Rea
 	}
 
 	var data *wot.GlobalmapEventclaninfo
-	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/eventclaninfo/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/eventclaninfo/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

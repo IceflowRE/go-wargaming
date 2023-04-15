@@ -17,9 +17,9 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa
 // shipId:
 //     Ship ID
-func (service *WowsService) EncyclopediaShipprofile(ctx context.Context, realm Realm, shipId int, options *wows.EncyclopediaShipprofileOptions) (*wows.EncyclopediaShipprofile, error) {
+func (service *WowsService) EncyclopediaShipprofile(ctx context.Context, realm Realm, shipId int, options *wows.EncyclopediaShipprofileOptions) (*wows.EncyclopediaShipprofile, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -63,6 +63,7 @@ func (service *WowsService) EncyclopediaShipprofile(ctx context.Context, realm R
 	}
 
 	var data *wows.EncyclopediaShipprofile
-	err := service.client.getRequest(ctx, sectionWows, realm, "/encyclopedia/shipprofile/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWows, realm, "/encyclopedia/shipprofile/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

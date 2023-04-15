@@ -18,9 +18,9 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa
 // accountId:
 //     Player account ID
-func (service *WotService) TanksStats(ctx context.Context, realm Realm, accountId int, options *wot.TanksStatsOptions) (*wot.TanksStats, error) {
+func (service *WotService) TanksStats(ctx context.Context, realm Realm, accountId int, options *wot.TanksStatsOptions) (*wot.TanksStats, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -49,6 +49,7 @@ func (service *WotService) TanksStats(ctx context.Context, realm Realm, accountI
 	}
 
 	var data *wot.TanksStats
-	err := service.client.getRequest(ctx, sectionWot, realm, "/tanks/stats/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWot, realm, "/tanks/stats/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

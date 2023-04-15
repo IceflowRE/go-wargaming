@@ -9,6 +9,18 @@ import (
 	"net/url"
 )
 
+// GenericMeta contains all possible values which can be returned as metadata.
+// Explicitly check against non nil, before using them.
+// The returned meta values are not documented by Wargaming.
+type GenericMeta struct {
+	Count     *int  `json:"count,omitempty"`
+	Hidden    []int `json:"hidden,omitempty"`
+	Limit     *int  `json:"limit,omitempty"`
+	Page      *int  `json:"page,omitempty"`
+	PageTotal *int  `json:"page_total,omitempty"`
+	Total     *int  `json:"total,omitempty"`
+}
+
 // response Wargaming response body fits always in this struct.
 type response struct {
 	Status string         `json:"status"`
@@ -23,7 +35,7 @@ type response struct {
 //	// create client
 //	client := wargaming.NewClient("a7f838650dcb008552966db063eeeb35", nil)
 //	// get account list
-//	res, err := client.Wot.AccountList(context.Background(), wargaming.realmEu, "Yzne", nil)
+//	res, meta, err := client.Wot.AccountList(context.Background(), wargaming.realmEu, "Yzne", nil)
 //	// print out
 //	if err != nil {
 //		// handle a Wargaming Response Error, returned by the API itself
@@ -38,9 +50,10 @@ type response struct {
 //		for _, value := range res {
 //			fmt.Println(value)
 //		}
+//		fmt.Println(*meta.Count)
 //	}
 //	// get account list with options
-//	res, err = client.Wot.AccountList(context.Background(), wargaming.realmEu, "Lichtgeschwindigkeit", &wot.AccountListOptions{
+//	res, _, err = client.Wot.AccountList(context.Background(), wargaming.realmEu, "Lichtgeschwindigkeit", &wot.AccountListOptions{
 //		Fields: []string{"nickname"},
 //	})
 //
@@ -99,7 +112,7 @@ func (client *Client) buildRequest(ctx context.Context, method string, section s
 	return req
 }
 
-func (client *Client) request(req *http.Request, returnData any, metaData any) error {
+func (client *Client) Request(req *http.Request, returnData any, metaData any) error {
 	resp, err := client.httpClient.Do(req)
 	if err != nil {
 		return err
@@ -124,6 +137,25 @@ func (client *Client) request(req *http.Request, returnData any, metaData any) e
 		return err
 	}
 
+	// TEST
+	// Uncomment this to see what meta values are returned when running the tests.
+	/*
+		var metaDataTest map[string]json.RawMessage
+		wgRespTest := &response{
+			Status: "",
+			Error:  nil,
+			Data:   nil,
+			Meta:   &metaDataTest,
+		}
+		err = json.Unmarshal(respBytes, wgRespTest)
+		if err != nil {
+			return err
+		}
+		if len(metaDataTest) != 0 {
+			fmt.Printf("%s contains metadata %v\n", req.URL, metaDataTest)
+		}*/
+	// TEST END
+
 	if wgResp.Error != nil {
 		return wgResp.Error
 	}
@@ -137,12 +169,12 @@ func (client *Client) request(req *http.Request, returnData any, metaData any) e
 // set metaData to nil if no meta data is expected.
 func (client *Client) postRequest(ctx context.Context, section section, realm Realm, path string, data map[string]string, returnData any, metaData any) error {
 	req := client.buildRequest(ctx, "POST", section, realm, path, data)
-	return client.request(req, returnData, metaData)
+	return client.Request(req, returnData, metaData)
 }
 
 // getRequest set returnData to nil, if no response data is expected.
 // set metaData to nil if no meta data is expected.
 func (client *Client) getRequest(ctx context.Context, section section, realm Realm, path string, data map[string]string, returnData any, metaData any) error {
 	req := client.buildRequest(ctx, "GET", section, realm, path, data)
-	return client.request(req, returnData, metaData)
+	return client.Request(req, returnData, metaData)
 }

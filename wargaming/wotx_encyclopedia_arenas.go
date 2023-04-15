@@ -14,9 +14,9 @@ import (
 //
 // realm:
 //     Valid realms: RealmWgcb
-func (service *WotxService) EncyclopediaArenas(ctx context.Context, realm Realm, options *wotx.EncyclopediaArenasOptions) (*wotx.EncyclopediaArenas, error) {
+func (service *WotxService) EncyclopediaArenas(ctx context.Context, realm Realm, options *wotx.EncyclopediaArenasOptions) (*wotx.EncyclopediaArenas, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{}
@@ -31,6 +31,7 @@ func (service *WotxService) EncyclopediaArenas(ctx context.Context, realm Realm,
 	}
 
 	var data *wotx.EncyclopediaArenas
-	err := service.client.getRequest(ctx, sectionWotx, realm, "/encyclopedia/arenas/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWotx, realm, "/encyclopedia/arenas/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

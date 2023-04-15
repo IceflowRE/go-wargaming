@@ -17,9 +17,9 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa
 // accountId:
 //     Account ID. Maximum limit: 100. Min value is 1.
-func (service *WotbService) ClansAccountinfo(ctx context.Context, realm Realm, accountId []int, options *wotb.ClansAccountinfoOptions) (*wotb.ClansAccountinfo, error) {
+func (service *WotbService) ClansAccountinfo(ctx context.Context, realm Realm, accountId []int, options *wotb.ClansAccountinfoOptions) (*wotb.ClansAccountinfo, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -39,6 +39,7 @@ func (service *WotbService) ClansAccountinfo(ctx context.Context, realm Realm, a
 	}
 
 	var data *wotb.ClansAccountinfo
-	err := service.client.getRequest(ctx, sectionWotb, realm, "/clans/accountinfo/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWotb, realm, "/clans/accountinfo/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

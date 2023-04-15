@@ -22,9 +22,9 @@ import (
 //     "xp" - Use a distribution based on experience
 // percentile:
 //     A list of percentiles to be included in the response. Maximum limit: 10. Min value is 1. Maximum value: 100.
-func (service *WotService) TanksMastery(ctx context.Context, realm Realm, distribution string, percentile []int, options *wot.TanksMasteryOptions) (*wot.TanksMastery, error) {
+func (service *WotService) TanksMastery(ctx context.Context, realm Realm, distribution string, percentile []int, options *wot.TanksMasteryOptions) (*wot.TanksMastery, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -45,6 +45,7 @@ func (service *WotService) TanksMastery(ctx context.Context, realm Realm, distri
 	}
 
 	var data *wot.TanksMastery
-	err := service.client.getRequest(ctx, sectionWot, realm, "/tanks/mastery/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWot, realm, "/tanks/mastery/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

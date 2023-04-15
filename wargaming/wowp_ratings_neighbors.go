@@ -21,9 +21,9 @@ import (
 //     Rating category
 // typ:
 //     Rating period. For valid values, check the Types of ratings method.
-func (service *WowpService) RatingsNeighbors(ctx context.Context, realm Realm, accountId int, rankField string, typ string, options *wowp.RatingsNeighborsOptions) ([]*wowp.RatingsNeighbors, error) {
+func (service *WowpService) RatingsNeighbors(ctx context.Context, realm Realm, accountId int, rankField string, typ string, options *wowp.RatingsNeighborsOptions) ([]*wowp.RatingsNeighbors, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -48,6 +48,7 @@ func (service *WowpService) RatingsNeighbors(ctx context.Context, realm Realm, a
 	}
 
 	var data []*wowp.RatingsNeighbors
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/ratings/neighbors/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/ratings/neighbors/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

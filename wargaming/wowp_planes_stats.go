@@ -18,9 +18,9 @@ import (
 //     Valid realms: RealmEu, RealmNa
 // accountId:
 //     Player account ID
-func (service *WowpService) PlanesStats(ctx context.Context, realm Realm, accountId int, options *wowp.PlanesStatsOptions) (*wowp.PlanesStats, error) {
+func (service *WowpService) PlanesStats(ctx context.Context, realm Realm, accountId int, options *wowp.PlanesStatsOptions) (*wowp.PlanesStats, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -46,6 +46,7 @@ func (service *WowpService) PlanesStats(ctx context.Context, realm Realm, accoun
 	}
 
 	var data *wowp.PlanesStats
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/planes/stats/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/planes/stats/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

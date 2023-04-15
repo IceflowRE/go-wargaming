@@ -22,9 +22,9 @@ import (
 //     Valid realms: RealmWgcb
 // accountId:
 //     Player account ID. Maximum limit: 100.
-func (service *WotxService) AccountAchievements(ctx context.Context, realm Realm, accountId []int, options *wotx.AccountAchievementsOptions) (*wotx.AccountAchievements, error) {
+func (service *WotxService) AccountAchievements(ctx context.Context, realm Realm, accountId []int, options *wotx.AccountAchievementsOptions) (*wotx.AccountAchievements, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -41,6 +41,7 @@ func (service *WotxService) AccountAchievements(ctx context.Context, realm Realm
 	}
 
 	var data *wotx.AccountAchievements
-	err := service.client.getRequest(ctx, sectionWotx, realm, "/account/achievements/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWotx, realm, "/account/achievements/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

@@ -18,9 +18,9 @@ import (
 //     Valid realms: RealmWgcb
 // accountId:
 //     Player account ID. Min value is 0.
-func (service *WotxService) TanksStats(ctx context.Context, realm Realm, accountId int, options *wotx.TanksStatsOptions) (*wotx.TanksStats, error) {
+func (service *WotxService) TanksStats(ctx context.Context, realm Realm, accountId int, options *wotx.TanksStatsOptions) (*wotx.TanksStats, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -46,6 +46,7 @@ func (service *WotxService) TanksStats(ctx context.Context, realm Realm, account
 	}
 
 	var data *wotx.TanksStats
-	err := service.client.getRequest(ctx, sectionWotx, realm, "/tanks/stats/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWotx, realm, "/tanks/stats/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

@@ -15,9 +15,9 @@ import (
 //
 // realm:
 //     Valid realms: RealmWgcb
-func (service *WotxService) ClansList(ctx context.Context, realm Realm, options *wotx.ClansListOptions) ([]*wotx.ClansList, error) {
+func (service *WotxService) ClansList(ctx context.Context, realm Realm, options *wotx.ClansListOptions) ([]*wotx.ClansList, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{}
@@ -41,6 +41,7 @@ func (service *WotxService) ClansList(ctx context.Context, realm Realm, options 
 	}
 
 	var data []*wotx.ClansList
-	err := service.client.getRequest(ctx, sectionWotx, realm, "/clans/list/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWotx, realm, "/clans/list/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

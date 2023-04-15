@@ -20,9 +20,9 @@ import (
 //     Player account ID. Maximum limit: 100.
 // typ:
 //     Rating period. For valid values, check the Types of ratings method.
-func (service *WowpService) RatingsAccounts(ctx context.Context, realm Realm, accountId []int, typ string, options *wowp.RatingsAccountsOptions) (*wowp.RatingsAccounts, error) {
+func (service *WowpService) RatingsAccounts(ctx context.Context, realm Realm, accountId []int, typ string, options *wowp.RatingsAccountsOptions) (*wowp.RatingsAccounts, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -43,6 +43,7 @@ func (service *WowpService) RatingsAccounts(ctx context.Context, realm Realm, ac
 	}
 
 	var data *wowp.RatingsAccounts
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/ratings/accounts/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/ratings/accounts/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

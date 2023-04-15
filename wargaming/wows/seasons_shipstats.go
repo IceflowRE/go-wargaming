@@ -30,11 +30,6 @@ type SeasonsShipstatsOptions struct {
 	ShipId []int `json:"ship_id,omitempty"`
 }
 
-type SeasonsShipstatsMeta struct {
-	// Hidden profiles.
-	Hidden []int `json:"hidden,omitempty"`
-}
-
 type SeasonsShipstats struct {
 	// User ID
 	AccountId *int `json:"account_id,omitempty"`

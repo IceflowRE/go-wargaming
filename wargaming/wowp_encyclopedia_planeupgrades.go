@@ -17,9 +17,9 @@ import (
 //     Valid realms: RealmEu, RealmNa
 // planeId:
 //     Aircraft ID. Maximum limit: 100.
-func (service *WowpService) EncyclopediaPlaneupgrades(ctx context.Context, realm Realm, planeId []int, options *wowp.EncyclopediaPlaneupgradesOptions) (*wowp.EncyclopediaPlaneupgrades, error) {
+func (service *WowpService) EncyclopediaPlaneupgrades(ctx context.Context, realm Realm, planeId []int, options *wowp.EncyclopediaPlaneupgradesOptions) (*wowp.EncyclopediaPlaneupgrades, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -36,6 +36,7 @@ func (service *WowpService) EncyclopediaPlaneupgrades(ctx context.Context, realm
 	}
 
 	var data *wowp.EncyclopediaPlaneupgrades
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/encyclopedia/planeupgrades/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/encyclopedia/planeupgrades/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

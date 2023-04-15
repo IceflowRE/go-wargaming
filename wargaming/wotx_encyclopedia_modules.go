@@ -16,9 +16,9 @@ import (
 //
 // realm:
 //     Valid realms: RealmWgcb
-func (service *WotxService) EncyclopediaModules(ctx context.Context, realm Realm, options *wotx.EncyclopediaModulesOptions) (*wotx.EncyclopediaModules, error) {
+func (service *WotxService) EncyclopediaModules(ctx context.Context, realm Realm, options *wotx.EncyclopediaModulesOptions) (*wotx.EncyclopediaModules, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{}
@@ -51,6 +51,7 @@ func (service *WotxService) EncyclopediaModules(ctx context.Context, realm Realm
 	}
 
 	var data *wotx.EncyclopediaModules
-	err := service.client.getRequest(ctx, sectionWotx, realm, "/encyclopedia/modules/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWotx, realm, "/encyclopedia/modules/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

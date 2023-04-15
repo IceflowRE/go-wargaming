@@ -17,9 +17,9 @@ import (
 //     Valid realms: RealmEu, RealmNa
 // clanId:
 //     Clan ID. Maximum limit: 100. Min value is 1.
-func (service *WowpService) ClansInfo(ctx context.Context, realm Realm, clanId []int, options *wowp.ClansInfoOptions) (*wowp.ClansInfo, error) {
+func (service *WowpService) ClansInfo(ctx context.Context, realm Realm, clanId []int, options *wowp.ClansInfoOptions) (*wowp.ClansInfo, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -39,6 +39,7 @@ func (service *WowpService) ClansInfo(ctx context.Context, realm Realm, clanId [
 	}
 
 	var data *wowp.ClansInfo
-	err := service.client.getRequest(ctx, sectionWowp, realm, "/clans/info/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWowp, realm, "/clans/info/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

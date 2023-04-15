@@ -17,7 +17,7 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa
 // accountId:
 //     Player account ID. Maximum limit: 100. Min value is 1.
-func (service *WowsService) SeasonsAccountinfo(ctx context.Context, realm Realm, accountId []int, options *wows.SeasonsAccountinfoOptions) (*wows.SeasonsAccountinfo, *wows.SeasonsAccountinfoMeta, error) {
+func (service *WowsService) SeasonsAccountinfo(ctx context.Context, realm Realm, accountId []int, options *wows.SeasonsAccountinfoOptions) (*wows.SeasonsAccountinfo, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err
 	}
@@ -42,7 +42,7 @@ func (service *WowsService) SeasonsAccountinfo(ctx context.Context, realm Realm,
 	}
 
 	var data *wows.SeasonsAccountinfo
-	var metaData *wows.SeasonsAccountinfoMeta
+	var metaData *GenericMeta
 	err := service.client.getRequest(ctx, sectionWows, realm, "/seasons/accountinfo/", reqParam, &data, &metaData)
 	return data, metaData, err
 }

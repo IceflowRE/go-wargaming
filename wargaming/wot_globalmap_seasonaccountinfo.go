@@ -25,9 +25,9 @@ import (
 //     "6" - Vehicles of Tier 6
 //     "8" - Vehicles of Tier 8
 //     "10" - Vehicles of Tier 10
-func (service *WotService) GlobalmapSeasonaccountinfo(ctx context.Context, realm Realm, accountId int, seasonId string, vehicleLevel []string, options *wot.GlobalmapSeasonaccountinfoOptions) (*wot.GlobalmapSeasonaccountinfo, error) {
+func (service *WotService) GlobalmapSeasonaccountinfo(ctx context.Context, realm Realm, accountId int, seasonId string, vehicleLevel []string, options *wot.GlobalmapSeasonaccountinfoOptions) (*wot.GlobalmapSeasonaccountinfo, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{
@@ -43,6 +43,7 @@ func (service *WotService) GlobalmapSeasonaccountinfo(ctx context.Context, realm
 	}
 
 	var data *wot.GlobalmapSeasonaccountinfo
-	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/seasonaccountinfo/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWot, realm, "/globalmap/seasonaccountinfo/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

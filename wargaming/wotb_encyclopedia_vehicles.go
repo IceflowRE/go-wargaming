@@ -15,9 +15,9 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa
-func (service *WotbService) EncyclopediaVehicles(ctx context.Context, realm Realm, options *wotb.EncyclopediaVehiclesOptions) (*wotb.EncyclopediaVehicles, error) {
+func (service *WotbService) EncyclopediaVehicles(ctx context.Context, realm Realm, options *wotb.EncyclopediaVehiclesOptions) (*wotb.EncyclopediaVehicles, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	reqParam := map[string]string{}
@@ -38,6 +38,7 @@ func (service *WotbService) EncyclopediaVehicles(ctx context.Context, realm Real
 	}
 
 	var data *wotb.EncyclopediaVehicles
-	err := service.client.getRequest(ctx, sectionWotb, realm, "/encyclopedia/vehicles/", reqParam, &data, nil)
-	return data, err
+	var metaData *GenericMeta
+	err := service.client.getRequest(ctx, sectionWotb, realm, "/encyclopedia/vehicles/", reqParam, &data, &metaData)
+	return data, metaData, err
 }

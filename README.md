@@ -11,7 +11,7 @@
 Go client for accessing [Wargaming.net Public API](https://developers.wargaming.net/documentation/guide/getting-started/).
 
 This API client is generated automatically based on the documentation provided by Wargaming. All endpoints are available.  
-The documentation is often inaccurate, especially the return types (object, list, map), so fixes afterwards are required. If something was not corrected, please open an issue.
+The documentation is often inaccurate, especially the return types (object, list, map), so patches are required. If something was not corrected, please open an issue.
 
 ## Installation
 
@@ -41,7 +41,7 @@ The services of a client are the same as the Wargaming API sections in their doc
 ```go
 client := wargaming.NewClient("a7f838650dcb008552966db063eeeb35", nil)
 // get World of Tanks EU accounts starting with "Yzne"
-res, err := client.Wot.AccountList(context.Background(), wargaming.RealmEu, "Yzne", nil)
+res, _, err := client.Wot.AccountList(context.Background(), wargaming.RealmEu, "Yzne", nil)
 if err == nil {
     // print them to console
 	for _, value := range res {
@@ -60,13 +60,16 @@ client := wargaming.NewClient("a7f838650dcb008552966db063eeeb35", &wargaming.Cli
 ```
 
 Some API methods have options which can be passed.
+And may probably return additional metadata, which states the total amount of values, current page, total pages, etc.
+The struct is also using pointer fields.
 ```go
 client := wargaming.NewClient("a7f838650dcb008552966db063eeeb35", nil)
 // get World of Tanks EU account named exact "Lichtgeschwindigkeit" and return only the 'account_id' field
-res, err = client.Wot.AccountList(context.Background(), wargaming.RealmEu, "Lichtgeschwindigkeit", &wot.AccountListOptions{
+res, meta, err = client.Wot.AccountList(context.Background(), wargaming.RealmEu, "Lichtgeschwindigkeit", &wot.AccountListOptions{
 	Fields: []string{"account_id"},
 	Type: wargaming.String("exact"),
 })
+fmt.Println(*meta.Count)
 ```
 
 All structs for Wargaming resources use pointer values for all non-repeated fields. This allows distinguishing between unset fields and those set to a zero-value. Helper functions have been provided to easily create these pointers for string, bool, and int values. For example:
@@ -79,7 +82,7 @@ options := &wot.AccountListOptions{
 To retrieve the error returned by the Wargaming API, use `errors.As`.
 
 ```go
-_, err := client.Wot.AccountList(context.Background(), wargaming.RealmEu, "Yzne", nil)
+_, _, err := client.Wot.AccountList(context.Background(), wargaming.RealmEu, "Yzne", nil)
 if err != nil {
 	// handle a Wargaming Response Error, returned by the API itself
 	var respErr *wargaming.ResponseError
