@@ -13,8 +13,7 @@ import (
 // https://developers.wargaming.net/reference/all/wgn/wgtv/vehicles
 //
 // realm:
-//
-//	Valid realms: RealmAsia, RealmEu, RealmNa
+//     Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WgnService) WgtvVehicles(ctx context.Context, realm Realm, options *wgn.WgtvVehiclesOptions) (*wgn.WgtvVehicles, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

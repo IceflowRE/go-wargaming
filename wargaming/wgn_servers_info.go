@@ -13,8 +13,7 @@ import (
 // https://developers.wargaming.net/reference/all/wgn/servers/info
 //
 // realm:
-//
-//	Valid realms: RealmAsia, RealmEu, RealmNa
+//     Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WgnService) ServersInfo(ctx context.Context, realm Realm, options *wgn.ServersInfoOptions) (*wgn.ServersInfo, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err

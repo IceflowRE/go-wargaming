@@ -14,12 +14,9 @@ import (
 // https://developers.wargaming.net/reference/all/wot/account/tanks
 //
 // realm:
-//
-//	Valid realms: RealmAsia, RealmEu, RealmNa
-//
+//     Valid realms: RealmAsia, RealmEu, RealmNa
 // accountId:
-//
-//	Player account ID. Maximum limit: 100.
+//     Player account ID. Maximum limit: 100.
 func (service *WotService) AccountTanks(ctx context.Context, realm Realm, accountId []int, options *wot.AccountTanksOptions) (*wot.AccountTanks, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

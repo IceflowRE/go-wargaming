@@ -14,12 +14,9 @@ import (
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/shipprofile
 //
 // realm:
-//
-//	Valid realms: RealmAsia, RealmEu, RealmNa
-//
+//     Valid realms: RealmAsia, RealmEu, RealmNa
 // shipId:
-//
-//	Ship ID
+//     Ship ID
 func (service *WowsService) EncyclopediaShipprofile(ctx context.Context, realm Realm, shipId int, options *wows.EncyclopediaShipprofileOptions) (*wows.EncyclopediaShipprofile, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

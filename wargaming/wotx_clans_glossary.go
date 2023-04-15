@@ -13,8 +13,7 @@ import (
 // https://developers.wargaming.net/reference/all/wotx/clans/glossary
 //
 // realm:
-//
-//	Valid realms: RealmWgcb
+//     Valid realms: RealmWgcb
 func (service *WotxService) ClansGlossary(ctx context.Context, realm Realm, options *wotx.ClansGlossaryOptions) (*wotx.ClansGlossary, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, err

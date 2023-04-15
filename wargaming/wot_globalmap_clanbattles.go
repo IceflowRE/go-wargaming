@@ -14,12 +14,9 @@ import (
 // https://developers.wargaming.net/reference/all/wot/globalmap/clanbattles
 //
 // realm:
-//
-//	Valid realms: RealmAsia, RealmEu, RealmNa
-//
+//     Valid realms: RealmAsia, RealmEu, RealmNa
 // clanId:
-//
-//	Clan ID. To get a clan ID, use the Clans method.
+//     Clan ID. To get a clan ID, use the Clans method.
 func (service *WotService) GlobalmapClanbattles(ctx context.Context, realm Realm, clanId int, options *wot.GlobalmapClanbattlesOptions) ([]*wot.GlobalmapClanbattles, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

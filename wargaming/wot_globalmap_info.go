@@ -13,8 +13,7 @@ import (
 // https://developers.wargaming.net/reference/all/wot/globalmap/info
 //
 // realm:
-//
-//	Valid realms: RealmAsia, RealmEu, RealmNa
+//     Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotService) GlobalmapInfo(ctx context.Context, realm Realm, options *wot.GlobalmapInfoOptions) (*wot.GlobalmapInfo, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err
