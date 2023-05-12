@@ -101,13 +101,13 @@ NOTE: Using the context package, one can easily pass cancellation signals and de
 
 Every contribution and talk about the structure and organization of the project are always welcome.
 
-The client library is generated automatically. The generator is located in [tools/generator/main.go](tools/generator/main.go).
+The client library is generated automatically. The generator is located in [tools/_generator/main.go](tools/_generator/main.go).
 
-Endpoint patches can be found in [patches.go](tools/generator/internal/patches.go).
+Endpoint patches can be found in [tools/_generator/internal/patches.go](tools/_generator/internal/patches.go).
 
 To update the library just run the generator from project root.
 ```shell
-go build -o generator github.com/IceflowRE/go-wargaming/v4/tools/generator
+go build -o generator github.com/IceflowRE/go-wargaming/v4/tools/_generator
 ./generator
 ```
 
