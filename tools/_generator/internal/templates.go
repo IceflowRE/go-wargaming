@@ -190,7 +190,7 @@ var rxApiUrl = regexp.MustCompile(`(.*\.)([a-z]+)(.*)`)
 func genSections(sections []*sectionData, outputPath string) error {
 	templ, err := template.New("sections").Funcs(template.FuncMap{
 		"formatApiUrl": func(url string) string {
-			return rxApiUrl.ReplaceAllString(url, "$1%s$3")
+			return strings.TrimSuffix(rxApiUrl.ReplaceAllString(url, "$1%s$3"), "/")
 		},
 	}).Parse(sectionsTempl)
 	if err != nil {
