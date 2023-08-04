@@ -16,7 +16,7 @@ import (
 //
 // realm:
 //     Valid realms: RealmAsia, RealmEu, RealmNa
-func (service *WotService) EncyclopediaVehicles(ctx context.Context, realm Realm, options *wot.EncyclopediaVehiclesOptions) (*wot.EncyclopediaVehicles, *GenericMeta, error) {
+func (service *WotService) EncyclopediaVehicles(ctx context.Context, realm Realm, options *wot.EncyclopediaVehiclesOptions) (map[string]*wot.EncyclopediaVehicles, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err
 	}
@@ -50,7 +50,7 @@ func (service *WotService) EncyclopediaVehicles(ctx context.Context, realm Realm
 		}
 	}
 
-	var data *wot.EncyclopediaVehicles
+	var data map[string]*wot.EncyclopediaVehicles
 	var metaData *GenericMeta
 	err := service.client.getRequest(ctx, sectionWot, realm, "/encyclopedia/vehicles/", reqParam, &data, &metaData)
 	return data, metaData, err
