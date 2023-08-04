@@ -16,13 +16,14 @@ type SeasonsInfoOptions struct {
 	// "en" - English (by default)
 	// "es" - Español
 	// "fr" - Français
+	// "it" - Italiano
 	// "ja" - 日本語
 	// "pl" - Polski
 	// "ru" - Русский
 	// "th" - ไทย
 	// "zh-tw" - 繁體中文
-	// "tr" - Türkçe
 	// "zh-cn" - 中文
+	// "tr" - Türkçe
 	// "pt-br" - Português do Brasil
 	// "es-mx" - Español (México)
 	Language *string `json:"language,omitempty"`
@@ -37,25 +38,46 @@ type SeasonsInfo struct {
 	CloseAt *wgnTime.UnixTime `json:"close_at,omitempty"`
 	// Season finishing time
 	FinishAt *wgnTime.UnixTime `json:"finish_at,omitempty"`
-	// Images
-	Images *struct {
-		// Background image
-		Background *string `json:"background,omitempty"`
-		// Insignia image
-		Insignia *string `json:"insignia,omitempty"`
-	} `json:"images,omitempty"`
-	// Maximum ship Tier in a season
-	MaxShipTier *int `json:"max_ship_tier,omitempty"`
-	// Minimum ship Tier in a season
-	MinShipTier *int `json:"min_ship_tier,omitempty"`
-	// Parent season ID
-	ParentSeasonId *int `json:"parent_season_id,omitempty"`
+	// Leagues
+	Leagues *struct {
+		// Images
+		Images *struct {
+			// Inactive image of League
+			Inactive *string `json:"inactive,omitempty"`
+			// Normal image of League
+			Normal *string `json:"normal,omitempty"`
+		} `json:"images,omitempty"`
+		// League Name
+		LeagueName *string `json:"league_name,omitempty"`
+		// Maximum ship Tier in a league
+		MaxShipTier *int `json:"max_ship_tier,omitempty"`
+		// Minimum ship Tier in a league
+		MinShipTier *int `json:"min_ship_tier,omitempty"`
+		// League ranks
+		Ranks *struct {
+			// Images
+			Images *struct {
+				// Default image of league ranks
+				Default *string `json:"default,omitempty"`
+				// Small image of league ranks
+				Small *string `json:"small,omitempty"`
+			} `json:"images,omitempty"`
+			// Save point
+			IsSavePoint *bool `json:"is_save_point,omitempty"`
+			// Number of stars to lose the current rank
+			StarLossPlace *int `json:"star_loss_place,omitempty"`
+			// Number of stars to get the next rank
+			StarsToNext *int `json:"stars_to_next,omitempty"`
+		} `json:"ranks,omitempty"`
+		// Limit of ships in a league
+		ShipTotalLimit *int `json:"ship_total_limit,omitempty"`
+		// League start rank
+		StartRank *int `json:"start_rank,omitempty"`
+	} `json:"leagues,omitempty"`
 	// Season ID
 	SeasonId *int `json:"season_id,omitempty"`
 	// Season name
 	SeasonName *string `json:"season_name,omitempty"`
 	// Season opening time
 	StartAt *wgnTime.UnixTime `json:"start_at,omitempty"`
-	// Season start rank
-	StartRank *int `json:"start_rank,omitempty"`
 }

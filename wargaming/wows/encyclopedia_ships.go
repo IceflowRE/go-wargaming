@@ -12,13 +12,14 @@ type EncyclopediaShipsOptions struct {
 	// "en" - English (by default)
 	// "es" - Español
 	// "fr" - Français
+	// "it" - Italiano
 	// "ja" - 日本語
 	// "pl" - Polski
 	// "ru" - Русский
 	// "th" - ไทย
 	// "zh-tw" - 繁體中文
-	// "tr" - Türkçe
 	// "zh-cn" - 中文
+	// "tr" - Türkçe
 	// "pt-br" - Português do Brasil
 	// "es-mx" - Español (México)
 	Language *string `json:"language,omitempty"`
@@ -36,6 +37,7 @@ type EncyclopediaShipsOptions struct {
 	// "Battleship" - Battleship
 	// "Destroyer" - Destroyer
 	// "Cruiser" - Cruiser
+	// "Submarine" - Submarine
 	Type []string `json:"type,omitempty"`
 }
 
@@ -181,9 +183,22 @@ type EncyclopediaShips struct {
 			DetectDistanceByPlane *float32 `json:"detect_distance_by_plane,omitempty"`
 			// Surface Detectability Range
 			DetectDistanceByShip *float32 `json:"detect_distance_by_ship,omitempty"`
+			// Detectability range by depths
+			DetectDistanceBySubmarine *float32 `json:"detect_distance_by_submarine,omitempty"`
 			// Concealment (%)
 			Total *int `json:"total,omitempty"`
 		} `json:"concealment,omitempty"`
+		// Depth charges
+		DepthCharge *struct {
+			// Maximum damage
+			BombMaxDamage *int `json:"bomb_max_damage,omitempty"`
+			// Number of charges
+			MaxPacks *int `json:"max_packs,omitempty"`
+			// Bombs in charge
+			NumBombsInPack *int `json:"num_bombs_in_pack,omitempty"`
+			// Reload time
+			ReloadTime *float32 `json:"reload_time,omitempty"`
+		} `json:"depth_charge,omitempty"`
 		// Dive bombers. If the module is absent on the ship, field value is null.
 		DiveBomber *struct {
 			// Accuracy
@@ -331,6 +346,49 @@ type EncyclopediaShips struct {
 			// Turning Circle Radius (m)
 			TurningRadius *int `json:"turning_radius,omitempty"`
 		} `json:"mobility,omitempty"`
+		// Dive capacity of basic configuration
+		SubmarineBattery *struct {
+			// Dive capacity depletion
+			ConsumptionRate *float32 `json:"consumption_rate,omitempty"`
+			// Dive capacity
+			MaxCapacity *float32 `json:"max_capacity,omitempty"`
+			// Dive capacity recharge rate
+			RegenRate *float32 `json:"regen_rate,omitempty"`
+			// Dive capacity (%)
+			Total *int `json:"total,omitempty"`
+		} `json:"submarine_battery,omitempty"`
+		// Underwater maneuvering of basic configuration
+		SubmarineMobility *struct {
+			// Diving plane shift time
+			BuoyancyRudderTime *float32 `json:"buoyancy_rudder_time,omitempty"`
+			// Maximum dive and ascent speed
+			MaxBuoyancySpeed *float32 `json:"max_buoyancy_speed,omitempty"`
+			// Maximum submerged speed
+			MaxSpeedUnderWater *int `json:"max_speed_under_water,omitempty"`
+			// Underwater maneuvering (%)
+			Total *int `json:"total,omitempty"`
+		} `json:"submarine_mobility,omitempty"`
+		// Sonar of basic configuration
+		SubmarineSonar *struct {
+			// Sonar ID
+			SubmarineSonarId *int `json:"submarine_sonar_id,omitempty"`
+			// Sonar string ID
+			SubmarineSonarIdStr *string `json:"submarine_sonar_id_str,omitempty"`
+			// Sonar (%)
+			Total *int `json:"total,omitempty"`
+			// Duration of a ping effect on a sector highlighted once
+			WaveDuration0 *int `json:"wave_duration_0,omitempty"`
+			// Duration of a ping effect on a sector highlighted twice
+			WaveDuration1 *int `json:"wave_duration_1,omitempty"`
+			// Maximum range
+			WaveMaxDist *float32 `json:"wave_max_dist,omitempty"`
+			// Reload time
+			WaveShotDelay *float32 `json:"wave_shot_delay,omitempty"`
+			// Ping velocity
+			WaveSpeedMax *int `json:"wave_speed_max,omitempty"`
+			// Ping width
+			WaveWidth *int `json:"wave_width,omitempty"`
+		} `json:"submarine_sonar,omitempty"`
 		// Torpedo bombers. If the module is absent on the ship, field value is null.
 		TorpedoBomber *struct {
 			// Number of aircraft in a squadron
@@ -450,6 +508,8 @@ type EncyclopediaShips struct {
 		FlightControl []int `json:"flight_control,omitempty"`
 		// Hull
 		Hull []int `json:"hull,omitempty"`
+		// Sonar
+		Sonar []int `json:"sonar,omitempty"`
 		// Torpedo bombers. If the module is absent on the ship, field value is null.
 		TorpedoBomber []int `json:"torpedo_bomber,omitempty"`
 		// Torpedo tubes. If the module is absent on the ship, field value is null.

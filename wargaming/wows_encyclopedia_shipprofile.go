@@ -54,6 +54,9 @@ func (service *WowsService) EncyclopediaShipprofile(ctx context.Context, realm R
 		if options.Language != nil {
 			reqParam["language"] = *options.Language
 		}
+		if options.SubmarineSonarId != nil {
+			reqParam["submarine_sonar_id"] = strconv.Itoa(*options.SubmarineSonarId)
+		}
 		if options.TorpedoBomberId != nil {
 			reqParam["torpedo_bomber_id"] = strconv.Itoa(*options.TorpedoBomberId)
 		}

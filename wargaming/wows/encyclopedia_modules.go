@@ -12,13 +12,14 @@ type EncyclopediaModulesOptions struct {
 	// "en" - English (by default)
 	// "es" - Español
 	// "fr" - Français
+	// "it" - Italiano
 	// "ja" - 日本語
 	// "pl" - Polski
 	// "ru" - Русский
 	// "th" - ไทย
 	// "zh-tw" - 繁體中文
-	// "tr" - Türkçe
 	// "zh-cn" - 中文
+	// "tr" - Türkçe
 	// "pt-br" - Português do Brasil
 	// "es-mx" - Español (México)
 	Language *string `json:"language,omitempty"`
@@ -39,6 +40,7 @@ type EncyclopediaModulesOptions struct {
 	// "Fighter" - Fighters
 	// "TorpedoBomber" - Torpedo Bombers
 	// "DiveBomber" - Dive bombers
+	// "Sonar" - Sonar
 	Type *string `json:"type,omitempty"`
 }
 
@@ -138,6 +140,21 @@ type EncyclopediaModules struct {
 			// Torpedo tubes
 			TorpedoesBarrels *int `json:"torpedoes_barrels,omitempty"`
 		} `json:"hull,omitempty"`
+		// Sonars
+		SubmarineSonar *struct {
+			// Duration of a ping effect on a sector highlighted once
+			WaveDuration0 *int `json:"wave_duration_0,omitempty"`
+			// Duration of a ping effect on a sector highlighted twice
+			WaveDuration1 *int `json:"wave_duration_1,omitempty"`
+			// Maximum range
+			WaveMaxDist *float32 `json:"wave_max_dist,omitempty"`
+			// Reload time
+			WaveShotDelay *float32 `json:"wave_shot_delay,omitempty"`
+			// Ping velocity
+			WaveSpeedMax *int `json:"wave_speed_max,omitempty"`
+			// Ping width
+			WaveWidth *int `json:"wave_width,omitempty"`
+		} `json:"submarine_sonar,omitempty"`
 		// Torpedo Bombers
 		TorpedoBomber *struct {
 			// Cruise Speed (knots)

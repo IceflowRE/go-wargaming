@@ -12,13 +12,14 @@ type EncyclopediaCollectioncardsOptions struct {
 	// "en" - English (by default)
 	// "es" - Español
 	// "fr" - Français
+	// "it" - Italiano
 	// "ja" - 日本語
 	// "pl" - Polski
 	// "ru" - Русский
 	// "th" - ไทย
 	// "zh-tw" - 繁體中文
-	// "tr" - Türkçe
 	// "zh-cn" - 中文
+	// "tr" - Türkçe
 	// "pt-br" - Português do Brasil
 	// "es-mx" - Español (México)
 	Language *string `json:"language,omitempty"`
