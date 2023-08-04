@@ -17,7 +17,7 @@ import (
 //     Valid realms: RealmAsia, RealmEu, RealmNa
 // accountId:
 //     Player account ID. Maximum limit: 100.
-func (service *WotService) AccountTanks(ctx context.Context, realm Realm, accountId []int, options *wot.AccountTanksOptions) (*wot.AccountTanks, *GenericMeta, error) {
+func (service *WotService) AccountTanks(ctx context.Context, realm Realm, accountId []int, options *wot.AccountTanksOptions) (map[string]*wot.AccountTanks, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err
 	}
@@ -41,7 +41,7 @@ func (service *WotService) AccountTanks(ctx context.Context, realm Realm, accoun
 		}
 	}
 
-	var data *wot.AccountTanks
+	var data map[string]*wot.AccountTanks
 	var metaData *GenericMeta
 	err := service.client.getRequest(ctx, sectionWot, realm, "/account/tanks/", reqParam, &data, &metaData)
 	return data, metaData, err

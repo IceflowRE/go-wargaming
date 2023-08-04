@@ -31,6 +31,8 @@ func patchEndpoint(ep *endpoint) {
 	case "wot_account_info":
 		ep.DataType.F("Statistics").F("Frags").TypeStr = "map[string]int"
 		ep.DataType.F("Private").F("Boosters").TypeStr = "map[string]*struct"
+	case "wot_account_tanks":
+		ep.DataType.TypeStr = "map[string]" + ep.DataType.TypeStr
 	case "wot_encyclopedia_vehicles":
 		ep.DataType.F("DefaultProfile").F("Ammo").F("Stun").F("Duration").TypeStr = "[]int"
 	case "wot_globalmap_events":

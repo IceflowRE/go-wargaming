@@ -13,7 +13,8 @@ type endpoint struct {
 	Name        string
 	Parameters  []*goType
 	OptionsType *goType
-	DataType    *goType
+	// Return Data Type
+	DataType *goType
 	// has to be added via patches, not retrievable from the api documentation
 	MetaType      *goType
 	AllowedRealms []string
