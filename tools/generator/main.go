@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/IceflowRE/go-wargaming/v4/tools/_generator/internal"
 	"os"
+
+	"github.com/IceflowRE/go-wargaming/v4/tools/generator/internal"
 )
 
 func main() {
