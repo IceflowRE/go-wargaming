@@ -43,7 +43,7 @@ type EncyclopediaVehiclesOptions struct {
 
 type EncyclopediaVehicles struct {
 	// Crew
-	Crew *struct {
+	Crew []*struct {
 		// Crew member ID
 		MemberId *string `json:"member_id,omitempty"`
 		// List of crew member roles
@@ -52,7 +52,7 @@ type EncyclopediaVehicles struct {
 	// Standard configuration characteristics
 	DefaultProfile *struct {
 		// Gun shells characteristics
-		Ammo *struct {
+		Ammo []*struct {
 			// Damage (hp), a list of values: min, avg, max
 			Damage []int `json:"damage,omitempty"`
 			// Penetration (mm), a list of values: min, avg, max
@@ -300,7 +300,7 @@ type EncyclopediaVehicles struct {
 	//
 	// researched vehicle ID
 	// cost of research in XP
-	NextTanks map[string]string `json:"next_tanks,omitempty"`
+	NextTanks map[string]int `json:"next_tanks,omitempty"`
 	// Cost in credits
 	PriceCredit *int `json:"price_credit,omitempty"`
 	// Cost in gold
@@ -309,7 +309,7 @@ type EncyclopediaVehicles struct {
 	//
 	// parent vehicle ID
 	// cost of research in XP
-	PricesXp map[string]string `json:"prices_xp,omitempty"`
+	PricesXp map[string]int `json:"prices_xp,omitempty"`
 	// List of IDs of compatible equipment and consumables
 	Provisions []int `json:"provisions,omitempty"`
 	// List of compatible radio IDs
