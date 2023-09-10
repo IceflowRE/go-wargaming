@@ -1,6 +1,8 @@
 package internal
 
 import (
+	"cmp"
+	"slices"
 	"sort"
 	"strings"
 )
@@ -51,7 +53,7 @@ func newEndpointFromDoc(doc *wgMethodDoc, game string, id string) (*endpoint, er
 		ep.Name = snakeToCamel(id)
 	}
 	ep.AllowedRealms = doc.AvailableDisplayIndices
-	sort.Strings(ep.AllowedRealms)
+	slices.Sort(ep.AllowedRealms)
 	ep.DataType = wgDocToGoDataType(strings.TrimPrefix(ep.Id, ep.Game+"_"), doc.Fields)
 	// created required Parameters
 	// create optional struct from not required once
@@ -79,6 +81,9 @@ func newEndpointFromDoc(doc *wgMethodDoc, game string, id string) (*endpoint, er
 			optionsStruct.Fields = append(optionsStruct.Fields, field)
 		}
 	}
+	slices.SortFunc(ep.Parameters, func(lhs *goType, rhs *goType) int {
+		return cmp.Compare(lhs.Name, rhs.Name)
+	})
 	sortParameters(ep.Parameters)
 	if len(optionsStruct.Fields) > 0 {
 		sortFields(optionsStruct)

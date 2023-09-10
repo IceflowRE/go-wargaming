@@ -1,7 +1,8 @@
 package internal
 
 import (
-	"sort"
+	"cmp"
+	"slices"
 	"strings"
 )
 
@@ -72,13 +73,13 @@ func sortFields(typ *goType) {
 	for _, field := range typ.Fields {
 		sortFields(field)
 	}
-	sort.Slice(typ.Fields, func(i, k int) bool {
-		return typ.Fields[i].Name < typ.Fields[k].Name
+	slices.SortFunc(typ.Fields, func(lhs, rhs *goType) int {
+		return cmp.Compare(lhs.Name, rhs.Name)
 	})
 }
 
 func sortParameters(params []*goType) {
-	sort.Slice(params, func(i, k int) bool {
-		return params[i].Name < params[k].Name
+	slices.SortFunc(params, func(lhs *goType, rhs *goType) int {
+		return cmp.Compare(lhs.Name, rhs.Name)
 	})
 }

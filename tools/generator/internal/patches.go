@@ -1,5 +1,7 @@
 package internal
 
+import "slices"
+
 func patchTimeTypes(t *goType) {
 	if t == nil {
 		return
@@ -84,7 +86,7 @@ func patchEndpoint(ep *endpoint) {
 		ep.DataType.TypeStr = "map[int]" + ep.DataType.TypeStr
 	}
 
-	if contains([]string{
+	if slices.Contains([]string{
 		"wgn_account_list", "wgn_wgtv_videos",
 		"wot_account_list", "wot_clans_list",
 		"wot_clanratings_neighbors", "wot_clanratings_top", "wot_globalmap_clanbattles",
@@ -106,7 +108,7 @@ func patchEndpoint(ep *endpoint) {
 }
 
 func patchMeta(ep *endpoint) {
-	if contains([]string{
+	if slices.Contains([]string{
 		"wot_account_list", "wot_account_info", "wot_account_tanks", "wot_account_achievements", "wot_stronghold_claninfo",
 		"wot_globalmap_fronts", "wot_globalmap_provinces", "wot_globalmap_claninfo", "wot_globalmap_clanprovinces",
 		"wot_globalmap_clanbattles", "wot_globalmap_seasonclaninfo", "wot_globalmap_seasonaccountinfo",

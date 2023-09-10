@@ -9,15 +9,6 @@ import (
 	"unicode"
 )
 
-func contains[T comparable](elems []T, v T) bool {
-	for _, s := range elems {
-		if v == s {
-			return true
-		}
-	}
-	return false
-}
-
 func getModuleName() (string, error) {
 	bi, ok := debug.ReadBuildInfo()
 	if !ok {

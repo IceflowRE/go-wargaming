@@ -7,6 +7,7 @@ import (
 	"go/format"
 	"os"
 	"regexp"
+	"slices"
 	"sort"
 	"strings"
 	"text/template"
@@ -37,7 +38,7 @@ func genMethod(ep *endpoint, outputPath string) error {
 	templ, err := template.New("method").Funcs(template.FuncMap{
 		"camelLowerToCamel": camelLowerToCamel,
 		"requestMethod": func(availHttpMethods []string) string {
-			if contains(availHttpMethods, "GET") {
+			if slices.Contains(availHttpMethods, "GET") {
 				return "getRequest"
 			}
 			return "postRequest"
