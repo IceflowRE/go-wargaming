@@ -15,9 +15,12 @@ import (
 // https://developers.wargaming.net/reference/all/wowp/planes/stats
 //
 // realm:
-//     Valid realms: RealmEu, RealmNa
+//
+//	Valid realms: RealmEu, RealmNa
+//
 // accountId:
-//     Player account ID
+//
+//	Player account ID
 func (service *WowpService) PlanesStats(ctx context.Context, realm Realm, accountId int, options *wowp.PlanesStatsOptions) (*wowp.PlanesStats, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

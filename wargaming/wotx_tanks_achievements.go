@@ -20,9 +20,12 @@ import (
 // https://developers.wargaming.net/reference/all/wotx/tanks/achievements
 //
 // realm:
-//     Valid realms: RealmWgcb
+//
+//	Valid realms: RealmWgcb
+//
 // accountId:
-//     Player account ID. Min value is 0.
+//
+//	Player account ID. Min value is 0.
 func (service *WotxService) TanksAchievements(ctx context.Context, realm Realm, accountId int, options *wotx.TanksAchievementsOptions) (*wotx.TanksAchievements, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, nil, err

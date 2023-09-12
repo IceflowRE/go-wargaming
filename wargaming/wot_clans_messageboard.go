@@ -13,9 +13,12 @@ import (
 // https://developers.wargaming.net/reference/all/wot/clans/messageboard
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // accessToken:
-//     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
+//
+//	Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 func (service *WotService) ClansMessageboard(ctx context.Context, realm Realm, accessToken string, options *wot.ClansMessageboardOptions) (map[string][]*wot.ClansMessageboard, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err

@@ -15,7 +15,8 @@ import (
 // https://developers.wargaming.net/reference/all/wot/encyclopedia/provisions
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotService) EncyclopediaProvisions(ctx context.Context, realm Realm, options *wot.EncyclopediaProvisionsOptions) (*wot.EncyclopediaProvisions, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

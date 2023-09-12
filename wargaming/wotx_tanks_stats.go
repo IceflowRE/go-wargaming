@@ -15,9 +15,12 @@ import (
 // https://developers.wargaming.net/reference/all/wotx/tanks/stats
 //
 // realm:
-//     Valid realms: RealmWgcb
+//
+//	Valid realms: RealmWgcb
+//
 // accountId:
-//     Player account ID. Min value is 0.
+//
+//	Player account ID. Min value is 0.
 func (service *WotxService) TanksStats(ctx context.Context, realm Realm, accountId int, options *wotx.TanksStatsOptions) (*wotx.TanksStats, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, nil, err

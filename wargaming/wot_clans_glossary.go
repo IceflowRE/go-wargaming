@@ -13,7 +13,8 @@ import (
 // https://developers.wargaming.net/reference/all/wot/clans/glossary
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotService) ClansGlossary(ctx context.Context, realm Realm, options *wot.ClansGlossaryOptions) (*wot.ClansGlossary, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err

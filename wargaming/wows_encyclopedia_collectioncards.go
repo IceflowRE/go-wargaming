@@ -13,7 +13,8 @@ import (
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/collectioncards
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WowsService) EncyclopediaCollectioncards(ctx context.Context, realm Realm, options *wows.EncyclopediaCollectioncardsOptions) (*wows.EncyclopediaCollectioncards, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

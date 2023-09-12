@@ -14,9 +14,12 @@ import (
 // https://developers.wargaming.net/reference/all/wgn/account/info
 //
 // realm:
-//     Valid realms: RealmEu, RealmNa
+//
+//	Valid realms: RealmEu, RealmNa
+//
 // accountId:
-//     Player ID. Maximum limit: 100.
+//
+//	Player ID. Maximum limit: 100.
 func (service *WgnService) AccountInfo(ctx context.Context, realm Realm, accountId []int, options *wgn.AccountInfoOptions) (*wgn.AccountInfo, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

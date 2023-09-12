@@ -19,9 +19,12 @@ import (
 // https://developers.wargaming.net/reference/all/wotx/account/achievements
 //
 // realm:
-//     Valid realms: RealmWgcb
+//
+//	Valid realms: RealmWgcb
+//
 // accountId:
-//     Player account ID. Maximum limit: 100.
+//
+//	Player account ID. Maximum limit: 100.
 func (service *WotxService) AccountAchievements(ctx context.Context, realm Realm, accountId []int, options *wotx.AccountAchievementsOptions) (*wotx.AccountAchievements, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, nil, err

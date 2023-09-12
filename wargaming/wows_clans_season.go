@@ -13,7 +13,8 @@ import (
 // https://developers.wargaming.net/reference/all/wows/clans/season
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WowsService) ClansSeason(ctx context.Context, realm Realm, options *wows.ClansSeasonOptions) (*wows.ClansSeason, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

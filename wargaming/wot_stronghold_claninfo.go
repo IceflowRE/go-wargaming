@@ -14,9 +14,12 @@ import (
 // https://developers.wargaming.net/reference/all/wot/stronghold/claninfo
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // clanId:
-//     Clan ID. To get a clan ID, use the Clans method. Maximum limit: 10.
+//
+//	Clan ID. To get a clan ID, use the Clans method. Maximum limit: 10.
 func (service *WotService) StrongholdClaninfo(ctx context.Context, realm Realm, clanId []int, options *wot.StrongholdClaninfoOptions) (*wot.StrongholdClaninfo, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

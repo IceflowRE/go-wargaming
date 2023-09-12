@@ -14,9 +14,12 @@ import (
 // https://developers.wargaming.net/reference/all/wows/seasons/accountinfo
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // accountId:
-//     Player account ID. Maximum limit: 100. Min value is 1.
+//
+//	Player account ID. Maximum limit: 100. Min value is 1.
 func (service *WowsService) SeasonsAccountinfo(ctx context.Context, realm Realm, accountId []int, options *wows.SeasonsAccountinfoOptions) (*wows.SeasonsAccountinfo, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

@@ -14,7 +14,8 @@ import (
 // https://developers.wargaming.net/reference/all/wot/encyclopedia/personalmissions
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotService) EncyclopediaPersonalmissions(ctx context.Context, realm Realm, options *wot.EncyclopediaPersonalmissionsOptions) (*wot.EncyclopediaPersonalmissions, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

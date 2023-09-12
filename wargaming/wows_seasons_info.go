@@ -14,7 +14,8 @@ import (
 // https://developers.wargaming.net/reference/all/wows/seasons/info
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WowsService) SeasonsInfo(ctx context.Context, realm Realm, options *wows.SeasonsInfoOptions) (*wows.SeasonsInfo, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err

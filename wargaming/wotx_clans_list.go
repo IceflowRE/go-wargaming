@@ -14,7 +14,8 @@ import (
 // https://developers.wargaming.net/reference/all/wotx/clans/list
 //
 // realm:
-//     Valid realms: RealmWgcb
+//
+//	Valid realms: RealmWgcb
 func (service *WotxService) ClansList(ctx context.Context, realm Realm, options *wotx.ClansListOptions) ([]*wotx.ClansList, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, nil, err

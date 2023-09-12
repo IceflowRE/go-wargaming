@@ -14,9 +14,12 @@ import (
 // https://developers.wargaming.net/reference/all/wowp/encyclopedia/planeinfo
 //
 // realm:
-//     Valid realms: RealmEu, RealmNa
+//
+//	Valid realms: RealmEu, RealmNa
+//
 // planeId:
-//     Aircraft ID. Maximum limit: 1000.
+//
+//	Aircraft ID. Maximum limit: 1000.
 func (service *WowpService) EncyclopediaPlaneinfo(ctx context.Context, realm Realm, planeId []int, options *wowp.EncyclopediaPlaneinfoOptions) (*wowp.EncyclopediaPlaneinfo, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

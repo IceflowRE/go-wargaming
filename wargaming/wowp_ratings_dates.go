@@ -14,9 +14,12 @@ import (
 // https://developers.wargaming.net/reference/all/wowp/ratings/dates
 //
 // realm:
-//     Valid realms: RealmEu, RealmNa
+//
+//	Valid realms: RealmEu, RealmNa
+//
 // typ:
-//     Rating period. For valid values, check the Types of ratings method.
+//
+//	Rating period. For valid values, check the Types of ratings method.
 func (service *WowpService) RatingsDates(ctx context.Context, realm Realm, typ string, options *wowp.RatingsDatesOptions) (*wowp.RatingsDates, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

@@ -14,13 +14,20 @@ import (
 // https://developers.wargaming.net/reference/all/wot/globalmap/eventaccountratingneighbors
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // accountId:
-//     Account ID. Min value is 1.
+//
+//	Account ID. Min value is 1.
+//
 // eventId:
-//     Event ID. To get an event ID, use the Events method.
+//
+//	Event ID. To get an event ID, use the Events method.
+//
 // frontId:
-//     Front ID. To get a front ID, use the Fronts method.
+//
+//	Front ID. To get a front ID, use the Fronts method.
 func (service *WotService) GlobalmapEventaccountratingneighbors(ctx context.Context, realm Realm, accountId int, eventId string, frontId string, options *wot.GlobalmapEventaccountratingneighborsOptions) ([]*wot.GlobalmapEventaccountratingneighbors, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err

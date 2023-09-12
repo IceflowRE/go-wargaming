@@ -14,7 +14,8 @@ import (
 // https://developers.wargaming.net/reference/all/wot/clans/list
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotService) ClansList(ctx context.Context, realm Realm, options *wot.ClansListOptions) ([]*wot.ClansList, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

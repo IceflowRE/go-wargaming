@@ -14,11 +14,16 @@ import (
 // https://developers.wargaming.net/reference/all/wot/clanratings/neighbors
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // clanId:
-//     Clan ID
+//
+//	Clan ID
+//
 // rankField:
-//     Rating category
+//
+//	Rating category
 func (service *WotService) ClanratingsNeighbors(ctx context.Context, realm Realm, clanId int, rankField string, options *wot.ClanratingsNeighborsOptions) ([]*wot.ClanratingsNeighbors, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

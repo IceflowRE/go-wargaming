@@ -14,15 +14,20 @@ import (
 // https://developers.wargaming.net/reference/all/wot/globalmap/seasonrating
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
-// seasonId:
-//     Season ID. To get a season ID, use the Seasons method.
-// vehicleLevel:
-//     Vehicle Tier. Valid values:
 //
-//     "6" - Vehicles of Tier 6
-//     "8" - Vehicles of Tier 8
-//     "10" - Vehicles of Tier 10
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
+// seasonId:
+//
+//	Season ID. To get a season ID, use the Seasons method.
+//
+// vehicleLevel:
+//
+//	Vehicle Tier. Valid values:
+//
+//	"6" - Vehicles of Tier 6
+//	"8" - Vehicles of Tier 8
+//	"10" - Vehicles of Tier 10
 func (service *WotService) GlobalmapSeasonrating(ctx context.Context, realm Realm, seasonId string, vehicleLevel string, options *wot.GlobalmapSeasonratingOptions) ([]*wot.GlobalmapSeasonrating, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

@@ -15,7 +15,8 @@ import (
 // https://developers.wargaming.net/reference/all/wotx/encyclopedia/modules
 //
 // realm:
-//     Valid realms: RealmWgcb
+//
+//	Valid realms: RealmWgcb
 func (service *WotxService) EncyclopediaModules(ctx context.Context, realm Realm, options *wotx.EncyclopediaModulesOptions) (*wotx.EncyclopediaModules, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, nil, err

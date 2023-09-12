@@ -14,9 +14,12 @@ import (
 // https://developers.wargaming.net/reference/all/wotb/tournaments/info
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // tournamentId:
-//     Tournament ID that can be retrieved from the Tournaments list method. Maximum limit: 25.
+//
+//	Tournament ID that can be retrieved from the Tournaments list method. Maximum limit: 25.
 func (service *WotbService) TournamentsInfo(ctx context.Context, realm Realm, tournamentId []int, options *wotb.TournamentsInfoOptions) (*wotb.TournamentsInfo, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

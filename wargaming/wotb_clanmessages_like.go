@@ -12,16 +12,23 @@ import (
 // https://developers.wargaming.net/reference/all/wotb/clanmessages/like
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
-// accessToken:
-//     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
-// action:
-//     Action. Valid values:
 //
-//     "add" - Set a like for message
-//     "remove" - Remove a like for message
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
+// accessToken:
+//
+//	Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
+//
+// action:
+//
+//	Action. Valid values:
+//
+//	"add" - Set a like for message
+//	"remove" - Remove a like for message
+//
 // messageId:
-//     Message ID
+//
+//	Message ID
 func (service *WotbService) ClanmessagesLike(ctx context.Context, realm Realm, accessToken string, action string, messageId int) error {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return err

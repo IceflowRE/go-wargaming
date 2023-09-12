@@ -14,9 +14,12 @@ import (
 // https://developers.wargaming.net/reference/all/wotb/encyclopedia/vehicleprofile
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // tankId:
-//     Vehicle ID
+//
+//	Vehicle ID
 func (service *WotbService) EncyclopediaVehicleprofile(ctx context.Context, realm Realm, tankId int, options *wotb.EncyclopediaVehicleprofileOptions) (*wotb.EncyclopediaVehicleprofile, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

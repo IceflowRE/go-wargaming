@@ -14,9 +14,12 @@ import (
 // https://developers.wargaming.net/reference/all/wot/globalmap/clanprovinces
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // clanId:
-//     List of clan IDs. To get a clan ID, use the Clans method. Maximum limit: 10.
+//
+//	List of clan IDs. To get a clan ID, use the Clans method. Maximum limit: 10.
 func (service *WotService) GlobalmapClanprovinces(ctx context.Context, realm Realm, clanId []int, options *wot.GlobalmapClanprovincesOptions) (*wot.GlobalmapClanprovinces, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

@@ -20,9 +20,12 @@ import (
 // https://developers.wargaming.net/reference/all/wot/tanks/achievements
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // accountId:
-//     Player account ID
+//
+//	Player account ID
 func (service *WotService) TanksAchievements(ctx context.Context, realm Realm, accountId int, options *wot.TanksAchievementsOptions) (*wot.TanksAchievements, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

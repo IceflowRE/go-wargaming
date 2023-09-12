@@ -16,13 +16,20 @@ import (
 // Deprecated: Attention! The method is deprecated.
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // accountId:
-//     Player account ID
+//
+//	Player account ID
+//
 // rankField:
-//     Rating category
+//
+//	Rating category
+//
 // typ:
-//     Rating period. For valid values, check the Types of ratings method.
+//
+//	Rating period. For valid values, check the Types of ratings method.
 func (service *WotService) RatingsNeighbors(ctx context.Context, realm Realm, accountId int, rankField string, typ string, options *wot.RatingsNeighborsOptions) (*wot.RatingsNeighbors, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err

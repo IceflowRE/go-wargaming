@@ -14,7 +14,8 @@ import (
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/crewskills
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WowsService) EncyclopediaCrewskills(ctx context.Context, realm Realm, options *wows.EncyclopediaCrewskillsOptions) (*wows.EncyclopediaCrewskills, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err

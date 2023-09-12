@@ -14,13 +14,20 @@ import (
 // https://developers.wargaming.net/reference/all/wot/globalmap/eventclaninfo
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // clanId:
-//     Clan ID. To get a clan ID, use the Clans method. Min value is 1.
+//
+//	Clan ID. To get a clan ID, use the Clans method. Min value is 1.
+//
 // eventId:
-//     Event ID. To get an event ID, use the Events method.
+//
+//	Event ID. To get an event ID, use the Events method.
+//
 // frontId:
-//     Front ID. To get a front ID, use the Fronts method. Maximum limit: 10.
+//
+//	Front ID. To get a front ID, use the Fronts method. Maximum limit: 10.
 func (service *WotService) GlobalmapEventclaninfo(ctx context.Context, realm Realm, clanId int, eventId string, frontId []string, options *wot.GlobalmapEventclaninfoOptions) (*wot.GlobalmapEventclaninfo, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

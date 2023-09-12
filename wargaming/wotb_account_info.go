@@ -14,9 +14,12 @@ import (
 // https://developers.wargaming.net/reference/all/wotb/account/info
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // accountId:
-//     Player account ID. Maximum limit: 100.
+//
+//	Player account ID. Maximum limit: 100.
 func (service *WotbService) AccountInfo(ctx context.Context, realm Realm, accountId []int, options *wotb.AccountInfoOptions) (*wotb.AccountInfo, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

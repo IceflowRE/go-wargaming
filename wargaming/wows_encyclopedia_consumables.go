@@ -15,7 +15,8 @@ import (
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/consumables
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WowsService) EncyclopediaConsumables(ctx context.Context, realm Realm, options *wows.EncyclopediaConsumablesOptions) (*wows.EncyclopediaConsumables, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

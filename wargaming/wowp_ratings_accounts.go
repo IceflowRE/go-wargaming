@@ -15,11 +15,16 @@ import (
 // https://developers.wargaming.net/reference/all/wowp/ratings/accounts
 //
 // realm:
-//     Valid realms: RealmEu, RealmNa
+//
+//	Valid realms: RealmEu, RealmNa
+//
 // accountId:
-//     Player account ID. Maximum limit: 100.
+//
+//	Player account ID. Maximum limit: 100.
+//
 // typ:
-//     Rating period. For valid values, check the Types of ratings method.
+//
+//	Rating period. For valid values, check the Types of ratings method.
 func (service *WowpService) RatingsAccounts(ctx context.Context, realm Realm, accountId []int, typ string, options *wowp.RatingsAccountsOptions) (*wowp.RatingsAccounts, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

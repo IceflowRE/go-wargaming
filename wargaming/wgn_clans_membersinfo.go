@@ -16,9 +16,12 @@ import (
 // Deprecated: Attention! The method is deprecated.
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // accountId:
-//     Account ID. Maximum limit: 100. Min value is 1.
+//
+//	Account ID. Maximum limit: 100. Min value is 1.
 func (service *WgnService) ClansMembersinfo(ctx context.Context, realm Realm, accountId []int, options *wgn.ClansMembersinfoOptions) (*wgn.ClansMembersinfo, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err

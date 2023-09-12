@@ -14,9 +14,12 @@ import (
 // https://developers.wargaming.net/reference/all/wotb/clans/info
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // clanId:
-//     Clan ID. Maximum limit: 100. Min value is 1.
+//
+//	Clan ID. Maximum limit: 100. Min value is 1.
 func (service *WotbService) ClansInfo(ctx context.Context, realm Realm, clanId []int, options *wotb.ClansInfoOptions) (*wotb.ClansInfo, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

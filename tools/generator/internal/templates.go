@@ -3,7 +3,6 @@ package internal
 import (
 	"bytes"
 	_ "embed"
-	"fmt"
 	"go/format"
 	"os"
 	"regexp"
@@ -14,9 +13,10 @@ import (
 )
 
 func formatWriteFile(buf []byte, outputPath string) error {
+	// https://github.com/golang/go/issues/62559
+	buf = bytes.ReplaceAll(buf, []byte("\r\n"), []byte("\n"))
 	content, err := format.Source(buf)
 	if err != nil {
-		fmt.Println(string(buf))
 		return err
 	}
 	outFile, err := os.Create(outputPath)

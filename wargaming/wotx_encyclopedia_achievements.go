@@ -13,7 +13,8 @@ import (
 // https://developers.wargaming.net/reference/all/wotx/encyclopedia/achievements
 //
 // realm:
-//     Valid realms: RealmWgcb
+//
+//	Valid realms: RealmWgcb
 func (service *WotxService) EncyclopediaAchievements(ctx context.Context, realm Realm, options *wotx.EncyclopediaAchievementsOptions) (*wotx.EncyclopediaAchievements, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, nil, err

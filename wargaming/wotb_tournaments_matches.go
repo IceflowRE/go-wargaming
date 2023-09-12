@@ -15,11 +15,16 @@ import (
 // https://developers.wargaming.net/reference/all/wotb/tournaments/matches
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // stageId:
-//     Stage ID that can be retrieved from the Tournaments Stages method.
+//
+//	Stage ID that can be retrieved from the Tournaments Stages method.
+//
 // tournamentId:
-//     Tournament ID that can be retrieved from the Tournaments list method.
+//
+//	Tournament ID that can be retrieved from the Tournaments list method.
 func (service *WotbService) TournamentsMatches(ctx context.Context, realm Realm, stageId int, tournamentId int, options *wotb.TournamentsMatchesOptions) (*wotb.TournamentsMatches, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err

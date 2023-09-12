@@ -14,7 +14,8 @@ import (
 // https://developers.wargaming.net/reference/all/wotb/encyclopedia/modules
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotbService) EncyclopediaModules(ctx context.Context, realm Realm, options *wotb.EncyclopediaModulesOptions) (*wotb.EncyclopediaModules, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err

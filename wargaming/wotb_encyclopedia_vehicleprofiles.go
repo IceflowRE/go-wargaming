@@ -14,9 +14,12 @@ import (
 // https://developers.wargaming.net/reference/all/wotb/encyclopedia/vehicleprofiles
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // tankId:
-//     Vehicle ID. Maximum limit: 25.
+//
+//	Vehicle ID. Maximum limit: 25.
 func (service *WotbService) EncyclopediaVehicleprofiles(ctx context.Context, realm Realm, tankId []int, options *wotb.EncyclopediaVehicleprofilesOptions) (*wotb.EncyclopediaVehicleprofiles, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

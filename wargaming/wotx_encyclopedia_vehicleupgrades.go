@@ -14,9 +14,12 @@ import (
 // https://developers.wargaming.net/reference/all/wotx/encyclopedia/vehicleupgrades
 //
 // realm:
-//     Valid realms: RealmWgcb
+//
+//	Valid realms: RealmWgcb
+//
 // tankId:
-//     Vehicle ID. Maximum limit: 100.
+//
+//	Vehicle ID. Maximum limit: 100.
 func (service *WotxService) EncyclopediaVehicleupgrades(ctx context.Context, realm Realm, tankId []int, options *wotx.EncyclopediaVehicleupgradesOptions) (*wotx.EncyclopediaVehicleupgrades, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, nil, err

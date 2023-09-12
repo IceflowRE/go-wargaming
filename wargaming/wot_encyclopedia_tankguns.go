@@ -32,7 +32,8 @@ import (
 // Deprecated: Attention! The method is deprecated.
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotService) EncyclopediaTankguns(ctx context.Context, realm Realm, options *wot.EncyclopediaTankgunsOptions) (*wot.EncyclopediaTankguns, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err

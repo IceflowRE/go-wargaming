@@ -13,7 +13,8 @@ import (
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/achievements
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WowsService) EncyclopediaAchievements(ctx context.Context, realm Realm, options *wows.EncyclopediaAchievementsOptions) (*wows.EncyclopediaAchievements, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

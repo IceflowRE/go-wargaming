@@ -15,7 +15,8 @@ import (
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/modules
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WowsService) EncyclopediaModules(ctx context.Context, realm Realm, options *wows.EncyclopediaModulesOptions) (*wows.EncyclopediaModules, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

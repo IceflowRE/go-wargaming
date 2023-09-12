@@ -15,9 +15,12 @@ import (
 // https://developers.wargaming.net/reference/all/wowp/encyclopedia/planespecification
 //
 // realm:
-//     Valid realms: RealmEu, RealmNa
+//
+//	Valid realms: RealmEu, RealmNa
+//
 // planeId:
-//     Aircraft ID
+//
+//	Aircraft ID
 func (service *WowpService) EncyclopediaPlanespecification(ctx context.Context, realm Realm, planeId int, options *wowp.EncyclopediaPlanespecificationOptions) (*wowp.EncyclopediaPlanespecification, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

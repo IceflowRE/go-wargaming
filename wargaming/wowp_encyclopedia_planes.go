@@ -13,7 +13,8 @@ import (
 // https://developers.wargaming.net/reference/all/wowp/encyclopedia/planes
 //
 // realm:
-//     Valid realms: RealmEu, RealmNa
+//
+//	Valid realms: RealmEu, RealmNa
 func (service *WowpService) EncyclopediaPlanes(ctx context.Context, realm Realm, options *wowp.EncyclopediaPlanesOptions) (*wowp.EncyclopediaPlanes, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

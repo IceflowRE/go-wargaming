@@ -14,14 +14,19 @@ import (
 // https://developers.wargaming.net/reference/all/wot/tanks/mastery
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
-// distribution:
-//     Type of data. Valid values:
 //
-//     "damage" - Use damage distribution
-//     "xp" - Use a distribution based on experience
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
+// distribution:
+//
+//	Type of data. Valid values:
+//
+//	"damage" - Use damage distribution
+//	"xp" - Use a distribution based on experience
+//
 // percentile:
-//     A list of percentiles to be included in the response. Maximum limit: 10. Min value is 1. Maximum value: 100.
+//
+//	A list of percentiles to be included in the response. Maximum limit: 10. Min value is 1. Maximum value: 100.
 func (service *WotService) TanksMastery(ctx context.Context, realm Realm, distribution string, percentile []int, options *wot.TanksMasteryOptions) (*wot.TanksMastery, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

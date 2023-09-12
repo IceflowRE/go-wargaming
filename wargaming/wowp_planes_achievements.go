@@ -15,9 +15,12 @@ import (
 // https://developers.wargaming.net/reference/all/wowp/planes/achievements
 //
 // realm:
-//     Valid realms: RealmEu, RealmNa
+//
+//	Valid realms: RealmEu, RealmNa
+//
 // accountId:
-//     Player account ID
+//
+//	Player account ID
 func (service *WowpService) PlanesAchievements(ctx context.Context, realm Realm, accountId int, options *wowp.PlanesAchievementsOptions) (*wowp.PlanesAchievements, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

@@ -14,9 +14,12 @@ import (
 // https://developers.wargaming.net/reference/all/wgn/account/list
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // search:
-//     Player name search string. Parameter "type" defines minimum length and type of search. Using the exact search type, you can enter several names, separated with commas. Maximum length: 24.
+//
+//	Player name search string. Parameter "type" defines minimum length and type of search. Using the exact search type, you can enter several names, separated with commas. Maximum length: 24.
 func (service *WgnService) AccountList(ctx context.Context, realm Realm, search string, options *wgn.AccountListOptions) ([]*wgn.AccountList, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

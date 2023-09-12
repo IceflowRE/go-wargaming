@@ -15,7 +15,8 @@ import (
 // https://developers.wargaming.net/reference/all/wot/encyclopedia/vehicles
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotService) EncyclopediaVehicles(ctx context.Context, realm Realm, options *wot.EncyclopediaVehiclesOptions) (map[string]*wot.EncyclopediaVehicles, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

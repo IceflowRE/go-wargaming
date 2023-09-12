@@ -14,9 +14,12 @@ import (
 // https://developers.wargaming.net/reference/all/wot/clans/memberhistory
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // accountId:
-//     Account ID. Min value is 1.
+//
+//	Account ID. Min value is 1.
 func (service *WotService) ClansMemberhistory(ctx context.Context, realm Realm, accountId int, options *wot.ClansMemberhistoryOptions) (*wot.ClansMemberhistory, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

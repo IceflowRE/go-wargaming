@@ -14,13 +14,20 @@ import (
 // https://developers.wargaming.net/reference/all/wowp/ratings/neighbors
 //
 // realm:
-//     Valid realms: RealmEu, RealmNa
+//
+//	Valid realms: RealmEu, RealmNa
+//
 // accountId:
-//     Player account ID
+//
+//	Player account ID
+//
 // rankField:
-//     Rating category
+//
+//	Rating category
+//
 // typ:
-//     Rating period. For valid values, check the Types of ratings method.
+//
+//	Rating period. For valid values, check the Types of ratings method.
 func (service *WowpService) RatingsNeighbors(ctx context.Context, realm Realm, accountId int, rankField string, typ string, options *wowp.RatingsNeighborsOptions) ([]*wowp.RatingsNeighbors, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

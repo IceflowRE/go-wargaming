@@ -13,7 +13,8 @@ import (
 // https://developers.wargaming.net/reference/all/wows/encyclopedia/battlearenas
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WowsService) EncyclopediaBattlearenas(ctx context.Context, realm Realm, options *wows.EncyclopediaBattlearenasOptions) (*wows.EncyclopediaBattlearenas, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

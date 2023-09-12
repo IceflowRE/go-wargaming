@@ -13,7 +13,8 @@ import (
 // https://developers.wargaming.net/reference/all/wowp/clans/glossary
 //
 // realm:
-//     Valid realms: RealmEu, RealmNa
+//
+//	Valid realms: RealmEu, RealmNa
 func (service *WowpService) ClansGlossary(ctx context.Context, realm Realm, options *wowp.ClansGlossaryOptions) (*wowp.ClansGlossary, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
 		return nil, err

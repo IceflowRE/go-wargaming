@@ -14,9 +14,12 @@ import (
 // https://developers.wargaming.net/reference/all/wowp/clans/accountinfo
 //
 // realm:
-//     Valid realms: RealmEu, RealmNa
+//
+//	Valid realms: RealmEu, RealmNa
+//
 // accountId:
-//     Account ID. Maximum limit: 100. Min value is 1.
+//
+//	Account ID. Maximum limit: 100. Min value is 1.
 func (service *WowpService) ClansAccountinfo(ctx context.Context, realm Realm, accountId []int, options *wowp.ClansAccountinfoOptions) (*wowp.ClansAccountinfo, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

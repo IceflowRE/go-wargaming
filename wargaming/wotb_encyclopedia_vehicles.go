@@ -14,7 +14,8 @@ import (
 // https://developers.wargaming.net/reference/all/wotb/encyclopedia/vehicles
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotbService) EncyclopediaVehicles(ctx context.Context, realm Realm, options *wotb.EncyclopediaVehiclesOptions) (*wotb.EncyclopediaVehicles, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

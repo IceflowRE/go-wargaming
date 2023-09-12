@@ -10,8 +10,10 @@ import (
 
 // AuthLogin authenticates user based on Wargaming.net ID (OpenID) which is used in World of Tanks, World of Tanks Blitz, World of Warships, World of Warplanes, and WarGag.ru. To log in, player must enter email and password used for creating account, or use a social network profile.
 // Authentication is not available for iOS Game Center users in the following cases:
-//   the account is not linked to a social network account, or
-//   email and password are not specified in the profile.
+//
+//	the account is not linked to a social network account, or
+//	email and password are not specified in the profile.
+//
 // Information on authorization status is sent to URL specified in redirect_uri parameter.
 // If authentication is successful, the following parameters are sent to redirect_uri:
 //
@@ -30,7 +32,8 @@ import (
 // https://developers.wargaming.net/reference/all/wot/auth/login
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotService) AuthLogin(ctx context.Context, realm Realm, options *wot.AuthLoginOptions) (*wot.AuthLogin, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err

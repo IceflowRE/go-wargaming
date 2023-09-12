@@ -15,11 +15,16 @@ import (
 // https://developers.wargaming.net/reference/all/wotb/account/tankstats
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // accountId:
-//     Player account ID. Maximum limit: 100.
+//
+//	Player account ID. Maximum limit: 100.
+//
 // tankId:
-//     Player's vehicle ID
+//
+//	Player's vehicle ID
 func (service *WotbService) AccountTankstats(ctx context.Context, realm Realm, accountId []int, tankId int, options *wotb.AccountTankstatsOptions) (*wotb.AccountTankstats, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

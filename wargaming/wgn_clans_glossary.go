@@ -15,7 +15,8 @@ import (
 // Deprecated: Attention! The method is deprecated.
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WgnService) ClansGlossary(ctx context.Context, realm Realm, options *wgn.ClansGlossaryOptions) (*wgn.ClansGlossary, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err

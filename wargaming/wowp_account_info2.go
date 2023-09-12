@@ -14,9 +14,12 @@ import (
 // https://developers.wargaming.net/reference/all/wowp/account/info2
 //
 // realm:
-//     Valid realms: RealmEu, RealmNa
+//
+//	Valid realms: RealmEu, RealmNa
+//
 // accountId:
-//     Player account ID. Maximum limit: 100.
+//
+//	Player account ID. Maximum limit: 100.
 func (service *WowpService) AccountInfo2(ctx context.Context, realm Realm, accountId []int, options *wowp.AccountInfo2Options) (*wowp.AccountInfo2, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

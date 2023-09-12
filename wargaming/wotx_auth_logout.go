@@ -12,9 +12,12 @@ import (
 // https://developers.wargaming.net/reference/all/wotx/auth/logout
 //
 // realm:
-//     Valid realms: RealmWgcb
+//
+//	Valid realms: RealmWgcb
+//
 // accessToken:
-//     Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
+//
+//	Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 func (service *WotxService) AuthLogout(ctx context.Context, realm Realm, accessToken string) error {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return err

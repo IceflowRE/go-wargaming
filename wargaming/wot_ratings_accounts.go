@@ -17,11 +17,16 @@ import (
 // Deprecated: Attention! The method is deprecated.
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // accountId:
-//     IDs of player accounts. Maximum limit: 100.
+//
+//	IDs of player accounts. Maximum limit: 100.
+//
 // typ:
-//     Rating period. For valid values, check the Types of ratings method.
+//
+//	Rating period. For valid values, check the Types of ratings method.
 func (service *WotService) RatingsAccounts(ctx context.Context, realm Realm, accountId []int, typ string, options *wot.RatingsAccountsOptions) (*wot.RatingsAccounts, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, err

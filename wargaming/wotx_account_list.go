@@ -14,9 +14,12 @@ import (
 // https://developers.wargaming.net/reference/all/wotx/account/list
 //
 // realm:
-//     Valid realms: RealmWgcb
+//
+//	Valid realms: RealmWgcb
+//
 // search:
-//     Player name search string. Parameter "type" defines minimum length and type of search. Using the exact search type, you can enter several names, separated with commas. Maximum length: 24.
+//
+//	Player name search string. Parameter "type" defines minimum length and type of search. Using the exact search type, you can enter several names, separated with commas. Maximum length: 24.
 func (service *WotxService) AccountList(ctx context.Context, realm Realm, search string, options *wotx.AccountListOptions) ([]*wotx.AccountList, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
 		return nil, nil, err

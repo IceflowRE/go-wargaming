@@ -14,7 +14,8 @@ import (
 // https://developers.wargaming.net/reference/all/wot/globalmap/events
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotService) GlobalmapEvents(ctx context.Context, realm Realm, options *wot.GlobalmapEventsOptions) ([]*wot.GlobalmapEvents, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err

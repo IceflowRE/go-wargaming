@@ -14,9 +14,12 @@ import (
 // https://developers.wargaming.net/reference/all/wot/clanratings/top
 //
 // realm:
-//     Valid realms: RealmAsia, RealmEu, RealmNa
+//
+//	Valid realms: RealmAsia, RealmEu, RealmNa
+//
 // rankField:
-//     Rating category
+//
+//	Rating category
 func (service *WotService) ClanratingsTop(ctx context.Context, realm Realm, rankField string, options *wot.ClanratingsTopOptions) ([]*wot.ClanratingsTop, *GenericMeta, error) {
 	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
 		return nil, nil, err
