@@ -74,7 +74,7 @@ func patchEndpoint(ep *endpoint) {
 		ep.DataType.F("Categories").TypeStr = "[]*struct"
 		ep.DataType.F("Projects").TypeStr = "[]*struct"
 		ep.DataType.F("Programs").TypeStr = "[]*struct"
-	case "wot_clans_messageboard", "wotb_clanmessages_messages":
+	case "wot_clans_messageboard":
 		ep.DataType.TypeStr = "map[string][]" + ep.DataType.TypeStr
 	case "wotb_tournaments_teams":
 		ep.DataType.F("Players").TypeStr = "[]*struct"
@@ -98,7 +98,7 @@ func patchEndpoint(ep *endpoint) {
 		"wot_globalmap_eventratingneighbors", "wot_globalmap_events", "wot_globalmap_fronts", "wot_globalmap_provinces",
 		"wot_globalmap_seasonrating", "wot_globalmap_seasonratingneighbors", "wot_globalmap_seasons",
 		"wot_stronghold_clanreserves",
-		"wotb_account_list", "wotb_clans_list", "wotb_clanmessages_likes", "wotb_tournaments_list",
+		"wotb_account_list", "wotb_clans_list", "wotb_tournaments_list",
 		"wotb_tournaments_teams", "wotb_tournaments_stages", "wotb_tournaments_standings", "wotb_tournaments_tables",
 
 		"wotx_account_list", "wotx_clans_list", "wotx_account_xuidinfo", "wotx_account_psninfo",
