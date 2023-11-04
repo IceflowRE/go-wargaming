@@ -6,6 +6,24 @@ All notable changes to this project will be documented in this file.
 
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_ and this project adheres to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
+4.1.4
+=====
+
+Updated
+-------
+
+- Improved client code quality
+
+Removed
+-------
+
+- `wotb_clanmessages_create`
+- `wotb_clanmessages_delete`
+- `wotb_clanmessages_like`
+- `wotb_clanmessages_likes`
+- `wotb_clanmessages_messages`
+- `wotb_clanmessages_update`
+
 4.1.3
 =====
 
