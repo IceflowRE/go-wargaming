@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"io"
 	"net/http"
 	"net/url"
 )
@@ -68,7 +67,7 @@ type Client struct {
 	wgServices
 	httpClient *http.Client
 	// Wargaming.net application ID.
-	applicationId string
+	applicationID string
 
 	// Reuse a single struct instead of allocating one for each service on the heap.
 	common service
@@ -80,9 +79,9 @@ type ClientOptions struct {
 
 // NewClient creates a new API client.
 // Pass nil as options if you want to use none.
-func NewClient(applicationId string, options *ClientOptions) *Client {
+func NewClient(applicationID string, options *ClientOptions) *Client {
 	client := &Client{
-		applicationId: applicationId,
+		applicationID: applicationID,
 	}
 	if options != nil && options.HTTPClient != nil {
 		client.httpClient = options.HTTPClient
@@ -96,12 +95,12 @@ func NewClient(applicationId string, options *ClientOptions) *Client {
 
 func (client *Client) buildRequest(ctx context.Context, method string, section section, realm Realm, path string, data map[string]string) (req *http.Request) {
 	query := url.Values{}
-	query.Add("application_id", client.applicationId)
+	query.Add("application_id", client.applicationID)
 	for key, value := range data {
 		query.Add(key, value)
 	}
 	if method == http.MethodPost {
-		req, _ = http.NewRequestWithContext(ctx, method, section.ApiUrl(realm)+path, bytes.NewBuffer([]byte(query.Encode())))
+		req, _ = http.NewRequestWithContext(ctx, method, section.ApiUrl(realm)+path, bytes.NewBufferString(query.Encode()))
 	} else {
 		req, _ = http.NewRequestWithContext(ctx, method, section.ApiUrl(realm)+path, nil)
 		req.URL.RawQuery = query.Encode()
@@ -118,21 +117,17 @@ func (client *Client) Request(req *http.Request, returnData any, metaData any) e
 		return err
 	}
 	defer resp.Body.Close()
-	if resp.StatusCode != 200 {
+	if resp.StatusCode != http.StatusOK {
 		return BadStatusCode(resp.StatusCode)
 	}
 
-	respBytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return err
-	}
 	wgResp := &response{
 		Status: "",
 		Error:  nil,
 		Data:   returnData,
 		Meta:   metaData,
 	}
-	err = json.Unmarshal(respBytes, wgResp)
+	err = json.NewDecoder(resp.Body).Decode(wgResp)
 	if err != nil {
 		return err
 	}
@@ -168,13 +163,13 @@ func (client *Client) Request(req *http.Request, returnData any, metaData any) e
 // postRequest set returnData to nil, if no response data is expected.
 // set metaData to nil if no meta data is expected.
 func (client *Client) postRequest(ctx context.Context, section section, realm Realm, path string, data map[string]string, returnData any, metaData any) error {
-	req := client.buildRequest(ctx, "POST", section, realm, path, data)
+	req := client.buildRequest(ctx, http.MethodPost, section, realm, path, data)
 	return client.Request(req, returnData, metaData)
 }
 
 // getRequest set returnData to nil, if no response data is expected.
 // set metaData to nil if no meta data is expected.
 func (client *Client) getRequest(ctx context.Context, section section, realm Realm, path string, data map[string]string, returnData any, metaData any) error {
-	req := client.buildRequest(ctx, "GET", section, realm, path, data)
+	req := client.buildRequest(ctx, http.MethodGet, section, realm, path, data)
 	return client.Request(req, returnData, metaData)
 }
