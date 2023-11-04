@@ -5,6 +5,7 @@ import (
 	_ "embed"
 	"go/format"
 	"os"
+	"path/filepath"
 	"regexp"
 	"slices"
 	"sort"
@@ -80,8 +81,11 @@ func genMethod(ep *endpoint, outputPath string) error {
 
 	buf := &bytes.Buffer{}
 	err = templ.Execute(buf, ep)
+	if err != nil {
+		return err
+	}
 
-	return formatWriteFile(buf.Bytes(), outputPath+ep.Id+".go")
+	return formatWriteFile(buf.Bytes(), filepath.Join(outputPath, ep.Id+".go"))
 }
 
 //go:embed templates/structBase.tmpl
@@ -149,9 +153,12 @@ func genStructs(ep *endpoint, outputPath string) error {
 
 	buf := &bytes.Buffer{}
 	err = templ.ExecuteTemplate(buf, "structBase", ep)
+	if err != nil {
+		return err
+	}
 
 	filename := strings.TrimPrefix(ep.Id, ep.Game+"_")
-	return formatWriteFile(buf.Bytes(), outputPath+ep.Game+"/"+filename+".go")
+	return formatWriteFile(buf.Bytes(), filepath.Join(outputPath, ep.Game, filename+".go"))
 }
 
 //go:embed templates/services.tmpl
@@ -172,8 +179,11 @@ func genServices(services []serviceData, outputPath string) error {
 
 	buf := &bytes.Buffer{}
 	err = templ.Execute(buf, services)
+	if err != nil {
+		return err
+	}
 
-	return formatWriteFile(buf.Bytes(), outputPath+"services.go")
+	return formatWriteFile(buf.Bytes(), filepath.Join(outputPath, "services.go"))
 }
 
 //go:embed templates/sections.tmpl
@@ -200,8 +210,11 @@ func genSections(sections []*sectionData, outputPath string) error {
 
 	buf := &bytes.Buffer{}
 	err = templ.Execute(buf, sections)
+	if err != nil {
+		return err
+	}
 
-	return formatWriteFile(buf.Bytes(), outputPath+"sections.go")
+	return formatWriteFile(buf.Bytes(), filepath.Join(outputPath, "sections.go"))
 }
 
 //go:embed templates/realms.tmpl
@@ -224,6 +237,9 @@ func genRealms(realms []*realmData, outputPath string) error {
 
 	buf := &bytes.Buffer{}
 	err = templ.Execute(buf, realms)
+	if err != nil {
+		return err
+	}
 
-	return formatWriteFile(buf.Bytes(), outputPath+"realms.go")
+	return formatWriteFile(buf.Bytes(), filepath.Join(outputPath, "realms.go"))
 }

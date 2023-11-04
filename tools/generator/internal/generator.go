@@ -9,7 +9,6 @@ import (
 )
 
 type Generator struct {
-	moduleName string
 	outputPath string
 	verbose    bool
 }
@@ -54,7 +53,7 @@ func (gen *Generator) Generate() (err error) {
 		}
 		for _, section := range game.Sections {
 			for _, method := range section.Methods {
-				processedMethods += 1
+				processedMethods++
 				gen.printf("(%03d/%03d) Generating %s\n", processedMethods, maxMethods, method.Key)
 				doc, err := getWgMethodDoc(method.Key, "all")
 				if err != nil {
@@ -62,10 +61,10 @@ func (gen *Generator) Generate() (err error) {
 				}
 				// collect sections
 				sec, _ := sectionsMap[snakeToCamel(game.Slug)]
-				if sec.ApiUrlFormat != "" && sec.ApiUrlFormat != doc.ApiUrl {
-					return fmt.Errorf("%s has multiple API URLs!? (%s | %s)", game.Slug, sec.ApiUrlFormat, doc.ApiUrl)
+				if sec.ApiUrlFormat != "" && sec.ApiUrlFormat != doc.ApiURL {
+					return fmt.Errorf("%s has multiple API URLs!? (%s | %s)", game.Slug, sec.ApiUrlFormat, doc.ApiURL)
 				}
-				sec.ApiUrlFormat = doc.ApiUrl
+				sec.ApiUrlFormat = doc.ApiURL
 				// collect realm indices
 				for _, realmIdx := range doc.AvailableDisplayIndices {
 					if _, ok := realmIdcs[realmIdx]; !ok {
@@ -148,7 +147,7 @@ func collectRealms(realmIdcs map[string]string, realmDocs []*realmDoc) ([]*realm
 			return nil, err
 		}
 		realm := &realmData{
-			Tld:   rxApiUrl.FindAllStringSubmatch(doc.ApiUrl, 1)[0][2],
+			Tld:   rxApiUrl.FindAllStringSubmatch(doc.ApiURL, 1)[0][2],
 			Index: strings.ToLower(idx),
 		}
 		for _, doc := range realmDocs {

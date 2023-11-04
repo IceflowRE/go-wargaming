@@ -2,6 +2,7 @@ package internal
 
 import (
 	"cmp"
+	"path"
 	"slices"
 	"sort"
 	"strings"
@@ -33,13 +34,13 @@ func newEndpointFromDoc(doc *wgMethodDoc, game string, id string) (*endpoint, er
 	ep := endpoint{
 		Id:   id,
 		Game: snakeToCamelLower(game),
-		Url:  doc.Url,
+		Url:  doc.URL,
 
 		Name:          snakeToCamel(id),
 		MetaType:      nil,
 		Documentation: strings.TrimPrefix(cleanDocumentation(doc.Description), "Method "),
 		Deprecated:    doc.Deprecated,
-		HttpMethods:   doc.AllowedHttpMethods,
+		HttpMethods:   doc.AllowedHTTPMethods,
 		OtherImports:  map[string]struct{}{"context": {}},
 		OptionsType:   nil,
 	}
@@ -121,7 +122,7 @@ func (ep *endpoint) MethodImports() []string {
 		imports = append(imports, imp)
 	}
 	if ep.OptionsType != nil || ep.DataType != nil && ep.DataType.IsStruct() {
-		imports = append(imports, wgModuleName+"/wargaming/"+ep.Game)
+		imports = append(imports, path.Join(wgModuleName, "wargaming", ep.Game))
 	}
 	sort.Strings(imports)
 	return imports
@@ -136,13 +137,13 @@ func wgToGoType(name string) *goType {
 		"list of integers":  {TypeStr: "[]int", Imports: make(map[string]struct{})},
 		"numeric":           {TypeStr: "int", Imports: make(map[string]struct{})},
 		"string":            {TypeStr: "string", Imports: make(map[string]struct{})},
-		"timestamp":         {TypeStr: "wgnTime.UnixTime", Imports: map[string]struct{}{wgModuleName + "/wargaming/wgnTime": {}}},
+		"timestamp":         {TypeStr: "wgnTime.UnixTime", Imports: map[string]struct{}{path.Join(wgModuleName, "wargaming", "wgnTime"): {}}},
 
 		"list of strings":    {TypeStr: "[]string", Imports: make(map[string]struct{})},
-		"list of timestamps": {TypeStr: "[]wgnTime.UnixTime", Imports: map[string]struct{}{wgModuleName + "/wargaming/wgnTime": {}}},
+		"list of timestamps": {TypeStr: "[]wgnTime.UnixTime", Imports: map[string]struct{}{path.Join(wgModuleName, "wargaming", "wgnTime"): {}}},
 		"list of dicts":      {TypeStr: "map[string]string", Imports: make(map[string]struct{})},
 		"object":             {TypeStr: "struct", Imports: make(map[string]struct{})},
-		"timestamp/date":     {TypeStr: "wgnTime.UnixTime", Imports: map[string]struct{}{wgModuleName + "/wargaming/wgnTime": {}}},
+		"timestamp/date":     {TypeStr: "wgnTime.UnixTime", Imports: map[string]struct{}{path.Join(wgModuleName, "wargaming", "wgnTime"): {}}},
 
 		// used in Parameters
 		"numeric, list": {TypeStr: "[]int", Imports: make(map[string]struct{})},

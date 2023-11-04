@@ -39,10 +39,10 @@ func camelLowerToCamel(name string) string {
 	return string(unicode.ToUpper(rune(name[0]))) + name[1:]
 }
 
-var rxHtml = regexp.MustCompile(`<.*?>`)
+var rxHTML = regexp.MustCompile(`<.*?>`)
 
 func cleanDocumentation(text string) string {
-	doc := html.UnescapeString(strings.TrimPrefix(rxHtml.ReplaceAllString(text, ""), "\n"))
+	doc := html.UnescapeString(strings.TrimPrefix(rxHTML.ReplaceAllString(text, ""), "\n"))
 	doc = strings.ReplaceAll(doc, "—", "-")
 	doc = strings.ReplaceAll(doc, "“", "\"")
 	doc = strings.ReplaceAll(doc, "”", "\"")

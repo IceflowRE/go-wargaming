@@ -38,14 +38,14 @@ type wgFieldDoc struct {
 type wgMethodDoc struct {
 	AvailableDisplayIndices []string `json:"available_display_indices"`
 	AllowedProtocols        []string `json:"allowed_protocols"`
-	AllowedHttpMethods      []string `json:"allowed_http_methods"`
+	AllowedHTTPMethods      []string `json:"allowed_http_methods"`
 	Name                    string
 	Description             string
 	Deprecated              bool
 	Realm                   string
 	DisplayIndex            string `json:"display_index"`
-	ApiUrl                  string `json:"api_url"`
-	Url                     string
+	ApiURL                  string `json:"api_url"`
+	URL                     string
 	Section                 string
 	Errors                  []struct {
 		Message     string
@@ -65,8 +65,9 @@ func getWgDoc(path string, realm string) ([]byte, error) {
 	req.Header.Set("X-Requested-With", "XMLHttpRequest")
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		return nil, nil
+		return nil, err
 	}
+	defer resp.Body.Close()
 	if resp.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("status was not OK")
 	}
@@ -74,7 +75,7 @@ func getWgDoc(path string, realm string) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	//os.WriteFile("method.json", body, 0644)
+	// os.WriteFile("method.json", body, 0644)
 	return body, nil
 }
 
@@ -89,8 +90,8 @@ func getWgMethodsDoc() ([]*wgMethodsDoc, []*realmDoc, error) {
 		return nil, nil, err
 	}
 	tmp := struct {
-		Data   []*wgMethodsDoc
-		Realms []*realmDoc
+		Data   []*wgMethodsDoc `json:"Data"`
+		Realms []*realmDoc     `json:"Realms"`
 	}{}
 	err = json.Unmarshal(body, &tmp)
 	if err != nil {
@@ -105,7 +106,7 @@ func getWgMethodDoc(id string, realm string) (*wgMethodDoc, error) {
 		return nil, err
 	}
 	tmp := struct {
-		Data *wgMethodDoc
+		Data *wgMethodDoc `json:"Data"`
 	}{}
 	err = json.Unmarshal(body, &tmp)
 	if err != nil {
