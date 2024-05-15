@@ -6,6 +6,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_ and this project adheres to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
+4.1.5
+=====
+
+Updated
+-------
+
+- wot: ``acount/info``
+- wot: ``tank/stats``
+
+Removed
+-------
+
+- wgn: ``wgtv/tags``
+- wgn: ``wgtv/vehicles``
+- wgn: ``wgtv/videos``
+
 4.1.4
 =====
 
@@ -17,12 +33,12 @@ Updated
 Removed
 -------
 
-- `wotb_clanmessages_create`
-- `wotb_clanmessages_delete`
-- `wotb_clanmessages_like`
-- `wotb_clanmessages_likes`
-- `wotb_clanmessages_messages`
-- `wotb_clanmessages_update`
+- wotb: ``clanmessages/create``
+- wotb:``clanmessages/delete``
+- wotb:``clanmessages/like``
+- wotb:``clanmessages/likes``
+- wotb:``clanmessages/messages``
+- wotb:``clanmessages/update``
 
 4.1.3
 =====
@@ -48,7 +64,7 @@ Changed
 Fixed
 -----
 
-- `wot_encyclopedia_vehicles` patch some return types
+- wot: ``encyclopedia/vehicles`` patch some return types
 
 4.1.1
 =====
@@ -56,8 +72,8 @@ Fixed
 Fixed
 -----
 
-- `wot_account_tanks` return type (again)
-- `wot_encyclopedia_vehicles` return type
+- wot: ``account/tanks`` return type (again)
+- wot: ``encyclopedia/vehicles`` return type
 
 4.1.0
 =====
@@ -70,7 +86,7 @@ Updated
 Fixed
 -----
 
-- `wot_account_tanks` return type
+- wot: ``account/tanks`` return type
 
 4.0.1
 =====
@@ -167,4 +183,4 @@ Replaced
 Changed
 -------
 
-- ``wot/globalmap/eventaccountinfo`` made ``account_id`` optional (either ``account_id`` or ``clan_id`` is required.
+- wot: ``globalmap/eventaccountinfo`` made ``account_id`` optional (either ``account_id`` or ``clan_id`` is required.

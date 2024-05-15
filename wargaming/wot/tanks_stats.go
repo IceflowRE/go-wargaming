@@ -45,6 +45,14 @@ type TanksStats struct {
 	AccountId *int `json:"account_id,omitempty"`
 	// Overall Statistics
 	All *struct {
+		// Average assisted damage without stun damage.
+		AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
+		// Average damage upon your spotting
+		AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+		// Average assisted stun damage.
+		AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
+		// Average damage upon your shooting the track
+		AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
 		// Average damage blocked by armor per battle. Damage blocked by armor is damage received from shells (AP, HEAT and APCR) that hit a vehicle but caused no damage.
 		// Value is calculated starting from version 9.0.
 		AvgDamageBlocked *float32 `json:"avg_damage_blocked,omitempty"`
@@ -84,6 +92,8 @@ type TanksStats struct {
 		Piercings *int `json:"piercings,omitempty"`
 		// Penetrations received
 		PiercingsReceived *int `json:"piercings_received,omitempty"`
+		// Damage dealt to the target with the actor radio recon assistance
+		RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 		// Shots fired
 		Shots *int `json:"shots,omitempty"`
 		// Enemies spotted
@@ -97,6 +107,8 @@ type TanksStats struct {
 		// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 		// Value is calculated starting from version 9.0.
 		TankingFactor *float32 `json:"tanking_factor,omitempty"`
+		// Damage dealt to the target with the actor keeping-on-track assistance
+		TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 		// Victories
 		Wins *int `json:"wins,omitempty"`
 		// Total experience
@@ -134,6 +146,8 @@ type TanksStats struct {
 		MaxFrags *int `json:"max_frags,omitempty"`
 		// Maximum experience per battle
 		MaxXp *int `json:"max_xp,omitempty"`
+		// Damage dealt to the target with the actor radio recon assistance
+		RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 		// Shots fired
 		Shots *int `json:"shots,omitempty"`
 		// Enemies spotted
@@ -144,6 +158,8 @@ type TanksStats struct {
 		StunNumber *int `json:"stun_number,omitempty"`
 		// Battles survived
 		SurvivedBattles *int `json:"survived_battles,omitempty"`
+		// Damage dealt to the target with the actor keeping-on-track assistance
+		TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 		// Victories
 		Wins *int `json:"wins,omitempty"`
 		// Total experience
@@ -175,6 +191,8 @@ type TanksStats struct {
 		HitsPercents *int `json:"hits_percents,omitempty"`
 		// Defeats
 		Losses *int `json:"losses,omitempty"`
+		// Damage dealt to the target with the actor radio recon assistance
+		RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 		// Shots fired
 		Shots *int `json:"shots,omitempty"`
 		// Enemies spotted
@@ -185,6 +203,8 @@ type TanksStats struct {
 		StunNumber *int `json:"stun_number,omitempty"`
 		// Battles survived
 		SurvivedBattles *int `json:"survived_battles,omitempty"`
+		// Damage dealt to the target with the actor keeping-on-track assistance
+		TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 		// Victories
 		Wins *int `json:"wins,omitempty"`
 		// Total experience
@@ -223,6 +243,8 @@ type TanksStats struct {
 		MaxFrags *int `json:"max_frags,omitempty"`
 		// Maximum experience per battle
 		MaxXp *int `json:"max_xp,omitempty"`
+		// Damage dealt to the target with the actor radio recon assistance
+		RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 		// Shots fired
 		Shots *int `json:"shots,omitempty"`
 		// Enemies spotted
@@ -233,6 +255,8 @@ type TanksStats struct {
 		StunNumber *int `json:"stun_number,omitempty"`
 		// Battles survived
 		SurvivedBattles *int `json:"survived_battles,omitempty"`
+		// Damage dealt to the target with the actor keeping-on-track assistance
+		TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 		// Victories
 		Wins *int `json:"wins,omitempty"`
 		// Total experience
@@ -245,10 +269,12 @@ type TanksStats struct {
 		AvatarDamageDealt *int `json:"avatar_damage_dealt,omitempty"`
 		// Destroyed by Combat Reserves
 		AvatarFrags *int `json:"avatar_frags,omitempty"`
-		// Average damage caused with your assistance
+		// Average assisted damage without stun damage.
 		AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
 		// Average damage upon your spotting
 		AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+		// Average assisted stun damage.
+		AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 		// Average damage upon your shooting the track
 		AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
 		// Average damage blocked by armor per battle. Damage blocked by armor is damage received from shells (AP, HEAT and APCR) that hit a vehicle but caused no damage.
@@ -308,6 +334,8 @@ type TanksStats struct {
 		Piercings *int `json:"piercings,omitempty"`
 		// Penetrations received
 		PiercingsReceived *int `json:"piercings_received,omitempty"`
+		// Damage dealt to the target with the actor radio recon assistance
+		RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 		// Resources captured at resource points
 		ResourceAbsorbed *int `json:"resource_absorbed,omitempty"`
 		// Shots fired
@@ -323,6 +351,8 @@ type TanksStats struct {
 		// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 		// Value is calculated starting from version 9.0.
 		TankingFactor *float32 `json:"tanking_factor,omitempty"`
+		// Damage dealt to the target with the actor keeping-on-track assistance
+		TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 		// Victory Points
 		WinPoints *int `json:"win_points,omitempty"`
 		// Victories
@@ -334,10 +364,12 @@ type TanksStats struct {
 	Frags map[string]string `json:"frags,omitempty"`
 	// All battle statistics on the Global Map
 	Globalmap *struct {
-		// Average damage caused with your assistance
+		// Average assisted damage without stun damage.
 		AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
 		// Average damage upon your spotting
 		AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+		// Average assisted stun damage.
+		AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 		// Average damage upon your shooting the track
 		AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
 		// Average damage blocked by armor per battle. Damage blocked by armor is damage received from shells (AP, HEAT and APCR) that hit a vehicle but caused no damage.
@@ -379,6 +411,8 @@ type TanksStats struct {
 		Piercings *int `json:"piercings,omitempty"`
 		// Penetrations received
 		PiercingsReceived *int `json:"piercings_received,omitempty"`
+		// Damage dealt to the target with the actor radio recon assistance
+		RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 		// Shots fired
 		Shots *int `json:"shots,omitempty"`
 		// Enemies spotted
@@ -392,6 +426,8 @@ type TanksStats struct {
 		// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 		// Value is calculated starting from version 9.0.
 		TankingFactor *float32 `json:"tanking_factor,omitempty"`
+		// Damage dealt to the target with the actor keeping-on-track assistance
+		TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 		// Victories
 		Wins *int `json:"wins,omitempty"`
 		// Total experience
@@ -444,6 +480,8 @@ type TanksStats struct {
 		MaxFrags *int `json:"max_frags,omitempty"`
 		// Maximum experience per battle
 		MaxXp *int `json:"max_xp,omitempty"`
+		// Damage dealt to the target with the actor radio recon assistance
+		RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 		// Shots fired
 		Shots *int `json:"shots,omitempty"`
 		// Enemies spotted
@@ -454,6 +492,8 @@ type TanksStats struct {
 		StunNumber *int `json:"stun_number,omitempty"`
 		// Battles survived
 		SurvivedBattles *int `json:"survived_battles,omitempty"`
+		// Damage dealt to the target with the actor keeping-on-track assistance
+		TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 		// Victories
 		Wins *int `json:"wins,omitempty"`
 		// Total experience
@@ -492,6 +532,8 @@ type TanksStats struct {
 		MaxFrags *int `json:"max_frags,omitempty"`
 		// Maximum experience per battle
 		MaxXp *int `json:"max_xp,omitempty"`
+		// Damage dealt to the target with the actor radio recon assistance
+		RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 		// Shots fired
 		Shots *int `json:"shots,omitempty"`
 		// Enemies spotted
@@ -502,6 +544,8 @@ type TanksStats struct {
 		StunNumber *int `json:"stun_number,omitempty"`
 		// Battles survived
 		SurvivedBattles *int `json:"survived_battles,omitempty"`
+		// Damage dealt to the target with the actor keeping-on-track assistance
+		TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 		// Victories
 		Wins *int `json:"wins,omitempty"`
 		// Total experience
@@ -540,6 +584,8 @@ type TanksStats struct {
 		MaxFrags *int `json:"max_frags,omitempty"`
 		// Maximum experience per battle
 		MaxXp *int `json:"max_xp,omitempty"`
+		// Damage dealt to the target with the actor radio recon assistance
+		RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 		// Shots fired
 		Shots *int `json:"shots,omitempty"`
 		// Enemies spotted
@@ -550,6 +596,8 @@ type TanksStats struct {
 		StunNumber *int `json:"stun_number,omitempty"`
 		// Battles survived
 		SurvivedBattles *int `json:"survived_battles,omitempty"`
+		// Damage dealt to the target with the actor keeping-on-track assistance
+		TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 		// Victories
 		Wins *int `json:"wins,omitempty"`
 		// Total experience
@@ -587,6 +635,8 @@ type TanksStats struct {
 		MaxFrags *int `json:"max_frags,omitempty"`
 		// Maximum experience per battle
 		MaxXp *int `json:"max_xp,omitempty"`
+		// Damage dealt to the target with the actor radio recon assistance
+		RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 		// Shots fired
 		Shots *int `json:"shots,omitempty"`
 		// Enemies spotted
@@ -597,6 +647,8 @@ type TanksStats struct {
 		StunNumber *int `json:"stun_number,omitempty"`
 		// Battles survived
 		SurvivedBattles *int `json:"survived_battles,omitempty"`
+		// Damage dealt to the target with the actor keeping-on-track assistance
+		TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 		// Victories
 		Wins *int `json:"wins,omitempty"`
 		// Total experience
@@ -646,6 +698,8 @@ type TanksStats struct {
 		Piercings *int `json:"piercings,omitempty"`
 		// Penetrations received
 		PiercingsReceived *int `json:"piercings_received,omitempty"`
+		// Damage dealt to the target with the actor radio recon assistance
+		RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 		// Shots fired
 		Shots *int `json:"shots,omitempty"`
 		// Enemies spotted
@@ -659,6 +713,8 @@ type TanksStats struct {
 		// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 		// Value is calculated starting from version 9.0.
 		TankingFactor *float32 `json:"tanking_factor,omitempty"`
+		// Damage dealt to the target with the actor keeping-on-track assistance
+		TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 		// Victories
 		Wins *int `json:"wins,omitempty"`
 		// Total experience
@@ -708,6 +764,8 @@ type TanksStats struct {
 		Piercings *int `json:"piercings,omitempty"`
 		// Penetrations received
 		PiercingsReceived *int `json:"piercings_received,omitempty"`
+		// Damage dealt to the target with the actor radio recon assistance
+		RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 		// Shots fired
 		Shots *int `json:"shots,omitempty"`
 		// Enemies spotted
@@ -721,6 +779,8 @@ type TanksStats struct {
 		// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 		// Value is calculated starting from version 9.0.
 		TankingFactor *float32 `json:"tanking_factor,omitempty"`
+		// Damage dealt to the target with the actor keeping-on-track assistance
+		TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 		// Victories
 		Wins *int `json:"wins,omitempty"`
 		// Total experience
@@ -760,6 +820,8 @@ type TanksStats struct {
 		MaxFrags *int `json:"max_frags,omitempty"`
 		// Maximum experience per battle
 		MaxXp *int `json:"max_xp,omitempty"`
+		// Damage dealt to the target with the actor radio recon assistance
+		RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 		// Shots fired
 		Shots *int `json:"shots,omitempty"`
 		// Enemies spotted
@@ -770,6 +832,8 @@ type TanksStats struct {
 		StunNumber *int `json:"stun_number,omitempty"`
 		// Battles survived
 		SurvivedBattles *int `json:"survived_battles,omitempty"`
+		// Damage dealt to the target with the actor keeping-on-track assistance
+		TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 		// Victories
 		Wins *int `json:"wins,omitempty"`
 		// Total experience

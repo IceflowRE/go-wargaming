@@ -11,7 +11,7 @@ type WotService service
 // WotbService World Of Tanks Blitz service.
 type WotbService service
 
-// WotxService World Of Tanks Console service.
+// WotxService World Of Tanks Modern Armor service.
 type WotxService service
 
 // WowpService World Of Warplanes service.
@@ -27,7 +27,7 @@ type wgServices struct {
 	Wot *WotService
 	// World Of Tanks Blitz
 	Wotb *WotbService
-	// World Of Tanks Console
+	// World Of Tanks Modern Armor
 	Wotx *WotxService
 	// World Of Warplanes
 	Wowp *WowpService

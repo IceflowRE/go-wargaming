@@ -5,14 +5,14 @@ package wargaming
 import (
 	"context"
 	"errors"
-	"github.com/IceflowRE/go-wargaming/v4/wargaming/wgn"
-	"github.com/IceflowRE/go-wargaming/v4/wargaming/wot"
-	"github.com/IceflowRE/go-wargaming/v4/wargaming/wotx"
 	"net/http"
 	"os"
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/wot"
+	"github.com/IceflowRE/go-wargaming/v4/wargaming/wotx"
 )
 
 var apiId = os.Getenv("WARGAMING_API_ID")
@@ -82,7 +82,7 @@ func ToSnake(camel string) (snake string) {
 		// add underscore when next letter is lowercase
 		if (i != 0 || i == l-1) && (          // head and tail
 		(i > 0 && rune(camel[i-1]) >= 'a') || // pre
-			(i < l-1 && rune(camel[i+1]) >= 'a')) { //next
+			(i < l-1 && rune(camel[i+1]) >= 'a')) { // next
 			b.WriteRune('_')
 		}
 		b.WriteRune(v + diff)
@@ -836,24 +836,6 @@ func TestApi(test *testing.T) {
 	skipTest("WgnWargagRate", reasonTooComplex, test)
 	skipTest("WgnWargagNewcomment", reasonTooComplex, test)
 	skipTest("WgnWargagDeletecomment", reasonTooComplex, test)
-	test.Run(ToSnake("WgnWgtvTags"), func(test *testing.T) {
-		_, _, err := client.Wgn.WgtvTags(context.Background(), RealmEu, nil)
-		checkErr(test, err)
-	})
-	delay()
-	test.Run(ToSnake("WgnWgtvVideos"), func(test *testing.T) {
-		_, _, err := client.Wgn.WgtvVideos(context.Background(), RealmEu, &wgn.WgtvVideosOptions{
-			Limit:  Int(3),
-			PageNo: Int(1),
-		})
-		checkErr(test, err)
-	})
-	delay()
-	test.Run(ToSnake("WgnWgtvVehicles"), func(test *testing.T) {
-		_, _, err := client.Wgn.WgtvVehicles(context.Background(), RealmEu, nil)
-		checkErr(test, err)
-	})
-	delay()
 	test.Run(ToSnake("WgnServersInfo"), func(test *testing.T) {
 		_, err := client.Wgn.ServersInfo(context.Background(), RealmEu, nil)
 		checkErr(test, err)

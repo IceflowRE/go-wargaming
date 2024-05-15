@@ -163,6 +163,8 @@ type AccountInfo struct {
 			// Average damage upon your spotting.
 			// Value is calculated starting from version 8.8.
 			AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+			// Average assisted stun damage.
+			AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 			// Average damage upon your shooting the track.
 			// Value is calculated starting from version 8.8.
 			AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
@@ -217,6 +219,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Shots fired
 			Shots *int `json:"shots,omitempty"`
 			// Enemies spotted
@@ -230,6 +234,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victories
 			Wins *int `json:"wins,omitempty"`
 			// Total experience
@@ -243,6 +249,8 @@ type AccountInfo struct {
 			// Average damage upon your spotting.
 			// Value is calculated starting from version 8.9.
 			AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+			// Average assisted stun damage.
+			AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 			// Average damage upon your shooting the track.
 			// Value is calculated starting from version 8.9.
 			AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
@@ -285,6 +293,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Shots fired
 			Shots *int `json:"shots,omitempty"`
 			// Enemies spotted
@@ -298,6 +308,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victories
 			Wins *int `json:"wins,omitempty"`
 			// Total experience
@@ -311,6 +323,8 @@ type AccountInfo struct {
 			// Average damage upon your spotting.
 			// Value is calculated starting from version 8.9.
 			AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+			// Average assisted stun damage.
+			AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 			// Average damage upon your shooting the track.
 			// Value is calculated starting from version 8.9.
 			AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
@@ -353,6 +367,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Shots fired
 			Shots *int `json:"shots,omitempty"`
 			// Enemies spotted
@@ -366,6 +382,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victories
 			Wins *int `json:"wins,omitempty"`
 			// Total experience
@@ -374,10 +392,12 @@ type AccountInfo struct {
 		// Statistics in Grand Battles.
 		// An extra field.
 		Epic *struct {
-			// Average damage caused with your assistance
+			// Average assisted damage without stun damage.
 			AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
 			// Average damage upon your spotting
 			AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+			// Average assisted stun damage.
+			AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 			// Average damage upon your shooting the track
 			AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
 			// Average damage blocked by armor per battle. Damage blocked by armor is damage received from shells (AP, HEAT and APCR) that hit a vehicle but caused no damage.
@@ -431,6 +451,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Shots fired
 			Shots *int `json:"shots,omitempty"`
 			// Enemies spotted
@@ -444,6 +466,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victories
 			Wins *int `json:"wins,omitempty"`
 			// Total experience
@@ -456,10 +480,12 @@ type AccountInfo struct {
 			AvatarDamageDealt *int `json:"avatar_damage_dealt,omitempty"`
 			// Destroyed by Combat Reserves
 			AvatarFrags *int `json:"avatar_frags,omitempty"`
-			// Average damage caused with your assistance
+			// Average assisted damage without stun damage.
 			AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
 			// Average damage upon your spotting
 			AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+			// Average assisted stun damage.
+			AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 			// Average damage upon your shooting the track
 			AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
 			// Average damage blocked by armor per battle. Damage blocked by armor is damage received from shells (AP, HEAT and APCR) that hit a vehicle but caused no damage.
@@ -525,6 +551,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Resources captured at resource points
 			ResourceAbsorbed *int `json:"resource_absorbed,omitempty"`
 			// Shots fired
@@ -540,6 +568,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victory Points
 			WinPoints *int `json:"win_points,omitempty"`
 			// Victories
@@ -552,10 +582,12 @@ type AccountInfo struct {
 		// Battle statistics on the Global Map in Absolute division.
 		// An extra field.
 		GlobalmapAbsolute *struct {
-			// Average damage caused with your assistance
+			// Average assisted damage without stun damage.
 			AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
 			// Average damage upon your spotting
 			AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+			// Average assisted stun damage.
+			AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 			// Average damage upon your shooting the track
 			AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
 			// Average damage blocked by armor per battle. Damage blocked by armor is damage received from shells (AP, HEAT and APCR) that hit a vehicle but caused no damage.
@@ -597,6 +629,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Shots fired
 			Shots *int `json:"shots,omitempty"`
 			// Enemies spotted
@@ -610,6 +644,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victories
 			Wins *int `json:"wins,omitempty"`
 			// Total experience
@@ -618,10 +654,12 @@ type AccountInfo struct {
 		// Battle statistics on the Global Map in Champion division.
 		// An extra field.
 		GlobalmapChampion *struct {
-			// Average damage caused with your assistance
+			// Average assisted damage without stun damage.
 			AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
 			// Average damage upon your spotting
 			AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+			// Average assisted stun damage.
+			AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 			// Average damage upon your shooting the track
 			AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
 			// Average damage blocked by armor per battle. Damage blocked by armor is damage received from shells (AP, HEAT and APCR) that hit a vehicle but caused no damage.
@@ -663,6 +701,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Shots fired
 			Shots *int `json:"shots,omitempty"`
 			// Enemies spotted
@@ -676,6 +716,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victories
 			Wins *int `json:"wins,omitempty"`
 			// Total experience
@@ -684,10 +726,12 @@ type AccountInfo struct {
 		// Battle statistics on the Global Map in Medium division.
 		// An extra field.
 		GlobalmapMiddle *struct {
-			// Average damage caused with your assistance
+			// Average assisted damage without stun damage.
 			AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
 			// Average damage upon your spotting
 			AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+			// Average assisted stun damage.
+			AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 			// Average damage upon your shooting the track
 			AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
 			// Average damage blocked by armor per battle. Damage blocked by armor is damage received from shells (AP, HEAT and APCR) that hit a vehicle but caused no damage.
@@ -729,6 +773,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Shots fired
 			Shots *int `json:"shots,omitempty"`
 			// Enemies spotted
@@ -742,6 +788,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victories
 			Wins *int `json:"wins,omitempty"`
 			// Total experience
@@ -749,10 +797,12 @@ type AccountInfo struct {
 		} `json:"globalmap_middle,omitempty"`
 		// Historical battles statistics
 		Historical *struct {
-			// Average damage caused with your assistance
+			// Average assisted damage without stun damage.
 			AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
 			// Average damage upon your spotting
 			AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+			// Average assisted stun damage.
+			AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 			// Average damage upon your shooting the track
 			AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
 			// Average damage blocked by armor per battle. Damage blocked by armor is damage received from shells (AP, HEAT and APCR) that hit a vehicle but caused no damage.
@@ -806,6 +856,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Shots fired
 			Shots *int `json:"shots,omitempty"`
 			// Enemies spotted
@@ -819,6 +871,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victories
 			Wins *int `json:"wins,omitempty"`
 			// Total experience
@@ -827,10 +881,12 @@ type AccountInfo struct {
 		// Random battles statistics.
 		// An extra field.
 		Random *struct {
-			// Average damage caused with your assistance
+			// Average assisted damage without stun damage.
 			AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
 			// Average damage upon your spotting
 			AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+			// Average assisted stun damage.
+			AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 			// Average damage upon your shooting the track
 			AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
 			// Average damage blocked by armor per battle. Damage blocked by armor is damage received from shells (AP, HEAT and APCR) that hit a vehicle but caused no damage.
@@ -872,6 +928,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Shots fired
 			Shots *int `json:"shots,omitempty"`
 			// Enemies spotted
@@ -885,6 +943,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victories
 			Wins *int `json:"wins,omitempty"`
 			// Total experience
@@ -893,10 +953,12 @@ type AccountInfo struct {
 		// Archive of statistics for ranked 10x10 battles.
 		// An extra field.
 		Ranked10x10 *struct {
-			// Average damage caused with your assistance
+			// Average assisted damage without stun damage.
 			AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
 			// Average damage upon your spotting
 			AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+			// Average assisted stun damage.
+			AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 			// Average damage upon your shooting the track
 			AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
 			// Average damage blocked by armor per battle. Damage blocked by armor is damage received from shells (AP, HEAT and APCR) that hit a vehicle but caused no damage.
@@ -950,6 +1012,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Shots fired
 			Shots *int `json:"shots,omitempty"`
 			// Enemies spotted
@@ -963,6 +1027,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victories
 			Wins *int `json:"wins,omitempty"`
 			// Total experience
@@ -971,10 +1037,12 @@ type AccountInfo struct {
 		// Archive of statistics for ranked 15x15 battles.
 		// An extra field.
 		Ranked15x15 *struct {
-			// Average damage caused with your assistance
+			// Average assisted damage without stun damage.
 			AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
 			// Average damage upon your spotting
 			AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+			// Average assisted stun damage.
+			AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 			// Average damage upon your shooting the track
 			AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
 			// Average damage blocked by armor per battle. Damage blocked by armor is damage received from shells (AP, HEAT and APCR) that hit a vehicle but caused no damage.
@@ -1028,6 +1096,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Shots fired
 			Shots *int `json:"shots,omitempty"`
 			// Enemies spotted
@@ -1041,6 +1111,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victories
 			Wins *int `json:"wins,omitempty"`
 			// Total experience
@@ -1049,10 +1121,12 @@ type AccountInfo struct {
 		// Ranked Battles statistics.
 		// An extra field.
 		RankedBattles *struct {
-			// Average damage caused with your assistance
+			// Average assisted damage without stun damage.
 			AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
 			// Average damage upon your spotting
 			AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+			// Average assisted stun damage.
+			AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 			// Average damage upon your shooting the track
 			AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
 			// Average damage blocked by armor per battle. Damage blocked by armor is damage received from shells (AP, HEAT and APCR) that hit a vehicle but caused no damage.
@@ -1106,6 +1180,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Shots fired
 			Shots *int `json:"shots,omitempty"`
 			// Enemies spotted
@@ -1119,6 +1195,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victories
 			Wins *int `json:"wins,omitempty"`
 			// Total experience
@@ -1127,10 +1205,12 @@ type AccountInfo struct {
 		// Current Ranked Battles statistics.
 		// An extra field.
 		RankedBattlesCurrent *struct {
-			// Average damage caused with your assistance
+			// Average assisted damage without stun damage.
 			AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
 			// Average damage upon your spotting
 			AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+			// Average assisted stun damage.
+			AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 			// Average damage upon your shooting the track
 			AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
 			// Average damage blocked by armor per battle. Damage blocked by armor is damage received from shells (AP, HEAT and APCR) that hit a vehicle but caused no damage.
@@ -1184,6 +1264,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Shots fired
 			Shots *int `json:"shots,omitempty"`
 			// Enemies spotted
@@ -1197,6 +1279,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victories
 			Wins *int `json:"wins,omitempty"`
 			// Total experience
@@ -1205,10 +1289,12 @@ type AccountInfo struct {
 		// Previous Ranked Battles statistics.
 		// An extra field.
 		RankedBattlesPrevious *struct {
-			// Average damage caused with your assistance
+			// Average assisted damage without stun damage.
 			AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
 			// Average damage upon your spotting
 			AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+			// Average assisted stun damage.
+			AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 			// Average damage upon your shooting the track
 			AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
 			// Average damage blocked by armor per battle. Damage blocked by armor is damage received from shells (AP, HEAT and APCR) that hit a vehicle but caused no damage.
@@ -1262,6 +1348,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Shots fired
 			Shots *int `json:"shots,omitempty"`
 			// Enemies spotted
@@ -1275,6 +1363,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victories
 			Wins *int `json:"wins,omitempty"`
 			// Total experience
@@ -1283,10 +1373,12 @@ type AccountInfo struct {
 		// Statistics of ranked battles for the first season of the year. Updated with every battle this season, data is reseted at the end of the year..
 		// An extra field.
 		RankedSeason1 *struct {
-			// Average damage caused with your assistance
+			// Average assisted damage without stun damage.
 			AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
 			// Average damage upon your spotting
 			AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+			// Average assisted stun damage.
+			AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 			// Average damage upon your shooting the track
 			AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
 			// Average damage blocked by armor per battle. Damage blocked by armor is damage received from shells (AP, HEAT and APCR) that hit a vehicle but caused no damage.
@@ -1340,6 +1432,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Shots fired
 			Shots *int `json:"shots,omitempty"`
 			// Enemies spotted
@@ -1353,6 +1447,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victories
 			Wins *int `json:"wins,omitempty"`
 			// Total experience
@@ -1361,10 +1457,12 @@ type AccountInfo struct {
 		// Statistics of ranked battles for the second season of the year. Updated with every battle this season, data is reseted at the end of the year..
 		// An extra field.
 		RankedSeason2 *struct {
-			// Average damage caused with your assistance
+			// Average assisted damage without stun damage.
 			AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
 			// Average damage upon your spotting
 			AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+			// Average assisted stun damage.
+			AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 			// Average damage upon your shooting the track
 			AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
 			// Average damage blocked by armor per battle. Damage blocked by armor is damage received from shells (AP, HEAT and APCR) that hit a vehicle but caused no damage.
@@ -1418,6 +1516,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Shots fired
 			Shots *int `json:"shots,omitempty"`
 			// Enemies spotted
@@ -1431,6 +1531,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victories
 			Wins *int `json:"wins,omitempty"`
 			// Total experience
@@ -1439,10 +1541,12 @@ type AccountInfo struct {
 		// Statistics of ranked battles for the third season of the year. Updated with every battle this season, data is reseted at the end of the year..
 		// An extra field.
 		RankedSeason3 *struct {
-			// Average damage caused with your assistance
+			// Average assisted damage without stun damage.
 			AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
 			// Average damage upon your spotting
 			AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+			// Average assisted stun damage.
+			AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 			// Average damage upon your shooting the track
 			AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
 			// Average damage blocked by armor per battle. Damage blocked by armor is damage received from shells (AP, HEAT and APCR) that hit a vehicle but caused no damage.
@@ -1496,6 +1600,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Shots fired
 			Shots *int `json:"shots,omitempty"`
 			// Enemies spotted
@@ -1509,6 +1615,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victories
 			Wins *int `json:"wins,omitempty"`
 			// Total experience
@@ -1516,10 +1624,12 @@ type AccountInfo struct {
 		} `json:"ranked_season_3,omitempty"`
 		// Battle statistics of permanent teams
 		RegularTeam *struct {
-			// Average damage caused with your assistance
+			// Average assisted damage without stun damage.
 			AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
 			// Average damage upon your spotting
 			AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+			// Average assisted stun damage.
+			AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 			// Average damage upon your shooting the track
 			AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
 			// Average damage blocked by armor per battle. Damage blocked by armor is damage received from shells (AP, HEAT and APCR) that hit a vehicle but caused no damage.
@@ -1573,6 +1683,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Shots fired
 			Shots *int `json:"shots,omitempty"`
 			// Enemies spotted
@@ -1586,6 +1698,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victories
 			Wins *int `json:"wins,omitempty"`
 			// Total experience
@@ -1641,6 +1755,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Shots fired
 			Shots *int `json:"shots,omitempty"`
 			// Enemies spotted
@@ -1654,6 +1770,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victories
 			Wins *int `json:"wins,omitempty"`
 			// Total experience
@@ -1709,6 +1827,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Shots fired
 			Shots *int `json:"shots,omitempty"`
 			// Enemies spotted
@@ -1722,6 +1842,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victories
 			Wins *int `json:"wins,omitempty"`
 			// Total experience
@@ -1729,10 +1851,12 @@ type AccountInfo struct {
 		} `json:"stronghold_skirmish,omitempty"`
 		// Team battles statistics
 		Team *struct {
-			// Average damage caused with your assistance
+			// Average assisted damage without stun damage.
 			AvgDamageAssisted *float32 `json:"avg_damage_assisted,omitempty"`
 			// Average damage upon your spotting
 			AvgDamageAssistedRadio *float32 `json:"avg_damage_assisted_radio,omitempty"`
+			// Average assisted stun damage.
+			AvgDamageAssistedStun *float32 `json:"avg_damage_assisted_stun,omitempty"`
 			// Average damage upon your shooting the track
 			AvgDamageAssistedTrack *float32 `json:"avg_damage_assisted_track,omitempty"`
 			// Average damage blocked by armor per battle. Damage blocked by armor is damage received from shells (AP, HEAT and APCR) that hit a vehicle but caused no damage.
@@ -1786,6 +1910,8 @@ type AccountInfo struct {
 			Piercings *int `json:"piercings,omitempty"`
 			// Penetrations received
 			PiercingsReceived *int `json:"piercings_received,omitempty"`
+			// Damage dealt to the target with the actor radio recon assistance
+			RadioAssistedDamage *int `json:"radio_assisted_damage,omitempty"`
 			// Shots fired
 			Shots *int `json:"shots,omitempty"`
 			// Enemies spotted
@@ -1799,6 +1925,8 @@ type AccountInfo struct {
 			// Ratio of damage blocked by armor from AP, HEAT, and APCR shells to damage received from these types of shells.
 			// Value is calculated starting from version 9.0.
 			TankingFactor *float32 `json:"tanking_factor,omitempty"`
+			// Damage dealt to the target with the actor keeping-on-track assistance
+			TrackAssistedDamage *int `json:"track_assisted_damage,omitempty"`
 			// Victories
 			Wins *int `json:"wins,omitempty"`
 			// Total experience

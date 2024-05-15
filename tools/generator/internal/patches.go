@@ -70,10 +70,6 @@ func patchEndpoint(ep *endpoint) {
 		ep.DataType.F("Guns").F("Shells").TypeStr = "[]*struct"
 		ep.DataType.F("Suspensions").TypeStr = "[]*struct"
 		ep.DataType.F("Turrets").TypeStr = "[]*struct"
-	case "wgn_wgtv_tags":
-		ep.DataType.F("Categories").TypeStr = "[]*struct"
-		ep.DataType.F("Projects").TypeStr = "[]*struct"
-		ep.DataType.F("Programs").TypeStr = "[]*struct"
 	case "wot_clans_messageboard":
 		ep.DataType.TypeStr = "map[string][]" + ep.DataType.TypeStr
 	case "wotb_tournaments_teams":
@@ -91,7 +87,7 @@ func patchEndpoint(ep *endpoint) {
 	}
 
 	if slices.Contains([]string{
-		"wgn_account_list", "wgn_wgtv_videos",
+		"wgn_account_list",
 		"wot_account_list", "wot_clans_list",
 		"wot_clanratings_neighbors", "wot_clanratings_top", "wot_globalmap_clanbattles",
 		"wot_globalmap_eventaccountratingneighbors", "wot_globalmap_eventaccountratings", "wot_globalmap_eventrating",
@@ -140,7 +136,7 @@ func patchMeta(ep *endpoint) {
 		"wows_encyclopedia_accountlevels", "wows_encyclopedia_crews", "wows_encyclopedia_crewranks",
 		"wows_encyclopedia_battletypes", "wows_encyclopedia_collections", "wows_encyclopedia_collectioncards",
 		"wows_encyclopedia_battlearenas", "wows_clans_info", "wows_clans_accountinfo", "wows_clans_season",
-		"wgn_account_list", "wgn_account_info", "wgn_wgtv_tags", "wgn_wgtv_vehicles",
+		"wgn_account_list", "wgn_account_info",
 
 		"wows_account_info", "wows_account_achievements", "wows_account_statsbydate", "wows_ships_stats",
 		"wows_seasons_shipstats", "wows_seasons_accountinfo",
@@ -154,7 +150,7 @@ func patchMeta(ep *endpoint) {
 
 		"wot_encyclopedia_vehicles", "wot_encyclopedia_provisions", "wot_encyclopedia_modules",
 		"wotx_encyclopedia_vehicles", "wows_encyclopedia_ships", "wows_encyclopedia_modules",
-		"wows_encyclopedia_consumables", "wgn_wgtv_videos",
+		"wows_encyclopedia_consumables",
 	}, ep.Id) {
 		ep.MetaType = &goType{
 			Name:    "",

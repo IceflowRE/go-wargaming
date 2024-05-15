@@ -15,7 +15,7 @@ var (
 	sectionWotb = sectionS{
 		apiUrlFormat: "https://api.wotblitz.%s/wotb",
 	}
-	// sectionWotx World Of Tanks Console.
+	// sectionWotx World Of Tanks Modern Armor.
 	sectionWotx = sectionS{
 		apiUrlFormat: "https://api-console.worldoftanks.%s/wotx",
 	}
