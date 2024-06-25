@@ -17,7 +17,7 @@ var (
 	}
 	// sectionWotx World Of Tanks Modern Armor.
 	sectionWotx = sectionS{
-		apiUrlFormat: "https://api-console.worldoftanks.%s/wotx",
+		apiUrlFormat: "https://api-modernarmor.worldoftanks.%s/wotx",
 	}
 	// sectionWowp World Of Warplanes.
 	sectionWowp = sectionS{

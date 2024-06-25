@@ -37,7 +37,7 @@ type AuthLoginOptions struct {
 	// If parameter nofollow=1 is passed in, the user is not redirected. URL is returned in response. Default is 0. Min value is 0. Maximum value: 1.
 	Nofollow *int `json:"nofollow,omitempty"`
 	// URL where user is redirected after authentication.
-	// By default: api-console.worldoftanks.com/wotx	//blank/
+	// By default: api-modernarmor.worldoftanks.com/wotx	//blank/
 	RedirectUri *string `json:"redirect_uri,omitempty"`
 }
 
