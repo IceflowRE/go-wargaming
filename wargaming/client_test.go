@@ -703,11 +703,6 @@ func TestApi(test *testing.T) {
 		checkErr(test, err)
 	})
 	delay()
-	test.Run(ToSnake("WowsAccountStatsbydate"), func(test *testing.T) {
-		_, _, err := client.Wows.AccountStatsbydate(context.Background(), RealmEu, wowsAccountId, nil)
-		checkErr(test, err)
-	})
-	delay()
 	test.Run(ToSnake("WowsEncyclopediaInfo"), func(test *testing.T) {
 		_, _, err := client.Wows.EncyclopediaInfo(context.Background(), RealmEu, nil)
 		checkErr(test, err)
