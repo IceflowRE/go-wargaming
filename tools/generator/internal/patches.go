@@ -138,7 +138,7 @@ func patchMeta(ep *endpoint) {
 		"wows_encyclopedia_battlearenas", "wows_clans_info", "wows_clans_accountinfo", "wows_clans_season",
 		"wgn_account_list", "wgn_account_info",
 
-		"wows_account_info", "wows_account_achievements", "wows_account_statsbydate", "wows_ships_stats",
+		"wows_account_info", "wows_account_achievements", "wows_ships_stats",
 		"wows_seasons_shipstats", "wows_seasons_accountinfo",
 
 		"wot_clans_list", "wotb_clans_list", "wotx_clans_list",
