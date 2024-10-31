@@ -1,0 +1,36 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+            "label": "generate library",
+			"command": "go",
+            "args": ["run", "${workspaceFolder}/tools/generator"],
+            "group": "build",
+        },
+		{
+			"type": "go",
+			"label": "go: test workspace",
+			"command": "test",
+			"args": [
+				"./..."
+			],
+			"problemMatcher": [
+				"$go"
+			],
+			"group": "test",
+		},
+		{
+			"type": "go",
+			"label": "go: test workspace failfast",
+			"command": "test",
+			"args": [
+				"-failfast",
+				"./..."
+			],
+			"problemMatcher": [
+				"$go"
+			],
+			"group": "test",
+		},
+	]
+}

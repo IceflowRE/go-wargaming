@@ -1,0 +1,6 @@
+{
+    "gopls": {
+        "formatting.local": "github.com/IceflowRE/go-wargaming",
+        "formatting.gofumpt": true,
+    }
+}

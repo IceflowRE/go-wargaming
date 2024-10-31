@@ -1,0 +1,15 @@
+{
+  "name": "Go WG",
+  "image": "mcr.microsoft.com/devcontainers/go:1-1.23-bookworm",
+  "remoteUser": "vscode",
+  "containerUser": "vscode",
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": [
+        "golang.go",
+        "streetsidesoftware.code-spell-checker"
+      ]
+    }
+  }
+}
