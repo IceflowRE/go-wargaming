@@ -21,8 +21,8 @@ import (
 //
 //	Player ID. Maximum limit: 100.
 func (service *WgnService) AccountInfo(ctx context.Context, realm Realm, accountId []int, options *wgn.AccountInfoOptions) (*wgn.AccountInfo, *GenericMeta, error) {
-	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
-		return nil, nil, err
+	if !containsRealm(realm, []Realm{RealmEu, RealmNa}) {
+		return nil, nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

@@ -21,8 +21,8 @@ import (
 //
 //	Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 func (service *WotxService) AuthProlongate(ctx context.Context, realm Realm, accessToken string, options *wotx.AuthProlongateOptions) (*wotx.AuthProlongate, error) {
-	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
-		return nil, err
+	if !containsRealm(realm, []Realm{RealmWgcb}) {
+		return nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

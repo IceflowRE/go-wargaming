@@ -28,8 +28,8 @@ import (
 //
 //	A list of percentiles to be included in the response. Maximum limit: 10. Min value is 1. Maximum value: 100.
 func (service *WotService) TanksMastery(ctx context.Context, realm Realm, distribution string, percentile []int, options *wot.TanksMasteryOptions) (*wot.TanksMastery, *GenericMeta, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, nil, err
+	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+		return nil, nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

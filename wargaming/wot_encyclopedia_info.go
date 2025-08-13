@@ -16,8 +16,8 @@ import (
 //
 //	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotService) EncyclopediaInfo(ctx context.Context, realm Realm, options *wot.EncyclopediaInfoOptions) (*wot.EncyclopediaInfo, *GenericMeta, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, nil, err
+	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+		return nil, nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{}

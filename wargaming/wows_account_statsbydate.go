@@ -21,8 +21,8 @@ import (
 //
 //	Player account ID
 func (service *WowsService) AccountStatsbydate(ctx context.Context, realm Realm, accountId int, options *wows.AccountStatsbydateOptions) (*wows.AccountStatsbydate, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+		return nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

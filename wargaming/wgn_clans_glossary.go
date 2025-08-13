@@ -18,8 +18,8 @@ import (
 //
 //	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WgnService) ClansGlossary(ctx context.Context, realm Realm, options *wgn.ClansGlossaryOptions) (*wgn.ClansGlossary, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+		return nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{}

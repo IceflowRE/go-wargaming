@@ -22,8 +22,8 @@ import (
 //
 //	Player account ID
 func (service *WotService) TanksStats(ctx context.Context, realm Realm, accountId int, options *wot.TanksStatsOptions) (*wot.TanksStats, *GenericMeta, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, nil, err
+	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+		return nil, nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

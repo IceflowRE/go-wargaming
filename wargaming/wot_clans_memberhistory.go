@@ -21,8 +21,8 @@ import (
 //
 //	Account ID. Min value is 1.
 func (service *WotService) ClansMemberhistory(ctx context.Context, realm Realm, accountId int, options *wot.ClansMemberhistoryOptions) (*wot.ClansMemberhistory, *GenericMeta, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, nil, err
+	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+		return nil, nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

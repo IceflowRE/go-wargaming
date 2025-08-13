@@ -25,8 +25,8 @@ import (
 //
 //	Rating category
 func (service *WotService) ClanratingsNeighbors(ctx context.Context, realm Realm, clanId int, rankField string, options *wot.ClanratingsNeighborsOptions) ([]*wot.ClanratingsNeighbors, *GenericMeta, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, nil, err
+	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+		return nil, nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

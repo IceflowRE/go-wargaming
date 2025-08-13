@@ -16,8 +16,8 @@ import (
 //
 //	Valid realms: RealmWgcb
 func (service *WotxService) ClansGlossary(ctx context.Context, realm Realm, options *wotx.ClansGlossaryOptions) (*wotx.ClansGlossary, error) {
-	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
-		return nil, err
+	if !containsRealm(realm, []Realm{RealmWgcb}) {
+		return nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{}

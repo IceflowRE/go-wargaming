@@ -22,8 +22,8 @@ import (
 //
 //	Tournament ID that can be retrieved from the Tournaments list method.
 func (service *WotbService) TournamentsTeams(ctx context.Context, realm Realm, tournamentId int, options *wotb.TournamentsTeamsOptions) ([]*wotb.TournamentsTeams, *GenericMeta, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, nil, err
+	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+		return nil, nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

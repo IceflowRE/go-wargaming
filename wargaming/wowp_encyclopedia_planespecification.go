@@ -22,8 +22,8 @@ import (
 //
 //	Aircraft ID
 func (service *WowpService) EncyclopediaPlanespecification(ctx context.Context, realm Realm, planeId int, options *wowp.EncyclopediaPlanespecificationOptions) (*wowp.EncyclopediaPlanespecification, *GenericMeta, error) {
-	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
-		return nil, nil, err
+	if !containsRealm(realm, []Realm{RealmEu, RealmNa}) {
+		return nil, nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

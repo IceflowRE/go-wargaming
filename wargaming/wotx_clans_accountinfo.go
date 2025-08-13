@@ -21,8 +21,8 @@ import (
 //
 //	Account ID. Maximum limit: 100. Min value is 1.
 func (service *WotxService) ClansAccountinfo(ctx context.Context, realm Realm, accountId []int, options *wotx.ClansAccountinfoOptions) (*wotx.ClansAccountinfo, *GenericMeta, error) {
-	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
-		return nil, nil, err
+	if !containsRealm(realm, []Realm{RealmWgcb}) {
+		return nil, nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

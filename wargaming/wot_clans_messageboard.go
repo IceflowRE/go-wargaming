@@ -20,8 +20,8 @@ import (
 //
 //	Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 func (service *WotService) ClansMessageboard(ctx context.Context, realm Realm, accessToken string, options *wot.ClansMessageboardOptions) (map[string][]*wot.ClansMessageboard, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+		return nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

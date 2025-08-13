@@ -31,8 +31,8 @@ import (
 //
 //	Rating period. For valid values, check the Types of ratings method.
 func (service *WotService) RatingsNeighbors(ctx context.Context, realm Realm, accountId int, rankField string, typ string, options *wot.RatingsNeighborsOptions) (*wot.RatingsNeighbors, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+		return nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

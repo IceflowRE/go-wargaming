@@ -17,8 +17,8 @@ import (
 //
 //	Valid realms: RealmEu, RealmNa
 func (service *WowpService) ClansList(ctx context.Context, realm Realm, options *wowp.ClansListOptions) ([]*wowp.ClansList, *GenericMeta, error) {
-	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
-		return nil, nil, err
+	if !containsRealm(realm, []Realm{RealmEu, RealmNa}) {
+		return nil, nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{}

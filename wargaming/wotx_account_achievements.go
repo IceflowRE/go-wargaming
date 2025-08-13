@@ -26,8 +26,8 @@ import (
 //
 //	Player account ID. Maximum limit: 100.
 func (service *WotxService) AccountAchievements(ctx context.Context, realm Realm, accountId []int, options *wotx.AccountAchievementsOptions) (*wotx.AccountAchievements, *GenericMeta, error) {
-	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
-		return nil, nil, err
+	if !containsRealm(realm, []Realm{RealmWgcb}) {
+		return nil, nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

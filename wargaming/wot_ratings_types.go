@@ -18,8 +18,8 @@ import (
 //
 //	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotService) RatingsTypes(ctx context.Context, realm Realm, options *wot.RatingsTypesOptions) (*wot.RatingsTypes, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+		return nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{}

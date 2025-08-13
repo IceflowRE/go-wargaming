@@ -21,8 +21,8 @@ import (
 //
 //	Player account ID. Min value is 1.
 func (service *WowsService) ClansSeasonstats(ctx context.Context, realm Realm, accountId int, options *wows.ClansSeasonstatsOptions) (*wows.ClansSeasonstats, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+		return nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

@@ -21,8 +21,8 @@ import (
 //
 //	Player account ID. Maximum limit: 100.
 func (service *WowpService) AccountInfo2(ctx context.Context, realm Realm, accountId []int, options *wowp.AccountInfo2Options) (*wowp.AccountInfo2, *GenericMeta, error) {
-	if err := validateRealm(realm, []Realm{RealmEu, RealmNa}); err != nil {
-		return nil, nil, err
+	if !containsRealm(realm, []Realm{RealmEu, RealmNa}) {
+		return nil, nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

@@ -28,8 +28,8 @@ import (
 //
 //	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WgnService) ClansList(ctx context.Context, realm Realm, options *wgn.ClansListOptions) (*wgn.ClansList, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+		return nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{}

@@ -32,8 +32,8 @@ import (
 //
 //	Valid realms: RealmWgcb
 func (service *WotxService) AuthLogin(ctx context.Context, realm Realm, options *wotx.AuthLoginOptions) (*wotx.AuthLogin, error) {
-	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
-		return nil, err
+	if !containsRealm(realm, []Realm{RealmWgcb}) {
+		return nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{}

@@ -21,8 +21,8 @@ import (
 //
 //	Vehicle ID. Maximum limit: 100.
 func (service *WotxService) EncyclopediaVehicleupgrades(ctx context.Context, realm Realm, tankId []int, options *wotx.EncyclopediaVehicleupgradesOptions) (*wotx.EncyclopediaVehicleupgrades, *GenericMeta, error) {
-	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
-		return nil, nil, err
+	if !containsRealm(realm, []Realm{RealmWgcb}) {
+		return nil, nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

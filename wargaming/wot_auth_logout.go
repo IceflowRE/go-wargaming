@@ -19,8 +19,8 @@ import (
 //
 //	Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 func (service *WotService) AuthLogout(ctx context.Context, realm Realm, accessToken string) error {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return err
+	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+		return InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

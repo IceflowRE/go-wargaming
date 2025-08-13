@@ -2,6 +2,7 @@ package wargaming
 
 import (
 	"fmt"
+	"slices"
 )
 
 type Realm interface {
@@ -19,9 +20,11 @@ type realmS struct {
 func (realm realmS) Name() string {
 	return realm.name
 }
+
 func (realm realmS) Index() string {
 	return realm.index
 }
+
 func (realm realmS) TLD() string {
 	return realm.tld
 }
@@ -34,11 +37,8 @@ func (err InvalidRealm) Error() string {
 	return fmt.Sprintf("invalid realm '%s' (%s)", err.Realm.Index(), err.Realm.Name())
 }
 
-func validateRealm(realm Realm, allowedRealms []Realm) error {
-	for _, elem := range allowedRealms {
-		if realm.Index() == elem.Index() {
-			return nil
-		}
-	}
-	return InvalidRealm{realm}
+func containsRealm(allowedRealms []Realm, realm Realm) bool {
+	return slices.ContainsFunc(allowedRealms, func(elem Realm) bool {
+		return realm.Index() == elem.Index()
+	})
 }

@@ -22,8 +22,8 @@ import (
 //
 //	Clan IDs. Maximum limit: 100.
 func (service *WotService) ClanratingsClans(ctx context.Context, realm Realm, clanId []int, options *wot.ClanratingsClansOptions) (*wot.ClanratingsClans, *GenericMeta, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, nil, err
+	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+		return nil, nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

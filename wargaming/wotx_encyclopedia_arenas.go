@@ -16,8 +16,8 @@ import (
 //
 //	Valid realms: RealmWgcb
 func (service *WotxService) EncyclopediaArenas(ctx context.Context, realm Realm, options *wotx.EncyclopediaArenasOptions) (*wotx.EncyclopediaArenas, *GenericMeta, error) {
-	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
-		return nil, nil, err
+	if !containsRealm(realm, []Realm{RealmWgcb}) {
+		return nil, nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{}

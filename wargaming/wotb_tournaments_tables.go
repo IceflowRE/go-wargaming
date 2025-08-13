@@ -26,8 +26,8 @@ import (
 //
 //	Tournament ID that can be retrieved from the Tournaments list method.
 func (service *WotbService) TournamentsTables(ctx context.Context, realm Realm, stageId int, tournamentId int, options *wotb.TournamentsTablesOptions) ([]*wotb.TournamentsTables, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+		return nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

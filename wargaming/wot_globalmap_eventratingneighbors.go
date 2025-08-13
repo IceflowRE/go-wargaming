@@ -29,8 +29,8 @@ import (
 //
 //	Front ID. To get a front ID, use the Fronts method.
 func (service *WotService) GlobalmapEventratingneighbors(ctx context.Context, realm Realm, clanId int, eventId string, frontId string, options *wot.GlobalmapEventratingneighborsOptions) ([]*wot.GlobalmapEventratingneighbors, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, err
+	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+		return nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

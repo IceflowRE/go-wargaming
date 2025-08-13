@@ -20,8 +20,8 @@ import (
 //
 //	Player Microsoft XUID. Maximum limit: 100.
 func (service *WotxService) AccountXuidinfo(ctx context.Context, realm Realm, xuid []int) ([]*wotx.AccountXuidinfo, error) {
-	if err := validateRealm(realm, []Realm{RealmWgcb}); err != nil {
-		return nil, err
+	if !containsRealm(realm, []Realm{RealmWgcb}) {
+		return nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

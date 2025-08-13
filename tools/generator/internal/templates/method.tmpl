@@ -21,8 +21,8 @@ import ({{range $imports}}
 {{- end}}
 {{- define "methodReturns"}}{{if or .DataType .MetaType}}({{end}}{{if .DataType}}{{. | dataReturnType}}, {{end}}{{if .MetaType}}{{. | metaReturnType}}, {{end}}error{{if or .DataType .MetaType -}} ) {{- end}}{{end}}
 func (service *{{.Game | camelLowerToCamel}}Service) {{.Name}}(ctx context.Context, realm Realm{{range .Parameters}}, {{.Name}} {{.TypeStr}}{{end}}{{if .OptionsType}}, options {{. | optionsType}}{{end}}) {{template "methodReturns" .}} {
-	if err := validateRealm(realm, []Realm{{"{"}}{{.AllowedRealms | realmList}}{{"}"}}); err != nil {
-		return {{if .DataType}}nil, {{end}}{{if .MetaType}}nil, {{end}}err
+	if !containsRealm(realm, []Realm{{"{"}}{{.AllowedRealms | realmList}}{{"}"}}) {
+		return {{if .DataType}}nil, {{end}}{{if .MetaType}}nil, {{end}}InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{

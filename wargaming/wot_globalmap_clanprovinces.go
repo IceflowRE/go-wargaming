@@ -21,8 +21,8 @@ import (
 //
 //	List of clan IDs. To get a clan ID, use the Clans method. Maximum limit: 10.
 func (service *WotService) GlobalmapClanprovinces(ctx context.Context, realm Realm, clanId []int, options *wot.GlobalmapClanprovincesOptions) (*wot.GlobalmapClanprovinces, *GenericMeta, error) {
-	if err := validateRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}); err != nil {
-		return nil, nil, err
+	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+		return nil, nil, InvalidRealm{realm}
 	}
 
 	reqParam := map[string]string{
