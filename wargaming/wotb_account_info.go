@@ -21,7 +21,7 @@ import (
 //
 //	Player account ID. Maximum limit: 100.
 func (service *WotbService) AccountInfo(ctx context.Context, realm Realm, accountId []int, options *wotb.AccountInfoOptions) (*wotb.AccountInfo, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

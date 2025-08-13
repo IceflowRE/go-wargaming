@@ -22,7 +22,7 @@ import (
 //
 //	Aircraft ID
 func (service *WowpService) EncyclopediaPlanespecification(ctx context.Context, realm Realm, planeId int, options *wowp.EncyclopediaPlanespecificationOptions) (*wowp.EncyclopediaPlanespecification, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

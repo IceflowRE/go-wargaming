@@ -16,7 +16,7 @@ import (
 //
 //	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WowsService) EncyclopediaInfo(ctx context.Context, realm Realm, options *wows.EncyclopediaInfoOptions) (*wows.EncyclopediaInfo, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

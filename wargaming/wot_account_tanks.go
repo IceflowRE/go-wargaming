@@ -21,7 +21,7 @@ import (
 //
 //	Player account ID. Maximum limit: 100.
 func (service *WotService) AccountTanks(ctx context.Context, realm Realm, accountId []int, options *wot.AccountTanksOptions) (map[string][]*wot.AccountTanks, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

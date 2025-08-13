@@ -21,7 +21,7 @@ import (
 //
 //	Player account ID
 func (service *WowsService) AccountStatsbydate(ctx context.Context, realm Realm, accountId int, options *wows.AccountStatsbydateOptions) (*wows.AccountStatsbydate, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, InvalidRealm{realm}
 	}
 

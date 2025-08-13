@@ -16,7 +16,7 @@ import (
 //
 //	Valid realms: RealmEu, RealmNa
 func (service *WowpService) RatingsTypes(ctx context.Context, realm Realm, options *wowp.RatingsTypesOptions) (*wowp.RatingsTypes, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

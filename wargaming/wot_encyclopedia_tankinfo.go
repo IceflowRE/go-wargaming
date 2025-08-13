@@ -23,7 +23,7 @@ import (
 //
 //	Vehicle ID. Maximum limit: 1000.
 func (service *WotService) EncyclopediaTankinfo(ctx context.Context, realm Realm, tankId []int, options *wot.EncyclopediaTankinfoOptions) (*wot.EncyclopediaTankinfo, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, InvalidRealm{realm}
 	}
 

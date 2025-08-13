@@ -22,7 +22,7 @@ import (
 //
 //	Player account ID
 func (service *WotbService) TanksStats(ctx context.Context, realm Realm, accountId int, options *wotb.TanksStatsOptions) (*wotb.TanksStats, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

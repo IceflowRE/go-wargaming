@@ -15,7 +15,7 @@ import (
 //
 //	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotService) ClanratingsTypes(ctx context.Context, realm Realm) (*wot.ClanratingsTypes, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

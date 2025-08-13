@@ -29,7 +29,7 @@ import (
 //
 //	Type of clan Reserve to be activated
 func (service *WotService) StrongholdActivateclanreserve(ctx context.Context, realm Realm, accessToken string, reserveLevel int, reserveType string, options *wot.StrongholdActivateclanreserveOptions) (*wot.StrongholdActivateclanreserve, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, InvalidRealm{realm}
 	}
 

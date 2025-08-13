@@ -19,7 +19,7 @@ import (
 //
 //	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotService) EncyclopediaTankradios(ctx context.Context, realm Realm, options *wot.EncyclopediaTankradiosOptions) (*wot.EncyclopediaTankradios, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, InvalidRealm{realm}
 	}
 

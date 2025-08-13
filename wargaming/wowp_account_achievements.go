@@ -21,7 +21,7 @@ import (
 //
 //	Player account ID. Maximum limit: 100.
 func (service *WowpService) AccountAchievements(ctx context.Context, realm Realm, accountId []int, options *wowp.AccountAchievementsOptions) (*wowp.AccountAchievements, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

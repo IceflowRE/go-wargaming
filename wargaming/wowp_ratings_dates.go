@@ -21,7 +21,7 @@ import (
 //
 //	Rating period. For valid values, check the Types of ratings method.
 func (service *WowpService) RatingsDates(ctx context.Context, realm Realm, typ string, options *wowp.RatingsDatesOptions) (*wowp.RatingsDates, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

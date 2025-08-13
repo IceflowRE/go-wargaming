@@ -21,7 +21,7 @@ import (
 //
 //	Tournament ID that can be retrieved from the Tournaments list method. Maximum limit: 25.
 func (service *WotbService) TournamentsInfo(ctx context.Context, realm Realm, tournamentId []int, options *wotb.TournamentsInfoOptions) (*wotb.TournamentsInfo, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

@@ -29,7 +29,7 @@ import (
 //
 //	Rating period. For valid values, check the Types of ratings method.
 func (service *WowpService) RatingsNeighbors(ctx context.Context, realm Realm, accountId int, rankField string, typ string, options *wowp.RatingsNeighborsOptions) ([]*wowp.RatingsNeighbors, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

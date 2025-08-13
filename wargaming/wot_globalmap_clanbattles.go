@@ -21,7 +21,7 @@ import (
 //
 //	Clan ID. To get a clan ID, use the Clans method.
 func (service *WotService) GlobalmapClanbattles(ctx context.Context, realm Realm, clanId int, options *wot.GlobalmapClanbattlesOptions) ([]*wot.GlobalmapClanbattles, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

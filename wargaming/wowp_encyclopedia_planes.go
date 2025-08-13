@@ -16,7 +16,7 @@ import (
 //
 //	Valid realms: RealmEu, RealmNa
 func (service *WowpService) EncyclopediaPlanes(ctx context.Context, realm Realm, options *wowp.EncyclopediaPlanesOptions) (*wowp.EncyclopediaPlanes, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

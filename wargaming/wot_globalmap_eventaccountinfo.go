@@ -25,7 +25,7 @@ import (
 //
 //	Front ID. To get a front ID, use the Fronts method. Maximum limit: 10.
 func (service *WotService) GlobalmapEventaccountinfo(ctx context.Context, realm Realm, eventId string, frontId []string, options *wot.GlobalmapEventaccountinfoOptions) (*wot.GlobalmapEventaccountinfo, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

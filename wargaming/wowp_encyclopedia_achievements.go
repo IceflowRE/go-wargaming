@@ -16,7 +16,7 @@ import (
 //
 //	Valid realms: RealmEu, RealmNa
 func (service *WowpService) EncyclopediaAchievements(ctx context.Context, realm Realm, options *wowp.EncyclopediaAchievementsOptions) (*wowp.EncyclopediaAchievements, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

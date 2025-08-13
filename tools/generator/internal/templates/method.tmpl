@@ -21,7 +21,7 @@ import ({{range $imports}}
 {{- end}}
 {{- define "methodReturns"}}{{if or .DataType .MetaType}}({{end}}{{if .DataType}}{{. | dataReturnType}}, {{end}}{{if .MetaType}}{{. | metaReturnType}}, {{end}}error{{if or .DataType .MetaType -}} ) {{- end}}{{end}}
 func (service *{{.Game | camelLowerToCamel}}Service) {{.Name}}(ctx context.Context, realm Realm{{range .Parameters}}, {{.Name}} {{.TypeStr}}{{end}}{{if .OptionsType}}, options {{. | optionsType}}{{end}}) {{template "methodReturns" .}} {
-	if !containsRealm(realm, []Realm{{"{"}}{{.AllowedRealms | realmList}}{{"}"}}) {
+	if !containsRealm([]Realm{{"{"}}{{.AllowedRealms | realmList}}{{"}"}}, realm) {
 		return {{if .DataType}}nil, {{end}}{{if .MetaType}}nil, {{end}}InvalidRealm{realm}
 	}
 

@@ -21,7 +21,7 @@ import (
 //
 //	Account ID. Min value is 1.
 func (service *WotService) ClansMemberhistory(ctx context.Context, realm Realm, accountId int, options *wot.ClansMemberhistoryOptions) (*wot.ClansMemberhistory, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

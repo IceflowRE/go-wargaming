@@ -16,7 +16,7 @@ import (
 //
 //	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotbService) EncyclopediaCrewskills(ctx context.Context, realm Realm, options *wotb.EncyclopediaCrewskillsOptions) (*wotb.EncyclopediaCrewskills, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, InvalidRealm{realm}
 	}
 

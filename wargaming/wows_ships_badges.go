@@ -22,7 +22,7 @@ import (
 //
 //	Player account ID
 func (service *WowsService) ShipsBadges(ctx context.Context, realm Realm, accountId int, options *wows.ShipsBadgesOptions) (*wows.ShipsBadges, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, InvalidRealm{realm}
 	}
 

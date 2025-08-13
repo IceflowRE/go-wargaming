@@ -16,7 +16,7 @@ import (
 //
 //	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WowsService) EncyclopediaBattlearenas(ctx context.Context, realm Realm, options *wows.EncyclopediaBattlearenasOptions) (*wows.EncyclopediaBattlearenas, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

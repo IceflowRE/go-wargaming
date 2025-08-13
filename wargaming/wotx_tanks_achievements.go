@@ -27,7 +27,7 @@ import (
 //
 //	Player account ID. Min value is 0.
 func (service *WotxService) TanksAchievements(ctx context.Context, realm Realm, accountId int, options *wotx.TanksAchievementsOptions) (*wotx.TanksAchievements, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmWgcb}) {
+	if !containsRealm([]Realm{RealmWgcb}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

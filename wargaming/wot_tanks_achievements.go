@@ -27,7 +27,7 @@ import (
 //
 //	Player account ID
 func (service *WotService) TanksAchievements(ctx context.Context, realm Realm, accountId int, options *wot.TanksAchievementsOptions) (*wot.TanksAchievements, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

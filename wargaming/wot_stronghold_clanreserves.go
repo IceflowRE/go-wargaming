@@ -20,7 +20,7 @@ import (
 //
 //	Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
 func (service *WotService) StrongholdClanreserves(ctx context.Context, realm Realm, accessToken string, options *wot.StrongholdClanreservesOptions) ([]*wot.StrongholdClanreserves, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, InvalidRealm{realm}
 	}
 

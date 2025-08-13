@@ -21,7 +21,7 @@ import (
 //
 //	Front ID. To get a front ID, use the Fronts method.
 func (service *WotService) GlobalmapProvinces(ctx context.Context, realm Realm, frontId string, options *wot.GlobalmapProvincesOptions) ([]*wot.GlobalmapProvinces, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

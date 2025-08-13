@@ -23,7 +23,7 @@ import (
 //
 //	Clan ID. Maximum limit: 100.
 func (service *WgnService) ClansInfo(ctx context.Context, realm Realm, clanId []int, options *wgn.ClansInfoOptions) (*wgn.ClansInfo, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, InvalidRealm{realm}
 	}
 

@@ -16,7 +16,7 @@ import (
 //
 //	Valid realms: RealmWgcb
 func (service *WotxService) EncyclopediaCrewroles(ctx context.Context, realm Realm, options *wotx.EncyclopediaCrewrolesOptions) (*wotx.EncyclopediaCrewroles, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmWgcb}) {
+	if !containsRealm([]Realm{RealmWgcb}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

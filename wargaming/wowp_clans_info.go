@@ -21,7 +21,7 @@ import (
 //
 //	Clan ID. Maximum limit: 100. Min value is 1.
 func (service *WowpService) ClansInfo(ctx context.Context, realm Realm, clanId []int, options *wowp.ClansInfoOptions) (*wowp.ClansInfo, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

@@ -22,7 +22,7 @@ import (
 //
 //	Player account ID
 func (service *WowsService) SeasonsShipstats(ctx context.Context, realm Realm, accountId int, options *wows.SeasonsShipstatsOptions) (*wows.SeasonsShipstats, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

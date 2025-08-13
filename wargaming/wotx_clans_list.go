@@ -17,7 +17,7 @@ import (
 //
 //	Valid realms: RealmWgcb
 func (service *WotxService) ClansList(ctx context.Context, realm Realm, options *wotx.ClansListOptions) ([]*wotx.ClansList, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmWgcb}) {
+	if !containsRealm([]Realm{RealmWgcb}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

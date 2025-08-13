@@ -22,7 +22,7 @@ import (
 //
 //	Player account ID. Min value is 0.
 func (service *WotxService) TanksStats(ctx context.Context, realm Realm, accountId int, options *wotx.TanksStatsOptions) (*wotx.TanksStats, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmWgcb}) {
+	if !containsRealm([]Realm{RealmWgcb}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

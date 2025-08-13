@@ -21,7 +21,7 @@ import (
 //
 //	Clan ID. To get a clan ID, use the Clans method. Maximum limit: 10.
 func (service *WotService) StrongholdClaninfo(ctx context.Context, realm Realm, clanId []int, options *wot.StrongholdClaninfoOptions) (*wot.StrongholdClaninfo, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

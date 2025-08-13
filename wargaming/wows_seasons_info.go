@@ -17,7 +17,7 @@ import (
 //
 //	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WowsService) SeasonsInfo(ctx context.Context, realm Realm, options *wows.SeasonsInfoOptions) (*wows.SeasonsInfo, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, InvalidRealm{realm}
 	}
 

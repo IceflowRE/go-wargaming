@@ -21,7 +21,7 @@ import (
 //
 //	Vehicle ID
 func (service *WotService) EncyclopediaVehicleprofiles(ctx context.Context, realm Realm, tankId int, options *wot.EncyclopediaVehicleprofilesOptions) (*wot.EncyclopediaVehicleprofiles, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

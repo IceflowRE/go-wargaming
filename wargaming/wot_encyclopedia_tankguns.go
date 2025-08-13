@@ -35,7 +35,7 @@ import (
 //
 //	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotService) EncyclopediaTankguns(ctx context.Context, realm Realm, options *wot.EncyclopediaTankgunsOptions) (*wot.EncyclopediaTankguns, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, InvalidRealm{realm}
 	}
 

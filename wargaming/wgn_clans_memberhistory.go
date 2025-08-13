@@ -23,7 +23,7 @@ import (
 //
 //	Account ID. Min value is 1.
 func (service *WgnService) ClansMemberhistory(ctx context.Context, realm Realm, accountId int, options *wgn.ClansMemberhistoryOptions) (*wgn.ClansMemberhistory, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, InvalidRealm{realm}
 	}
 

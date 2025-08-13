@@ -33,7 +33,7 @@ import (
 //	"8" - Vehicles of Tier 8
 //	"10" - Vehicles of Tier 10
 func (service *WotService) GlobalmapSeasonratingneighbors(ctx context.Context, realm Realm, clanId int, seasonId string, vehicleLevel string, options *wot.GlobalmapSeasonratingneighborsOptions) ([]*wot.GlobalmapSeasonratingneighbors, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

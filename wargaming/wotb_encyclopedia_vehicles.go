@@ -17,7 +17,7 @@ import (
 //
 //	Valid realms: RealmAsia, RealmEu, RealmNa
 func (service *WotbService) EncyclopediaVehicles(ctx context.Context, realm Realm, options *wotb.EncyclopediaVehiclesOptions) (*wotb.EncyclopediaVehicles, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

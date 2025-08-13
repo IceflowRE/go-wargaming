@@ -21,7 +21,7 @@ import (
 //
 //	Aircraft ID. Maximum limit: 100.
 func (service *WowpService) EncyclopediaPlaneupgrades(ctx context.Context, realm Realm, planeId []int, options *wowp.EncyclopediaPlaneupgradesOptions) (*wowp.EncyclopediaPlaneupgrades, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

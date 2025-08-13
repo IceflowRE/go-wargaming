@@ -25,7 +25,7 @@ import (
 //
 //	Rating category
 func (service *WotService) ClanratingsNeighbors(ctx context.Context, realm Realm, clanId int, rankField string, options *wot.ClanratingsNeighborsOptions) ([]*wot.ClanratingsNeighbors, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

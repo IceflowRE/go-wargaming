@@ -21,7 +21,7 @@ import (
 //
 //	Ship ID
 func (service *WowsService) EncyclopediaShipprofile(ctx context.Context, realm Realm, shipId int, options *wows.EncyclopediaShipprofileOptions) (*wows.EncyclopediaShipprofile, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

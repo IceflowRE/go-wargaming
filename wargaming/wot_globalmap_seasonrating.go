@@ -29,7 +29,7 @@ import (
 //	"8" - Vehicles of Tier 8
 //	"10" - Vehicles of Tier 10
 func (service *WotService) GlobalmapSeasonrating(ctx context.Context, realm Realm, seasonId string, vehicleLevel string, options *wot.GlobalmapSeasonratingOptions) ([]*wot.GlobalmapSeasonrating, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

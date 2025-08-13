@@ -16,7 +16,7 @@ import (
 //
 //	Valid realms: RealmEu, RealmNa
 func (service *WowpService) ClansGlossary(ctx context.Context, realm Realm, options *wowp.ClansGlossaryOptions) (*wowp.ClansGlossary, error) {
-	if !containsRealm(realm, []Realm{RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmEu, RealmNa}, realm) {
 		return nil, InvalidRealm{realm}
 	}
 

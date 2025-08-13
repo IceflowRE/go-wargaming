@@ -22,7 +22,7 @@ import (
 //
 //	Player account ID
 func (service *WowpService) PlanesStats(ctx context.Context, realm Realm, accountId int, options *wowp.PlanesStatsOptions) (*wowp.PlanesStats, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

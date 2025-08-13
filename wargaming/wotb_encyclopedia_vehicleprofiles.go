@@ -21,7 +21,7 @@ import (
 //
 //	Vehicle ID. Maximum limit: 25.
 func (service *WotbService) EncyclopediaVehicleprofiles(ctx context.Context, realm Realm, tankId []int, options *wotb.EncyclopediaVehicleprofilesOptions) (*wotb.EncyclopediaVehicleprofiles, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmAsia, RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmAsia, RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

@@ -21,7 +21,7 @@ import (
 //
 //	Player name search string. Parameter "type" defines minimum length and type of search. Using the exact search type, you can enter several names, separated with commas. Maximum length: 24.
 func (service *WowpService) AccountList(ctx context.Context, realm Realm, search string, options *wowp.AccountListOptions) ([]*wowp.AccountList, *GenericMeta, error) {
-	if !containsRealm(realm, []Realm{RealmEu, RealmNa}) {
+	if !containsRealm([]Realm{RealmEu, RealmNa}, realm) {
 		return nil, nil, InvalidRealm{realm}
 	}
 

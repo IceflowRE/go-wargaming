@@ -20,7 +20,7 @@ import (
 //
 //	Play Station UID. Maximum limit: 100.
 func (service *WotxService) AccountPsninfo(ctx context.Context, realm Realm, psnid []string) ([]*wotx.AccountPsninfo, error) {
-	if !containsRealm(realm, []Realm{RealmWgcb}) {
+	if !containsRealm([]Realm{RealmWgcb}, realm) {
 		return nil, InvalidRealm{realm}
 	}
 
