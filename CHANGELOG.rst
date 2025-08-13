@@ -6,13 +6,27 @@ All notable changes to this project will be documented in this file.
 
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_ and this project adheres to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
+4.1.8
+=====
+
+Added
+-----
+
+- wows: ``/account/statsbydate/``
+- wows: ``/ships/badges/``
+
+Updated
+-------
+
+- wows: ``/ship/stats/``
+
 4.1.7
 =====
 
 Removed
 -------
 
-- wows: remove endpoint ``/account/statsbydate/``
+- wows: ``/account/statsbydate/``
 
 4.1.6
 =====
@@ -20,7 +34,7 @@ Removed
 Updated
 -------
 
-- wotx: update endpoint ``https://api-console.worldoftanks.??/wotx`` to ``https://api-modernarmor.worldoftanks.%s/wotx``
+- wotx: ``https://api-console.worldoftanks.??/wotx`` -> ``https://api-modernarmor.worldoftanks.%s/wotx``
 
 4.1.5
 =====
