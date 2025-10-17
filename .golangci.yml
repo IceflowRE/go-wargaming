@@ -1,0 +1,60 @@
+# Last updated at golanci-lint v2.5.0
+version: "2"
+formatters:
+  settings:
+    gofumpt:
+      module-path: github.com/IceflowRE/go-wargaming
+      extra-rules: true
+linters:
+  default: all
+  disable:
+    # not required, covered by archvalidate
+    - depguard
+    # inits are required to setup global states
+    - gochecknoinits
+    # outdated use wsl_v5
+    - wsl
+  settings:
+    funlen:
+      lines: 80
+    lll:
+      line-length: 160
+    revive:
+      enable-all-rules: true
+      rules:
+        - name: line-length-limit
+          arguments: [160]
+          disabled: false
+          severity: warning
+    wsl_v5:
+      default: all
+      # most is disabled because the developer can be trusted enough to group the code properly
+      disable:
+        # prefer compact code
+        - append
+        # prefer compact code
+        - assign
+        # prefer compact code
+        - assign-expr
+        # prefer compact code
+        - branch
+        # prefer ungrouped declarations
+        - decl
+        # prefer compact code
+        - expr
+        # prefer compact code
+        - for
+        # prefer compact code
+        - if
+        # prefer compact code
+        - inc-dec
+        # prefer compact code
+        - range
+        # prefer compact code
+        - return
+        # prefer compact code
+        - send
+        # prefer compact code
+        - switch
+        # prefer compact code
+        - type-switch
