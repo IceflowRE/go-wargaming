@@ -107,8 +107,7 @@ Endpoint patches can be found in [tools/generator/internal/patches.go](tools/gen
 
 To update the library just run the generator from project root.
 ```shell
-go build -o generator github.com/IceflowRE/go-wargaming/v4/tools/generator
-./generator
+go run github.com/IceflowRE/go-wargaming/v4/tools/generator
 ```
 
 Commit titles must follow this pattern `[<category>] <Good Description>` e.g. `[gen] Fix file permissions`.
