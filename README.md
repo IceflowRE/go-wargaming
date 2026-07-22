@@ -1,9 +1,9 @@
 # Wargaming API Client
+
 ![maintained](https://img.shields.io/badge/maintained-yes-brightgreen.svg)
 ![Programming Language](https://img.shields.io/badge/language-Go-orange.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/IceflowRE/go-wargaming/blob/master/LICENSE.md)
 
-[![Go report card](https://goreportcard.com/badge/github.com/IceflowRE/go-wargaming/v4)](https://goreportcard.com/report/github.com/IceflowRE/go-wargaming/v4)
 [![Go Reference](https://pkg.go.dev/badge/github.com/IceflowRE/go-wargaming/v4.svg)](https://pkg.go.dev/github.com/IceflowRE/go-wargaming/v4)
 
 ---
@@ -38,6 +38,7 @@ import "github.com/IceflowRE/go-wargaming/wargaming"    // without go modules
 
 Create a new Wargaming Client and use the different services to access the different sections of the Wargaming API.
 The services of a client are the same as the Wargaming API sections in their documentation.
+
 ```go
 client := wargaming.NewClient("a7f838650dcb008552966db063eeeb35", nil)
 // get World of Tanks EU accounts starting with "Yzne"
@@ -51,6 +52,7 @@ if err == nil {
 ```
 
 Also, the http client can be customized.
+
 ```go
 client := wargaming.NewClient("a7f838650dcb008552966db063eeeb35", &wargaming.ClientOptions{
 	HTTPClient: &http.Client{
@@ -62,6 +64,7 @@ client := wargaming.NewClient("a7f838650dcb008552966db063eeeb35", &wargaming.Cli
 Some API methods have options which can be passed.
 And may probably return additional metadata, which states the total amount of values, current page, total pages, etc.
 The struct is also using pointer fields.
+
 ```go
 client := wargaming.NewClient("a7f838650dcb008552966db063eeeb35", nil)
 // get World of Tanks EU account named exact "Lichtgeschwindigkeit" and return only the 'account_id' field
@@ -73,6 +76,10 @@ fmt.Println(*meta.Count)
 ```
 
 All structs for Wargaming resources use pointer values for all non-repeated fields. This allows distinguishing between unset fields and those set to a zero-value. Helper functions have been provided to easily create these pointers for string, bool, and int values. For example:
+
+> [!WARNING]
+> The helper functions are deprecated, since Go 1.26 you can use `new(value)` to create a pointer to a value.
+
 ```go
 options := &wot.AccountListOptions{
 	Type: wargaming.String("exact"),
@@ -95,7 +102,8 @@ if err != nil {
 }
 ```
 
-NOTE: Using the context package, one can easily pass cancellation signals and deadlines to various services of the client for handling a request. In case there is no context available, then `context.Background()` can be used as a starting point.
+> [!NOTE]
+> Using the context package, one can easily pass cancellation signals and deadlines to various services of the client for handling a request. In case there is no context available, `context.Background()` can be used as a starting point.
 
 ## Contributing
 
@@ -106,6 +114,7 @@ The client library is generated automatically. The generator is located in [tool
 Endpoint patches can be found in [tools/generator/internal/patches.go](tools/generator/internal/patches.go).
 
 To update the library just run the generator from project root.
+
 ```shell
 go run github.com/IceflowRE/go-wargaming/v4/tools/generator
 ```
